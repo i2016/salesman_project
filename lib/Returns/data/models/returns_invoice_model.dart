@@ -1,13 +1,13 @@
 import 'package:water/Base/network/network-mappers.dart';
 
-class InvoiceHistoryModel extends BaseMappable {
+class ReturnInvoiceModel extends BaseMappable {
   String? jsonrpc;
   String? id;
   InvoiceResult? invoiceResult;
 
-  InvoiceHistoryModel({this.jsonrpc, this.id, this.invoiceResult});
+  ReturnInvoiceModel({this.jsonrpc, this.id, this.invoiceResult});
 
-  InvoiceHistoryModel.fromJson(Map<String, dynamic> json) {
+  ReturnInvoiceModel.fromJson(Map<String, dynamic> json) {
     jsonrpc = json['jsonrpc'];
     id = json['id'];
     invoiceResult =
@@ -30,7 +30,7 @@ class InvoiceHistoryModel extends BaseMappable {
     id = json['id'];
     invoiceResult =
     json['result'] != null ? new InvoiceResult.fromJson(json['result']) : null;
-    return InvoiceHistoryModel(id: id,jsonrpc: jsonrpc,invoiceResult: invoiceResult);
+    return ReturnInvoiceModel(id: id,jsonrpc: jsonrpc,invoiceResult: invoiceResult);
   }
 
 

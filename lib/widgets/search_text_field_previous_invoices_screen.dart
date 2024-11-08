@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:water/Returns/data/models/returns_invoice_model.dart';
 
 class SearchTextFieldPreviousInvoicesScreen extends StatelessWidget{
-  const SearchTextFieldPreviousInvoicesScreen({super.key});
+  SearchTextFieldPreviousInvoicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -135,6 +135,7 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
                         icon: 'assets/images/marketImage.png',
                         color: Color(0xff0056C9),
                         textIcon: '50 منتج',
+                        invoiceId: 1,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.011,

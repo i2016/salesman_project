@@ -1,7 +1,8 @@
 import 'package:water/Authentication/domain/entities/login_entity.dart';
 import 'package:water/Profile/domain/entities/resetPassword_entity.dart';
 
-abstract class AppEvent {}
+abstract class AppEvent {
+}
 
 class click extends AppEvent{
   click();
@@ -54,4 +55,11 @@ class CreateOrderEvent extends AppEvent{
 // Create Collection
 class CreateCollectionEvent extends AppEvent{
   CreateCollectionEvent();
+}
+//Returns
+class GetReturnsInvoiceEvent extends AppEvent{
+  GetReturnsInvoiceEvent();
+}
+class GetInvoicesDetailsEvent extends AppEvent{
+  GetInvoicesDetailsEvent();
 }

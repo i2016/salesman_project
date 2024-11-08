@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Visits/presentation/pages/Today/invoices_details_screen.dart';
 
 class WaterItemPreviousInvoices extends StatelessWidget {
@@ -9,8 +10,10 @@ class WaterItemPreviousInvoices extends StatelessWidget {
       required this.date,
       required this.icon,
       required this.textIcon,
-      required this.color});
+      required this.color,
+        required this.invoiceId});
 
+  final int invoiceId;
   final String saleName;
   final String pill;
   final String date;
@@ -26,6 +29,7 @@ class WaterItemPreviousInvoices extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6),
           child: InkWell(
             onTap: () {
+              sharedPreferenceManager.writeData(CachingKey.INVOICE_ID, invoiceId);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const InvoicesDetailsScreen(),

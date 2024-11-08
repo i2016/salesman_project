@@ -11,5 +11,6 @@ const String todayVisitsDetailsUrl = "salesman/visit_data";
 const String categoriesUrl = "salesman/product_categories";
 const String productsByCategoryUrl = "salesman/product_by_category";
 const String invoiceHistoryUrl = "salesman/invoice_history";
+const String invoicesDetailsUrl = "salesman/invoice_details";
 const String createOrderUrl = "salesman/create_sales_order";
 const String createPaymentUrl = "salesman/create_payment";

@@ -3,6 +3,8 @@ import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Profile/data/models/profile_model.dart';
 import 'package:water/Profile/data/models/resetPassword_model.dart';
+import 'package:water/Returns/data/models/returns_invoice_model.dart' as returns_invoice_model;
+import 'package:water/Returns/data/models/invoices_details_model.dart' as invoices_details_model;
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
@@ -146,6 +148,29 @@ class GetHistoryInvoiceErrorLoading extends AppState{
   final String? message;
   GetHistoryInvoiceErrorLoading({this.message});
 }
+
+//Returns
+class GetReturnsInvoiceDone extends AppState{
+  final  returns_invoice_model.InvoiceResult? invoiceResult;
+  GetReturnsInvoiceDone({this.invoiceResult});
+}
+
+class GetReturnsInvoiceErrorLoading extends AppState{
+  final String? message;
+  GetReturnsInvoiceErrorLoading({this.message});
+}
+
+class GetInvoicesDetailsDone extends AppState{
+  final  invoices_details_model.Result? result;
+  GetInvoicesDetailsDone({this.result});
+}
+
+class GetInvoicesDetailsErrorLoading extends AppState{
+  final String? message;
+  GetInvoicesDetailsErrorLoading({this.message});
+}
+
+
 
 
 // CREATE ORDERS
