@@ -17,7 +17,7 @@ class InvoicesDetailsBloc extends Bloc<AppEvent,AppState> with Validator {
       Emitter<AppState> emit) async {
     emit(Loading());
     var response = await invoicesDetailsRepository.getInvoiceDetails();
-    print("response : ${response!.result!.details}");
+    print("InvoicesDetailsresponse : ${response!.result!.details}");
     try{
       if (response!.result!.statusCode! == 200 ) {
         emit(GetInvoicesDetailsDone(result: response.result));
@@ -25,7 +25,7 @@ class InvoicesDetailsBloc extends Bloc<AppEvent,AppState> with Validator {
         emit(GetInvoicesDetailsErrorLoading(message: response.result?.message));
       }
     }catch(e){
-      emit(GetHistoryInvoiceErrorLoading(message: e.toString()));
+      emit(GetInvoicesDetailsErrorLoading(message: e.toString()));
     }
 
   }

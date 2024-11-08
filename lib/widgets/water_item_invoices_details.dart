@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:water/Returns/data/models/invoices_details_model.dart';
 
 class WaterItemInvoicesDetails extends StatelessWidget{
-  const WaterItemInvoicesDetails({super.key});
+  WaterItemInvoicesDetails({super.key,  this.item,});
 
+final Items? item;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,10 +27,10 @@ class WaterItemInvoicesDetails extends StatelessWidget{
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.015,
                     ),
-                    const Expanded(
+                     Expanded(
                     flex: 1,
                     child: Text(
-                      '33',
+                      item!.quantity!.toString(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500
@@ -70,8 +72,8 @@ class WaterItemInvoicesDetails extends StatelessWidget{
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.005,
                         ),
-                        const Text(
-                          'مياه مدينة شرنك 15 حبة  600 مل',
+                         Text(
+                          item!.productName!,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 14,
@@ -81,10 +83,10 @@ class WaterItemInvoicesDetails extends StatelessWidget{
                       ],
                     ),
                     ),
-                    const Expanded(
+                     Expanded(
                     flex: 1,
                     child: Text(
-                      '42 ر.س',
+                      '${item!.productId!.toString()} ر.س',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500

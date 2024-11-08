@@ -22,7 +22,7 @@ class InvoicesDetailsRepository {
       headers: headers ,
       body: jsonEncode( {
         "params":{
-          "invoice_id": await sharedPreferenceManager.readString(CachingKey.INVOICE_ID)
+          "invoice_id": await sharedPreferenceManager.readInt(CachingKey.INVOICE_ID)
         }
       }),);
   }

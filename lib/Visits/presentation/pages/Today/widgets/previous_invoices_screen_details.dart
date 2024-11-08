@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
 import 'package:water/Returns/presentation/bloc/returns_invoice_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_previous_invoices_screen.dart';
@@ -30,37 +31,35 @@ class PreviousInvoicesScreenDetails extends StatelessWidget {
                 );
               }else if(state is GetReturnsInvoiceDone){
                 List<Invoice> returnInvoices = state.invoiceResult!.invoices!.where((element) => element.type == "invoice").toList();
-                
+                print("returnInvoices : ${returnInvoices}");
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       flex: 3,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SearchTextFieldPreviousInvoicesScreen(),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: returnInvoices.length,
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: (){
-                                    customAnimatedPushNavigation(context, InvoicesDetailsScreen(invoiceId: returnInvoices[index].invoiceId,));
-                                  },
-                                  child: WaterItemPreviousInvoices(
-                                    saleName:   'مبيعات ${returnInvoices[index].amountTotal?? 500} ر.س',
-                                    pill: 'فاتورة رقم ${returnInvoices[index].invoiceId?? 500}',
-                                    date: 'اصدار بتاريخ ${returnInvoices[index].invoiceDate?? 500}',
-                                    icon: 'assets/images/marketImage.png',
-                                    color: Color(0xff0056C9),
-                                    textIcon: '${returnInvoices[index].itemsCount?? 500} منتج',
-                                    invoiceId: 1,
-                                  ),
-                                );
-                              }),
-                        ],
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SearchTextFieldPreviousInvoicesScreen(),
+                            ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: returnInvoices.length,
+                                itemBuilder: (context, index) {
+                                  return WaterItemPreviousInvoices(
+                                      saleName:   'مبيعات ${returnInvoices[index].amountTotal?? 500} ر.س',
+                                      pill: 'فاتورة رقم ${returnInvoices[index].invoiceId?? 500}',
+                                      date: 'اصدار بتاريخ ${returnInvoices[index].invoiceDate?? 500}',
+                                      icon: 'assets/images/marketImage.png',
+                                      color: Color(0xff0056C9),
+                                      textIcon: '${returnInvoices[index].itemsCount?? 500} منتج',
+                                    invoice: returnInvoices[index],
+
+                                  );
+                                }),
+                          ],
+                        ),
                       ),
                     ),
 

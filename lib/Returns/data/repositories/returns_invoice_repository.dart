@@ -5,13 +5,14 @@ import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
+import 'package:water/Returns/data/models/returns_invoice_model.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/today_visits_details_model.dart';
 import 'package:water/Visits/data/models/today_visits_model.dart';
 
 class ReturnsInvoiceRepository{
 
-  Future<InvoiceHistoryModel?> getInvoiceHistory() async {
+  Future<ReturnInvoiceModel?> getReturnsInvoice() async {
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
       'Content-Type': 'application/json',
@@ -20,7 +21,7 @@ class ReturnsInvoiceRepository{
 
     };
     return NetworkUtil.internal().post(
-      InvoiceHistoryModel(),
+      ReturnInvoiceModel(),
       baseUrl + invoiceHistoryUrl,
       headers: headers ,
       body: jsonEncode( {
@@ -33,4 +34,4 @@ class ReturnsInvoiceRepository{
 
 
 }
-final ReturnsInvoiceRepository invoiceHistoryRepository = ReturnsInvoiceRepository();
+final ReturnsInvoiceRepository returnsInvoiceRepository = ReturnsInvoiceRepository();

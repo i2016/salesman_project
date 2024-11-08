@@ -1,11 +1,14 @@
+import 'package:water/Returns/data/models/returns_invoice_model.dart';
+
 import './water_item_previous_invoices.dart';
 import 'package:flutter/material.dart';
 
 class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
-  const SearchTextFieldInvoicesDetailsScreen({super.key});
-
+   SearchTextFieldInvoicesDetailsScreen({super.key,required this.invoice});
+  final Invoice? invoice;
   @override
   Widget build(BuildContext context) {
+    print("invoice@@ : ${invoice!.toJson()}");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,8 +23,8 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
             SizedBox(
             width: MediaQuery.of(context).size.width * 0.019,
           ),
-            const Text(
-              'الفاتورة رقم 123414',
+             Text(
+              'الفاتورة رقم ${invoice?.invoiceNumber}',
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500
@@ -32,14 +35,13 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
         SizedBox(
             height: MediaQuery.of(context).size.height * 0.019,
           ),
-          const WaterItemPreviousInvoices(
-                        saleName: 'مبيعات 500 ر.س',
-                        pill: 'فاتورة رقم 123414',
-                        date: 'اصدار بتاريخ 21 / 8 / 2024',
+           WaterItemPreviousInvoices(
+                        saleName: 'مبيعات ${invoice?.amountTotal} ر.س',
+                        pill: 'فاتورة رقم ${invoice?.invoiceNumber}',
+                        date: 'اصدار بتاريخ ${invoice?.invoiceDate}',
                         icon: 'assets/images/marketImage.png',
                         color: Color(0xff0056C9),
-                        textIcon: '50 منتج',
-                        invoiceId: 1,
+                        textIcon: '${invoice?.itemsCount} منتج',
                       ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,

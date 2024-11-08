@@ -88,7 +88,7 @@ class Details {
 class Items {
   int? productId;
   String? productName;
-  int? quantity;
+  double? quantity;
   String? image;
 
   Items({this.productId, this.productName, this.quantity, this.image});

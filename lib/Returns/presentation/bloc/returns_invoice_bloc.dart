@@ -5,6 +5,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Clients/data/repositories/invoice_history_repository.dart';
 import 'package:water/Profile/data/repositories/profile_repository.dart';
+import 'package:water/Returns/data/repositories/returns_invoice_repository.dart';
 import 'package:water/Visits/data/repositories/categories_repository.dart';
 import 'package:water/Visits/data/repositories/today_visits_repository.dart';
 
@@ -19,16 +20,16 @@ class ReturnsInvoiceBloc extends Bloc<AppEvent,AppState> with Validator {
   Future<void> _GetReturnsInvoice(GetReturnsInvoiceEvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await invoiceHistoryRepository.getInvoiceHistory();
+    var response = await returnsInvoiceRepository.getReturnsInvoice();
     print("response : ${response!.invoiceResult!.invoices}");
     try{
       if (response!.invoiceResult!.statusCode! == 200 ) {
-        emit(GetHistoryInvoiceDone(invoiceResult: response.invoiceResult));
+        emit(GetReturnsInvoiceDone(invoiceResult: response.invoiceResult));
       } else {
-        emit(GetHistoryInvoiceErrorLoading(message: response.invoiceResult?.message));
+        emit(GetReturnsInvoiceErrorLoading(message: response.invoiceResult?.message));
       }
     }catch(e){
-      emit(GetHistoryInvoiceErrorLoading(message: e.toString()));
+      emit(GetReturnsInvoiceErrorLoading(message: e.toString()));
     }
 
   }
