@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/presentation/pages/Today/review_returned_products_screen.dart';
 
 class ProductsAndPricesInvoicesDetailsScreen extends StatelessWidget {
@@ -165,6 +166,7 @@ class ProductsAndPricesInvoicesDetailsScreen extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
+                          if(Shared.order_products_list.length !=0)
                           Navigator.of(context).push(
                             MaterialPageRoute(builder: (context) => const ReviewReturnedProductsScreen()),
                             );

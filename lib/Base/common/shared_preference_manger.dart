@@ -9,6 +9,7 @@ class SharedPreferenceManager {
   }
 
   Future<Future> writeData(CachingKey key, value) async {
+    print("---------- ${key} : ${value}");
     sharedPreferences = await SharedPreferences.getInstance();
     Future? returnedValue;
     if (value is String) {
@@ -71,6 +72,7 @@ class CachingKey extends Enum<String> {
   static const CachingKey USER_NAME = const CachingKey('USER_NAME');
   static const CachingKey EMAIL = const CachingKey('EMAIL');
   static const CachingKey MOBILE = const CachingKey('MOBILE');
+  static const CachingKey RETURNS_TYPE = const CachingKey('RETURNS_TYPE');
 }
 
 final sharedPreferenceManager = SharedPreferenceManager();

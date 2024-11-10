@@ -52,6 +52,12 @@ class GetHistoryInvoiceEvent extends AppEvent{
 class CreateOrderEvent extends AppEvent{
   CreateOrderEvent();
 }
+
+// Create Returns
+class CreateReturnsEvent extends AppEvent{
+  CreateReturnsEvent();
+}
+
 // Create Collection
 class CreateCollectionEvent extends AppEvent{
   CreateCollectionEvent();

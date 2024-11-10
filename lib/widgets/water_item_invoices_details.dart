@@ -4,7 +4,7 @@ import 'package:water/Returns/data/models/invoices_details_model.dart';
 class WaterItemInvoicesDetails extends StatelessWidget{
   WaterItemInvoicesDetails({super.key,  this.item,});
 
-final Items? item;
+final Item? item;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -86,7 +86,7 @@ final Items? item;
                      Expanded(
                     flex: 1,
                     child: Text(
-                      '${item!.productId!.toString()} ر.س',
+                      '${item!.price!.toString()}  ر.س ',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 
 class ReviewReturnedProductsWaterItem extends StatelessWidget{
-  const ReviewReturnedProductsWaterItem({super.key});
+  ReturnsProductEntity returnsProductEntity;
+   ReviewReturnedProductsWaterItem({super.key,required this.returnsProductEntity});
 
   @override
   Widget build(BuildContext context) {

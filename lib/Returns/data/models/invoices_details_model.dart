@@ -63,15 +63,15 @@ class Result {
 }
 
 class Details {
-  List<Items>? items;
+  List<Item>? items;
 
   Details({this.items});
 
   Details.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
-      items = <Items>[];
+      items = <Item>[];
       json['items'].forEach((v) {
-        items!.add(new Items.fromJson(v));
+        items!.add(new Item.fromJson(v));
       });
     }
   }
@@ -85,19 +85,30 @@ class Details {
   }
 }
 
-class Items {
+class Item {
   int? productId;
   String? productName;
+  String? description;
   double? quantity;
   String? image;
+  String? category;
+  int? categoryId;
+  double? price;
+  Item({this.productId, this.productName, this.quantity, this.image, this.category,
+    this.categoryId,
+    this.price,
+    this.description
+  });
 
-  Items({this.productId, this.productName, this.quantity, this.image});
-
-  Items.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String, dynamic> json) {
     productId = json['product_id'];
     productName = json['product_name'];
     quantity = json['quantity'];
     image = json['image'];
+    category = json['category'];
+    categoryId = json['category_id'];
+    price = json['price'];
+    description = json['description'];
   }
 
   Map<String, dynamic> toJson() {
@@ -106,6 +117,11 @@ class Items {
     data['product_name'] = this.productName;
     data['quantity'] = this.quantity;
     data['image'] = this.image;
+    data['category'] = this.category;
+    data['category_id'] = this.categoryId;
+    data['price'] = this.price;
+    data['description'] = this.description;
+
     return data;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/widgets/client_menu_container_item.dart';
 import 'package:water/Base/common/shared.dart';
+import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Clients/presentation/pages/add_merchant_information_screen.dart';
 import 'package:water/Clients/presentation/pages/clients_screen.dart';
 import 'package:water/Dashboard/presentation/pages/dashboard_screen.dart';
@@ -254,6 +255,15 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
                         subIndex = i;
                         _saveIndex(subIndex);
                       });
+                      print("subIndex : ${subIndex}");
+                      switch(subIndex){
+                        case 1: 
+                          sharedPreferenceManager.writeData(CachingKey.RETURNS_TYPE, "good");
+                          break;
+                        case 2 :
+                          sharedPreferenceManager.writeData(CachingKey.RETURNS_TYPE, "bad");
+                          break;
+                      }
                       navigateToScreen(context, subIndex, _subMenuBuildScreens);
                     },
                     child: TraderDealContainerItem(

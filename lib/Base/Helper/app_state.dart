@@ -184,6 +184,17 @@ class CreateOrderErrorLoading extends AppState{
   CreateOrderErrorLoading({this.message});
 }
 
+// CREATE RETURNS
+class CreateReturnsDone extends AppState{
+  final  CreateOrderResponseModel? createOrderResponseModel;
+  CreateReturnsDone({this.createOrderResponseModel});
+}
+
+class CreateReturnsErrorLoading extends AppState{
+  final String? message;
+  CreateReturnsErrorLoading({this.message});
+}
+
 // CREATE Collection
 class CreateCollectionLoading extends AppState{
   CreateCollectionLoading();

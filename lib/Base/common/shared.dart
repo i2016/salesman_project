@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:multi_image_picker_plus/multi_image_picker_plus.dart';
+import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/Visits/domain/entities/order_payment_entity.dart';
 
@@ -91,6 +92,16 @@ class Shared {
     return total;
   }
 
+  static double calculateReturnsTotalForAllProducts() {
+    double total = 0;
+    for (var product in Shared.returns_products_list) {
+      if (product.total != null) {
+        total += product.total!;
+      }
+    }
+    return total;
+  }
+
   static double width = ScreenUtil.defaultSize.width;
   static double height = ScreenUtil.defaultSize.height;
   static String userType = "B2C";
@@ -105,5 +116,7 @@ class Shared {
 
   static List<OrderPaymentEntity> orderPaymentList = [];
   static List<OrderPaymentEntity> collectionPayment = [];
+
+  static List<ReturnsProductEntity> returns_products_list = [];
 
 }

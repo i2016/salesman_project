@@ -5,6 +5,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
 import 'package:water/Returns/presentation/bloc/invoices_details_bloc.dart';
+import 'package:water/Returns/presentation/widgets/returns_add_product_widget.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_invoices_details_screen.dart';
 import 'package:water/widgets/image_number_product_price_container_invoices_details.dart';import 'package:water/widgets/search_text_field_invoices_details_screen.dart';
 import 'package:water/widgets/water_item_invoices_details.dart';
@@ -32,7 +33,6 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
               );
             }
             else if(state is GetInvoicesDetailsDone){
-              print("22invoice : $invoice");
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -52,7 +52,19 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
                             itemBuilder: (context , index){
                               return InkWell(
                                 onTap: (){
-                                  Dialogs.showDialogReturnProduct(context);
+                                //  Dialogs.showDialogReturnProduct(context);
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33)),
+                                          content: ReturnsAddProductWidget(
+                                            item: state.result!.details!.items![index],
+                                          )
+                                      );
+                                    },
+                                  );
                                 },
                                 child: WaterItemInvoicesDetails(
                                   item: state.result!.details!.items![index],
