@@ -11,9 +11,7 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Container(
         width: double.infinity,
-              height: MediaQuery.of(context).orientation == Orientation.portrait ?
-          MediaQuery.of(context).size.height * 0.045
-          : MediaQuery.of(context).size.height * 0.065,
+
               decoration: BoxDecoration(
               color: Colors.white,
                 borderRadius: BorderRadius.circular(8)
@@ -27,62 +25,71 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.015,
                     ),
-                    const Expanded(
+                     Expanded(
                     flex: 1,
                     child: Text(
-                      '33',
+                      returnsProductEntity.selectedCount.toString() ?? "1",
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500
                       ),
                       ),
                     ),
-                    const Expanded(
+                     Expanded(
                       flex: 6,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                          Row(
-                          children: [
-                            Text(
-                              'الكاتجوري',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
-                              ),
-                            ),
-                            Text(
-                              '   .   ',
-                              style: TextStyle(
-                                color: Color(0xff25292E),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w900
-                              ),
-                            ),
-                              Text(
-                              'مياه',
-                              style: TextStyle(
-                                color: Color(0xff25292E),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
-                              ),
-                            ),
-                          ],
-                        ),
+                           children: [
+                             Text(
+                               returnsProductEntity.category ?? "",
+                               style: TextStyle(
+                                   fontSize: 14,
+                                   fontWeight: FontWeight.w500
+                               ),
+                               maxLines: 3,
+                               overflow: TextOverflow.ellipsis,
+                             ),
+                             Text(
+                               '   .   ',
+                               style: TextStyle(
+                                   color: Color(0xff25292E),
+                                   fontSize: 18,
+                                   fontWeight: FontWeight.w900
+                               ),
+                             ),
+                             Flexible(
+                               child: Text(
+                                 returnsProductEntity.name ?? '',
+                                 style: TextStyle(
+                                     color: Color(0xff25292E),
+                                     fontSize: 14,
+                                     fontWeight: FontWeight.w500
+                                 ),
+                                 maxLines: 3,
+                                 overflow: TextOverflow.ellipsis,
+                               ),
+                               fit: FlexFit.tight,
+                             ),
+                           ],
+                         ),
                         Text(
-                          'مياه مدينة شرنك 15 حبة  600 مل',
+                          returnsProductEntity.description ?? '',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w300
                           ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
                     ),
-                    const Expanded(
+                     Expanded(
                     flex: 1,
                     child: Text(
-                      '42 ر.س',
+                      ' ${returnsProductEntity.price ?? 1}  ر.س',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500

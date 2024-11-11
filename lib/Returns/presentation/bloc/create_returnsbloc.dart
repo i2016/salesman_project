@@ -2,11 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
-import 'package:water/Profile/data/repositories/profile_repository.dart';
-import 'package:water/Visits/data/repositories/categories_repository.dart';
-import 'package:water/Visits/data/repositories/create_order/create_order_repository.dart';
-import 'package:water/Visits/data/repositories/today_visits_repository.dart';
-
+import 'package:water/Returns/data/repositories/create_returns_repository.dart';
 import '../../../../Base/validator.dart';
 
 class CreateReturnsBloc extends Bloc<AppEvent,AppState> with Validator {
@@ -18,12 +14,12 @@ class CreateReturnsBloc extends Bloc<AppEvent,AppState> with Validator {
   Future<void> _onCreateReturns(CreateReturnsEvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await createOrderRepository.createOrder();
+    var response = await createReturnsRepository.createReturns();
     try{
-      if (response!.statusCode! == 200 ) {
-        emit(CreateReturnsDone(createOrderResponseModel: response));
+      if (response!.result!.statusCode! == 200 ) {
+        emit(CreateReturnsDone(createReturnsModel: response));
       } else {
-        emit(CreateReturnsErrorLoading(message: response.message));
+        emit(CreateReturnsErrorLoading(message: response.result!.message));
       }
     }catch(e){
       emit(CreateReturnsErrorLoading(message: e.toString()));

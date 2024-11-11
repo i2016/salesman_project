@@ -5,8 +5,6 @@ import 'package:water/Base/common/theme.dart';
 import 'package:water/Base/common/toast.dart';
 import 'package:water/Returns/data/models/invoices_details_model.dart';
 import 'package:water/Returns/domain/entities/returns_product_entity.dart';
-import 'package:water/Visits/data/models/product_model.dart';
-import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
 
 class ReturnsAddProductWidget extends StatefulWidget {
@@ -34,7 +32,7 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 50),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -233,56 +231,59 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
             ),
           ],
         ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.01,
-                ),
-                    GestureDetector(
-                      onTap: () {
-                        if( Shared.returns_products_list.where((element) => element.id ==
-                            widget.item!.productId).toList(growable: true).length == 0 && selectedProductCount != 0){
-                          Shared.returns_products_list.add(ReturnsProductEntity(
-                            id: widget.item!.productId,
-                            name: widget.item!.productName,
-                            image: widget.item!.image,
-                            description: widget.item!.description,
-                            price: widget.item!.price,
-                            selectedCount: selectedProductCount,
-                            total: selectedProductCount! * widget.item!.price!,
-                          ));
-                          ToastWidget.showToast(message: "تم اضافة المنتج لفاتورة الأرتجاع بنجاح");
-                          Navigator.pop(context);
-                          setState(() {
 
-                          });
-                        }
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 28.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          if( Shared.returns_products_list.where((element) => element.id ==
+                              widget.item!.productId).toList(growable: true).length == 0 && selectedProductCount != 0){
+                            Shared.returns_products_list.add(ReturnsProductEntity(
+                              id: widget.item!.productId,
+                              name: widget.item!.productName,
+                              image: widget.item!.image,
+                              description: widget.item!.description,
+                              price: widget.item!.price,
+                              selectedCount: selectedProductCount,
+                              total: selectedProductCount! * widget.item!.price!,
+                              categoryId: widget.item!.categoryId,
+                              category: widget.item!.category
+                            ));
+                            ToastWidget.showToast(message: "تم اضافة المنتج لفاتورة الأرتجاع بنجاح");
+                            Navigator.pop(context);
+                            setState(() {
+
+                            });
+                          }
 
 
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.24,
-                        height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? MediaQuery.of(context).size.height * 0.039
-                            : MediaQuery.of(context).size.height * 0.066,
-                        decoration: BoxDecoration(
-                            color:  selectedProductCount != 0 ? const Color(0xff1D7AFC) : kGreyColor,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/CheckCircle.png',
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.006,
-                            ),
-                            const Text('اضافة لفاتورة الأرتجاع',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300)),
-                          ],
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.24,
+                          height: MediaQuery.of(context).orientation ==
+                                  Orientation.portrait
+                              ? MediaQuery.of(context).size.height * 0.039
+                              : MediaQuery.of(context).size.height * 0.066,
+                          decoration: BoxDecoration(
+                              color:  selectedProductCount != 0 ? const Color(0xff1D7AFC) : kGreyColor,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/CheckCircle.png',
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.006,
+                              ),
+                              const Text('اضافة لفاتورة الأرتجاع',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300)),
+                            ],
+                          ),
                         ),
                       ),
                     ),

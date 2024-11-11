@@ -1,8 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Profile/data/models/profile_model.dart';
 import 'package:water/Profile/data/models/resetPassword_model.dart';
+import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart' as returns_invoice_model;
 import 'package:water/Returns/data/models/invoices_details_model.dart' as invoices_details_model;
 import 'package:water/Visits/data/models/category_model.dart';
@@ -186,8 +186,8 @@ class CreateOrderErrorLoading extends AppState{
 
 // CREATE RETURNS
 class CreateReturnsDone extends AppState{
-  final  CreateOrderResponseModel? createOrderResponseModel;
-  CreateReturnsDone({this.createOrderResponseModel});
+  final  CreateReturnsModel? createReturnsModel;
+  CreateReturnsDone({this.createReturnsModel});
 }
 
 class CreateReturnsErrorLoading extends AppState{

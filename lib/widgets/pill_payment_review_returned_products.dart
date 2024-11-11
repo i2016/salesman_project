@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:water/Base/common/dialogs.dart';
+import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/common/shared.dart';
+import 'package:water/Returns/presentation/bloc/create_returnsbloc.dart';
 
 class PillPaymentReviewReturnedProducts extends StatelessWidget {
   const PillPaymentReviewReturnedProducts({super.key});
@@ -27,7 +29,10 @@ class PillPaymentReviewReturnedProducts extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: InkWell(
-                  onTap: () => Dialogs.showDialogReviewReturnedProducts(context),
+                  onTap: Shared.returns_products_list.isEmpty ? null :(){
+                    createReturnsBloc.add(CreateReturnsEvent());
+
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.23,
                     height: MediaQuery.of(context).orientation ==

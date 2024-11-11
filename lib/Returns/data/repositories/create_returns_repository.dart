@@ -1,16 +1,15 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
-import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
+import 'package:water/Returns/data/models/create_returns_model.dart';
 
 class CreateReturnsRepository{
 
-  Future<CreateOrderResponseModel?> createReturns() async {
+  Future<CreateReturnsModel?> createReturns() async {
     // Define request headers
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
@@ -32,14 +31,14 @@ class CreateReturnsRepository{
       "params": {
         "salesman_id": await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         "invoice_id": await sharedPreferenceManager.readInt(CachingKey.INVOICE_ID),
-        "return_type": await sharedPreferenceManager.readInt(CachingKey.RETURNS_TYPE),
+        "return_type": await sharedPreferenceManager.readString(CachingKey.RETURNS_TYPE),
         "items": items,
       }
     });
 
     return await NetworkUtil.internal().post(
-      CreateOrderResponseModel(),
-      baseUrl + createOrderUrl,
+      CreateReturnsModel(),
+      baseUrl + createReturnsUrl,
       headers: headers,
       body: body,
     );

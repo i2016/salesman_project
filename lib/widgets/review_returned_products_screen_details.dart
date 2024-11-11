@@ -7,14 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
+import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 import 'package:water/Returns/presentation/bloc/create_returnsbloc.dart';
-import 'package:water/Returns/presentation/bloc/returns_invoice_bloc.dart';
-import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/widgets/image_number_product_price_container_review_returned_products.dart';
 import 'package:water/widgets/pill_payment_review_returned_products.dart';
 import 'package:water/widgets/review_returned_products_water_item.dart';
-import 'package:water/widgets/search_text_field_review_returned_products.dart';
 
 class ReviewReturnedProductsScreenDetails extends StatefulWidget {
   ReviewReturnedProductsScreenDetails({super.key});
@@ -29,6 +27,7 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
   @override
   void initState() {
     super.initState();
+    print("Shared.returns_products_list : ${Shared.returns_products_list}");
     controller.addListener(() {
       setState(() {
         filteredProducts = Shared.returns_products_list
@@ -46,17 +45,15 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
 
             Shared.showLoadingDialog(context: context);
           }
-          else if(state is CreateOrderDone){
+          else if(state is CreateReturnsDone){
             print("Done");
-          //  TODO CREATE RETURNS RESPONSE MODEL
-            CreateOrderResponseModel createOrderResponseModel = state.createOrderResponseModel as CreateOrderResponseModel;
+            CreateReturnsModel createReturnsModel = state.createReturnsModel as CreateReturnsModel;
             Shared.dismissDialog(context: context);
-            Dialogs.showDialogcReateOrderResult(context,
-                createOrderResponseModel: createOrderResponseModel);
             Shared.returns_products_list = [];
-
+            Dialogs.showDialogReviewReturnedProducts(context,
+            createReturnsModel: createReturnsModel);
           }
-          else if(state is CreateOrderErrorLoading){
+          else if(state is CreateReturnsErrorLoading){
             print("ErrorLoading");
             print("state.message : ${state.message}");
 
@@ -182,14 +179,18 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                                     fontWeight: FontWeight.w300),
                               ),
                             ),
+                            Spacer(),
                             Expanded(
-                              flex: 1,
-                              child: Text(
-                                '${Shared.calculateReturnsTotalForAllProducts()}  ر.س ',
-                                style: TextStyle(
-                                    color: Color(0xff0056C9),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
+                              flex: 3,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '${Shared.calculateReturnsTotalForAllProducts()}    ر.س   ',
+                                  style: TextStyle(
+                                      color: Color(0xff0056C9),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ),
                           ],

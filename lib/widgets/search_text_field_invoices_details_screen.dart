@@ -8,7 +8,6 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
   final Invoice? invoice;
   @override
   Widget build(BuildContext context) {
-    print("invoice@@ : ${invoice!.toJson()}");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

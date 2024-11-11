@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/presentation/pages/clients_screen.dart';
 import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
+import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
+import 'package:water/Visits/presentation/pages/Today/previous_invoices_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/visits_today_screen_details.dart';
 import 'package:water/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:printing/printing.dart';
 import 'package:flutter/services.dart';
-import 'package:water/widgets/water_item_invoices_details_drawer.dart';
 class Dialogs {
 
   static Future<void>? showDialogFinancialCollection(parentContext,{CreateCollectionResponseModel? createCollectionResponseModel}) {
@@ -263,7 +266,7 @@ class Dialogs {
     return null;
   }
 
-  static Future<void>? showDialogReviewReturnedProducts(parentContext) {
+  static Future<void>? showDialogReviewReturnedProducts(parentContext,{CreateReturnsModel? createReturnsModel}) {
     return showDialog(
       context: parentContext,
       builder: (BuildContext context) {
@@ -294,10 +297,10 @@ class Dialogs {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                    'تم اصدار فاتورة مرتجع رقم 12314 ب50 منتج للتاجر فلان',
+                    'تم اصدار فاتورة مرتجع رقم  ${createReturnsModel?.result?.data?.invoiceReturnId ?? ''}  ',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -306,7 +309,7 @@ class Dialogs {
                   children: [
                     InkWell(
                       onTap: () {
-                        customAnimatedPushNavigation(context, InvoicesDetailsScreen());
+                        customAnimatedPushNavigation(context, PreviousInvoicesScreen());
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -338,7 +341,12 @@ class Dialogs {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: createReturnsModel!.result == null ? null
+                          :createReturnsModel.result!.data == null ? null :(){
+
+                        _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
+                            context: context);
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
                         height: MediaQuery.of(context).orientation ==
@@ -1547,9 +1555,7 @@ class Dialogs {
     try {
       // Fetch the PDF from the URL
       Shared.showLoadingDialog(context: context!);
-
       final response = await http.get(Uri.parse(url!));
-
       if (response.statusCode == 200) {
         // Convert PDF to bytes
         Shared.dismissDialog(context: context);
@@ -1567,6 +1573,13 @@ class Dialogs {
       }
     } catch (e) {
       print('Error: $e');
+      Shared.dismissDialog(context: context!);
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: "خطا ...",
+        text: "حدث خطا اثناء طباعة الفاتورة",
+      );
     }
   }
 

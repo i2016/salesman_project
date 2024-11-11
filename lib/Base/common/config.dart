@@ -14,3 +14,4 @@ const String invoiceHistoryUrl = "salesman/invoice_history";
 const String invoicesDetailsUrl = "salesman/invoice_details";
 const String createOrderUrl = "salesman/create_sales_order";
 const String createPaymentUrl = "salesman/create_payment";
+const String createReturnsUrl = "salesman/create_return";
