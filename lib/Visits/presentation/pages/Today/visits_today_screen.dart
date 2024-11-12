@@ -4,6 +4,7 @@ import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/presentation/pages/clients_screen.dart';
 import 'package:water/Clients/presentation/widgets/registered_customers_screen_container_item.dart';
@@ -113,8 +114,11 @@ class _pageState extends State<_page> {
                     );
                   }
                   else{
-                    return Center(
-                      child: Text("لا توجد زيارات حاليا"),
+                    return Padding(
+                      padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
+                      child: Center(
+                        child: Text("لا توجد زيارات حاليا"),
+                      ),
                     );
                   }
 

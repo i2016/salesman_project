@@ -73,7 +73,7 @@ class Data {
     stockReturnId = json['stock_return_id'];
     stockReturn = json['stock_return'];
     invoiceReturnId = json['invoice_return_id'];
-    returnsInvoicePdf = json['invoice_pdf'];
+    returnsInvoicePdf = json['return_pdf'];
   }
 
   Map<String, dynamic> toJson() {
@@ -81,7 +81,7 @@ class Data {
     data['stock_return_id'] = this.stockReturnId;
     data['stock_return'] = this.stockReturn;
     data['invoice_return_id'] = this.invoiceReturnId;
-    data['invoice_pdf'] = this.returnsInvoicePdf;
+    data['return_pdf'] = this.returnsInvoicePdf;
     return data;
   }
 }
