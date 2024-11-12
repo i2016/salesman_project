@@ -56,7 +56,7 @@ class CollectionRepository{
         }).toList(),
       };
     }).toList();*/
-
+    List<String> validImages = Shared.images_list.where((image) => image != null && image.isNotEmpty).toList();
     // Create request body
     var body = jsonEncode({
       "params": {
@@ -67,7 +67,7 @@ class CollectionRepository{
         "method": Shared.collectionPayment[0].method,
         if(Shared.collectionPayment.isNotEmpty)
         "amount" : Shared.collectionPayment[0].amount,
-        "documents": Shared.images_list
+        "documents": validImages
       }
     });
 
