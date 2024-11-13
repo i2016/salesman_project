@@ -43,20 +43,6 @@ class CollectionRepository{
       };
     }).toList();
 
-/*    // Create payment list for the request body
-    List<Map<String, dynamic>> paymentList = Shared.orderPaymentList.map((payment) {
-      return {
-        "amount": payment.amount,
-        "method": payment.method,
-        "documents": Shared.images_list.map((file) {
-          return {
-            "file": file.path, // Use file.path instead of the file object itself
-            "filename": basename(file.path), // Include the filename if needed
-          };
-        }).toList(),
-      };
-    }).toList();*/
-    List<String> validImages = Shared.images_list.where((image) => image != null && image.isNotEmpty).toList();
     // Create request body
     var body = jsonEncode({
       "params": {
@@ -67,7 +53,7 @@ class CollectionRepository{
         "method": Shared.collectionPayment[0].method,
         if(Shared.collectionPayment.isNotEmpty)
         "amount" : Shared.collectionPayment[0].amount,
-        "documents": validImages
+        "documents": Shared.images_list
       }
     });
 
