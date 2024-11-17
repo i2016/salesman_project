@@ -21,7 +21,6 @@ export 'order_details_sale_Screen.dart';
 export 'Profile/presentation/pages/profile_screen.dart';
 export 'registered_customers_screen.dart';
 export 'returns/presentation/pages/return_orders_screen.dart';
-export 'trader_details_screen.dart';
 export 'Inventory/presentation/pages/current_requests/current_requests_screen.dart';
 export 'Visits/presentation/pages/Today/visits_today_screen.dart';
 export 'Visits/presentation/pages/History/visit_details_screen_public.dart';

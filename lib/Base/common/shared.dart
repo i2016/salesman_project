@@ -102,6 +102,14 @@ class Shared {
     return total;
   }
 
+ static String convertToStandardDigits(String input) {
+    const arabicIndicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    for (int i = 0; i < arabicIndicDigits.length; i++) {
+      input = input.replaceAll(arabicIndicDigits[i], i.toString());
+    }
+    return input;
+  }
+
   static double width = ScreenUtil.defaultSize.width;
   static double height = ScreenUtil.defaultSize.height;
   static String userType = "B2C";
@@ -112,6 +120,7 @@ class Shared {
   static double marketLongtitude = 0.0;
   static String marketPhone= '';
   static  String device_token = '';
+  static double remainingLimit = 0.0;
   static List<AddedProductEntity> order_products_list = [];
 
   static List<OrderPaymentEntity> orderPaymentList = [];

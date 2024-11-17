@@ -133,12 +133,12 @@ class WaterItemAvailableProducts extends StatelessWidget {
                                  overflow: TextOverflow.ellipsis,
                                                          ),
 
-                               Text(
+                             /*  Text(
                                  "${product!.id}  ",
                                  style:
                                  TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                                  overflow: TextOverflow.ellipsis,
-                               ),
+                               ),*/
                              ],
                            ),
                         ],

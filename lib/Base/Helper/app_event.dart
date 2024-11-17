@@ -69,3 +69,12 @@ class GetReturnsInvoiceEvent extends AppEvent{
 class GetInvoicesDetailsEvent extends AppEvent{
   GetInvoicesDetailsEvent();
 }
+
+// Create Inventory Transfer Request
+class InventoryTransferRequestEvent extends AppEvent{
+  InventoryTransferRequestEvent();
+}
+
+class SalesRemainingLimitEvent extends AppEvent{
+  SalesRemainingLimitEvent();
+}

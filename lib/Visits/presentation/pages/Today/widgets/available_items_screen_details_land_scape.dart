@@ -4,8 +4,8 @@ import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/presentation/pages/Today/available_products_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_items_screen.dart';
-import '../../../../../widgets/water_item_available_items.dart';
 import 'package:flutter/material.dart';
+import 'package:water/widgets/categories_widget.dart';
 import 'package:water/widgets/search_text_field_available_items_screen.dart';
 
 class AvailableItemsScreenDetailsLandScape extends StatefulWidget {

@@ -1,5 +1,7 @@
 import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
+import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
+import 'package:water/Inventory/data/models/sales_remaining_limit_model.dart';
 import 'package:water/Profile/data/models/profile_model.dart';
 import 'package:water/Profile/data/models/resetPassword_model.dart';
 import 'package:water/Returns/data/models/create_returns_model.dart';
@@ -207,4 +209,26 @@ class CreateCollectionDone extends AppState{
 class CreateCollectionErrorLoading extends AppState{
   final String? message;
   CreateCollectionErrorLoading({this.message});
+}
+
+
+// CREATE ORDERS
+class TransferRequestDone extends AppState{
+  final  InventoryTransferRequestResposneModel? inventoryTransferRequestResposneModel;
+  TransferRequestDone({this.inventoryTransferRequestResposneModel});
+}
+
+class TransferRequestErrorLoading extends AppState{
+  final String? message;
+  TransferRequestErrorLoading({this.message});
+}
+
+class SalesRemainingLimitDone extends AppState{
+  final  SalesRemainingLimitModel? salesRemainingLimitModel;
+  SalesRemainingLimitDone({this.salesRemainingLimitModel});
+}
+
+class SalesRemainingLimitErrorLoading extends AppState{
+  final String? message;
+  SalesRemainingLimitErrorLoading({this.message});
 }

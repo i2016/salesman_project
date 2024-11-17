@@ -93,35 +93,40 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                               List<Invoice>? invoices =state.invoiceResult!.invoices!.where((element)
                               => element.type == "invoice" && DateTime.parse(element.invoiceDate).isBefore(thresholdDate)).toList();
                               invoices.sort((a, b) => DateTime.parse(a.invoiceDate).compareTo(DateTime.parse(b.invoiceDate)));
-                              return   SingleChildScrollView(
-                                child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: invoices.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (context, index) {
-                                      return InkWell(
-                                          onTap: (){
-                                        //    customAnimatedPushNavigation(context, CollectionReceipitDetailsScreen());
-                                          
-                                            sharedPreferenceManager.writeData(CachingKey.INVOICE_ID,  state.invoiceResult!.invoices!
-                                                .where((element) => element.type == "invoice").toList()[index].invoiceId.toString());
-                                            setState(() {
-                                              inedx = index;
-                                              Shared.images_list = [];
-                                            });
-                                          },
-                                          child:  Column(
-                                            children: [
-                                              DeservedInvoicesItem(
-                                                  invoice: invoices[index]
-                                              ),
-                                          
-                                            inedx == index ?  FinancialCollectionPaymentWidget(
-                                                amount_due: invoices[index].amountDue.toString(),
-                                              ) : Container()
-                                            ],
-                                          ));
-                                    }),
+                              return   Container(
+                                  height: Shared.height * 1.5,
+                                  child:  SingleChildScrollView(
+                                    child:ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: invoices.length,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemBuilder: (context, index) {
+                                        if(index == 0){
+                                          sharedPreferenceManager.writeData(CachingKey.INVOICE_ID,  state.invoiceResult!.invoices!
+                                              .where((element) => element.type == "invoice").toList()[0].invoiceId.toString());
+                                              }
+                                        return InkWell(
+                                            onTap: (){
+                                              sharedPreferenceManager.writeData(CachingKey.INVOICE_ID,  state.invoiceResult!.invoices!
+                                                  .where((element) => element.type == "invoice").toList()[index].invoiceId.toString());
+                                              setState(() {
+                                                inedx = index;
+                                                Shared.images_list = [];
+                                              });
+                                            },
+                                            child:  Column(
+                                              children: [
+                                                DeservedInvoicesItem(
+                                                    invoice: invoices[index]
+                                                ),
+
+                                              inedx == index ?  FinancialCollectionPaymentWidget(
+                                                  amount_due: invoices[index].amountDue.toString(),
+                                                ) : Container()
+                                              ],
+                                            ));
+                                      }),
+                                ),
                               );
                             }
                             else{

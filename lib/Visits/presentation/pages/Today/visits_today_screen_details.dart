@@ -100,8 +100,8 @@ class _pageState extends State<_page> {
               }
               else if (state is GeTodayVisitDetailsDone) {
                 if(state.visitDetails != null || state.visitDetails!.isNotEmpty){
-                  Shared.marketLatitude = double.parse(state.visitDetails![0].lat);
-                  Shared.marketLongtitude = double.parse(state.visitDetails![0].long);
+                  Shared.marketLatitude = state.visitDetails![0].lat =="" ? 0.0 : double.parse(state.visitDetails![0].lat);
+                  Shared.marketLongtitude = state.visitDetails![0].long  =="" ? 0.0 : double.parse(state.visitDetails![0].long);
                   Shared.marketPhone = state.visitDetails![0].customerNumber;
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

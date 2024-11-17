@@ -3,6 +3,7 @@ import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
+import 'package:water/Inventory/presentation/bloc/inventory_transfer_request_bloc.dart';
 import 'package:water/Visits/presentation/bloc/create_order/create_order_bloc.dart';
 
 class PillPayment extends StatelessWidget {
@@ -29,8 +30,9 @@ class PillPayment extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
-                        const Text(
-                          'متبقى 25,000 ر.س',
+                         Text(
+                      dialogName == "transferRequest" ? 'متبقى  ${Shared.remainingLimit - Shared.calculateTotalForAllProducts()} ر.س'
+                          :    'متبقى 25,000 ر.س',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),
@@ -42,13 +44,12 @@ class PillPayment extends StatelessWidget {
                 child: InkWell(
                   onTap: Shared.order_products_list.isEmpty ? null :
                       () {
-
                      if(dialogName == 'pill'){
                     createOrderBloc.add(CreateOrderEvent());
                   }else if(dialogName == 'edit'){
                     Dialogs.showDialogSaveEdits(context);
-                  }else if(dialogName == 'send'){
-                    Dialogs.showDialogSendRequest(context);
+                  }else if(dialogName == 'transferRequest'){
+                       inventoryTransferRequestBloc.add(InventoryTransferRequestEvent());
                   }
                   },
                   child: Container(

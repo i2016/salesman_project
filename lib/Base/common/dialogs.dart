@@ -7,6 +7,7 @@ import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/presentation/pages/clients_screen.dart';
+import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
 import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
 import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
@@ -1319,92 +1320,7 @@ class Dialogs {
       );
       }
 
-  static Future<void>? showDialogSendRequest(parentContext) {
-    return showDialog(
-      context: parentContext,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33)),
-          content: Container(
-            width: MediaQuery.of(context).size.width * 0.6,
-            height: MediaQuery.of(context).orientation == Orientation.portrait ?
-             MediaQuery.of(context).size.height * 0.2
-             : MediaQuery.of(context).size.height * 0.38,
-            child: Column(
-              children: [
-                Image.asset(
-                  color: const Color(0xff23A36D),
-                  'assets/images/imagee-truee.png',
-                  width: MediaQuery.of(context).size.width * 0.12,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.004,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 11),
-                  child: Text(
-                   'تم ارسال الطلب',
-                    style: TextStyle(
-                        color: Color(0xff1D6E4F),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 16, top: 10),
-                  child: Column(
-                    children: [
-                      Text(
-                       'تم ارسال طلب بمبلغ 10,000 ر.س و50 منتج',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                      ),
-                      Text(
-                       'سيتم الآن مراجعة الطلب',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        width: MediaQuery.of(context).size.width * 0.27,
-                        height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? MediaQuery.of(context).size.height * 0.038
-                            : MediaQuery.of(context).size.height * 0.07,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Color.fromARGB(255, 198, 195, 195),
-                              width: 0.8,
-                            ),
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'الرجوع للزيارة',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.006,
-                            ),
-                            Image.asset('assets/images/arrowww.png'),
-                          ],
-                        ),
-                      ),
-              ],
-            ),
-              ]
-          ),
-          ),
-        );
-      },
-    );
-  }
+
 
   static Future<void>? showDialogCancelRequest(parentContext) {
     return showDialog(
@@ -1584,4 +1500,95 @@ class Dialogs {
   }
 
 
+  static Future<void>? showDialogSendRequest(parentContext,{InventoryTransferRequestResposneModel? inventoryTransferRequestResposneModel}) {
+    return showDialog(
+      context: parentContext,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33)),
+          content: Container(
+            width: MediaQuery.of(context).size.width * 0.6,
+            height: MediaQuery.of(context).orientation == Orientation.portrait ?
+            MediaQuery.of(context).size.height * 0.2
+                : MediaQuery.of(context).size.height * 0.38,
+            child: Column(
+                children: [
+                  Image.asset(
+                    color: const Color(0xff23A36D),
+                    'assets/images/imagee-truee.png',
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.004,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 11),
+                    child: Text(
+                      'تم ارسال الطلب',
+                      style: TextStyle(
+                          color: Color(0xff1D6E4F),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                   Padding(
+                    padding: EdgeInsets.only(bottom: 16, top: 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          'تم ارسال طلب رقم ${inventoryTransferRequestResposneModel!.result!.data!.transferId}',
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+                        ),
+                        Text(
+                          'سيتم الآن مراجعة الطلب',
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: (){
+                          customAnimatedPushNavigation(context, InventoryScreen());
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.27,
+                          height: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                              ? MediaQuery.of(context).size.height * 0.038
+                              : MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: Color.fromARGB(255, 198, 195, 195),
+                                width: 0.8,
+                              ),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'الرجوع للمخزن',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w300),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.006,
+                              ),
+                              Image.asset('assets/images/arrowww.png'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ]
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

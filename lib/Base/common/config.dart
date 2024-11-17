@@ -15,3 +15,5 @@ const String invoicesDetailsUrl = "salesman/invoice_details";
 const String createOrderUrl = "salesman/create_sales_order";
 const String createPaymentUrl = "salesman/create_payment";
 const String createReturnsUrl = "salesman/create_return";
+const String inventoryTransferRequestUrl = "salesman/create_transfer";
+const String salesRemainingLimitUrl = "salesman/sales_remaining_limit";

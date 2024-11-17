@@ -42,7 +42,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  const Row(
+                 const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(

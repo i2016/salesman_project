@@ -117,10 +117,10 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
                               color: Colors.black,
                             ),
                           ),
-                          const Expanded(
+                           Expanded(
                             flex: 4,
                             child: Text(
-                              'شيك أو تحويل',
+                              selectedPaymentMethods[0],
                               style: TextStyle(
                                 color: Color(0xff758195),
                                 fontSize: 16,

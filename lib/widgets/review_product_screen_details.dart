@@ -15,7 +15,7 @@ import 'package:water/widgets/pill_payment.dart';
 import 'package:water/widgets/review_product_water_item.dart';
 import 'package:water/widgets/search_text_field_review_product.dart';
 import 'package:water/widgets/take_photo_widget.dart';
-
+import 'package:flutter_slidable/flutter_slidable.dart';
 class ReviewProductScreenDetails extends StatefulWidget {
   ReviewProductScreenDetails({super.key});
 
@@ -76,7 +76,6 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   // const SearchTextFieldReviewProduct(),
                     Column(
                       children: [
                         Row(
@@ -99,7 +98,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.019,
                         ),
-                        Container(
+                        Shared.order_products_list.isEmpty ? Container() :   Container(
                             width: double.infinity,
                             height: MediaQuery.of(context).orientation == Orientation.portrait ?
                             MediaQuery.of(context).size.height * 0.03
@@ -145,10 +144,27 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: filteredProducts.length,
                         itemBuilder: (context, index) {
-
-                          return ReviewProductWaterItem(
+                          return Slidable(
+                            key: ValueKey(filteredProducts[index]),
+                            endActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  onPressed: (context) {
+                                    setState(() {
+                                      filteredProducts.removeAt(index);
+                                    });
+                                  },
+                                  label: 'حذف',
+                                  icon: Icons.delete,
+                                  backgroundColor: Colors.red,
+                                ),
+                              ],
+                            ),
+                            child: ReviewProductWaterItem(
                               addedProductEntity: filteredProducts[index],
 
+                            ),
                           );
                         }),
                     SizedBox(

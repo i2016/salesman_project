@@ -281,7 +281,6 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           ToastWidget.showToast(message: "تم اضافة المنتج بنجاح");
                           Navigator.pop(context);
                           setState(() {
-
                           });
                         }
 

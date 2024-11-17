@@ -26,15 +26,8 @@ class _InventoryAddRequestConfirmScreenState extends State<InventoryAddRequestCo
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-        bloc: appBloc,
-        builder: (contex,state){
-          if(state is AppDrawerDoneState){
-            return AppScreen(
+    return AppScreen(
                 child: InventoryAddRequestConfirmScreenBody(),
-                drawer: state.drawerType == 'editProduct'?
-                DrawerEditInventoryCurrentRequest()
-                    : Container(),
                 screenButtons:[
                   AppButtonWidget(
                     asset: 'assets/images/addWithoutBorder.png',
@@ -48,12 +41,7 @@ class _InventoryAddRequestConfirmScreenState extends State<InventoryAddRequestCo
                   ),
                 ],
             );
-          }else{
-            return Container();
-          }
 
-
-        });
 
   }
 }

@@ -10,9 +10,12 @@ import 'package:water/Base/common/theme.dart';
 import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
 import 'package:water/Inventory/presentation/pages/transfer_request/inventory_second_add_request_screen_body.dart';
 import 'package:water/Inventory/presentation/widgets/drawer_inventory_current_requests_add_product.dart';
+import 'package:water/Visits/data/models/category_model.dart';
+import 'package:water/Visits/presentation/bloc/products_bloc.dart';
 
 class InventorySecondAddRequestScreen extends StatefulWidget{
-  const InventorySecondAddRequestScreen({super.key});
+  CategoryData? categoryData;
+   InventorySecondAddRequestScreen({super.key,this.categoryData});
 
   @override
   State<InventorySecondAddRequestScreen> createState() => _InventorySecondAddRequestScreenState();
@@ -21,6 +24,8 @@ class InventorySecondAddRequestScreen extends StatefulWidget{
 class _InventorySecondAddRequestScreenState extends State<InventorySecondAddRequestScreen> {
   @override
   void initState() {
+    productsBloc.add(GetProductsEvent());
+
     appBloc.add(AppDrawrEvent(drawerType: 'addProduct'));
     super.initState();
   }
@@ -33,7 +38,9 @@ class _InventorySecondAddRequestScreenState extends State<InventorySecondAddRequ
           if(state is AppDrawerDoneState){
             print("state.drawerType  : ${state.drawerType }");
             return AppScreen(
-                child: InventorySecondAddRequestScreenBody(),
+                child: InventorySecondAddRequestScreenBody(
+                  categoryData: widget.categoryData,
+                ),
                 drawer: state.drawerType == 'addProduct'?
                 DrawerInventoryCurrentRequestsAddProduct(
                   type: "transfer_request",

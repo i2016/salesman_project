@@ -34,14 +34,7 @@ class CollectionRepository{
       'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
     };
 
-    // Create items list for the request body
-    List<Map<String, dynamic>> items = Shared.order_products_list.map((product) {
-      return {
-        "product_id": product.id,
-        "quantity": product.selectedCount,
-        "price": product.price,
-      };
-    }).toList();
+    List<String> validImages = Shared.images_list.where((image) => image != null && image.isNotEmpty).toList();    // Create payment list for the request body
 
     // Create request body
     var body = jsonEncode({
@@ -53,7 +46,7 @@ class CollectionRepository{
         "method": Shared.collectionPayment[0].method,
         if(Shared.collectionPayment.isNotEmpty)
         "amount" : Shared.collectionPayment[0].amount,
-        "documents": Shared.images_list
+        "documents": validImages
       }
     });
 
