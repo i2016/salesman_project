@@ -2,22 +2,22 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
-import 'package:water/Profile/data/repositories/profile_repository.dart';
-import 'package:water/Visits/data/repositories/today_visits_repository.dart';
+import 'package:water/Visits/data/repositories/visits_repository.dart';
 
-import '../../../../Base/validator.dart';
+import '../../../../../Base/validator.dart';
 
-class TodayVisitsBloc extends Bloc<AppEvent,AppState> with Validator {
+class VisitsBloc extends Bloc<AppEvent,AppState> with Validator {
 
-  TodayVisitsBloc() :super(Start()) {
+  VisitsBloc() :super(Start()) {
     on<GetTodayVisitsEvent>(_onTodayVisits);
-    on<GetTodayVisitsDetailsEvent>(_onTodayVisitsDetails);
+    on<GetVisitDetailsEvent>(_onTodayVisitsDetails);
+    on<GetVisitsHistoryEvent>(_onVisitsHistory);
   }
 
   Future<void> _onTodayVisits(GetTodayVisitsEvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await todayVisitsRepository.getTodayVisits();
+    var response = await visitsRepository.getTodayVisits();
     print("response : ${response!.result!.result}");
     try{
       if (response!.result!.statusCode! == 200 ) {
@@ -31,10 +31,10 @@ class TodayVisitsBloc extends Bloc<AppEvent,AppState> with Validator {
 
   }
 
-  Future<void> _onTodayVisitsDetails(GetTodayVisitsDetailsEvent event,
+  Future<void> _onTodayVisitsDetails(GetVisitDetailsEvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await todayVisitsRepository.getTodayVisitsDetails();
+    var response = await visitsRepository.getTodayVisitsDetails();
     print("response visitDetails: ${response!.result!.visitDetails![0].toJson()}");
     try{
       if (response!.result!.statusCode! == 200 ) {
@@ -47,8 +47,26 @@ class TodayVisitsBloc extends Bloc<AppEvent,AppState> with Validator {
     }
 
   }
+
+
+  Future<void> _onVisitsHistory(GetVisitsHistoryEvent event,
+      Emitter<AppState> emit) async {
+    emit(Loading());
+    var response = await visitsRepository.getVisitsHistory();
+    print("response : ${response!.result!.visitHistory}");
+    try{
+      if (response!.result!.statusCode! == 200 ) {
+        emit(GetVisitsHistoryDone(visitsHistory: response.result?.visitHistory!));
+      } else {
+        emit(GetVisitsHistoryErrorLoading(message: response.result?.message));
+      }
+    }catch(e){
+      emit(GetVisitsHistoryErrorLoading(message: e.toString()));
+    }
+
+  }
 }
 
-TodayVisitsBloc todayVisitsBloc = new TodayVisitsBloc();
+VisitsBloc visitsBloc = new VisitsBloc();
 
 

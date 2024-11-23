@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Clients/presentation/pages/client_details_screen.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
+import 'package:water/Visits/data/models/visits_model.dart';
 import 'package:water/Visits/presentation/pages/Today/visits_today_screen_details.dart';
 
 class RegisteredCustomersScreenContainerItem extends StatelessWidget {
@@ -45,25 +45,28 @@ final Visit? visit ;
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: Column(
                   children: [
-                    Row(
+                    Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child:   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
+                          flex: 3,
                           child: Row(
                             children: [
-                              Image.asset('assets/images/VectorShopp.png'),
+                              Image.asset('assets/images/VectorShopp.png',scale: 0.6,),
                               SizedBox(
-                                width: constraints.maxWidth * 0.008,
+                                width: constraints.maxWidth * 0.02,
                               ),
                               Flexible(
                                 child: Text(
                                   type == "visit" ?   visit!.visitName!
                                   : storeName,
                                   style: const TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   overflow: TextOverflow.ellipsis,
@@ -72,81 +75,43 @@ final Visit? visit ;
                             ],
                           ),
                         ),
-                        Flexible(
-                          child: Container(
-                            width: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                              ? MediaQuery.of(context).size.width * 0.111
-                            : MediaQuery.of(context).size.width * 0.072,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 247, 245, 245),
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 0.5,
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5),
-                              child: Row(
-                                children: [
-                                  Image.asset('assets/images/Vectormnmn.png'),
-                                  SizedBox(
-                                    width: constraints.maxWidth * 0.008,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      distance,
-                                      style: const TextStyle(
-                                        color: Color(0xff0056C9),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
-                    ),
+                    )),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Row(
                         children: [
-                          Image.asset('assets/images/VectorStrokeCash.png'),
+                          Image.asset('assets/images/VectorStrokeCash.png',scale: 0.6,),
                           SizedBox(
-                            width: constraints.maxWidth * 0.008,
+                            width: constraints.maxWidth * 0.02,
                           ),
                           Text(
-                            "${type == "visit" ?  visit!.totalAmountDue!.toString()
-                                : money} مديونية ",
+                            "${type == "visit" ?  double.parse(visit!.totalAmountDue!.toString()).toStringAsFixed(2)
+                                : money}      مديونية       ",
                             style: const TextStyle(
                               color: Color(0xFFAC6521),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Row(
                         children: [
-                          Image.asset('assets/images/VectorStrokeTruee.png'),
+                          Image.asset('assets/images/VectorStrokeTruee.png',scale: 0.6,),
                           SizedBox(
-                            width: constraints.maxWidth * 0.008,
+                            width: constraints.maxWidth * 0.02,
                           ),
                           Text(
                            "${ type == "visit" ?  visit!.monthOrders!.toString()
-                               : sales }  مبيعات شهرية ",
+                               : sales }      مبيعات شهرية      ",
                             style: const TextStyle(
                               color: Color(0xff1D6E4F),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],

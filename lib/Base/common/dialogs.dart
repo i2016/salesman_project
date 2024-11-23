@@ -433,7 +433,7 @@ class Dialogs {
                   children: [
                     InkWell(
                       onTap: (){
-                        customAnimatedPushNavigation(context, VisitsTodayScreen());
+                        customAnimatedPushNavigation(context, AvailableItemsScreen());
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,

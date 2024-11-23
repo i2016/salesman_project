@@ -5,11 +5,12 @@ import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
 import 'package:water/Visits/data/models/today_visits_details_model.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
+import 'package:water/Visits/data/models/visits_history_model.dart';
+import 'package:water/Visits/data/models/visits_model.dart';
 
-class TodayVisitsRepository{
+class VisitsRepository{
 
-  Future<TodayVisitsModel?> getTodayVisits() async {
+  Future<VisitsModel?> getTodayVisits() async {
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
       'Content-Type': 'application/json',
@@ -18,7 +19,7 @@ class TodayVisitsRepository{
 
     };
     return NetworkUtil.internal().post(
-        TodayVisitsModel(),
+        VisitsModel(),
         baseUrl + todayVisitsUrl,
         headers: headers ,
       body: jsonEncode( {
@@ -47,6 +48,24 @@ class TodayVisitsRepository{
       }),);
   }
 
+  Future<VisitsHistoryModel?> getVisitsHistory() async {
+    Map<String, String> headers = {
+      'lang': LocalizeAndTranslate.getLanguageCode(),
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
+
+    };
+    return NetworkUtil.internal().post(
+      VisitsHistoryModel(),
+      baseUrl + visitsHistoryUrl,
+      headers: headers ,
+      body: jsonEncode( {
+        "params":{
+          "salesman": await sharedPreferenceManager.readInt(CachingKey.USER_ID)
+        }
+      }),);
+  }
 
 }
-final todayVisitsRepository = TodayVisitsRepository();
+final visitsRepository = VisitsRepository();

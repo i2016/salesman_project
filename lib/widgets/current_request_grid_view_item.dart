@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Inventory/presentation/pages/current_requests/inventory_current_request_details_screen.dart';
 
 class CurrentRequestGridViewItem extends StatelessWidget {
@@ -10,8 +11,10 @@ class CurrentRequestGridViewItem extends StatelessWidget {
       required this.date,
       required this.icon,
       required this.textIcon,
-      required this.color, required this.productNumber});
+      required this.color, required this.productNumber,
+      required this.transferId});
 
+  final int transferId;
   final String saleName;
   final String pill;
   final String date;
@@ -28,6 +31,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6),
           child: InkWell(
             onTap: () {
+              sharedPreferenceManager.writeData(CachingKey.TRANSFER_REQUESTS_ID, transferId);
               customAnimatedPushNavigation(context, const InventoryCurrentRequestDetailsScreen());
             },
             child: Container(
@@ -50,7 +54,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                           Text(
                             saleName,
                             style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
+                                fontSize: 22, fontWeight: FontWeight.w500),
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -68,12 +72,12 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                                   Image.asset(
                                     icon,
                                     height: MediaQuery.of(context).size.height *
-                                        0.013,
+                                        0.026,
                                     color: color,
                                   ),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width *
-                                        0.002,
+                                        0.004,
                                   ),
                                   Text(
                                     textIcon,
@@ -94,12 +98,12 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                           children: [
                             Image.asset('assets/images/VectorSvsds.png'),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.008,
+                              width: MediaQuery.of(context).size.width * 0.016,
                             ),
                             Text(
                               pill,
                               style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                                  fontSize: 18, fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
@@ -110,12 +114,12 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                           children: [
                             Image.asset('assets/images/VectorPkoik.png'),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.008,
+                              width: MediaQuery.of(context).size.width * 0.016,
                             ),
                             Text(
                               date,
                               style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                                  fontSize: 18, fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
@@ -126,7 +130,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                           children: [
                             Image.asset(
                               'assets/images/marketImage.png',
-                              height: MediaQuery.of(context).size.height * 0.012,
+                              height: MediaQuery.of(context).size.height * 0.024,
                             color: Colors.black,
                             ),
                             SizedBox(
@@ -135,7 +139,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                             Text(
                               productNumber,
                               style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                                  fontSize: 18, fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),

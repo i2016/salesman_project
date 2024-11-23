@@ -6,15 +6,12 @@ import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
+import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
+import 'package:water/Inventory/data/models/inventory_trnsfer_requests_model.dart';
 import 'package:water/Inventory/data/models/sales_remaining_limit_model.dart';
-import 'package:water/Visits/data/models/category_model.dart';
-import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
-import 'package:water/Visits/data/models/today_visits_details_model.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
-import 'dart:io';
-import 'package:dio/dio.dart';
-import 'package:path/path.dart';
+import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
+
 class InventoryRepository{
 
   Future<InventoryTransferRequestResposneModel?> transferRequest() async {
@@ -77,5 +74,42 @@ class InventoryRepository{
     );
   }
 
+  Future<TransferRequestsModel?> getTransferRequestsHistory() async {
+    Map<String, String> headers = {
+      'lang': LocalizeAndTranslate.getLanguageCode(),
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
+
+    };
+    return NetworkUtil.internal().post(
+      TransferRequestsModel(),
+      baseUrl + transferRequestsHistoryUrl,
+      headers: headers ,
+      body: jsonEncode( {
+        "params":{
+          "salesman_id": await sharedPreferenceManager.readInt(CachingKey.USER_ID),
+        }
+      }),);
+  }
+
+  Future<TransferRequestsDetailsModel?> getTransferRequestsDetails() async {
+    Map<String, String> headers = {
+      'lang': LocalizeAndTranslate.getLanguageCode(),
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
+
+    };
+    return NetworkUtil.internal().post(
+      TransferRequestsDetailsModel(),
+      baseUrl + transferRequestsDetailsUrl,
+      headers: headers ,
+      body: jsonEncode( {
+        "params":{
+          "transfer_id": await sharedPreferenceManager.readInt(CachingKey.TRANSFER_REQUESTS_ID),
+        }
+      }),);
+  }
 }
 final InventoryRepository inventoryRepository = InventoryRepository();

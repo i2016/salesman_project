@@ -2,12 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
-import 'package:water/Base/common/shared_preference_manger.dart';
-import 'package:water/Clients/data/repositories/invoice_history_repository.dart';
-import 'package:water/Profile/data/repositories/profile_repository.dart';
 import 'package:water/Returns/data/repositories/returns_invoice_repository.dart';
-import 'package:water/Visits/data/repositories/categories_repository.dart';
-import 'package:water/Visits/data/repositories/today_visits_repository.dart';
 
 import '../../../../Base/validator.dart';
 

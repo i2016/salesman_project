@@ -9,7 +9,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
-import 'package:water/Visits/presentation/bloc/today_visits_bloc.dart';
+import 'package:water/Visits/presentation/bloc/visits/visits_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/available_items_screen.dart';
 import 'package:water/index.dart';
 import 'package:water/widgets/google_map_container.dart';
@@ -77,7 +77,7 @@ class _pageState extends State<_page> {
 
   @override
   void initState() {
-    todayVisitsBloc.add(GetTodayVisitsDetailsEvent(
+    visitsBloc.add(GetVisitDetailsEvent(
       visit_id: widget.visitId
     ));
     super.initState();
@@ -88,8 +88,8 @@ class _pageState extends State<_page> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         body: SingleChildScrollView(
-          child:    BlocBuilder<TodayVisitsBloc, AppState>(
-            bloc: todayVisitsBloc,
+          child:    BlocBuilder<VisitsBloc, AppState>(
+            bloc: visitsBloc,
             builder: (context, state) {
               if (state is Loading) {
                 return const LoadingPlaceHolder(

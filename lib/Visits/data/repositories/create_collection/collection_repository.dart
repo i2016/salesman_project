@@ -5,14 +5,8 @@ import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
-import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
-import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
-import 'package:water/Visits/data/models/today_visits_details_model.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
-import 'dart:io';
-import 'package:dio/dio.dart';
-import 'package:path/path.dart';
+
 class CollectionRepository{
 
   Future<CreateCollectionResponseModel?> createCollection() async {

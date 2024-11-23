@@ -1,7 +1,9 @@
 import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
+import 'package:water/Inventory/data/models/inventory_trnsfer_requests_model.dart';
 import 'package:water/Inventory/data/models/sales_remaining_limit_model.dart';
+import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
 import 'package:water/Profile/data/models/profile_model.dart';
 import 'package:water/Profile/data/models/resetPassword_model.dart';
 import 'package:water/Returns/data/models/create_returns_model.dart';
@@ -12,7 +14,8 @@ import 'package:water/Visits/data/models/create_collection/create_collection_res
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/data/models/today_visits_details_model.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
+import 'package:water/Visits/data/models/visits_history_model.dart';
+import 'package:water/Visits/data/models/visits_model.dart';
 
 abstract class AppState {
   get model =>null;
@@ -105,6 +108,16 @@ class GetTodayVisitsErrorLoading extends AppState{
   GetTodayVisitsErrorLoading({this.message});
 }
 
+// VISITS HISTORY
+class GetVisitsHistoryDone extends AppState{
+  final  List<VisitHistory>? visitsHistory;
+  GetVisitsHistoryDone({this.visitsHistory});
+}
+
+class GetVisitsHistoryErrorLoading extends AppState{
+  final String? message;
+  GetVisitsHistoryErrorLoading({this.message});
+}
 
 //TODAY VISITS Details
 class GeTodayVisitDetailsDone extends AppState{
@@ -231,4 +244,26 @@ class SalesRemainingLimitDone extends AppState{
 class SalesRemainingLimitErrorLoading extends AppState{
   final String? message;
   SalesRemainingLimitErrorLoading({this.message});
+}
+
+//HISTORY TRANSFER REQUESTS
+class GetTransferRequestsHistoryDone extends AppState{
+  final   List<TransferRequest>? transferRequests;
+  GetTransferRequestsHistoryDone({this.transferRequests});
+}
+
+class GetTransferRequestsHistoryErrorLoading extends AppState{
+  final String? message;
+  GetTransferRequestsHistoryErrorLoading({this.message});
+}
+
+// TRANSFER REQUESTS DETAILS
+class GetTransferRequestsDetailsDone extends AppState{
+  final  TransferRequestsDetails? transferRequestsDetails;
+  GetTransferRequestsDetailsDone({this.transferRequestsDetails});
+}
+
+class GetTransferRequestsDetailsErrorLoading extends AppState{
+  final String? message;
+  GetTransferRequestsDetailsErrorLoading({this.message});
 }

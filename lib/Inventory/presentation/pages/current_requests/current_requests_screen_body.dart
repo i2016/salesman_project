@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:water/Base/Helper/app_state.dart';
+import 'package:water/Base/Shimmer/loading_shimmer.dart';
+import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/shared.dart';
+import 'package:water/Clients/presentation/bloc/invoice_history_bloc.dart';
+import 'package:water/Inventory/presentation/bloc/inventory_transfer_request_bloc.dart';
+import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
 import 'package:water/widgets/button.dart';
 import 'package:water/widgets/current_request_grid_view_item.dart';
 import 'package:water/widgets/navigate_basic_container.dart';
@@ -15,10 +23,11 @@ class CurrentRequestsScreenBody extends StatelessWidget {
         body:  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(children: [
+                    Row(
+                        children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pop();
+                          customAnimatedPushNavigation(context, InventoryScreen());
                         },
                         child: const Icon(Icons.arrow_back),
                       ),
@@ -36,40 +45,64 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.014,
                     ),
-                    Padding(
+             /*       Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: const VisitTypeContainers(
                         textFirstContainer: 'الحالة',
                         textSecondContainer: 'من',
                         textThirdContainer: 'الى',
                       ),
-                    ),
-                    GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? 2
-                            : 3,
-                        crossAxisSpacing: 16,
-                        childAspectRatio: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? 4.15 / 2
-                            : 4.25 / 2,
-                      ),
-                      itemCount: 8,
-                      itemBuilder: (context, index) {
-                        return const CurrentRequestGridViewItem(
-                        saleName: 'مبيعات 500 ر.س',
-                        pill: 'فاتورة رقم 123414',
-                        date: 'اصدار بتاريخ 21 / 8 / 2024',
-                        icon: 'assets/images/period.png',
-                        color: Color(0xff0056C9),
-                        textIcon: 'يتم المراجعة', productNumber: '55 منتج',
-                      );
+                    ),*/
+
+                    BlocBuilder<InventoryTransferRequestBloc, AppState>(
+                      bloc: inventoryTransferRequestBloc,
+                      builder: (context, state) {
+                        if (state is Loading) {
+                          return const LoadingPlaceHolder(
+                            shimmerType: ShimmerType.list,
+                            cellShimmerHeight: 50,
+                            shimmerCount: 10,
+                          );
+                        }
+                        else if (state is GetTransferRequestsHistoryDone) {
+                          if(state.transferRequests != null ){
+
+                            return  Expanded(
+                                child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: state.transferRequests!.length,
+                                    itemBuilder: (context, index) {
+                                      return  CurrentRequestGridViewItem(
+                                        transferId: state.transferRequests![index].transferId!,
+                                        saleName: 'اجمالي  ${state.transferRequests![index].itemsPrice!.toStringAsFixed(2).toString()}  ر.س',
+                                        pill: 'طلب رقم ${state.transferRequests![index].transferName}',
+                                        date: '${state.transferRequests![index].transferDate}}طلب بتاريخ  ',
+                                        icon: 'assets/images/period.png',
+                                        color: Color(0xff0056C9),
+                                        textIcon: '${state.transferRequests![index].transferStatus}',
+                                        productNumber: '${state.transferRequests![index].items.toString().split('.')[0]} منتج',
+                                      );
+
+                                    })
+                            );
+                          }
+                          else{
+                            return Center(
+                              child: Text("لا توجد فواتير حاليا"),
+                            );
+                          }
+
+                        } else if (state is GetTransferRequestsHistoryErrorLoading) {
+                          return Center(
+                            child: Text("${state.message}"),
+                          );
+                        } else {
+                          return Container();
+                        }
+
                       },
-                    ),
+                    )
+                    ,
                   ],
                 ),
               ),

@@ -6,9 +6,8 @@ import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
-import 'package:water/Clients/presentation/pages/clients_screen.dart';
 import 'package:water/Clients/presentation/widgets/registered_customers_screen_container_item.dart';
-import 'package:water/Visits/presentation/bloc/today_visits_bloc.dart';
+import 'package:water/Visits/presentation/bloc/visits/visits_bloc.dart';
 import 'package:water/Visits/presentation/pages/History/visits_history_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/add_visit_registered_clients_screen.dart';
 import '../../../../App/presentation/pages/app_screen.dart';
@@ -53,7 +52,7 @@ class _page extends StatefulWidget {
 class _pageState extends State<_page> {
   @override
   void initState() {
-    todayVisitsBloc.add(GetTodayVisitsEvent());
+    visitsBloc.add(GetTodayVisitsEvent());
     super.initState();
   }
   @override
@@ -74,8 +73,8 @@ class _pageState extends State<_page> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.008,
             ),
-            BlocBuilder<TodayVisitsBloc, AppState>(
-              bloc: todayVisitsBloc,
+            BlocBuilder<VisitsBloc, AppState>(
+              bloc: visitsBloc,
               builder: (context, state) {
                 if (state is Loading) {
                   return const LoadingPlaceHolder(
@@ -86,21 +85,17 @@ class _pageState extends State<_page> {
                 }
                 else if (state is GeTodayVisitsDone) {
                   if(state.visits != null && state.visits!.isNotEmpty){
-                    return GridView.builder(
+                    return ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                   /*   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                            ? 2
-                            : 3,
+                            Orientation.portrait ? 2 : 3,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         childAspectRatio: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                            ? 5.1 / 2
-                            : 4.5 / 2,
-                      ),
+                            Orientation.portrait ? 5.1 / 2 : 4.5 / 2,
+                      ),*/
                       itemCount: state.visits?.length,
                       itemBuilder: (context, index) {
                         return  RegisteredCustomersScreenContainerItem(

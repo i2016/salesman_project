@@ -1,13 +1,13 @@
 import 'package:water/Base/network/network-mappers.dart';
 
-class TodayVisitsModel extends BaseMappable{
+class VisitsModel extends BaseMappable{
   String? jsonrpc;
   String? id;
   Result? result;
 
-  TodayVisitsModel({this.jsonrpc, this.id, this.result});
+  VisitsModel({this.jsonrpc, this.id, this.result});
 
-  TodayVisitsModel.fromJson(Map<String, dynamic> json) {
+  VisitsModel.fromJson(Map<String, dynamic> json) {
     jsonrpc = json['jsonrpc'];
     id = json['id'];
     result =
@@ -30,7 +30,7 @@ class TodayVisitsModel extends BaseMappable{
     id = json['id'];
     result =
     json['result'] != null ? new Result.fromJson(json['result']) : null;
-    return TodayVisitsModel(id: id,jsonrpc: jsonrpc,result: result);
+    return VisitsModel(id: id,jsonrpc: jsonrpc,result: result);
   }
 }
 

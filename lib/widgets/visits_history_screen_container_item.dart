@@ -72,10 +72,11 @@ class VisitsHistoryScreenContainerItem extends StatelessWidget {
                               date,
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ],
                         ),
-                        Container(
+                      /*  Container(
                           decoration: BoxDecoration(
                               color: Color.fromARGB(255, 247, 245, 245),
                               border: Border.all(
@@ -103,11 +104,12 @@ class VisitsHistoryScreenContainerItem extends StatelessWidget {
                                       color: iconColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                     Padding(
@@ -121,13 +123,15 @@ class VisitsHistoryScreenContainerItem extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.008,
                           ),
-                          Text(
+                      Flexible(
+                        child:  Text(
                             store,
                             style: const TextStyle(
                                 color: Color(0xFFAC6521),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300),
-                          ),
+                            overflow: TextOverflow.ellipsis,
+                        )  ),
                         ],
                       ),
                     ),

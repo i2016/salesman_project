@@ -28,9 +28,10 @@ class ResetPasswordClickEvent extends AppEvent{
 
 // TODAY VISITS
 class GetTodayVisitsEvent extends AppEvent{}
-class GetTodayVisitsDetailsEvent extends AppEvent{
+class GetVisitsHistoryEvent extends AppEvent{}
+class GetVisitDetailsEvent extends AppEvent{
   final String? visit_id;
-  GetTodayVisitsDetailsEvent({this.visit_id});
+  GetVisitDetailsEvent({this.visit_id});
 }
 
 // Categories
@@ -77,4 +78,11 @@ class InventoryTransferRequestEvent extends AppEvent{
 
 class SalesRemainingLimitEvent extends AppEvent{
   SalesRemainingLimitEvent();
+}
+class GetTransferRequestsHistoryEvent extends AppEvent{
+  GetTransferRequestsHistoryEvent();
+}
+
+class GetTransferRequestsDetailsEvent extends AppEvent{
+  GetTransferRequestsDetailsEvent();
 }

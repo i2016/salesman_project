@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/presentation/pages/History/visit_details_screen_collected.dart';
+import 'package:water/Visits/presentation/pages/History/visit_history_details_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/available_items_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/previous_invoices_screen.dart';
 import 'package:water/index.dart';
@@ -31,7 +32,7 @@ class _NavigateBasicContainerState extends State<NavigateInVisitDetailsContainer
   }
 
   List<Widget> _mainMenuBuildScreens = [
-    VisitDetailsScreenPublic(),
+    VisitHistoryDetailsScreen(),
     VisitDetailsScreenSales(),
     VisitDetailsScreenReturned(),
     VisitDetailsScreenCollected(),

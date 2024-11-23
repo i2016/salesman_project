@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/Helper/app_state.dart';
+import 'package:water/Base/Shimmer/loading_shimmer.dart';
+import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Inventory/presentation/bloc/inventory_transfer_request_bloc.dart';
+import 'package:water/Inventory/presentation/pages/current_requests/current_requests_details_widget.dart';
+import 'package:water/Inventory/presentation/pages/current_requests/current_requests_screen.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/pill_payment.dart';
 import 'package:water/widgets/review_product_water_item.dart';
@@ -17,6 +24,11 @@ class InventoryCurrentRequestDetailsScreenBody extends StatefulWidget {
 class _InventoryCurrentRequestDetailsScreenBodyState
     extends State<InventoryCurrentRequestDetailsScreenBody> {
   @override
+  void initState() {
+    super.initState();
+    inventoryTransferRequestBloc.add(GetTransferRequestsDetailsEvent());
+  }
+  @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -28,7 +40,7 @@ class _InventoryCurrentRequestDetailsScreenBodyState
               children: [
                 InkWell(
                     onTap: () {
-                      Navigator.of(context).pop();
+                      customAnimatedPushNavigation(context, CurrentRequestsScreen());
                     },
                     child: const Icon(Icons.arrow_back)),
                 SizedBox(
@@ -46,74 +58,43 @@ class _InventoryCurrentRequestDetailsScreenBodyState
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
             ),
-            const SearchTextField(
-              hintTextField: 'البحث عن منتج',
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.014,
-            ),
-            const ImageNumberProductPriceContainer(),
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      appBloc.add(AppDrawrEvent(drawerType: 'editProduct'));
-              //      scaffoldKey!.currentState!.openEndDrawer();
-                    },
-                    child:  ReviewProductWaterItem(),
+            BlocBuilder<InventoryTransferRequestBloc, AppState>(
+              bloc: inventoryTransferRequestBloc,
+              builder: (context, state) {
+                if (state is Loading) {
+                  return const LoadingPlaceHolder(
+                    shimmerType: ShimmerType.list,
+                    cellShimmerHeight: 50,
+                    shimmerCount: 10,
                   );
-                }),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.006,
+                }
+                else if (state is GetTransferRequestsDetailsDone) {
+                  if(state.transferRequestsDetails != null ){
+
+                    return  CurrentRequestsDetailsWidget(
+                      transferRequestsDetails: state.transferRequestsDetails,
+                    );
+                  }
+                  else{
+                    return Center(
+                      child: Text("لا توجد تفاصيل حاليا"),
+                    );
+                  }
+
+                } else if (state is GetTransferRequestsDetailsErrorLoading) {
+                  return Center(
+                    child: Text("${state.message}"),
+                  );
+                } else {
+                  return Container();
+                }
+
+              },
             ),
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).orientation == Orientation.portrait
-                  ? MediaQuery.of(context).size.height * 0.03
-                  : MediaQuery.of(context).size.height * 0.05,
-              decoration: const BoxDecoration(
-                  color: Color(0xffEBF7FC),
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(11),
-                      bottomLeft: Radius.circular(11))),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 8,
-                      child: Text(
-                        'الاجمالي',
-                        style: TextStyle(
-                            color: Color(0xff0056C9),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        '42 ر.س',
-                        style: TextStyle(
-                            color: Color(0xff0056C9),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.003,
-            ),
-            const PillPayment(
+         /*   const PillPayment(
               textButton: 'حفظ التعديلات',
               dialogName: 'edit',
-            )
+            )*/
           ],
         ),
       ),

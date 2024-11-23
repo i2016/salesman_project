@@ -11,6 +11,8 @@ class InventoryTransferRequestBloc extends Bloc<AppEvent,AppState> with Validato
   InventoryTransferRequestBloc() :super(Start()) {
     on<InventoryTransferRequestEvent>(_onTransferRequest);
     on<SalesRemainingLimitEvent> (_onSalesRemainingLimit);
+    on<GetTransferRequestsHistoryEvent>(_onGetTransferRequestsHistory);
+    on<GetTransferRequestsDetailsEvent> (_onGetTransferRequestsDetails);
   }
 
   Future<void> _onTransferRequest(InventoryTransferRequestEvent event,
@@ -41,6 +43,41 @@ class InventoryTransferRequestBloc extends Bloc<AppEvent,AppState> with Validato
       }
     }catch(e){
       emit(SalesRemainingLimitErrorLoading(message: e.toString()));
+    }
+
+  }
+
+  Future<void> _onGetTransferRequestsHistory(GetTransferRequestsHistoryEvent event,
+      Emitter<AppState> emit) async {
+    emit(Loading());
+    var response = await inventoryRepository.getTransferRequestsHistory();
+    print("response : ${response!.result!.transferRequests!}");
+    try{
+      if (response!.result!.statusCode! == 200 ) {
+        emit(GetTransferRequestsHistoryDone(transferRequests: response.result!.transferRequests));
+      } else {
+        emit(GetTransferRequestsHistoryErrorLoading(message: response.result?.message));
+      }
+    }catch(e){
+      emit(GetTransferRequestsHistoryErrorLoading(message: e.toString()));
+    }
+
+  }
+
+
+  Future<void> _onGetTransferRequestsDetails(GetTransferRequestsDetailsEvent event,
+      Emitter<AppState> emit) async {
+    emit(Loading());
+    var response = await inventoryRepository.getTransferRequestsDetails();
+    print("response : ${response!.result!.transferRequestsDetails!}");
+    try{
+      if (response!.result!.statusCode! == 200 ) {
+        emit(GetTransferRequestsDetailsDone(transferRequestsDetails: response.result!.transferRequestsDetails));
+      } else {
+        emit(GetTransferRequestsDetailsErrorLoading(message: response.result?.message));
+      }
+    }catch(e){
+      emit(GetTransferRequestsDetailsErrorLoading(message: e.toString()));
     }
 
   }

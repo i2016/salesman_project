@@ -4,10 +4,7 @@ import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/config.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/network/network_util.dart';
-import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
-import 'package:water/Visits/data/models/today_visits_details_model.dart';
-import 'package:water/Visits/data/models/today_visits_model.dart';
 
 class ProductsRepository{
 

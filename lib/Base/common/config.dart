@@ -17,3 +17,6 @@ const String createPaymentUrl = "salesman/create_payment";
 const String createReturnsUrl = "salesman/create_return";
 const String inventoryTransferRequestUrl = "salesman/create_transfer";
 const String salesRemainingLimitUrl = "salesman/sales_remaining_limit";
+const String visitsHistoryUrl = "salesman/visits_history";
+const String transferRequestsHistoryUrl = "salesman/internal_transfers";
+const String transferRequestsDetailsUrl = "salesman/internal_transfer_by_id";

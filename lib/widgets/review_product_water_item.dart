@@ -52,7 +52,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                         ),
                       ),
                        Expanded(
-                        flex: 6,
+                        flex: 7,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
@@ -84,10 +84,10 @@ class ReviewProductWaterItem extends StatelessWidget{
 
                       ),
                        Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Text(
                         addedProductEntity == null ?  '42 ر.س'
-                            : " ${addedProductEntity!.total!} ر.س ",
+                            : " ${addedProductEntity!.price!.toStringAsFixed(2)} ر.س ",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500
