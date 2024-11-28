@@ -4,6 +4,8 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
+import 'package:water/Inventory/presentation/bloc/inventory_transfer_request_bloc.dart';
+import 'package:water/Inventory/presentation/bloc/main_inventory_bloc.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/presentation/bloc/products_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/list_category_products.dart';
@@ -26,9 +28,10 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
   }
   @override
   Widget build(BuildContext context) {
-    return  BlocBuilder<ProductsBloc, AppState>(
-      bloc: productsBloc,
+    return  BlocBuilder<MainInventoryBloc, AppState>(
+      bloc: mainInventoryBloc,
       builder: (context, state) {
+        print("state : ${state}");
         if (state is Loading) {
           return const LoadingPlaceHolder(
             shimmerType: ShimmerType.list,
@@ -36,7 +39,8 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
             shimmerCount: 10,
           );
         }
-        else if (state is GetProductsDone) {
+        else if (state is GetMainInventoryProductsDone) {
+          print("state.products : ${state.products}");
           if(state.products != null && state.products!.isNotEmpty){
             return ListCategoryProducts(
               categoryData: widget.categoryData,
@@ -50,11 +54,12 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
             );
           }
 
-        } else if (state is GetProductsErrorLoading) {
+        } else if (state is GetMainInventoryProductsErrorLoading) {
           return Center(
             child: Text("${state.message}"),
           );
         } else {
+          print("sssssssssssssss");
           return Container();
         }
 

@@ -86,3 +86,6 @@ class GetTransferRequestsHistoryEvent extends AppEvent{
 class GetTransferRequestsDetailsEvent extends AppEvent{
   GetTransferRequestsDetailsEvent();
 }
+class GetMainInventoryProductsvent extends AppEvent{
+  GetMainInventoryProductsvent();
+}

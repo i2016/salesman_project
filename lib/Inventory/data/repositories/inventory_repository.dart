@@ -11,6 +11,7 @@ import 'package:water/Inventory/data/models/inventory_transfer_request_response_
 import 'package:water/Inventory/data/models/inventory_trnsfer_requests_model.dart';
 import 'package:water/Inventory/data/models/sales_remaining_limit_model.dart';
 import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
+import 'package:water/Visits/data/models/product_model.dart';
 
 class InventoryRepository{
 
@@ -108,6 +109,28 @@ class InventoryRepository{
       body: jsonEncode( {
         "params":{
           "transfer_id": await sharedPreferenceManager.readInt(CachingKey.TRANSFER_REQUESTS_ID),
+        }
+      }),);
+  }
+
+  Future<ProductModel?> getInventoryProducts() async {
+    Map<String, String> headers = {
+      'lang': LocalizeAndTranslate.getLanguageCode(),
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
+
+    };
+    return NetworkUtil.internal().post(
+      ProductModel(),
+      baseUrl + mainInventoryProductsUrl,
+      headers: headers ,
+      body: jsonEncode( {
+        "params":{
+          "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID).then((value){
+            return value == "null" ? "1" : value;
+          }) ,
+          "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         }
       }),);
   }

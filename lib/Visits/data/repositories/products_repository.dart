@@ -22,9 +22,10 @@ class ProductsRepository{
       headers: headers ,
       body: jsonEncode( {
         "params":{
-          "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID),
+          "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID).then((value){
+              return value == "null" ? "1" : value;
+          }) ,
           "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
-
         }
       }),);
   }

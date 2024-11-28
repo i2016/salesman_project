@@ -21,7 +21,6 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
     return Directionality(
       textDirection: TextDirection.rtl,
        child: Scaffold(
-         endDrawer: const GoodReturnsReturnProductDrawer(),
         body: BlocBuilder<InvoicesDetailsBloc , AppState>(
           bloc: invoicesDetailsBloc,
           builder: (context , state){

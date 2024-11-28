@@ -20,3 +20,4 @@ const String salesRemainingLimitUrl = "salesman/sales_remaining_limit";
 const String visitsHistoryUrl = "salesman/visits_history";
 const String transferRequestsHistoryUrl = "salesman/internal_transfers";
 const String transferRequestsDetailsUrl = "salesman/internal_transfer_by_id";
+const String mainInventoryProductsUrl = "salesman/product_by_category_main_location";

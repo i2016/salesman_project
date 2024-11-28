@@ -34,6 +34,7 @@ class PreviousInvoicesScreenDetails extends StatelessWidget {
                 print("returnInvoices : ${returnInvoices}");
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       flex: 3,

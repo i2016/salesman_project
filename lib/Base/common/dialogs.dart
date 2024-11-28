@@ -64,7 +64,7 @@ class Dialogs {
 
                     InkWell(
                       onTap: () {
-                        customAnimatedPushNavigation(context, VisitsTodayScreen());
+                        customAnimatedPushNavigation(context, AvailableItemsScreen());
 
                       },
                       child: Container(
@@ -186,7 +186,7 @@ class Dialogs {
 
                     InkWell(
                       onTap: () {
-                        customAnimatedPushNavigation(context, VisitsTodayScreen());
+                        customAnimatedPushNavigation(context, AvailableItemsScreen());
 
                       },
                       child: Container(
@@ -341,9 +341,11 @@ class Dialogs {
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: createReturnsModel!.result == null ? null
-                          :createReturnsModel.result!.data == null ? null :(){
+                    createReturnsModel!.result == null ? Container()
+                        :createReturnsModel.result!.data == null ? Container() :
+                    createReturnsModel.result?.data?.returnsInvoicePdf == null
+                        ? Container() :    InkWell(
+                      onTap: (){
 
                         _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
                             context: context);

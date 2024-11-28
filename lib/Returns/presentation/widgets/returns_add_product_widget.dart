@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Base/common/toast.dart';
+import 'package:water/Base/convert_arabic_numbers_to_english_extension.dart';
 import 'package:water/Returns/data/models/invoices_details_model.dart';
 import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
@@ -17,10 +18,11 @@ class ReturnsAddProductWidget extends StatefulWidget {
 }
 
 class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
-  int? selectedProductCount ;
+  TextEditingController controller = new TextEditingController();
+
   @override
   void initState() {
-    selectedProductCount = 1;
+    controller.text = "1";
     super.initState();
   }
   @override
@@ -155,8 +157,8 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            if(selectedProductCount != 0)
-                            selectedProductCount = (selectedProductCount ?? 0) - 1;
+                            if(controller.text != 0)
+                              controller.text = ((int.parse(controller.text.normalizeNumber()) ?? 0) - 1).toString();
                           });
                         },
                         child: const ImageIcon(
@@ -170,22 +172,31 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                         width: MediaQuery.of(context).size.width * 0.013,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.13,
-                        height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? MediaQuery.of(context).size.height * 0.036
-                            : MediaQuery.of(context).size.height * 0.064,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(8)),
-                        child:  Center(
-                          child: Text("${selectedProductCount}"),
-                        ),
-                      ),
+                          width: MediaQuery.of(context).size.width * 0.13,
+                          height: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                              ? MediaQuery.of(context).size.height * 0.036
+                              : MediaQuery.of(context).size.height * 0.064,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 0.5,
+                              ),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: TextField(
+                        controller: controller,
+                        cursorColor: Color.fromARGB(255, 66, 64, 64),
+                        textAlign: TextAlign.center, // Horizontal alignment
+                        textAlignVertical: TextAlignVertical.center, // Vertical alignment
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.zero,
+                          border: InputBorder.none,
+                          hintText: 'ادخل الكمية',
+                          hintStyle: TextStyle(
+                            color: Color(0xff758195),
+                          ),
+                        ),)),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.013,
                       ),
@@ -196,10 +207,10 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                                 ? int.parse(widget.item!.quantity!.toString())
                                 : double.parse(widget.item!.quantity!.toString()).toInt();
 
-                            if (selectedProductCount! < productCount) {
-                              selectedProductCount = (selectedProductCount ?? 0) + 1;
-                            }else if(selectedProductCount == 0){
-                              selectedProductCount = (selectedProductCount ?? 0) + 1;
+                            if (int.parse(controller.text.normalizeNumber() )< productCount) {
+                              controller.text = ((int.parse(controller.text.normalizeNumber()) ?? 0) + 1).toString();
+                            }else if(controller.text.normalizeNumber() == 0){
+                              controller.text = ((int.parse(controller.text.normalizeNumber()) ?? 0) + 1).toString();
 
                             }
                           });
@@ -223,7 +234,7 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
               width: MediaQuery.of(context).size.width * 0.005,
             ),
             Text(
-              'اجمالي  ${ double.parse((selectedProductCount! * widget.item!.price!).toString()).toStringAsFixed(2)}   ر.س',
+              'اجمالي  ${ double.parse((int.parse(controller.text.normalizeNumber())  * widget.item!.price!).toString()).toStringAsFixed(2)}   ر.س',
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500
@@ -237,15 +248,16 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                       child: GestureDetector(
                         onTap: () {
                           if( Shared.returns_products_list.where((element) => element.id ==
-                              widget.item!.productId).toList(growable: true).length == 0 && selectedProductCount != 0){
+                              widget.item!.productId).toList(growable: true).length == 0
+                              && int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0){
                             Shared.returns_products_list.add(ReturnsProductEntity(
                               id: widget.item!.productId,
                               name: widget.item!.productName,
                               image: widget.item!.image,
                               description: widget.item!.description,
                               price: widget.item!.price,
-                              selectedCount: selectedProductCount,
-                              total: selectedProductCount! * widget.item!.price!,
+                              selectedCount: int.parse(controller.text.normalizeNumber().normalizeNumber()),
+                              total: int.parse(controller.text.normalizeNumber().normalizeNumber()) * widget.item!.price!,
                               categoryId: widget.item!.categoryId,
                               category: widget.item!.category
                             ));
@@ -265,7 +277,7 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                               ? MediaQuery.of(context).size.height * 0.039
                               : MediaQuery.of(context).size.height * 0.066,
                           decoration: BoxDecoration(
-                              color:  selectedProductCount != 0 ? const Color(0xff1D7AFC) : kGreyColor,
+                              color:  int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0 ? const Color(0xff1D7AFC) : kGreyColor,
                               borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

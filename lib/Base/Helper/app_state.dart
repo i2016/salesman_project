@@ -267,3 +267,14 @@ class GetTransferRequestsDetailsErrorLoading extends AppState{
   final String? message;
   GetTransferRequestsDetailsErrorLoading({this.message});
 }
+
+// MAIN INVENTORY PRODUCTS
+class GetMainInventoryProductsDone extends AppState{
+  List<Product>? products;
+  GetMainInventoryProductsDone({this.products});
+}
+
+class GetMainInventoryProductsErrorLoading extends AppState{
+  final String? message;
+  GetMainInventoryProductsErrorLoading({this.message});
+}

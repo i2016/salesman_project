@@ -90,9 +90,9 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                               // Define the date threshold (older invoices)
                               DateTime thresholdDate = currentDate.subtract(Duration(days: 1)); // Invoices older than today
 
-                              List<Invoice>? invoices =state.invoiceResult!.invoices!.where((element)
+                              List<Invoice>? invoices =state.invoiceResult!.invoices!.where((element) => element.type == "invoice").toList()/*.where((element)
                               => element.type == "invoice" && DateTime.parse(element.invoiceDate).isBefore(thresholdDate)).toList();
-                              invoices.sort((a, b) => DateTime.parse(a.invoiceDate).compareTo(DateTime.parse(b.invoiceDate)));
+                              invoices.sort((a, b) => DateTime.parse(a.invoiceDate).compareTo(DateTime.parse(b.invoiceDate)))*/;
                               return   Container(
                                   height: Shared.height * 1.5,
                                   child:  SingleChildScrollView(
@@ -135,7 +135,8 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                               );
                             }
           
-                          } else if (state is GetHistoryInvoiceErrorLoading) {
+                          }
+                          else if (state is GetHistoryInvoiceErrorLoading) {
                             return Center(
                               child: Text("${state.message}"),
                             );

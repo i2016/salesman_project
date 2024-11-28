@@ -37,7 +37,6 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                 child: InkWell(
                   onTap: (){
                     createCollectionBloc.add(CreateCollectionEvent());
-
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.23,

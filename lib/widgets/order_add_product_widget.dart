@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Base/common/toast.dart';
+import 'package:water/Base/convert_arabic_numbers_to_english_extension.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
@@ -17,10 +18,11 @@ class OrderAddProductWidget extends StatefulWidget {
 }
 
 class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
-  int? selectedProductCount ;
+  TextEditingController controller = new TextEditingController();
+
   @override
   void initState() {
-    selectedProductCount = 1;
+    controller.text = "1";
     super.initState();
   }
   @override
@@ -162,8 +164,8 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            if(selectedProductCount != 0)
-                            selectedProductCount = (selectedProductCount ?? 0) - 1;
+                            if(controller.text.normalizeNumber() != 0)
+                              controller.text= ((int.parse(controller.text.normalizeNumber()) ?? 0) - 1).toString();
                           });
                         },
                         child: const ImageIcon(
@@ -189,9 +191,25 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                               width: 0.5,
                             ),
                             borderRadius: BorderRadius.circular(8)),
-                        child:  Center(
+                        child: TextField(
+                          controller: controller,
+                          cursorColor: Color.fromARGB(255, 66, 64, 64),
+                          textAlign: TextAlign.center, // Horizontal alignment
+                          textAlignVertical: TextAlignVertical.center, // Vertical alignment
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.zero,
+                            border: InputBorder.none,
+                            hintText: 'ادخل الكمية',
+                            hintStyle: TextStyle(
+                              color: Color(0xff758195),
+                            ),
+                          ),)
+
+
+
+                     /*   Center(
                           child: Text("${selectedProductCount}"),
-                        ),
+                        ),*/
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.013,
@@ -203,11 +221,10 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                 ? int.parse(widget.product!.count!)
                                 : double.parse(widget.product!.count!).toInt();
 
-                            if (selectedProductCount! < productCount) {
-                              selectedProductCount = (selectedProductCount ?? 0) + 1;
-                            }else if(selectedProductCount == 0){
-                              selectedProductCount = (selectedProductCount ?? 0) + 1;
-
+                            if (int.parse(controller.text.normalizeNumber() )< productCount) {
+                              controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
+                            }else if(controller.text.normalizeNumber() == 0){
+                              controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
                             }
                           });
                         },
@@ -236,7 +253,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           width: MediaQuery.of(context).size.width * 0.005,
                         ),
                                    Text(
-                                    'اجمالي  ${selectedProductCount! * widget.product!.price!}   ر.س',
+                                    'اجمالي  ${int.parse(controller.text.normalizeNumber()) * widget.product!.price!}   ر.س',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500
@@ -255,7 +272,9 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           width: MediaQuery.of(context).size.width * 0.005,
                         ),
                                    Text(
-                                     'متبقى ${int.tryParse(widget.product!.count!) != null ? int.parse(widget.product!.count!) - selectedProductCount! : double.parse(widget.product!.count!).toInt() - selectedProductCount!}  قطعة',
+                                     'متبقى ${int.tryParse(widget.product!.count!) != null ?
+                                     int.parse(widget.product!.count!) - int.parse(controller.text.normalizeNumber())
+                                         : double.parse(widget.product!.count!).toInt() - int.parse( controller.text.normalizeNumber())}  قطعة',
                                      style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500
@@ -267,16 +286,17 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        print("int.parse(controller.text.normalizeNumber()) : ${int.parse(controller.text.normalizeNumber().normalizeNumber())}");
                         if( Shared.order_products_list.where((element) => element.id ==
-                            widget.product!.id).toList(growable: true).length == 0 && selectedProductCount != 0){
+                            widget.product!.id).toList(growable: true).length == 0 && int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0){
                           Shared.order_products_list.add(AddedProductEntity(
                             id: widget.product!.id,
                             name: widget.product!.name,
                             image: widget.product!.image,
                             description: widget.product!.description,
                             price: widget.product!.price,
-                            selectedCount: selectedProductCount,
-                            total: selectedProductCount! * widget.product!.price!,
+                            selectedCount: int.parse(controller.text.normalizeNumber().normalizeNumber()),
+                            total: int.parse(controller.text.normalizeNumber()) * widget.product!.price!,
                           ));
                           ToastWidget.showToast(message: "تم اضافة المنتج بنجاح");
                           Navigator.pop(context);
@@ -293,7 +313,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             ? MediaQuery.of(context).size.height * 0.039
                             : MediaQuery.of(context).size.height * 0.066,
                         decoration: BoxDecoration(
-                            color:  selectedProductCount != 0 ? const Color(0xff1D7AFC) : kGreyColor,
+                            color:  int.parse(    controller.text.normalizeNumber()) != 0 ? const Color(0xff1D7AFC) : kGreyColor,
                             borderRadius: BorderRadius.circular(5)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
