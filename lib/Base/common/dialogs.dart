@@ -12,6 +12,7 @@ import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
 import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
+import 'package:water/Visits/data/repositories/visits_repository.dart';
 import 'package:water/Visits/presentation/pages/Today/previous_invoices_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/visits_today_screen_details.dart';
 import 'package:water/index.dart';
@@ -1018,6 +1019,9 @@ class Dialogs {
                     InkWell(
                       onTap: () {
                         customAnimatedPushNavigation(context, VisitsTodayDetailsScreen());
+                        visitsRepository.changeVisitStage().then((value){
+                          print("value : ${value!.toJson()}");
+                        });
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
