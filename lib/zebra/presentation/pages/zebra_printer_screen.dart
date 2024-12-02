@@ -73,7 +73,6 @@ class _ZebraPrintScreenState extends State<ZebraPrintScreen> {
 
   @override
   Widget build(BuildContext context) {
-print("KKKKKKKKKK");
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
