@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
+import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Dashboard/presentation/widgets/bar_chart_sample.dart';
 import 'package:water/Dashboard/presentation/widgets/linear_progress_indicator_widget.dart';
 import 'package:water/widgets/transaction_details_container.dart';
+import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
 
 class DashboardScreen extends StatelessWidget{
   @override
@@ -38,7 +40,11 @@ class _PageState extends State<_Page> {
                 child: Column(
                   children: [
                    Padding(padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                   child:  LinearProgressIndicatorWidget(),),
+                   child:  InkWell(
+                       onTap: (){
+                         customAnimatedPushNavigation(context, ZebraPrintScreen() );
+                       },
+                       child: LinearProgressIndicatorWidget()),),
 
           Padding(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),

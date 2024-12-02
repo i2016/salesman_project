@@ -19,6 +19,7 @@ import 'package:water/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:printing/printing.dart';
 import 'package:flutter/services.dart';
+import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
 class Dialogs {
 
   static Future<void>? showDialogFinancialCollection(parentContext,{CreateCollectionResponseModel? createCollectionResponseModel}) {
@@ -223,8 +224,9 @@ class Dialogs {
                       onTap: createCollectionResponseModel!.result == null ? null
                           :createCollectionResponseModel.result!.isError! ? null :(){
 
-                        _printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
-                            context: context);
+                        /*_printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
+                            context: context);*/
+                        customAnimatedPushNavigation(context, ZebraPrintScreen() );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -348,8 +350,9 @@ class Dialogs {
                         ? Container() :    InkWell(
                       onTap: (){
 
-                        _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
-                            context: context);
+                       /* _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
+                            context: context);*/
+                        customAnimatedPushNavigation(context, ZebraPrintScreen() );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -465,11 +468,12 @@ class Dialogs {
                       ),
                     ),
                     InkWell(
-                      onTap: createOrderResponseModel!.result == null ? null
-                          :createOrderResponseModel!.result!.errorResult != null ? null :(){
+                      onTap: createOrderResponseModel.result == null ? null
+                          :createOrderResponseModel.result!.errorResult != null ? null :(){
 
-                        _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
-                        context: context);
+                      /*  _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
+                        context: context);*/
+                        customAnimatedPushNavigation(context, ZebraPrintScreen() );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,

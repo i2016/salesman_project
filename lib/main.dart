@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/SplashScreen/presentation/pages/splash_screen.dart';
-import 'package:water/index.dart';
 import 'dart:io';
 import 'Base/common/shared_preference_manger.dart';
 

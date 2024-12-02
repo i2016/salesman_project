@@ -16,6 +16,7 @@ import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/data/models/today_visits_details_model.dart';
 import 'package:water/Visits/data/models/visits_history_model.dart';
 import 'package:water/Visits/data/models/visits_model.dart';
+import 'package:water/zebra/data/models/receipt_model.dart';
 
 abstract class AppState {
   get model =>null;
@@ -277,4 +278,16 @@ class GetMainInventoryProductsDone extends AppState{
 class GetMainInventoryProductsErrorLoading extends AppState{
   final String? message;
   GetMainInventoryProductsErrorLoading({this.message});
+}
+
+
+//ZEBRA RECEIPT
+class GetZebraReceiptDone extends AppState{
+  final  RecieptModel? recieptModel;
+  GetZebraReceiptDone({this.recieptModel});
+}
+
+class GetZebraReceiptErrorLoading extends AppState{
+  final String? message;
+  GetZebraReceiptErrorLoading({this.message});
 }

@@ -10,6 +10,7 @@ abstract class Mappable<T>  {
   factory  Mappable(Mappable  type, String data) {
     if (type is BaseMappable) {
 
+      print("##data : ${data}");
       Map<String, dynamic> mappingData = json.decode(data);
       return type.fromJson(mappingData) as Mappable<T>;
     } else if (type is ListMappable) {

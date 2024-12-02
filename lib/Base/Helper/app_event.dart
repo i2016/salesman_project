@@ -89,3 +89,8 @@ class GetTransferRequestsDetailsEvent extends AppEvent{
 class GetMainInventoryProductsvent extends AppEvent{
   GetMainInventoryProductsvent();
 }
+
+// ZEBRA PRINTER
+class GetZebraReceiptEvent extends AppEvent{
+  GetZebraReceiptEvent();
+}
