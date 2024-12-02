@@ -40,11 +40,7 @@ class _PageState extends State<_Page> {
                 child: Column(
                   children: [
                    Padding(padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                   child:  InkWell(
-                       onTap: (){
-                         customAnimatedPushNavigation(context, ZebraPrintScreen() );
-                       },
-                       child: LinearProgressIndicatorWidget()),),
+                   child:  LinearProgressIndicatorWidget()),
 
           Padding(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
