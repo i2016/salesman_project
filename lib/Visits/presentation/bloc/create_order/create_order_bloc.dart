@@ -18,8 +18,10 @@ class CreateOrderBloc extends Bloc<AppEvent,AppState> with Validator {
       Emitter<AppState> emit) async {
     emit(Loading());
     var response = await createOrderRepository.createOrder();
+    
     try{
       if (response!.statusCode! == 200 ) {
+
         emit(CreateOrderDone(createOrderResponseModel: response));
       } else {
         emit(CreateOrderErrorLoading(message: response.message));

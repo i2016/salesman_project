@@ -49,6 +49,10 @@ class GetHistoryInvoiceEvent extends AppEvent{
   GetHistoryInvoiceEvent();
 }
 
+// CLIENTS
+class GetAllClientsEvent extends AppEvent{
+  GetAllClientsEvent();
+}
 // Create Order
 class CreateOrderEvent extends AppEvent{
   CreateOrderEvent();

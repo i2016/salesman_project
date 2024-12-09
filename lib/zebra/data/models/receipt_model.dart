@@ -1,3 +1,4 @@
+/*
 import 'package:water/Base/network/network-mappers.dart';
 
 class RecieptModel extends BaseMappable {
@@ -193,4 +194,4 @@ class Totals {
     data['grandTotal'] = this.grandTotal;
     return data;
   }
-}
+}*/

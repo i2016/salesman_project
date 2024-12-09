@@ -1,4 +1,5 @@
 import 'package:water/Authentication/data/models/login_model.dart';
+import 'package:water/Base/network/network-mappers.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
 import 'package:water/Inventory/data/models/inventory_trnsfer_requests_model.dart';
@@ -165,6 +166,20 @@ class GetHistoryInvoiceErrorLoading extends AppState{
   GetHistoryInvoiceErrorLoading({this.message});
 }
 
+
+//CLIENTS
+class GetAllClientsDone extends AppState{
+  final  Mappable? model;
+  GetAllClientsDone({this.model});
+}
+
+class GetAllClientsErrorLoading extends AppState{
+  final String? message;
+  GetAllClientsErrorLoading({this.message});
+}
+
+
+
 //Returns
 class GetReturnsInvoiceDone extends AppState{
   final  returns_invoice_model.InvoiceResult? invoiceResult;
@@ -281,6 +296,7 @@ class GetMainInventoryProductsErrorLoading extends AppState{
 }
 
 
+/*
 //ZEBRA RECEIPT
 class GetZebraReceiptDone extends AppState{
   final  RecieptModel? recieptModel;
@@ -290,4 +306,4 @@ class GetZebraReceiptDone extends AppState{
 class GetZebraReceiptErrorLoading extends AppState{
   final String? message;
   GetZebraReceiptErrorLoading({this.message});
-}
+}*/

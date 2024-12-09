@@ -45,5 +45,8 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>App requires access to Bluetooth to connect to printers.</string>
+
 </dict>
 </plist>
