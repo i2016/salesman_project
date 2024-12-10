@@ -161,7 +161,9 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
     prefs.setInt('clientIndex', clientIndex);
 
   }
-
+  Future<String> _getUserName() async {
+    return await sharedPreferenceManager.readString(CachingKey.USER_NAME) ?? '';
+  }
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -190,9 +192,21 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
     switch (widget.menuType) {
       case 'mainMenu':
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text(
-            ' أهلا محمود ',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+
+          FutureBuilder<String>(
+            future: _getUserName(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState ==
+                  ConnectionState.waiting) {
+                return Container();
+              }
+              final userName = snapshot.data ?? '';
+              return Text(
+                ' أهلا $userName ',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                overflow: TextOverflow.ellipsis,
+              );
+            },
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.014,

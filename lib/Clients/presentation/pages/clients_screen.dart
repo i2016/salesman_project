@@ -73,54 +73,56 @@ clientsBloc.add(GetAllClientsEvent());
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.008,
           ),
-        BlocBuilder<ClientsBloc, AppState>(
-          bloc: clientsBloc,
-          builder: (context, state) {
-            if (state is Loading) {
-              return const LoadingPlaceHolder(
-                shimmerType: ShimmerType.list,
-                cellShimmerHeight: 50,
-                shimmerCount: 10,
-              );
-            }
-            else if (state is GetAllClientsDone) {
-              ClientsModel clientsModel =  state.model as ClientsModel;
-              if(clientsModel.result != null && clientsModel.result?.clients != null
-                  && clientsModel.result!.clients!.isNotEmpty) {
-                return  ListView.builder(
-                 // physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: clientsModel.result!.clients!.length,
-                  itemBuilder: (context, index) {
-                    return  RegisteredCustomersScreenContainerItem(
-                      storeName: clientsModel.result!.clients![index].customerName ??'',
-                      sales: clientsModel.result!.clients![index].totalAmount.toString().replaceAll('.', ',') ??'30,000 ',
-                      distance: 'يبعد 23 ك.م',
-                      money: clientsModel.result!.clients![index].totalAmountDue.toString().replaceAll('.', ',') ??'15,000 ',
-                      type: "client",
-                    );
-                  },
-                ) ;
-              }
-              else{
-                return Padding(
-                  padding:  EdgeInsets.symmetric(vertical: Shared.width * 0.3),
-                  child: Center(
-                    child: Text("لا يوجد عملاء حاليا"),
-                  ),
+        Expanded(
+          child: BlocBuilder<ClientsBloc, AppState>(
+            bloc: clientsBloc,
+            builder: (context, state) {
+              if (state is Loading) {
+                return const LoadingPlaceHolder(
+                  shimmerType: ShimmerType.list,
+                  cellShimmerHeight: 50,
+                  shimmerCount: 10,
                 );
               }
-
-            }
-            else if (state is GetAllClientsErrorLoading) {
-              return Center(
-                child: Text("${state.message}"),
-              );
-            } else {
-              return Container();
-            }
-
-          },
+              else if (state is GetAllClientsDone) {
+                ClientsModel clientsModel =  state.model as ClientsModel;
+                if(clientsModel.result != null && clientsModel.result?.clients != null
+                    && clientsModel.result!.clients!.isNotEmpty) {
+                  return  ListView.builder(
+                   // physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: clientsModel.result!.clients!.length,
+                    itemBuilder: (context, index) {
+                      return  RegisteredCustomersScreenContainerItem(
+                        storeName: clientsModel.result!.clients![index].customerName ??'',
+                        sales: clientsModel.result!.clients![index].totalAmount.toString().replaceAll('.', ',') ??'30,000 ',
+                        distance: 'يبعد 23 ك.م',
+                        money: clientsModel.result!.clients![index].totalAmountDue.toString().replaceAll('.', ',') ??'15,000 ',
+                        type: "client",
+                      );
+                    },
+                  ) ;
+                }
+                else{
+                  return Padding(
+                    padding:  EdgeInsets.symmetric(vertical: Shared.width * 0.3),
+                    child: Center(
+                      child: Text("لا يوجد عملاء حاليا"),
+                    ),
+                  );
+                }
+          
+              }
+              else if (state is GetAllClientsErrorLoading) {
+                return Center(
+                  child: Text("${state.message}"),
+                );
+              } else {
+                return Container();
+              }
+          
+            },
+          ),
         )
 
           ],

@@ -121,7 +121,7 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                                                 ),
 
                                               inedx == index ?  FinancialCollectionPaymentWidget(
-                                                  amount_due: invoices[index].amountDue.toString(),
+                                                  invoice: invoices[index],
                                                 ) : Container()
                                               ],
                                             ));

@@ -6,6 +6,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
+import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Visits/data/models/create_collection/create_collection_response_model.dart';
 import 'package:water/Visits/presentation/bloc/create_collection/create_collection_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/deserved_invoices_item.dart';
@@ -16,8 +17,8 @@ import 'package:water/widgets/pill_payment_financial_collection.dart';
 import 'package:water/widgets/take_photo_widget.dart';
 
 class FinancialCollectionPaymentWidget extends StatelessWidget {
-  final String amount_due;
-  FinancialCollectionPaymentWidget({super.key,required this.amount_due});
+  final Invoice invoice;
+  FinancialCollectionPaymentWidget({super.key,required this.invoice});
 
 
   @override
@@ -59,14 +60,16 @@ class FinancialCollectionPaymentWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
              FirstContainerInFinancialCollection(
-              amount_due: amount_due,
+              amount_due: invoice.amountDue.toString(),
             ),
             const PaymentMethodFinancialCollection(),
             const TakePhoto(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.011,
             ),
-            const PillPaymentFinancialCollection(),
+             PillPaymentFinancialCollection(
+              invoice: invoice,
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.011,
             ),

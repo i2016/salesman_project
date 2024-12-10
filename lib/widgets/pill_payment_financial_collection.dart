@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
+import 'package:water/Base/common/shared.dart';
+import 'package:water/Base/common/theme.dart';
+import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Visits/presentation/bloc/create_collection/create_collection_bloc.dart';
+import 'package:water/zebra/presentation/widgets/receipt.dart';
 
 class PillPaymentFinancialCollection extends StatelessWidget {
-  const PillPaymentFinancialCollection({super.key});
+  final Invoice invoice;
+  PillPaymentFinancialCollection({super.key,required this.invoice});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +29,8 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
-                        const Text(
-                          'متبقى 25,000 ر.س',
+                         Text(
+                          'متبقى ${invoice.amountTotal - invoice.amountDue} ر.س',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),
@@ -33,41 +38,83 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                     ),
                   )),
               Expanded(
-                flex: 3,
-                child: InkWell(
-                  onTap: (){
-                    createCollectionBloc.add(CreateCollectionEvent());
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.23,
-                    height: MediaQuery.of(context).orientation ==
+                flex: 4,
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        Receipt receipt = Receipt();
+                        receipt.sample(invoiceData: invoice.print);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
-                        ? MediaQuery.of(context).size.height * 0.04
-                        : MediaQuery.of(context).size.height * 0.068,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff1D7AFC),
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/CheckCircle.png',
-                            color: Color(0xffF9F9F9)),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.006,
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.068,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff1D7AFC),
+                            borderRadius: BorderRadius.circular(6)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/images/CheckCircle.png',
+                                color: Color(0xffF9F9F9)),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.006,
+                            ),
+                            const Opacity(
+                              opacity: 0.7,
+                              child: Text(
+                                'طباعة الفاتورة',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                          ],
                         ),
-                        const Opacity(
-                          opacity: 0.7,
-                          child: Text(
-                            'اصدار الفاتورة',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                    SizedBox(width: Shared.width * 0.1,),
+                    InkWell(
+                      onTap: invoice.amountTotal - invoice.amountDue == 0 ? ()=>false : (){
+                        createCollectionBloc.add(CreateCollectionEvent());
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.068,
+                        decoration: BoxDecoration(
+                            color: invoice.amountTotal - invoice.amountDue == 0 ? kGreyColor : const Color(0xff1D7AFC),
+                            borderRadius: BorderRadius.circular(6)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/images/CheckCircle.png',
+                                color: Color(0xffF9F9F9)),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.006,
+                            ),
+                            const Opacity(
+                              opacity: 0.7,
+                              child: Text(
+                                'اصدار الفاتورة',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                  ],
                 ),
               ),
             ],

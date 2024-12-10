@@ -60,74 +60,75 @@ class _pageState extends State<_page> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'زيارات اليوم',
-              style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w500,
+        body:  Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'زيارات اليوم',
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.008,
-            ),
-            BlocBuilder<VisitsBloc, AppState>(
-              bloc: visitsBloc,
-              builder: (context, state) {
-                if (state is Loading) {
-                  return const LoadingPlaceHolder(
-                    shimmerType: ShimmerType.list,
-                    cellShimmerHeight: 50,
-                    shimmerCount: 10,
-                  );
-                }
-                else if (state is GeTodayVisitsDone) {
-                  if(state.visits != null && state.visits!.isNotEmpty){
-                    return ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                   /*   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: MediaQuery.of(context).orientation ==
-                            Orientation.portrait ? 2 : 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: MediaQuery.of(context).orientation ==
-                            Orientation.portrait ? 5.1 / 2 : 4.5 / 2,
-                      ),*/
-                      itemCount: state.visits?.length,
-                      itemBuilder: (context, index) {
-                        return  RegisteredCustomersScreenContainerItem(
-                          storeName: 'اسم المتجر',
-                          sales: '30,000',
-                          distance: 'يبعد 232 ك.م',
-                          money: '15,000 ',
-                          visit:  state.visits![index],
-                        );
-                      },
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.008,
+              ),
+              Expanded(child: BlocBuilder<VisitsBloc, AppState>(
+                bloc: visitsBloc,
+                builder: (context, state) {
+                  if (state is Loading) {
+                    return const LoadingPlaceHolder(
+                      shimmerType: ShimmerType.list,
+                      cellShimmerHeight: 50,
+                      shimmerCount: 10,
                     );
                   }
-                  else{
-                    return Padding(
-                      padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
-                      child: Center(
-                        child: Text("لا توجد زيارات حاليا"),
-                      ),
+                  else if (state is GeTodayVisitsDone) {
+                    if(state.visits != null && state.visits!.isNotEmpty){
+                      return ListView.builder(
+                     //   physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        /*   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: MediaQuery.of(context).orientation ==
+                              Orientation.portrait ? 2 : 3,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: MediaQuery.of(context).orientation ==
+                              Orientation.portrait ? 5.1 / 2 : 4.5 / 2,
+                        ),*/
+                        itemCount: state.visits?.length,
+                        itemBuilder: (context, index) {
+                          return  RegisteredCustomersScreenContainerItem(
+                            storeName: 'اسم المتجر',
+                            sales: '30,000',
+                            distance: 'يبعد 232 ك.م',
+                            money: '15,000 ',
+                            visit:  state.visits![index],
+                          );
+                        },
+                      );
+                    }
+                    else{
+                      return Padding(
+                        padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
+                        child: Center(
+                          child: Text("لا توجد زيارات حاليا"),
+                        ),
+                      );
+                    }
+
+                  } else if (state is GetTodayVisitsErrorLoading) {
+                    return Center(
+                      child: Text("${state.message}"),
                     );
+                  } else {
+                    return Container();
                   }
 
-                } else if (state is GetTodayVisitsErrorLoading) {
-                  return Center(
-                    child: Text("${state.message}"),
-                  );
-                } else {
-                  return Container();
-                }
+                },
+              ))
+            ],
 
-              },
-            )
-          ],
         ),
       ),
     );

@@ -125,18 +125,42 @@ class InvoiceData {
 class Company {
   String? name;
   String? vat;
+  String? invoiceNumber;
+  String? invoiceDate;
+  String? customerName;
+  String? customerVat;
+  String? customerRegistrationNumber;
+  String? salesman;
 
-  Company({this.name, this.vat});
+  Company({this.name, this.vat,
+    this.invoiceNumber,
+    this.invoiceDate,
+    this.customerName,
+    this.customerVat,
+    this.customerRegistrationNumber,
+    this.salesman});
 
   Company.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     vat = json['vat'];
+    invoiceNumber = json['invoice_number'];
+    invoiceDate = json['invoice_date'];
+    customerName = json['customer_name'];
+    customerVat = json['customer_vat'];
+    customerRegistrationNumber = json['customer_registration_number'];
+    salesman = json['salesman'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['vat'] = this.vat;
+    data['invoice_number'] = this.invoiceNumber;
+    data['invoice_date'] = this.invoiceDate;
+    data['customer_name'] = this.customerName;
+    data['customer_vat'] = this.customerVat;
+    data['customer_registration_number'] = this.customerRegistrationNumber;
+    data['salesman'] = this.salesman;
     return data;
   }
 }

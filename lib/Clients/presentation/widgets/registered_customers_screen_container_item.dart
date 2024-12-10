@@ -87,7 +87,7 @@ final Visit? visit ;
                           ),
                           Text(
                             "${type == "visit" ?  double.parse(visit!.totalAmountDue!.toString()).toStringAsFixed(2)
-                                : money}      مديونية       ",
+                                : double.parse(money.replaceFirst(',', '.')).toStringAsFixed(2) }      مديونية       ",
                             style: const TextStyle(
                               color: Color(0xFFAC6521),
                               fontSize: 18,
@@ -107,7 +107,7 @@ final Visit? visit ;
                           ),
                           Text(
                            "${ type == "visit" ?  visit!.monthOrders!.toString()
-                               : sales }      مبيعات شهرية      ",
+                               : double.parse(sales.replaceFirst(',', '.')).toStringAsFixed(2) }      مبيعات شهرية      ",
                             style: const TextStyle(
                               color: Color(0xff1D6E4F),
                               fontSize: 18,
