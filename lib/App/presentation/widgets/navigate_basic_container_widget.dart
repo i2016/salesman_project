@@ -168,22 +168,24 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection:  TextDirection.rtl,
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(8)),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: menuTypeDesign(widget.menuType),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 0.5,
+                  ),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: menuTypeDesign(widget.menuType),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

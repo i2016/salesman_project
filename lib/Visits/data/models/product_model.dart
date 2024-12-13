@@ -73,7 +73,9 @@ class Product {
   double? price;
   String? image;
   String? count;
-
+  int? mainUomId;
+  String? mainUomName;
+  List<UomIds>? uomIds;
   Product({this.id, this.name, this.description, this.price, this.image,this.count});
 
   Product.fromJson(Map<String, dynamic> json) {
@@ -83,6 +85,14 @@ class Product {
     price = json['price'];
     image = json['image'];
     count = json['on_hand'].toString()??20.toString();
+    mainUomId = json['main_uom_id'];
+    mainUomName = json['main_uom_name'];
+    if (json['uom_ids'] != null) {
+      uomIds = <UomIds>[];
+      json['uom_ids'].forEach((v) {
+        uomIds!.add(new UomIds.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -93,6 +103,30 @@ class Product {
     data['price'] = this.price;
     data['image'] = this.image;
     data['on_hand'] = this.count;
+    data['main_uom_id'] = this.mainUomId;
+    data['main_uom_name'] = this.mainUomName;
+    if (this.uomIds != null) {
+      data['uom_ids'] = this.uomIds!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class UomIds {
+  int? id;
+  String? name;
+
+  UomIds({this.id, this.name});
+
+  UomIds.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
     return data;
   }
 }

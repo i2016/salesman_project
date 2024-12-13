@@ -17,9 +17,7 @@ class ProductsBloc extends Bloc<AppEvent,AppState> with Validator {
   Future<void> _onGetProducts(GetProductsEvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await productsRepository.getProducts(
-
-    );
+    var response = await productsRepository.getProducts();
     try{
       if (response!.result!.statusCode! == 200 ) {
         emit(GetProductsDone(products: response.result!.products!));
