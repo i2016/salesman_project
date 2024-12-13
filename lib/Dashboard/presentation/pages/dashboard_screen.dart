@@ -11,6 +11,8 @@ import 'package:water/Visits/data/models/create_order/create_order_response_mode
 import 'package:water/widgets/transaction_details_container.dart';
 import 'package:water/zebra/presentation/pages/home_page.dart';
 import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
+import 'package:water/zebra/presentation/widgets/receipt.dart';
+import 'package:water/zebra/presentation/widgets/receipt_printer.dart';
 
 class DashboardScreen extends StatelessWidget{
   @override
@@ -44,8 +46,8 @@ class _PageState extends State<_Page> {
                 child: Column(
                   children: [
                    Padding(padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                   child:  LinearProgressIndicatorWidget()
-                     /*InkWell(
+                   child:   LinearProgressIndicatorWidget()
+                  /*  InkWell(
                        onTap: (){
                          String jsonResponse = '''{
   "jsonrpc": "2.0",
@@ -125,9 +127,12 @@ class _PageState extends State<_Page> {
                          CreateOrderResponseModel createOrderResponseModel
                            = CreateOrderResponseModel.fromJson(jsonDecode(jsonResponse));
 
-                          Receipt receipt = Receipt();
-                        receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);
 
+                         Receipt receiptData = Receipt();
+                         receiptData.sample(invoiceData: createOrderResponseModel.result!.invoiceData);
+
+                         *//*ReceiptPrinter receipt = ReceiptPrinter();
+                        receipt.generateReceiptData(invoiceData: createOrderResponseModel.result!.invoiceData);*//*
                        },
                        child: LinearProgressIndicatorWidget())*/
                    ),

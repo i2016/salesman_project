@@ -1,5 +1,5 @@
-package com.app.salesman
 
+package com.app.salesman
 
 import android.content.Intent
 import io.flutter.embedding.android.FlutterActivity
@@ -33,3 +33,4 @@ class MainActivity : FlutterActivity() {
         startActivity(sendIntent)
     }
 }
+

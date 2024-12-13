@@ -257,6 +257,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.5"
+  esc_pos_utils_plus:
+    dependency: "direct main"
+    description:
+      name: esc_pos_utils_plus
+      sha256: "2a22d281cb6f04600ba3ebd607ad8df03a4b2446d814007d22525bab4d50c2ff"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.4"
   fake_async:
     dependency: transitive
     description:
@@ -390,6 +398,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "8.1.6"
+  flutter_bluetooth_basic:
+    dependency: "direct main"
+    description:
+      name: flutter_bluetooth_basic
+      sha256: e81a2c5e9340660b4832831b33d9f3c1f1b098c8f924bc1dafef9702c5985921
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.7"
   flutter_cache_manager:
     dependency: transitive
     description:
