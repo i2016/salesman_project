@@ -22,9 +22,11 @@ class OrderAddProductWidget extends StatefulWidget {
 class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
   TextEditingController controller = new TextEditingController();
   UomIds? selectedUnit;
+  double? selectedUnitPrice;
   @override
   void initState() {
     controller.text = "1";
+    selectedUnitPrice = widget.product!.price;
     super.initState();
   }
   @override
@@ -123,7 +125,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                               height: MediaQuery.of(context).size.height * 0.017,
                             ),
                              Text(
-                              '${widget.product!.price!}  ر.س ',
+                              '${ selectedUnitPrice!.toStringAsFixed(2) /*widget.product!.price!*/}  ر.س ',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700
@@ -161,6 +163,11 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           print("selectedUnitId : ${unit.id}");
                          setState(() {
                            selectedUnit = unit;
+                           if(selectedUnit!.id == widget.product!.mainUomId){
+                             selectedUnitPrice = widget.product!.price;
+                           }else{
+                             selectedUnitPrice = widget.product!.one_price;
+                           }
                          });
                         },
                       ),
@@ -258,6 +265,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                   final productCount = int.tryParse(widget.product!.count!) != null
                                       ? int.parse(widget.product!.count!)
                                       : double.parse(widget.product!.count!).toInt();
+                                  print("productCount : ${productCount}");
 
                                   if (int.parse(controller.text.normalizeNumber() )< productCount) {
                                     controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
@@ -294,7 +302,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           width: MediaQuery.of(context).size.width * 0.005,
                         ),
                                    Text(
-                                    'اجمالي  ${int.parse(controller.text.normalizeNumber()) * widget.product!.price!}   ر.س',
+                                    'اجمالي  ${(int.parse(controller.text.normalizeNumber()) * selectedUnitPrice!).toStringAsFixed(2)/*widget.product!.price!*/}   ر.س',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500
@@ -337,9 +345,9 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             name: widget.product!.name,
                             image: widget.product!.image,
                             description: widget.product!.description,
-                            price: widget.product!.price,
+                            price: selectedUnitPrice, //widget.product!.price,
                             selectedCount: int.parse(controller.text.normalizeNumber().normalizeNumber()),
-                            total: int.parse(controller.text.normalizeNumber()) * widget.product!.price!,
+                            total: int.parse(controller.text.normalizeNumber()) * selectedUnitPrice! /*widget.product!.price!*/,
                             unit: selectedUnit!
                           ));
                           ToastWidget.showToast(message: "تم اضافة المنتج بنجاح");

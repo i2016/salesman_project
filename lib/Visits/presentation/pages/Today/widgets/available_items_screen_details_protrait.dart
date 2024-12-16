@@ -147,7 +147,9 @@ class _AvailableItemsScreenDetailsProtraitState extends State<AvailableItemsScre
                     ],
                   ),
                 ),
-                const ProductsAndPricesAvailableItemsScreen()
+                 ProductsAndPricesAvailableItemsScreen(
+                   visitCategory: true,
+                 )
               ],
 
         );

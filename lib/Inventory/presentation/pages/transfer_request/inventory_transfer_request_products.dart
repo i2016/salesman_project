@@ -31,7 +31,7 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
     return  BlocBuilder<MainInventoryBloc, AppState>(
       bloc: mainInventoryBloc,
       builder: (context, state) {
-        print("state : ${state}");
+        print("ProductsUnderCategory ###state : ${state}");
         if (state is GetMainInventoryProductsUnderCategoryLoading) {
           return const LoadingPlaceHolder(
             shimmerType: ShimmerType.list,
@@ -40,12 +40,13 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
           );
         }
         else if (state is GetMainInventoryProductsUnderCategoryDone) {
-          print("state.products : ${state.products}");
+          print("ProductsUnderCategory state : ${state.products!.length}");
           if(state.products != null && state.products!.isNotEmpty){
             return ListCategoryProducts(
               categoryData: widget.categoryData,
               products: state.products,
               isInventory: true,
+              inventoryHeader: true,
             );
           }
           else{

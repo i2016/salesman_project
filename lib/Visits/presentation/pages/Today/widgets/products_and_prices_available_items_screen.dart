@@ -3,11 +3,12 @@ import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/presentation/pages/Today/review_product_screen.dart';
 
 class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
-  const ProductsAndPricesAvailableItemsScreen({super.key});
+  bool? visitCategory;
+   ProductsAndPricesAvailableItemsScreen({super.key,this.visitCategory = false});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return       visitCategory! ? Container() :  Container(
       width: MediaQuery.of(context).size.width * 0.245,
       /*       height: MediaQuery.of(context).orientation == Orientation.portrait ?
             MediaQuery.of(context).size.height * 0.18
@@ -155,7 +156,8 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
                  SizedBox(
                     height: MediaQuery.of(context).size.height * 0.009,
                   ),*/
-            InkWell(
+
+      InkWell(
               onTap: () {
                 if(Shared.order_products_list.length !=0)
                   Navigator.of(context).push(MaterialPageRoute(
@@ -205,7 +207,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
       ),
     );
     }
-  List<Widget> showSelectedProducts() {
+ /* List<Widget> showSelectedProducts() {
     print("Shared.order_products_list : ${Shared.order_products_list}");
 
     return Shared.order_products_list?.map((element) {
@@ -241,7 +243,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
         ],
       );
     }).toList() ?? [];
-  }
+  }*/
 
 
 }

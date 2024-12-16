@@ -18,21 +18,8 @@ class InventorySecondAddRequestScreenBody extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-
-            Expanded(
-              flex: 3,
-              child:  InventoryTransferRequestProducts(
-                  categoryData: categoryData,
-                ),
-
-            ),
-
-
-             ProductsAndPricesInventoryAddRequestScreen()
-          ],
+        body: InventoryTransferRequestProducts(
+          categoryData: categoryData,
         ),
       ),
     );

@@ -114,7 +114,7 @@ class InventoryRepository{
       }),);
   }
 
-  Future<ProductModel?> getInventoryProducts({required String category_id}) async {
+  Future<ProductModel?> getInventoryProductsUnderCategory() async {
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
       'Content-Type': 'application/json',
@@ -128,10 +128,30 @@ class InventoryRepository{
       headers: headers ,
       body: jsonEncode( {
         "params":{
-          "category_id": category_id,
+          "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID),
           "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         }
       }),);
   }
+
+  Future<ProductModel?> getInventoryProducts() async {
+    Map<String, String> headers = {
+      'lang': LocalizeAndTranslate.getLanguageCode(),
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': LocalizeAndTranslate.getLanguageCode() == 'ar' ? 'ar-EG' : 'en-EG',
+
+    };
+    return NetworkUtil.internal().post(
+      ProductModel(),
+      baseUrl + getAllProductMainInventory,
+      headers: headers ,
+      body: jsonEncode( {
+        "params":{
+          "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
+        }
+      }),);
+  }
+
 }
 final InventoryRepository inventoryRepository = InventoryRepository();

@@ -474,11 +474,11 @@ class Dialogs {
                       onTap: createOrderResponseModel.result == null ? null
                           :createOrderResponseModel.result!.errorResult != null ? null :(){
 
-                      /*  _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
-                        context: context);*/
+                        _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
+                        context: context);
 
-                        Receipt receipt = Receipt();
-                        receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);
+                    /*    Receipt receipt = Receipt();
+                        receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);*/
 
                       },
                       child: Container(

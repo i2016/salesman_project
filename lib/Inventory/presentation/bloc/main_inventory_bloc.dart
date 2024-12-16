@@ -17,9 +17,7 @@ class MainInventoryBloc extends Bloc<AppEvent,AppState> with Validator {
   Future<void> _onGetMainInventoryProducts(GetMainInventoryProductsvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
-    var response = await inventoryRepository.getInventoryProducts(
-       category_id: "1"
-    );
+    var response = await inventoryRepository.getInventoryProducts();
     print("GetMainInventoryProducts response : ");
     try{
       if (response!.result!.statusCode! == 200 ) {
@@ -36,9 +34,7 @@ class MainInventoryBloc extends Bloc<AppEvent,AppState> with Validator {
   Future<void> _onGetMainInventoryProductsUnderSpecficCategory(GetMainInventoryProductsUnderSpecficCategoryEvent event,
       Emitter<AppState> emit) async {
     emit(GetMainInventoryProductsUnderCategoryLoading());
-    var response = await inventoryRepository.getInventoryProducts(
-category_id: await sharedPreferenceManager.readString(CachingKey.Category_ID)
-    );
+    var response = await inventoryRepository.getInventoryProductsUnderCategory();
     print("GetMainInventoryProductsUnderCategory response : ${response!.result!.products!}");
     try{
       if (response!.result!.statusCode! == 200 ) {

@@ -114,6 +114,7 @@ class InventoryAddRequestCategoriesState extends State<InventoryAddRequestCatego
                         ),
                       )
                   ),
+
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.015,
                   ),
@@ -125,12 +126,15 @@ class InventoryAddRequestCategoriesState extends State<InventoryAddRequestCatego
                         itemCount: filteredCategories!.length,
                         itemBuilder: (context, index) {
                           return InkWell(
-                              onTap: (){
-                                sharedPreferenceManager.writeData(CachingKey.Category_ID,filteredCategories![index].id.toString());
+                              onTap: ()async{
+                               await sharedPreferenceManager.writeData(CachingKey.Category_ID,
+                                   filteredCategories![index].id.toString()).whenComplete((){
+                                 customAnimatedPushNavigation(context, InventorySecondAddRequestScreen(
+                                   categoryData: filteredCategories![index],
+                                 ));
+                               });
 
-                                customAnimatedPushNavigation(context, InventorySecondAddRequestScreen(
-                                  categoryData: filteredCategories![index],
-                                ));
+
                               },
                               child:  CategoriesWidget(
                                 categoryData: filteredCategories![index] ,
@@ -140,7 +144,9 @@ class InventoryAddRequestCategoriesState extends State<InventoryAddRequestCatego
                 ],
               ),
             ) ),
-        const ProductsAndPricesInventoryAddRequestScreen()
+         ProductsAndPricesInventoryAddRequestScreen(
+           inventoryCategory: true,
+         )
       ],
     );
 

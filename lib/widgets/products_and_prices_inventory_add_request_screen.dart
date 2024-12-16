@@ -9,7 +9,8 @@ import 'package:water/index.dart';
 import '../Base/Shimmer/loading_shimmer.dart';
 
 class ProductsAndPricesInventoryAddRequestScreen extends StatefulWidget {
-  const ProductsAndPricesInventoryAddRequestScreen({super.key});
+  bool? inventoryCategory ;
+   ProductsAndPricesInventoryAddRequestScreen({super.key,this.inventoryCategory = false});
 
   @override
   State<ProductsAndPricesInventoryAddRequestScreen> createState() => _ProductsAndPricesInventoryAddRequestScreenState();
@@ -192,7 +193,7 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
 
             },
           ),
-          Opacity(
+       widget.inventoryCategory! ?  Container() :  Opacity(
             opacity: Shared.remainingLimit >= Shared.calculateTotalForAllProducts() ?1 : 0.5,
             child: InkWell(
               onTap:    Shared.remainingLimit >= Shared.calculateTotalForAllProducts() ?  () {
@@ -234,7 +235,7 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
                 ),
               ),
             ),
-          ),
+          ) ,
         ],
       )
 

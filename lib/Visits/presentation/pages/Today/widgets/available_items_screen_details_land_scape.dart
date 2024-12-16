@@ -148,7 +148,9 @@ class _AvailableItemsScreenDetailsLandScapeState extends State<AvailableItemsScr
                     ],
                   ),
                 ),
-                const ProductsAndPricesAvailableItemsScreen()
+                 ProductsAndPricesAvailableItemsScreen(
+                   visitCategory: true,
+                 )
               ],
 
         );

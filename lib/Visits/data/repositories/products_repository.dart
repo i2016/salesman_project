@@ -25,6 +25,7 @@ class ProductsRepository{
           "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID).then((value){
               return value == "null" ? "1" : value;
           }) ,
+          "visit_id": await sharedPreferenceManager.readString(CachingKey.VISIT_ID),
           "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         }
       }),);
