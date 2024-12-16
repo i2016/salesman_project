@@ -18,7 +18,7 @@ class MainInventoryBloc extends Bloc<AppEvent,AppState> with Validator {
       Emitter<AppState> emit) async {
     emit(Loading());
     var response = await inventoryRepository.getInventoryProducts(
-category_id: "1"
+       category_id: "1"
     );
     print("GetMainInventoryProducts response : ");
     try{
