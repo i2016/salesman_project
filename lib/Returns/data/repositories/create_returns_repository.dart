@@ -23,6 +23,7 @@ class CreateReturnsRepository{
       return {
         "product_id":  product.id,
         "quantity":  product.selectedCount,
+        "uom_id" : product.unit!.id
       };
     }).toList();
 

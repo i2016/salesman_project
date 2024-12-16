@@ -50,7 +50,7 @@ class WaterItemSoldProducts extends StatelessWidget{
                         ),
                         const Text(
                           'مياه مدينة شرنك 15 حبة  600 مل',
-                          overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w300

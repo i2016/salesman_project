@@ -206,7 +206,7 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
               return Text(
                 ' أهلا $userName ',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                overflow: TextOverflow.ellipsis,
+              maxLines: 4,
               );
             },
           ),

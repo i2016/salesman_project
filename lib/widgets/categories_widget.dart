@@ -54,7 +54,7 @@ class CategoriesWidget extends StatelessWidget{
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
-                           overflow: TextOverflow.ellipsis,
+                         maxLines: 4,
                         ),
                         Container(
                               decoration: BoxDecoration(
@@ -166,9 +166,10 @@ class CategoriesWidget extends StatelessWidget{
                                      style: TextStyle(
                                       color: Color(0xff0056C9),
                                       fontSize: 14,
-                                      overflow: TextOverflow.ellipsis,
+
                                       fontWeight: FontWeight.w300
                                     ),
+                                     maxLines: 4,
                                   ),
                                 ],
                               ),

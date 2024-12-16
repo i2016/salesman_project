@@ -32,19 +32,20 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
       bloc: mainInventoryBloc,
       builder: (context, state) {
         print("state : ${state}");
-        if (state is Loading) {
+        if (state is GetMainInventoryProductsUnderCategoryLoading) {
           return const LoadingPlaceHolder(
             shimmerType: ShimmerType.list,
             cellShimmerHeight: 50,
             shimmerCount: 10,
           );
         }
-        else if (state is GetMainInventoryProductsDone) {
+        else if (state is GetMainInventoryProductsUnderCategoryDone) {
           print("state.products : ${state.products}");
           if(state.products != null && state.products!.isNotEmpty){
             return ListCategoryProducts(
               categoryData: widget.categoryData,
               products: state.products,
+              isInventory: true,
             );
           }
           else{
@@ -54,7 +55,7 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
             );
           }
 
-        } else if (state is GetMainInventoryProductsErrorLoading) {
+        } else if (state is GetMainInventoryProductsUnderCategoryErrorLoading) {
           return Center(
             child: Text("${state.message}"),
           );

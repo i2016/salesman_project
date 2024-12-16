@@ -1,3 +1,5 @@
+import 'package:water/Visits/data/models/product_model.dart';
+
 class AddedProductEntity{
   int? id;
   String? name;
@@ -6,6 +8,7 @@ class AddedProductEntity{
   double? price;
   String? image;
   int? selectedCount;
-
-  AddedProductEntity({this.id,this.name,this.description,this.price,this.image,this.selectedCount,this.total});
+  UomIds? unit;
+  AddedProductEntity({this.id,this.name,this.description,
+    this.price,this.image,this.selectedCount,this.total,this.unit});
 }

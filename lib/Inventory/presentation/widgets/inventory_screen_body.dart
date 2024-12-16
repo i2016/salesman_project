@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Inventory/presentation/bloc/main_inventory_bloc.dart';
 import 'package:water/Inventory/presentation/widgets/inventory_products_screen.dart';
 import 'package:water/Visits/presentation/bloc/products_bloc.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
@@ -16,7 +17,7 @@ class InventoryScreenBody extends StatefulWidget {
 class _InventoryScreenBodyState extends State<InventoryScreenBody> {
   @override
   void initState() {
-    productsBloc.add(GetProductsEvent());
+    mainInventoryBloc.add(GetMainInventoryProductsvent());
     super.initState();
   }
   @override

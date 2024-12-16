@@ -1,6 +1,6 @@
 
 // this app base url
-const String baseUrl = /*'https://yanabie.odoo.com/api/';*/ 'https://yanabie-demo-16818111.dev.odoo.com/api/';
+const String baseUrl = 'https://yanabie.odoo.com/api/';// 'https://yanabie-demo-16818111.dev.odoo.com/api/';
 const String apiKey = "NXI1ZP8ITTFY5D5TM37FASC58P4LR14S";
 
 // this api urls
@@ -23,3 +23,4 @@ const String transferRequestsDetailsUrl = "salesman/internal_transfer_by_id";
 const String mainInventoryProductsUrl = "salesman/product_by_category_main_location";
 const String changeVisitStageUrl = "salesman/change_visit_stage";
 const String getAllClientsUrl = "salesman/get_customers_applied";
+const String getClientAddRequestUrl = "salesman/get_customers_status";

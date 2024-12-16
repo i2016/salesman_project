@@ -1,3 +1,5 @@
+import 'package:water/Visits/data/models/product_model.dart';
+
 class ReturnsProductEntity{
   int? id;
   String? name;
@@ -8,7 +10,8 @@ class ReturnsProductEntity{
   int? selectedCount;
   String? category;
   int? categoryId;
+  UomIds? unit;
   ReturnsProductEntity({this.id,this.name,this.description,this.price,
     this.image,this.selectedCount,this.total,
-  this.categoryId,this.category});
+  this.categoryId,this.category,this.unit});
 }

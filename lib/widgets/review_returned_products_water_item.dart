@@ -19,14 +19,12 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
               child: Row(
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Image.asset('assets/images/IMGggg.png')
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.015,
-                    ),
+
                      Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       returnsProductEntity.selectedCount.toString() ?? "1",
                       style: TextStyle(
@@ -36,29 +34,14 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
                       ),
                     ),
                      Expanded(
-                      flex: 6,
+                      flex: 9,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                          Row(
                            children: [
-                             Text(
-                               returnsProductEntity.category ?? "",
-                               style: TextStyle(
-                                   fontSize: 14,
-                                   fontWeight: FontWeight.w500
-                               ),
-                               maxLines: 3,
-                               overflow: TextOverflow.ellipsis,
-                             ),
-                             Text(
-                               '   .   ',
-                               style: TextStyle(
-                                   color: Color(0xff25292E),
-                                   fontSize: 18,
-                                   fontWeight: FontWeight.w900
-                               ),
-                             ),
+
+
                              Flexible(
                                child: Text(
                                  returnsProductEntity.name ?? '',
@@ -67,8 +50,7 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
                                      fontSize: 14,
                                      fontWeight: FontWeight.w500
                                  ),
-                                 maxLines: 3,
-                                 overflow: TextOverflow.ellipsis,
+                               maxLines: 4,
                                ),
                                fit: FlexFit.tight,
                              ),
@@ -80,14 +62,23 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
                             fontSize: 14,
                             fontWeight: FontWeight.w300
                           ),
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
                         ),
                       ],
                     ),
                     ),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      returnsProductEntity.unit?.name ?? '',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ),
                      Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       ' ${returnsProductEntity.price ?? 1}  ر.س',
                       style: TextStyle(

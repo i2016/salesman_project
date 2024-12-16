@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Clients/presentation/pages/client_add_requests_screen.dart';
 import 'package:water/widgets/button.dart';
 import 'package:water/widgets/navigate_basic_container.dart';
 import 'package:water/widgets/registered_customers_screen_container_item.dart';
@@ -99,7 +101,9 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                                   MediaQuery.of(context).size.height * 0.011,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                customAnimatedPushNavigation(context, ClientAddRequestsScreen());
+                              },
                               child: const Button(
                                 color: Colors.white,
                                 iconImage: 'assets/images/addWithoutBorder.png',

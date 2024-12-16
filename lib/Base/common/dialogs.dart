@@ -54,14 +54,16 @@ class Dialogs {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+           /*     const Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
                     'هل تم تحصيل اجمالي 50,000 ر.س؟',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
-                ),
-                Row(
+                ),*/
+                 Padding(
+                    padding: EdgeInsets.only(bottom: 16, top: 10),
+                    child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
@@ -136,7 +138,7 @@ class Dialogs {
                       ),
                     ),
                   ],
-                ),
+                )),
               ],
             ),
           ),

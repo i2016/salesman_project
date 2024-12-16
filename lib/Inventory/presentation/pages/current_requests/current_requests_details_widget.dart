@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
+import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/review_product_water_item.dart';
@@ -82,11 +84,44 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
             physics: const NeverScrollableScrollPhysics(),
             itemCount: filteredProducts.length,
             itemBuilder: (context, index) {
+              return Slidable(
+                enabled: widget.transferRequestsDetails!.transferStatus == "Pending" ?  true : false,
+                key: ValueKey(filteredProducts[index]),
+                endActionPane: ActionPane(
+                  motion: ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed:(context) {
+                        setState(() {
+                          filteredProducts.removeAt(index);
+                        });
+                      } ,
+                      label: 'حذف',
+                      icon: Icons.delete,
+                      backgroundColor: Colors.red,
+                    ),
+                  ],
+                ),
+                child: ReviewProductWaterItem(
+                  addedProductEntity: AddedProductEntity(
+                      id:  filteredProducts[index].productId,
+                      name:   filteredProducts[index].productName,
+                      selectedCount: int.parse(filteredProducts[index].quantity.toString().split('.')[0]),
+                      price: filteredProducts[index].productPrice,
+                      description: filteredProducts[index].productDescription,
+                      image: "",
+                      total: double.parse(filteredProducts[index].productPrice.toString())
+                          * int.parse(filteredProducts[index].quantity.toString().split('.')[0]),
+                      unit: UomIds(
+                          id: filteredProducts[index].uom_id,
+                          name: filteredProducts[index].uom_name
+                      )
+                  ),
+                ),
+              );
+
               return InkWell(
-                onTap: () {
-                  appBloc.add(AppDrawrEvent(drawerType: 'editProduct'));
-                  //      scaffoldKey!.currentState!.openEndDrawer();
-                },
+                onTap: () {},
                 child:  ReviewProductWaterItem(
                   addedProductEntity: AddedProductEntity(
                     id:  filteredProducts[index].productId,
@@ -95,7 +130,12 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                     price: filteredProducts[index].productPrice,
                     description: filteredProducts[index].productDescription,
                     image: "",
-                    total: double.parse(filteredProducts[index].productPrice.toString()) * int.parse(filteredProducts[index].quantity.toString().split('.')[0])
+                    total: double.parse(filteredProducts[index].productPrice.toString())
+                        * int.parse(filteredProducts[index].quantity.toString().split('.')[0]),
+                    unit: UomIds(
+                      id: filteredProducts[index].uom_id,
+                      name: filteredProducts[index].uom_name
+                    )
                   ),
                 ),
               );

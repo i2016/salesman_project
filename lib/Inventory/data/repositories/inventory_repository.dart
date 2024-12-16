@@ -27,8 +27,9 @@ class InventoryRepository{
     // Create items list for the request body
     List<Map<String, dynamic>> items = Shared.order_products_list.map((product) {
       return {
-        "product_id": /*481,*/ product.id,
-        "quantity": /*1,*/ int.parse(product.selectedCount.toString()),
+        "product_id":  product.id,
+        "quantity": int.parse(product.selectedCount.toString()),
+        "uom_id" : product.unit!.id
       };
     }).toList();
 
@@ -113,7 +114,7 @@ class InventoryRepository{
       }),);
   }
 
-  Future<ProductModel?> getInventoryProducts() async {
+  Future<ProductModel?> getInventoryProducts({required String category_id}) async {
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
       'Content-Type': 'application/json',
@@ -127,9 +128,7 @@ class InventoryRepository{
       headers: headers ,
       body: jsonEncode( {
         "params":{
-          "category_id": await sharedPreferenceManager.readString(CachingKey.Category_ID).then((value){
-            return value == "null" ? "1" : value;
-          }) ,
+          "category_id": category_id,
           "salesman_id":  await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         }
       }),);

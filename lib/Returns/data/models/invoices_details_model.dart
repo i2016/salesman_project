@@ -94,10 +94,14 @@ class Item {
   String? category;
   int? categoryId;
   double? price;
+  String? uom_name;
+  int? uom_id;
   Item({this.productId, this.productName, this.quantity, this.image, this.category,
     this.categoryId,
     this.price,
-    this.description
+    this.description,
+    this.uom_name,
+    this.uom_id
   });
 
   Item.fromJson(Map<String, dynamic> json) {
@@ -109,6 +113,8 @@ class Item {
     categoryId = json['category_id'];
     price = json['price'];
     description = json['description'];
+    uom_name = json['uom_name'];
+    uom_id = json['uom_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -121,7 +127,8 @@ class Item {
     data['category_id'] = this.categoryId;
     data['price'] = this.price;
     data['description'] = this.description;
-
+    data['uom_name'] = this.uom_name;
+    data['uom_id'] = this.uom_id;
     return data;
   }
 }

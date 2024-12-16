@@ -14,8 +14,8 @@ class ReviewProductWaterItem extends StatelessWidget{
         child: Container(
           width: double.infinity,
                 height: MediaQuery.of(context).orientation == Orientation.portrait ?
-            MediaQuery.of(context).size.height * 0.045
-            : MediaQuery.of(context).size.height * 0.065,
+            MediaQuery.of(context).size.height * 0.065
+            : MediaQuery.of(context).size.height * 0.085,
                 decoration: BoxDecoration(
                 color: Colors.white,
                   borderRadius: BorderRadius.circular(8)
@@ -23,7 +23,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: addedProductEntity == null ?
                       Image.asset('assets/images/IMGggg.png')
                           :  CachedNetworkImage(
@@ -37,22 +37,21 @@ class ReviewProductWaterItem extends StatelessWidget{
                         },
                       ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.015,
+                       Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Text(
+                          addedProductEntity == null ?  '33'
+                          : addedProductEntity!.selectedCount!.toString(),
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500
+                          ),
+                          ),
+                      ),
                       ),
                        Expanded(
-                      flex: 1,
-                      child: Text(
-                        addedProductEntity == null ?  '33'
-                        : addedProductEntity!.selectedCount!.toString(),
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500
-                        ),
-                        ),
-                      ),
-                       Expanded(
-                        flex: 7,
+                        flex: 9,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
@@ -61,7 +60,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                                 Text(
                                   addedProductEntity == null ?  'مياه'
                                       : addedProductEntity!.name!,
-                                  overflow: TextOverflow.ellipsis,
+                                 maxLines: 4,
                                   style: TextStyle(
                                       color: Color(0xff25292E),
                                       fontSize: 14,
@@ -74,15 +73,36 @@ class ReviewProductWaterItem extends StatelessWidget{
 
                                   style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w300
+                                      fontWeight: FontWeight.w300,
+                                    overflow: TextOverflow.ellipsis
                                   ),
                                 ),
+                            /*    Text(
+                                  addedProductEntity == null ?
+                                      "كرتونة"
+                                      : addedProductEntity!.unit!.name!,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300
+                                  ),
+                                ),*/
                               ],
                             ),
                         ),
 
 
                       ),
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        addedProductEntity == null ?  '--'
+                            : " ${addedProductEntity!.unit!.name}  ",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500
+                        ),
+                      ),
+                    ),
                        Expanded(
                       flex: 2,
                       child: Text(

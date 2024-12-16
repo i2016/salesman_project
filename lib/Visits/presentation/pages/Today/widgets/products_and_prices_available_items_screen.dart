@@ -7,28 +7,24 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.245,
-     /*       height: MediaQuery.of(context).orientation == Orientation.portrait ?
+    return  Container(
+      width: MediaQuery.of(context).size.width * 0.245,
+      /*       height: MediaQuery.of(context).orientation == Orientation.portrait ?
             MediaQuery.of(context).size.height * 0.18
             : MediaQuery.of(context).size.height * 0.28,*/
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(8)),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: Colors.grey,
+            width: 0.5,
+          ),
+          borderRadius: BorderRadius.circular(8)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /*   const Text(
                     'امر بيع',
                     style: TextStyle(
                       fontSize: 16,
@@ -158,57 +154,54 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
                   ),
                  SizedBox(
                     height: MediaQuery.of(context).size.height * 0.009,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      if(Shared.order_products_list.length !=0)
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ReviewProductScreen()));
-                    },
-                    child: Opacity(
-                      opacity: 0.6,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.23,
-                        height: MediaQuery.of(context).orientation == Orientation.portrait ?
-                        MediaQuery.of(context).size.height * 0.041
-                        :  MediaQuery.of(context).size.height * 0.065,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Color(0xff1D7AFC),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(4)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 18),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset('assets/images/CheckCircle.png',
-                                  color: Color(0xff1D7AFC)
-                                  ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.006,
-                              ),
-                              const Text(
-                                'مراجعة المنتجات',
-                                style: TextStyle(
-                                  color: Color(0xff1D7AFC),
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                  ),*/
+            InkWell(
+              onTap: () {
+                if(Shared.order_products_list.length !=0)
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ReviewProductScreen()));
+              },
+              child: Opacity(
+                opacity: 0.6,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.23,
+                  height: MediaQuery.of(context).orientation == Orientation.portrait ?
+                  MediaQuery.of(context).size.height * 0.041
+                      :  MediaQuery.of(context).size.height * 0.065,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Color(0xff1D7AFC),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/images/CheckCircle.png',
+                            color: Color(0xff1D7AFC)
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.006,
+                        ),
+                        const Text(
+                          'مراجعة المنتجات',
+                          style: TextStyle(
+                            color: Color(0xff1D7AFC),
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
     }
@@ -225,7 +218,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
               opacity: 0.78,
               child: Text(
                 ' ${element.selectedCount} * ${element.name} ',
-                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
                 style: TextStyle(
                   color: Color(0xff758195),
                   fontWeight: FontWeight.w300,

@@ -6,6 +6,8 @@ import 'package:water/Base/common/toast.dart';
 import 'package:water/Base/convert_arabic_numbers_to_english_extension.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
+import 'package:water/widgets/custom_dropdown.dart';
+import 'package:water/widgets/custom_unit_dropdown.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
 
 class OrderAddProductWidget extends StatefulWidget {
@@ -19,7 +21,7 @@ class OrderAddProductWidget extends StatefulWidget {
 
 class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
   TextEditingController controller = new TextEditingController();
-
+  UomIds? selectedUnit;
   @override
   void initState() {
     controller.text = "1";
@@ -29,12 +31,12 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
-      height: MediaQuery.of(context).size.width * 0.6,
+      height: MediaQuery.of(context).size.width * 0.7,
 
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 50),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,8 +65,8 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.6,
                   height: MediaQuery.of(context).orientation == Orientation.portrait ?
-                  MediaQuery.of(context).size.height * 0.08
-                      : MediaQuery.of(context).size.height * 0.13,
+                  MediaQuery.of(context).size.height * 0.1
+                      : MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(
@@ -102,7 +104,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           children: [
                              Text(
                               widget.product!.name!,
-                              overflow: TextOverflow.ellipsis,
+                            maxLines: 4,
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500
@@ -110,7 +112,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             ),
                              Text(
                              widget.product!.description!,
-                               overflow: TextOverflow.ellipsis,
+                             maxLines: 4,
 
                                style: TextStyle(
                                   fontSize: 14,
@@ -137,106 +139,145 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.012,
                 ),
-                Row(
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'العدد',
+                    Text(
+                      'الوحدات',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
+
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Image.asset(
-                        'assets/images/marketImage.png',
-                        height: MediaQuery.of(context).size.height * 0.011,
-                        color: Colors.black,
+                      padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
+                      child: CustomUnitsDropdown(
+                        title:    'الوحدة',
+                        units: widget.product?.uomIds,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        height: MediaQuery.of(context).orientation == Orientation.portrait
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.065,
+                        onUnitSelected: (unit){
+                          print("selectedUnitId : ${unit.id}");
+                         setState(() {
+                           selectedUnit = unit;
+                         });
+                        },
                       ),
-                    ),
-                     Text(
-                      'متاح  ${widget.product!.count!}  قطعة',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
-                  child: Row(
+
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            if(controller.text.normalizeNumber() != 0)
-                              controller.text= ((int.parse(controller.text.normalizeNumber()) ?? 0) - 1).toString();
-                          });
-                        },
-                        child: const ImageIcon(
-                          color: Colors.red,
-                          AssetImage(
-                            'assets/images/minusCircle.png',
+                      Row(
+                        children: [
+                          const Text(
+                            'العدد',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.013,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.13,
-                        height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? MediaQuery.of(context).size.height * 0.036
-                            : MediaQuery.of(context).size.height * 0.064,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 0.5,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Image.asset(
+                              'assets/images/marketImage.png',
+                              height: MediaQuery.of(context).size.height * 0.011,
+                              color: Colors.black,
                             ),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: TextField(
-                          controller: controller,
-                          cursorColor: Color.fromARGB(255, 66, 64, 64),
-                          textAlign: TextAlign.center, // Horizontal alignment
-                          textAlignVertical: TextAlignVertical.center, // Vertical alignment
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.zero,
-                            border: InputBorder.none,
-                            hintText: 'ادخل الكمية',
-                            hintStyle: TextStyle(
-                              color: Color(0xff758195),
+                          ),
+                          Text(
+                            'متاح  ${widget.product!.count!}  قطعة',
+                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  if(int.parse(controller.text.normalizeNumber()) > 0)
+                                    controller.text= ((int.parse(controller.text.normalizeNumber()) ?? 0) - 1).toString();
+                                });
+                              },
+                              child: const ImageIcon(
+                                color: Colors.red,
+                                AssetImage(
+                                  'assets/images/minusCircle.png',
+                                ),
+                              ),
                             ),
-                          ),)
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.013,
+                            ),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.13,
+                                height: MediaQuery.of(context).orientation ==
+                                    Orientation.portrait
+                                    ? MediaQuery.of(context).size.height * 0.036
+                                    : MediaQuery.of(context).size.height * 0.064,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: Colors.grey,
+                                      width: 0.5,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: TextField(
+                                  controller: controller,
+                                  cursorColor: Color.fromARGB(255, 66, 64, 64),
+                                  textAlign: TextAlign.center, // Horizontal alignment
+                                  textAlignVertical: TextAlignVertical.center, // Vertical alignment
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.zero,
+                                    border: InputBorder.none,
+                                    hintText: 'ادخل الكمية',
+                                    hintStyle: TextStyle(
+                                      color: Color(0xff758195),
+                                    ),
+                                  ),)
 
 
 
-                     /*   Center(
+                              /*   Center(
                           child: Text("${selectedProductCount}"),
                         ),*/
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.013,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            final productCount = int.tryParse(widget.product!.count!) != null
-                                ? int.parse(widget.product!.count!)
-                                : double.parse(widget.product!.count!).toInt();
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.013,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  final productCount = int.tryParse(widget.product!.count!) != null
+                                      ? int.parse(widget.product!.count!)
+                                      : double.parse(widget.product!.count!).toInt();
 
-                            if (int.parse(controller.text.normalizeNumber() )< productCount) {
-                              controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
-                            }else if(controller.text.normalizeNumber() == 0){
-                              controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
-                            }
-                          });
-                        },
-                        child: const ImageIcon(
-                            color: Colors.blue,
-                            AssetImage('assets/images/AddCircle.png')),
+                                  if (int.parse(controller.text.normalizeNumber() )< productCount) {
+                                    controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
+                                  }else if(controller.text.normalizeNumber() == 0){
+                                    controller.text= ((int.parse(controller.text.normalizeNumber() ) ?? 0) + 1).toString();
+                                  }
+                                });
+                              },
+                              child: const ImageIcon(
+                                  color: Colors.blue,
+                                  AssetImage('assets/images/AddCircle.png')),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
+
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -285,10 +326,12 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                       ],
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print("int.parse(controller.text.normalizeNumber()) : ${int.parse(controller.text.normalizeNumber().normalizeNumber())}");
+                      onTap:  () {
                         if( Shared.order_products_list.where((element) => element.id ==
-                            widget.product!.id).toList(growable: true).length == 0 && int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0){
+                            widget.product!.id)
+                            .toList(growable: true).length == 0
+                            && int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0
+                            && selectedUnit != null ){
                           Shared.order_products_list.add(AddedProductEntity(
                             id: widget.product!.id,
                             name: widget.product!.name,
@@ -297,6 +340,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             price: widget.product!.price,
                             selectedCount: int.parse(controller.text.normalizeNumber().normalizeNumber()),
                             total: int.parse(controller.text.normalizeNumber()) * widget.product!.price!,
+                            unit: selectedUnit!
                           ));
                           ToastWidget.showToast(message: "تم اضافة المنتج بنجاح");
                           Navigator.pop(context);
@@ -313,7 +357,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             ? MediaQuery.of(context).size.height * 0.039
                             : MediaQuery.of(context).size.height * 0.066,
                         decoration: BoxDecoration(
-                            color:  int.parse(    controller.text.normalizeNumber()) != 0 ? const Color(0xff1D7AFC) : kGreyColor,
+                            color:  int.parse(    controller.text.normalizeNumber()) != 0 && selectedUnit != null  ? const Color(0xff1D7AFC) : kGreyColor,
                             borderRadius: BorderRadius.circular(5)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

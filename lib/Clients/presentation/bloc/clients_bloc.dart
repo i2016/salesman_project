@@ -11,6 +11,7 @@ class ClientsBloc extends Bloc<AppEvent,AppState> with Validator {
 
   ClientsBloc() :super(Start()) {
     on<GetAllClientsEvent>(_onGetAllClients);
+    on<GetClientAddRequestsEvent>(_onGetClientAddRequests);
   }
 
   Future<void> _onGetAllClients(GetAllClientsEvent event,
@@ -29,6 +30,21 @@ class ClientsBloc extends Bloc<AppEvent,AppState> with Validator {
 
   }
 
+  Future<void> _onGetClientAddRequests(GetClientAddRequestsEvent event,
+      Emitter<AppState> emit) async {
+    emit(Loading());
+    var response = await clientsRepository.getClientAddRequest();
+    try{
+      if (response!.result!.statusCode! == 200 ) {
+        emit(GetClientAddRequestsDone(model: response));
+      } else {
+        emit(GetClientAddRequestsErrorLoading(message: response.result?.message));
+      }
+    }catch(e){
+      emit(GetClientAddRequestsErrorLoading(message: e.toString()));
+    }
+
+  }
 }
 
 ClientsBloc clientsBloc = new ClientsBloc();

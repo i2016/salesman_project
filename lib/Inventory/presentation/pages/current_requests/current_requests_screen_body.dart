@@ -74,13 +74,13 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return  CurrentRequestGridViewItem(
                                         transferId: state.transferRequests![index].transferId!,
-                                        saleName: 'اجمالي  ${state.transferRequests![index].itemsPrice!.toStringAsFixed(2).toString()}  ر.س',
-                                        pill: 'طلب رقم ${state.transferRequests![index].transferName}',
-                                        date: '${state.transferRequests![index].transferDate}}طلب بتاريخ  ',
+                                        saleName: 'اجمالي    ${state.transferRequests![index].itemsPrice!.toStringAsFixed(2).toString()}  ر.س',
+                                        pill: '  طلب رقم    ${state.transferRequests![index].transferName}',
+                                        date: '  طلب بتاريخ      ${state.transferRequests![index].transferDate}',
                                         icon: 'assets/images/period.png',
                                         color: Color(0xff0056C9),
                                         textIcon: '${state.transferRequests![index].transferStatus}',
-                                        productNumber: '${state.transferRequests![index].items.toString().split('.')[0]} منتج',
+                                        productNumber: '${state.transferRequests![index].items.toString().split('.')[0]}    منتجات   ',
                                       );
 
                                     })

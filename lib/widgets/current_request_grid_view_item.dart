@@ -93,7 +93,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           children: [
                             Image.asset('assets/images/VectorSvsds.png'),
@@ -109,7 +109,7 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           children: [
                             Image.asset('assets/images/VectorPkoik.png'),
@@ -125,16 +125,16 @@ class CurrentRequestGridViewItem extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           children: [
                             Image.asset(
                               'assets/images/marketImage.png',
-                              height: MediaQuery.of(context).size.height * 0.024,
+                            //  height: MediaQuery.of(context).size.height * 0.024,
                             color: Colors.black,
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.008,
+                              width: MediaQuery.of(context).size.width * 0.016,
                             ),
                             Text(
                               productNumber,

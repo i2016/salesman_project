@@ -23,54 +23,40 @@ class AvailableProductsScreenDetails extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           drawer: const DrawerAvailableProductsScreen(),
-          body: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: BlocBuilder<ProductsBloc, AppState>(
-                    bloc: productsBloc,
-                    builder: (context, state) {
-                      if (state is Loading) {
-                        return const LoadingPlaceHolder(
-                          shimmerType: ShimmerType.list,
-                          cellShimmerHeight: 50,
-                          shimmerCount: 10,
-                        );
-                      }
-                      else if (state is GetProductsDone) {
-                        if(state.products != null && state.products!.isNotEmpty){
-                        return ListCategoryProducts(
-                          categoryData: categoryData,
-                          products: state.products,
-                        );
-                        }
-                        else{
-                          return Center(
-                            child: Text("لا توجد منتجات حاليا",
-                            style: TextStyle(color: kBlackColor),),
-                          );
-                        }
+          body: BlocBuilder<ProductsBloc, AppState>(
+            bloc: productsBloc,
+            builder: (context, state) {
+              if (state is Loading) {
+                return const LoadingPlaceHolder(
+                  shimmerType: ShimmerType.list,
+                  cellShimmerHeight: 50,
+                  shimmerCount: 10,
+                );
+              }
+              else if (state is GetProductsDone) {
+                if(state.products != null && state.products!.isNotEmpty){
+                  return ListCategoryProducts(
+                    categoryData: categoryData,
+                    products: state.products,
+                  );
+                }
+                else{
+                  return Center(
+                    child: Text("لا توجد منتجات حاليا",
+                      style: TextStyle(color: kBlackColor),),
+                  );
+                }
 
-                      } else if (state is GetProductsErrorLoading) {
-                        return Center(
-                          child: Text("${state.message}"),
-                        );
-                      } else {
-                        return Container();
-                      }
+              } else if (state is GetProductsErrorLoading) {
+                return Center(
+                  child: Text("${state.message}"),
+                );
+              } else {
+                return Container();
+              }
 
-                    },
-                  )
-
-
-
-
-                ),
-               // const ProductsAndPricesAvailableProductsScreen()
-                ProductsAndPricesAvailableItemsScreen()
-              ],
-            ),
+            },
+          )
           ),
         );
   }

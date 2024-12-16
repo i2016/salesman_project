@@ -31,7 +31,7 @@ class InventorySecondAddRequestScreenBody extends StatelessWidget {
             ),
 
 
-            const ProductsAndPricesInventoryAddRequestScreen()
+             ProductsAndPricesInventoryAddRequestScreen()
           ],
         ),
       ),

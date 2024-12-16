@@ -26,7 +26,7 @@ class InventorySecondAddRequestScreen extends StatefulWidget{
 class _InventorySecondAddRequestScreenState extends State<InventorySecondAddRequestScreen> {
   @override
   void initState() {
-    mainInventoryBloc.add(GetMainInventoryProductsvent());
+    mainInventoryBloc.add(GetMainInventoryProductsUnderSpecficCategoryEvent());
     super.initState();
   }
 

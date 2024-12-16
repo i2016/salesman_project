@@ -201,12 +201,13 @@ final bool container;
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount:visitDetails == null ? 8 :  visitDetails!.images!.length ,
+                  itemCount:visitDetails == null ? 1 :  visitDetails!.images!.length ,
                   itemBuilder: (context, index) {
+                    print("visitDetails : ${visitDetails}");
                     return  Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: FilesListViewItem(
-                        image: visitDetails!.images![index],
+                        image: visitDetails == null ?  '' : visitDetails!.images![index],
                       ),
                     );
                   }),

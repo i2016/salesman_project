@@ -13,7 +13,7 @@ class InventoryTransferRequestBloc extends Bloc<AppEvent,AppState> with Validato
     on<SalesRemainingLimitEvent> (_onSalesRemainingLimit);
     on<GetTransferRequestsHistoryEvent>(_onGetTransferRequestsHistory);
     on<GetTransferRequestsDetailsEvent> (_onGetTransferRequestsDetails);
-    on<GetMainInventoryProductsvent> (_onGetMainInventoryProducts);
+   // on<GetMainInventoryProductsvent> (_onGetMainInventoryProducts);
   }
 
   Future<void> _onTransferRequest(InventoryTransferRequestEvent event,
@@ -83,7 +83,7 @@ class InventoryTransferRequestBloc extends Bloc<AppEvent,AppState> with Validato
 
   }
 
-  Future<void> _onGetMainInventoryProducts(GetMainInventoryProductsvent event,
+  /*Future<void> _onGetMainInventoryProducts(GetMainInventoryProductsvent event,
       Emitter<AppState> emit) async {
     emit(Loading());
     var response = await inventoryRepository.getInventoryProducts();
@@ -98,7 +98,7 @@ class InventoryTransferRequestBloc extends Bloc<AppEvent,AppState> with Validato
       emit(GetMainInventoryProductsErrorLoading(message: e.toString()));
     }
 
-  }
+  }*/
 
 }
 

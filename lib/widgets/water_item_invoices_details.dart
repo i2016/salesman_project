@@ -12,8 +12,8 @@ final Item? item;
       child: Container(
         width: double.infinity,
               height: MediaQuery.of(context).orientation == Orientation.portrait ?
-           MediaQuery.of(context).size.height * 0.049
-           : MediaQuery.of(context).size.height * 0.066,
+           MediaQuery.of(context).size.height * 0.060
+           : MediaQuery.of(context).size.height * 0.075,
               decoration: BoxDecoration(
               color: Colors.white,
                 borderRadius: BorderRadius.circular(8)
@@ -21,16 +21,16 @@ final Item? item;
               child: Row(
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Image.asset('assets/images/IMGggg.png')
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.015,
                     ),
                      Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
-                      item!.quantity!.toString(),
+                    double.parse( item!.quantity!.toString()).toInt().toString(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500
@@ -38,43 +38,23 @@ final Item? item;
                       ),
                     ),
                      Expanded(
-                      flex: 3,
+                      flex: 5,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
-                          children: [
-                            Text(
-                              'الكاتجوري',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
-                              ),
-                            ),
-                            Text(
-                              '   .   ',
-                              style: TextStyle(
-                                color: Color(0xff25292E),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w900
-                              ),
-                            ),
-                              Text(
-                              'مياه',
-                              style: TextStyle(
-                                color: Color(0xff25292E),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
-                              ),
-                            ),
-                          ],
+                        Text(
+                          item?.category ?? '',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500
+                          ),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.005,
                         ),
                          Text(
                           item!.productName!,
-                          overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w300
@@ -84,15 +64,25 @@ final Item? item;
                     ),
                     ),
                      Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
-                      '${item!.price!.toString()}  ر.س ',
+                      '${item!.uom_name!.toString()} ',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500
                       ),
                       ),
                     ),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      '${item!.price!.toString()}  ر.س ',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ),
                 ],
               ),
       ),

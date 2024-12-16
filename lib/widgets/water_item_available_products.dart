@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
 import 'package:water/widgets/order_add_product_widget.dart';
 
 class WaterItemAvailableProducts extends StatelessWidget {
   final Product? product;
-   WaterItemAvailableProducts({super.key,this.product});
+  CategoryData? categoryData;
+   WaterItemAvailableProducts({super.key,this.product,this.categoryData});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class WaterItemAvailableProducts extends StatelessWidget {
         child: Container(
               width: double.infinity,
               height: MediaQuery.of(context).orientation == Orientation.portrait ?
-              MediaQuery.of(context).size.height * 0.08
-              : MediaQuery.of(context).size.height * 0.12,
+              MediaQuery.of(context).size.height * 0.1
+              : MediaQuery.of(context).size.height * 0.14,
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
@@ -62,22 +64,23 @@ class WaterItemAvailableProducts extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: 5),
                                   child: Row(
                                     children: [
-                                      Image.asset(
-                                        'assets/images/InfoooCircle.png',
-                                        width:
-                                            MediaQuery.of(context).size.width * 0.016,
+                                      Expanded(
+                                        flex:1,
+                                        child: Image.asset(
+                                          'assets/images/InfoooCircle.png',
+                                          width:
+                                              MediaQuery.of(context).size.width * 0.016,
+                                        ),
                                       ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width * 0.002,
-                                      ),
-                                      const Text(
-                                       'الكاتيجوري',
+                                      Expanded(
+                                          flex:7,
+                                          child: Text(
+                                      categoryData!.name ?? 'الكاتيجوري',
                                         style: TextStyle(
                                             color: Color(0xff111111),
                                             fontSize: 14,
                                             fontWeight: FontWeight.w300),
-                                      ),
+                                       ) ),
                                     ],
                                   ),
                                 ),
@@ -112,13 +115,13 @@ class WaterItemAvailableProducts extends StatelessWidget {
                         product != null ?  product!.name! :   'مياه',
                             style:
                                 TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                             overflow: TextOverflow.ellipsis,
+                           maxLines: 4,
                           ),
                            Text(
                              product != null ?  product!.description! :  'مياه مدينة شرنك 15 حبة  600 مل',
                             style:
                                 TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                             overflow: TextOverflow.ellipsis,
+                           maxLines: 4,
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.017,
@@ -130,15 +133,15 @@ class WaterItemAvailableProducts extends StatelessWidget {
                                 product != null ?  "${product!.price}  ر.س " :  '42 ر.س',
                                 style:
                                     TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                                 overflow: TextOverflow.ellipsis,
+                               maxLines: 4,
                                                          ),
 
-                             /*  Text(
-                                 "${product!.id}  ",
+                              Text(
+                                product != null ? product!.mainUomName ?? '' : "كرتونة",
                                  style:
                                  TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                                 overflow: TextOverflow.ellipsis,
-                               ),*/
+                               maxLines: 4,
+                               ),
                              ],
                            ),
                         ],

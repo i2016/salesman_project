@@ -36,7 +36,7 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    flex: 3,
+                    flex: 5,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,8 +51,6 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
                             itemBuilder: (context , index){
                               return InkWell(
                                 onTap: (){
-                                //  Dialogs.showDialogReturnProduct(context);
-
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -74,7 +72,7 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
                       ],
                     ),
                   ),
-                  const ProductsAndPricesInvoicesDetailsScreen()
+
                 ],
               );
             }else if(state is GetReturnsInvoiceErrorLoading){

@@ -293,6 +293,10 @@ class InventoryProductsListWidgetState extends State<InventoryProductsListWidget
                     price: filteredProducts[index].price,
                     selectedCount: double.parse(filteredProducts[index].count.toString()).toInt(),
                     total: filteredProducts[index].price,
+                    unit: UomIds(
+                      name: filteredProducts[index].mainUomName,
+                      id: filteredProducts[index].mainUomId,
+                    )
                   )
 
                   ,

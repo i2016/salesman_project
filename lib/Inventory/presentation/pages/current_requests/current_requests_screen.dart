@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Inventory/presentation/bloc/inventory_transfer_request_bloc.dart';
 import 'package:water/Inventory/presentation/pages/current_requests/current_requests_screen_body.dart';
+import 'package:water/Inventory/presentation/pages/transfer_request/inventory_add_request_screen.dart';
 
 class CurrentRequestsScreen extends StatefulWidget{
   const CurrentRequestsScreen({super.key});
@@ -27,7 +29,10 @@ class _CurrentRequestsScreenState extends State<CurrentRequestsScreen> {
           AppButtonWidget(
             asset: 'assets/images/VectorAdddd.png',
             text: 'طلب تحويل',
-            onClick: () {},
+            onClick: () {
+              customAnimatedPushNavigation(context, InventoryAddRequestScreen());
+
+            },
           ),
         ]
     );

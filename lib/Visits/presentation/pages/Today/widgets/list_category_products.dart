@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
+import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_items_screen.dart';
 import 'package:water/widgets/water_item_available_products.dart';
 
 class ListCategoryProducts extends StatefulWidget{
   List<Product>? products;
   CategoryData? categoryData;
-  ListCategoryProducts({this.categoryData,this.products});
+  bool? isInventory;
+  ListCategoryProducts({this.categoryData,this.products,this.isInventory = false});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -45,21 +47,29 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Icon(Icons.arrow_back),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.019,
+                        ),
+                        const Text(
+                          'المنتجات المتاحة',
+                          style: TextStyle(
+                              fontSize: 23, fontWeight: FontWeight.w500),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.019,
-                    ),
-                    const Text(
-                      'المنتجات المتاحة',
-                      style: TextStyle(
-                          fontSize: 23, fontWeight: FontWeight.w500),
-                    ),
+                    Spacer(),
+                    widget.isInventory! ? Container() : ProductsAndPricesAvailableItemsScreen()
                   ],
                 ),
                 SizedBox(
@@ -158,26 +168,34 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
               ],
             )
                 : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Icon(Icons.arrow_back),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.012,
+                        ),
+                        const Text(
+                          'المنتجات المتاحة',
+                          style: TextStyle(
+                              fontSize: 23, fontWeight: FontWeight.w500),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.012,
-                    ),
-                    const Text(
-                      'المنتجات المتاحة',
-                      style: TextStyle(
-                          fontSize: 23, fontWeight: FontWeight.w500),
-                    ),
+                    Spacer(),
+                    ProductsAndPricesAvailableItemsScreen()
                   ],
                 ),
+
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.019,
                 ),
@@ -287,6 +305,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
               itemBuilder: (context, index) {
                 return  WaterItemAvailableProducts(
                   product: filteredProducts[index],
+                 categoryData: widget.categoryData,
                 );
               }),
         ),

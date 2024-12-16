@@ -69,7 +69,8 @@ final Visit? visit ;
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 4,
+
                                 ),
                               ),
                             ],

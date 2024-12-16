@@ -40,7 +40,7 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
               else if (state is SalesRemainingLimitDone) {
                 if(state.salesRemainingLimitModel!.result!.data != null){
                   Shared.remainingLimit = state.salesRemainingLimitModel!.result!.data!.remainingLimit!;
-                  return     Column(
+                  return  Column(
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(

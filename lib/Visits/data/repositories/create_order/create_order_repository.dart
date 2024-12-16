@@ -25,6 +25,7 @@ class CreateOrderRepository{
         "product_id":  product.id,
         "quantity":  int.parse(product.selectedCount.toString()),
         "price":  double.parse(product.price.toString()),
+        "uom_id" : product.unit!.id
       };
     }).toList();
 

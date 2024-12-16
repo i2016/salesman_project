@@ -1,4 +1,5 @@
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
+import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_invoices_details_screen.dart';
 
 import './water_item_previous_invoices.dart';
 import 'package:flutter/material.dart';
@@ -12,23 +13,31 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InkWell(
-              onTap: (){
-                Navigator.of(context).pop();
-              },
-              child: const Icon(Icons.arrow_back),
+            Row(
+              children: [
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(Icons.arrow_back),
+                  ),
+                SizedBox(
+                width: MediaQuery.of(context).size.width * 0.019,
               ),
-            SizedBox(
-            width: MediaQuery.of(context).size.width * 0.019,
-          ),
-             Text(
-              'الفاتورة رقم ${invoice?.invoiceNumber}',
-              style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w500
-              ),
+                 Text(
+                  'الفاتورة رقم ${invoice?.invoiceNumber}',
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.w500
+                  ),
+                ),
+              ],
             ),
+            Spacer(),
+            const ProductsAndPricesInvoicesDetailsScreen()
           ],
         ),
         SizedBox(
@@ -78,7 +87,8 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
             ),
           )
         ),
-        Padding(
+    SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+    /*    Padding(
           padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.02),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +141,7 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
                ),
             ],
           ),
-        ),
+        ),*/
       ],
     );
   }

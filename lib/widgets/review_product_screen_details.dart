@@ -98,7 +98,8 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.019,
                         ),
-                        Shared.order_products_list.isEmpty ? Container() :   Container(
+                        Shared.order_products_list.isEmpty ? Container()
+                            :   Container(
                             width: double.infinity,
                             height: MediaQuery.of(context).orientation == Orientation.portrait ?
                             MediaQuery.of(context).size.height * 0.03

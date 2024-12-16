@@ -123,7 +123,7 @@ class TraderFileContainer extends StatelessWidget {
                           ),
                           Text(
                             traderName,
-                            overflow: TextOverflow.ellipsis,
+                          maxLines: 4,
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,

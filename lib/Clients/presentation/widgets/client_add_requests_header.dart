@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ImageNumberProductPriceContainerReviewReturnedProducts
-    extends StatelessWidget {
-  const ImageNumberProductPriceContainerReviewReturnedProducts({super.key});
+class ClientAddRequestsHeader extends StatelessWidget {
+  const ClientAddRequestsHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +11,7 @@ class ImageNumberProductPriceContainerReviewReturnedProducts
           width: double.infinity,
           height: MediaQuery.of(context).orientation == Orientation.portrait ?
           MediaQuery.of(context).size.height * 0.033
-          : MediaQuery.of(context).size.height * 0.052,
+              : MediaQuery.of(context).size.height * 0.052,
           decoration: const BoxDecoration(
               color: Color(0xffDCDFE3),
               borderRadius: BorderRadius.only(
@@ -26,38 +25,25 @@ class ImageNumberProductPriceContainerReviewReturnedProducts
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'الصورة',
+                    'التاريخ',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Text(
+                    'اسم المتجر',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'العدد',
+                    'الحالة',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
-                Expanded(
-                  flex: 9,
-                  child: Text(
-                    'المنتج',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'الوحدة',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'السعر',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                  ),
-                ),
+
               ],
             ),
           ),

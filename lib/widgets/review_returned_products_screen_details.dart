@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/App/presentation/widgets/Drawer/good_returns_edit_product_drawer.dart';
@@ -142,14 +143,28 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: filteredProducts.length,
                         itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: (){
-
-                            },
+                         return Slidable(
+                            key: ValueKey(filteredProducts[index]),
+                            endActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  onPressed: (context) {
+                                    setState(() {
+                                      filteredProducts.removeAt(index);
+                                    });
+                                  },
+                                  label: 'حذف',
+                                  icon: Icons.delete,
+                                  backgroundColor: Colors.red,
+                                ),
+                              ],
+                            ),
                             child:  ReviewReturnedProductsWaterItem(
                               returnsProductEntity: filteredProducts[index],
-                            ),
+                            )
                           );
+
                         }),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.006,

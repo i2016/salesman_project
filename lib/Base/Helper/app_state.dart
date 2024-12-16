@@ -178,6 +178,16 @@ class GetAllClientsErrorLoading extends AppState{
   GetAllClientsErrorLoading({this.message});
 }
 
+//ADDED CLIENTS REQUEST
+class GetClientAddRequestsDone extends AppState{
+  final  Mappable? model;
+  GetClientAddRequestsDone({this.model});
+}
+
+class GetClientAddRequestsErrorLoading extends AppState{
+  final String? message;
+  GetClientAddRequestsErrorLoading({this.message});
+}
 
 
 //Returns
@@ -295,6 +305,19 @@ class GetMainInventoryProductsErrorLoading extends AppState{
   GetMainInventoryProductsErrorLoading({this.message});
 }
 
+// MAIN INVENTORY PRODUCTS UNDER CATEGORY
+class GetMainInventoryProductsUnderCategoryLoading extends AppState{
+  GetMainInventoryProductsUnderCategoryLoading();
+}
+class GetMainInventoryProductsUnderCategoryDone extends AppState{
+  List<Product>? products;
+  GetMainInventoryProductsUnderCategoryDone({this.products});
+}
+
+class GetMainInventoryProductsUnderCategoryErrorLoading extends AppState{
+  final String? message;
+  GetMainInventoryProductsUnderCategoryErrorLoading({this.message});
+}
 
 /*
 //ZEBRA RECEIPT

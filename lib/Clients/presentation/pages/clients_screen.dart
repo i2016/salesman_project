@@ -10,6 +10,7 @@ import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/data/models/clients_model.dart';
 import 'package:water/Clients/presentation/bloc/clients_bloc.dart';
 import 'package:water/Clients/presentation/pages/add_merchant_information_screen.dart';
+import 'package:water/Clients/presentation/pages/client_add_requests_screen.dart';
 import 'package:water/Clients/presentation/widgets/registered_customers_screen_container_item.dart';
 
 import '../../../App/presentation/pages/app_screen.dart';
@@ -32,6 +33,7 @@ class ClientsScreen extends StatelessWidget {
           asset: 'assets/images/addWithoutBorder.png',
           text: 'طلبات اضافة',
           onClick: () {
+            customAnimatedPushNavigation(context, ClientAddRequestsScreen());
 
           },
           color: kWhiteColor,

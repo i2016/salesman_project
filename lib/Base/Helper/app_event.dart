@@ -53,6 +53,9 @@ class GetHistoryInvoiceEvent extends AppEvent{
 class GetAllClientsEvent extends AppEvent{
   GetAllClientsEvent();
 }
+class GetClientAddRequestsEvent extends AppEvent{
+  GetClientAddRequestsEvent();
+}
 // Create Order
 class CreateOrderEvent extends AppEvent{
   CreateOrderEvent();
@@ -93,7 +96,14 @@ class GetTransferRequestsDetailsEvent extends AppEvent{
 class GetMainInventoryProductsvent extends AppEvent{
   GetMainInventoryProductsvent();
 }
+class GetMainInventoryProductsUnderSpecficCategoryEvent extends AppEvent{
+  GetMainInventoryProductsUnderSpecficCategoryEvent();
+}
 
+
+class GetMainInventoryProductsUnderCategoryEvent extends AppEvent{
+  GetMainInventoryProductsUnderCategoryEvent();
+}
 // ZEBRA PRINTER
 class GetZebraReceiptEvent extends AppEvent{
   GetZebraReceiptEvent();

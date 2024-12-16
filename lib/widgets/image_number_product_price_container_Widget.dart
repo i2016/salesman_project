@@ -23,28 +23,35 @@ class ImageNumberProductPriceContainer extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Text(
                     'الصورة',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Text(
                     'العدد',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: 9,
                   child: Text(
                     'المنتج',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
+                  child: Text(
+                    'الوحدة',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
                   child: Text(
                     'السعر',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
