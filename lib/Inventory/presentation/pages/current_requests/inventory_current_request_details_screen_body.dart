@@ -91,10 +91,6 @@ class _InventoryCurrentRequestDetailsScreenBodyState
 
               },
             ),
-         /*   const PillPayment(
-              textButton: 'حفظ التعديلات',
-              dialogName: 'edit',
-            )*/
           ],
         ),
       ),

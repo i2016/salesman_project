@@ -73,7 +73,6 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
     child:Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        drawer: const InventoryEditProductDrawer(),
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

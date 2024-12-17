@@ -11,6 +11,7 @@ import 'package:water/Base/common/shared.dart';
 import 'package:water/Returns/data/models/create_returns_model.dart';
 import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 import 'package:water/Returns/presentation/bloc/create_returnsbloc.dart';
+import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/widgets/image_number_product_price_container_review_returned_products.dart';
 import 'package:water/widgets/pill_payment_review_returned_products.dart';
 import 'package:water/widgets/review_returned_products_water_item.dart';
@@ -75,7 +76,6 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                 //   const SearchTextFieldReviewReturnedProducts(),
                     Column(
                       children: [
                         Row(
@@ -138,34 +138,35 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                       height: MediaQuery.of(context).size.height * 0.015,
                     ),
                     const ImageNumberProductPriceContainerReviewReturnedProducts(),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: filteredProducts.length,
-                        itemBuilder: (context, index) {
-                         return Slidable(
-                            key: ValueKey(filteredProducts[index]),
-                            endActionPane: ActionPane(
-                              motion: ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    setState(() {
-                                      filteredProducts.removeAt(index);
-                                    });
-                                  },
-                                  label: 'حذف',
-                                  icon: Icons.delete,
-                                  backgroundColor: Colors.red,
-                                ),
-                              ],
-                            ),
-                            child:  ReviewReturnedProductsWaterItem(
-                              returnsProductEntity: filteredProducts[index],
-                            )
-                          );
-
-                        }),
+                    Flexible(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:  filteredProducts.length,
+                          itemBuilder: (context, index) {
+                           return Slidable(
+                              key: ValueKey(filteredProducts[index]),
+                              endActionPane: ActionPane(
+                                motion: ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) {
+                                      setState(() {
+                                        filteredProducts.removeAt(index);
+                                      });
+                                    },
+                                    label: 'حذف',
+                                    icon: Icons.delete,
+                                    backgroundColor: Colors.red,
+                                  ),
+                                ],
+                              ),
+                              child:  ReviewReturnedProductsWaterItem(
+                                returnsProductEntity: filteredProducts[index],
+                              )
+                            );
+                      
+                          }),
+                    ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.006,
                     ),

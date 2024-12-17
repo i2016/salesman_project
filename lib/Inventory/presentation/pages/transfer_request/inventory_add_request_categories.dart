@@ -119,7 +119,9 @@ class InventoryAddRequestCategoriesState extends State<InventoryAddRequestCatego
                     height: MediaQuery.of(context).size.height * 0.015,
                   ),
                   Container(
-                    height: Shared.height * 1.5,
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * 0.6,
+                    ),
                     child: ListView.builder(
                         shrinkWrap: true,
                         // physics: const NeverScrollableScrollPhysics(),

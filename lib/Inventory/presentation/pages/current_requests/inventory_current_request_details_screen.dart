@@ -35,22 +35,15 @@ class _InventoryCurrentRequestDetailsScreenState extends State<InventoryCurrentR
           if(state is AppDrawerDoneState){
                   return AppScreen(
                 child: InventoryCurrentRequestDetailsScreenBody(),
-                drawer: state.drawerType == 'addProduct'?
-                DrawerInventoryCurrentRequestsAddProduct(
-                  type: "CurrentRequest",
-                )
-                    : state.drawerType  == 'editProduct'?
-                const DrawerEditInventoryCurrentRequest()
-                    : const DrawerCurrentRequestSTransferRequest() ,
                 screenButtons:[
-                  AppButtonWidget(
+              /*    AppButtonWidget(
                     asset: 'assets/images/VectorAdddd.png',
                     text: 'اضف منتج',
                     onClick: () {
                       appBloc.add(AppDrawrEvent(drawerType: 'addProduct'));
                 //    scaffoldKey!.currentState!.openEndDrawer();
                     },
-                  ),
+                  ),*/
                   AppButtonWidget(
                     asset: 'assets/images/cancell.png',
                     text: 'إلغاء الطلب',

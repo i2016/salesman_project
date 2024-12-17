@@ -70,9 +70,10 @@ class Data {
   Data({this.limit, this.amountDue, this.remainingLimit});
 
   Data.fromJson(Map<String, dynamic> json) {
-    limit = json['limit'];
-    amountDue = json['amount_due'];
-    remainingLimit = json['remaining_limit'];
+    limit = (json['limit'] is int) ? (json['limit'] as int).toDouble() : json['limit'];
+    amountDue = (json['amount_due'] is int) ? (json['amount_due'] as int).toDouble() : json['amount_due'];
+    remainingLimit = (json['remaining_limit'] is int) ? (json['remaining_limit'] as int).toDouble() : json['remaining_limit'];
+
   }
 
   Map<String, dynamic> toJson() {
