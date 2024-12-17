@@ -159,7 +159,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
 
       InkWell(
               onTap: () {
-                if(Shared.order_products_list.length !=0)
+            //    if(Shared.order_products_list.length !=0)
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ReviewProductScreen()));
               },

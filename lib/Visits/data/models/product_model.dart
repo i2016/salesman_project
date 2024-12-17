@@ -74,10 +74,13 @@ class Product {
   double? one_price;
   String? image;
   String? count;
+  String? unit_count;
+
   int? mainUomId;
   String? mainUomName;
   List<UomIds>? uomIds;
-  Product({this.id, this.name, this.description, this.price,this.one_price, this.image,this.count});
+  Product({this.id, this.name, this.description, this.price,this.one_price, this.image,this.count,
+  this.unit_count});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -87,6 +90,8 @@ class Product {
     one_price = json['one_price'];
     image = json['image'];
     count = json['on_hand'].toString()??20.toString();
+    unit_count = json['on_hand_units'].toString()??20.toString();
+
     mainUomId = json['main_uom_id'];
     mainUomName = json['main_uom_name'];
     if (json['uom_ids'] != null) {
@@ -106,6 +111,8 @@ class Product {
     data['one_price'] = this.one_price;
     data['image'] = this.image;
     data['on_hand'] = this.count;
+    data['on_hand_units'] = this.unit_count;
+
     data['main_uom_id'] = this.mainUomId;
     data['main_uom_name'] = this.mainUomName;
     if (this.uomIds != null) {

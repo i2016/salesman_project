@@ -13,7 +13,7 @@ class ProductsAndPricesInvoicesDetailsScreen extends StatelessWidget {
         children: [
           InkWell(
             onTap: (){
-              if(Shared.returns_products_list.length !=0)
+            //  if(Shared.returns_products_list.length !=0)
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const ReviewReturnedProductsScreen()),
                 );

@@ -7,6 +7,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
+import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/Visits/presentation/bloc/create_order/create_order_bloc.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
@@ -140,34 +141,35 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                     ),
                     Shared.order_products_list.length != 0 ?
                     const ImageNumberProductPriceContainer() :Container(),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: filteredProducts.length,
-                        itemBuilder: (context, index) {
-                          return Slidable(
-                            key: ValueKey(filteredProducts[index]),
-                            endActionPane: ActionPane(
-                              motion: ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    setState(() {
-                                      filteredProducts.removeAt(index);
-                                    });
-                                  },
-                                  label: 'حذف',
-                                  icon: Icons.delete,
-                                  backgroundColor: Colors.red,
-                                ),
-                              ],
-                            ),
-                            child: ReviewProductWaterItem(
-                              addedProductEntity: filteredProducts[index],
-
-                            ),
-                          );
-                        }),
+                    Flexible(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: filteredProducts.length,
+                          itemBuilder: (context, index) {
+                            return Slidable(
+                              key: ValueKey(filteredProducts[index]),
+                              endActionPane: ActionPane(
+                                motion: ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) {
+                                      setState(() {
+                                        filteredProducts.removeAt(index);
+                                      });
+                                    },
+                                    label: 'حذف',
+                                    icon: Icons.delete,
+                                    backgroundColor: Colors.red,
+                                  ),
+                                ],
+                              ),
+                              child: ReviewProductWaterItem(
+                                addedProductEntity: filteredProducts[index],
+                      
+                              ),
+                            );
+                          }),
+                    ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.006,
                     ),
