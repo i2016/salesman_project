@@ -49,7 +49,21 @@ class PillPayment extends StatelessWidget {
                   }else if(dialogName == 'edit'){
                     Dialogs.showDialogSaveEdits(context);
                   }else if(dialogName == 'transferRequest'){
-                       inventoryTransferRequestBloc.add(InventoryTransferRequestEvent());
+                       print("Shared.remainingLimit : ${Shared.remainingLimit}");
+                       print("Shared.calculateTotalForAllProducts() : ${Shared.calculateTotalForAllProducts()}");
+                      if( Shared.remainingLimit >= Shared.calculateTotalForAllProducts() ){
+                        inventoryTransferRequestBloc.add(InventoryTransferRequestEvent());
+                      }else{
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                            content: Text(
+                            "الرصيد غير كافي",
+                            style: TextStyle(color: Colors.white),
+                            ),
+                            duration: Duration(seconds: 2),
+                            ) );
+                      }
+
                   }
                   },
                   child: Container(

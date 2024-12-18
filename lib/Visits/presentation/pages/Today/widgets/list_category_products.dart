@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water/Base/common/shared.dart';
+import 'package:water/Base/common/theme.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_items_screen.dart';
@@ -40,113 +41,51 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
   }
     @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return  SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-       widget.inventoryHeader! ?  Row(
-         children: [
-           Expanded(
-             flex: 2,
-             child: Column(
-               children: [
-
-                 MediaQuery.of(context).orientation == Orientation.portrait
-                     ? Column(
-                   crossAxisAlignment: CrossAxisAlignment.start,
-                   children: [
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       crossAxisAlignment: CrossAxisAlignment.center,
-                       children: [
-                         Row(
-                           children: [
-                             InkWell(
-                               onTap: () {
-                                 Navigator.of(context).pop();
-                               },
-                               child: const Icon(Icons.arrow_back),
-                             ),
-                             SizedBox(
-                               width: MediaQuery.of(context).size.width * 0.019,
-                             ),
-                             const Text(
-                               'المنتجات المتاحة',
-                               style: TextStyle(
-                                   fontSize: 23, fontWeight: FontWeight.w500),
-                             ),
-                           ],
-                         ),
-                         Spacer(),
-                         widget.isInventory! ? Container() : ProductsAndPricesAvailableItemsScreen()
-                       ],
-                     ),
-                     SizedBox(
-                       height: MediaQuery.of(context).size.height * 0.019,
-                     ),
-                     Container(
-                       width: double.infinity,
-                       height: MediaQuery.of(context).size.height * 0.033,
-                       decoration: BoxDecoration(
-                           color: Colors.white,
-                           border: Border.all(
-                             color: Colors.grey,
-                             width: 0.5,
-                           ),
-                           borderRadius: BorderRadius.circular(8)),
-                       child: Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                           child: Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+         widget.inventoryHeader! ?  Row(
+           children: [
+             Expanded(
+               flex: 2,
+               child: Column(
+                 children: [
+      
+                   MediaQuery.of(context).orientation == Orientation.portrait
+                       ? Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           Row(
                              children: [
-                               Text(
-                                 widget.categoryData == null ? '' :     '${ widget.categoryData!.name}',
-                                 style: TextStyle(
-                                   color: Color(0xff25292E),
-                                   fontSize: 16,
-                                   fontWeight: FontWeight.w500,
-                                 ),
+                               InkWell(
+                                 onTap: () {
+                                   Navigator.of(context).pop();
+                                 },
+                                 child: const Icon(Icons.arrow_back),
                                ),
-                               Container(
-                                 decoration: BoxDecoration(
-                                     color: Color.fromARGB(255, 247, 245, 245),
-                                     border: Border.all(
-                                       color: Colors.grey,
-                                       width: 0.5,
-                                     ),
-                                     borderRadius: BorderRadius.circular(4)),
-                                 child: Padding(
-                                   padding:
-                                   const EdgeInsets.symmetric(horizontal: 5),
-                                   child: Row(
-                                     children: [
-                                       Image.asset(
-                                         'assets/images/marketImage.png',
-                                         width: MediaQuery.of(context).size.width *
-                                             0.024,
-                                       ),
-                                       SizedBox(
-                                         width: MediaQuery.of(context).size.width *
-                                             0.002,
-                                       ),
-                                       Text(
-                                         widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
-                                         style: TextStyle(
-                                             color: Color(0xff0056C9),
-                                             fontSize: 16,
-                                             fontWeight: FontWeight.w300),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
+                               SizedBox(
+                                 width: MediaQuery.of(context).size.width * 0.019,
+                               ),
+                               const Text(
+                                 'المنتجات المتاحة',
+                                 style: TextStyle(
+                                     fontSize: 23, fontWeight: FontWeight.w500),
                                ),
                              ],
-                           )),
-                     ),
-                     SizedBox(
-                       height: MediaQuery.of(context).size.height * 0.012,
-                     ),
-                     Container(
+                           ),
+                           Spacer(),
+                           widget.isInventory! ? Container() : ProductsAndPricesAvailableItemsScreen()
+                         ],
+                       ),
+                       SizedBox(
+                         height: MediaQuery.of(context).size.height * 0.019,
+                       ),
+                       Container(
                          width: double.infinity,
                          height: MediaQuery.of(context).size.height * 0.033,
                          decoration: BoxDecoration(
@@ -157,122 +96,122 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                              ),
                              borderRadius: BorderRadius.circular(8)),
                          child: Padding(
-                           padding: const EdgeInsets.symmetric(vertical: 1.5),
-                           child: TextField(
-                             controller: controller,
-                             cursorColor: Color.fromARGB(255, 66, 64, 64),
-                             decoration: InputDecoration(
-                                 contentPadding: EdgeInsets.zero,
-                                 border: InputBorder.none,
-                                 prefixIcon: Image.asset(
-                                   'assets/images/search.png',
-                                   color: Colors.black,
-                                 ),
-                                 hintText: 'البحث عن منتج',
-                                 hintStyle: const TextStyle(
-                                   color: Color.fromARGB(255, 146, 155, 171),
-                                 )),
-                           ),
-                         )),
-                   ],
-                 )
-                     : Column(
-                   mainAxisAlignment: MainAxisAlignment.start,
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                   children: [
-                     Row(
-                       children: [
-                         Row(
-                           children: [
-                             InkWell(
-                               onTap: () {
-                                 Navigator.of(context).pop();
-                               },
-                               child: const Icon(Icons.arrow_back),
-                             ),
-                             SizedBox(
-                               width: MediaQuery.of(context).size.width * 0.012,
-                             ),
-                             const Text(
-                               'المنتجات المتاحة',
-                               style: TextStyle(
-                                   fontSize: 23, fontWeight: FontWeight.w500),
-                             ),
-                           ],
-                         ),
-                         Spacer(),
-                         ProductsAndPricesAvailableItemsScreen()
-                       ],
-                     ),
-
-                     SizedBox(
-                       height: MediaQuery.of(context).size.height * 0.019,
-                     ),
-                     Container(
-                       width: double.infinity,
-                       height: MediaQuery.of(context).size.height * 0.045,
-                       decoration: BoxDecoration(
-                           color: Colors.white,
-                           border: Border.all(
-                             color: Colors.grey,
-                             width: 0.5,
-                           ),
-                           borderRadius: BorderRadius.circular(8)),
-                       child: Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                           child: Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               const Text(
-                                 'مياه',
-                                 style: TextStyle(
-                                   color: Color(0xff25292E),
-                                   fontSize: 16,
-                                   fontWeight: FontWeight.w500,
-                                 ),
-                               ),
-                               Container(
-                                 decoration: BoxDecoration(
-                                     color: Color.fromARGB(255, 247, 245, 245),
-                                     border: Border.all(
-                                       color: Colors.grey,
-                                       width: 0.5,
-                                     ),
-                                     borderRadius: BorderRadius.circular(4)),
-                                 child: Padding(
-                                   padding:
-                                   const EdgeInsets.symmetric(horizontal: 5),
-                                   child: Row(
-                                     children: [
-                                       Image.asset(
-                                         'assets/images/marketImage.png',
-                                         width: MediaQuery.of(context).size.width *
-                                             0.014,
-                                       ),
-                                       SizedBox(
-                                         width: MediaQuery.of(context).size.width *
-                                             0.002,
-                                       ),
-                                       const Text(
-                                         '50 منتج',
-                                         style: TextStyle(
-                                             color: Color(0xff0056C9),
-                                             fontSize: 14,
-                                             fontWeight: FontWeight.w300),
-                                       ),
-                                     ],
+                             padding: const EdgeInsets.symmetric(horizontal: 8),
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 Text(
+                                   widget.categoryData == null ? '' :     '${ widget.categoryData!.name}',
+                                   style: TextStyle(
+                                     color: Color(0xff25292E),
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.w500,
                                    ),
                                  ),
+                                 Container(
+                                   decoration: BoxDecoration(
+                                       color: Color.fromARGB(255, 247, 245, 245),
+                                       border: Border.all(
+                                         color: Colors.grey,
+                                         width: 0.5,
+                                       ),
+                                       borderRadius: BorderRadius.circular(4)),
+                                   child: Padding(
+                                     padding:
+                                     const EdgeInsets.symmetric(horizontal: 5),
+                                     child: Row(
+                                       children: [
+                                         Image.asset(
+                                           'assets/images/marketImage.png',
+                                           width: MediaQuery.of(context).size.width *
+                                               0.024,
+                                         ),
+                                         SizedBox(
+                                           width: MediaQuery.of(context).size.width *
+                                               0.002,
+                                         ),
+                                         Text(
+                                           widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
+                                           style: TextStyle(
+                                               color: Color(0xff0056C9),
+                                               fontSize: 16,
+                                               fontWeight: FontWeight.w300),
+                                         ),
+                                       ],
+                                     ),
+                                   ),
+                                 ),
+                               ],
+                             )),
+                       ),
+                       SizedBox(
+                         height: MediaQuery.of(context).size.height * 0.012,
+                       ),
+                       Container(
+                           width: double.infinity,
+                           height: MediaQuery.of(context).size.height * 0.033,
+                           decoration: BoxDecoration(
+                               color: Colors.white,
+                               border: Border.all(
+                                 color: Colors.grey,
+                                 width: 0.5,
+                               ),
+                               borderRadius: BorderRadius.circular(8)),
+                           child: Padding(
+                             padding: const EdgeInsets.symmetric(vertical: 1.5),
+                             child: TextField(
+                               controller: controller,
+                               cursorColor: Color.fromARGB(255, 66, 64, 64),
+                               decoration: InputDecoration(
+                                   contentPadding: EdgeInsets.zero,
+                                   border: InputBorder.none,
+                                   prefixIcon: Image.asset(
+                                     'assets/images/search.png',
+                                     color: Colors.black,
+                                   ),
+                                   hintText: 'البحث عن منتج',
+                                   hintStyle: const TextStyle(
+                                     color: Color.fromARGB(255, 146, 155, 171),
+                                   )),
+                             ),
+                           )),
+                     ],
+                   )
+                       : Column(
+                     mainAxisAlignment: MainAxisAlignment.start,
+                     crossAxisAlignment: CrossAxisAlignment.center,
+                     children: [
+                       Row(
+                         children: [
+                           Row(
+                             children: [
+                               InkWell(
+                                 onTap: () {
+                                   Navigator.of(context).pop();
+                                 },
+                                 child: const Icon(Icons.arrow_back),
+                               ),
+                               SizedBox(
+                                 width: MediaQuery.of(context).size.width * 0.012,
+                               ),
+                               const Text(
+                                 'المنتجات المتاحة',
+                                 style: TextStyle(
+                                     fontSize: 23, fontWeight: FontWeight.w500),
                                ),
                              ],
-                           )),
-                     ),
-                     SizedBox(
-                       height: MediaQuery.of(context).size.height * 0.012,
-                     ),
-                     Container(
+                           ),
+                           Spacer(),
+                           ProductsAndPricesAvailableItemsScreen()
+                         ],
+                       ),
+      
+                       SizedBox(
+                         height: MediaQuery.of(context).size.height * 0.019,
+                       ),
+                       Container(
                          width: double.infinity,
-                         height: MediaQuery.of(context).size.height * 0.053,
+                         height: MediaQuery.of(context).size.height * 0.045,
                          decoration: BoxDecoration(
                              color: Colors.white,
                              border: Border.all(
@@ -281,135 +220,135 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                              ),
                              borderRadius: BorderRadius.circular(8)),
                          child: Padding(
-                           padding: const EdgeInsets.symmetric(vertical: 1.5),
-                           child: TextField(
-                             controller: controller,
-                             cursorColor: Color.fromARGB(255, 66, 64, 64),
-                             decoration: InputDecoration(
-                                 contentPadding: EdgeInsets.zero,
-                                 border: InputBorder.none,
-                                 prefixIcon: Image.asset(
-                                   'assets/images/search.png',
-                                   color: Colors.black,
+                             padding: const EdgeInsets.symmetric(horizontal: 8),
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 const Text(
+                                   'مياه',
+                                   style: TextStyle(
+                                     color: Color(0xff25292E),
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.w500,
+                                   ),
                                  ),
-                                 hintText: 'البحث عن منتج',
-                                 hintStyle: const TextStyle(
-                                   color: Color.fromARGB(255, 146, 155, 171),
-                                 )),
-                           ),
-                         )),
-                   ],
-                 )
-               ],
-             ),
-           ),
-           Expanded(
-
-               flex: 1,
-               child: Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                 child: ProductsAndPricesInventoryAddRequestScreen(),
-               ))
-         ],
-       )
-           : Column(
-         children: [
-           MediaQuery.of(context).orientation == Orientation.portrait
-               ? Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: [
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 children: [
-                   Row(
-                     children: [
-                       InkWell(
-                         onTap: () {
-                           Navigator.of(context).pop();
-                         },
-                         child: const Icon(Icons.arrow_back),
+                                 Container(
+                                   decoration: BoxDecoration(
+                                       color: Color.fromARGB(255, 247, 245, 245),
+                                       border: Border.all(
+                                         color: Colors.grey,
+                                         width: 0.5,
+                                       ),
+                                       borderRadius: BorderRadius.circular(4)),
+                                   child: Padding(
+                                     padding:
+                                     const EdgeInsets.symmetric(horizontal: 5),
+                                     child: Row(
+                                       children: [
+                                         Image.asset(
+                                           'assets/images/marketImage.png',
+                                           width: MediaQuery.of(context).size.width *
+                                               0.014,
+                                         ),
+                                         SizedBox(
+                                           width: MediaQuery.of(context).size.width *
+                                               0.002,
+                                         ),
+                                         const Text(
+                                           '50 منتج',
+                                           style: TextStyle(
+                                               color: Color(0xff0056C9),
+                                               fontSize: 14,
+                                               fontWeight: FontWeight.w300),
+                                         ),
+                                       ],
+                                     ),
+                                   ),
+                                 ),
+                               ],
+                             )),
                        ),
                        SizedBox(
-                         width: MediaQuery.of(context).size.width * 0.019,
+                         height: MediaQuery.of(context).size.height * 0.012,
                        ),
-                       const Text(
-                         'المنتجات المتاحة',
-                         style: TextStyle(
-                             fontSize: 23, fontWeight: FontWeight.w500),
-                       ),
-                     ],
-                   ),
-                   Spacer(),
-                   widget.isInventory! ? Container() : ProductsAndPricesAvailableItemsScreen()
-                 ],
-               ),
-               SizedBox(
-                 height: MediaQuery.of(context).size.height * 0.019,
-               ),
-               Container(
-                 width: double.infinity,
-                 height: MediaQuery.of(context).size.height * 0.033,
-                 decoration: BoxDecoration(
-                     color: Colors.white,
-                     border: Border.all(
-                       color: Colors.grey,
-                       width: 0.5,
-                     ),
-                     borderRadius: BorderRadius.circular(8)),
-                 child: Padding(
-                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
-                         Text(
-                           widget.categoryData == null ? '' :     '${ widget.categoryData!.name}',
-                           style: TextStyle(
-                             color: Color(0xff25292E),
-                             fontSize: 16,
-                             fontWeight: FontWeight.w500,
-                           ),
-                         ),
-                         Container(
+                       Container(
+                           width: double.infinity,
+                           height: MediaQuery.of(context).size.height * 0.053,
                            decoration: BoxDecoration(
-                               color: Color.fromARGB(255, 247, 245, 245),
+                               color: Colors.white,
                                border: Border.all(
                                  color: Colors.grey,
                                  width: 0.5,
                                ),
-                               borderRadius: BorderRadius.circular(4)),
+                               borderRadius: BorderRadius.circular(8)),
                            child: Padding(
-                             padding:
-                             const EdgeInsets.symmetric(horizontal: 5),
-                             child: Row(
-                               children: [
-                                 Image.asset(
-                                   'assets/images/marketImage.png',
-                                   width: MediaQuery.of(context).size.width *
-                                       0.024,
-                                 ),
-                                 SizedBox(
-                                   width: MediaQuery.of(context).size.width *
-                                       0.002,
-                                 ),
-                                 Text(
-                                   widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
-                                   style: TextStyle(
-                                       color: Color(0xff0056C9),
-                                       fontSize: 16,
-                                       fontWeight: FontWeight.w300),
-                                 ),
-                               ],
+                             padding: const EdgeInsets.symmetric(vertical: 1.5),
+                             child: TextField(
+                               controller: controller,
+                               cursorColor: Color.fromARGB(255, 66, 64, 64),
+                               decoration: InputDecoration(
+                                   contentPadding: EdgeInsets.zero,
+                                   border: InputBorder.none,
+                                   prefixIcon: Image.asset(
+                                     'assets/images/search.png',
+                                     color: Colors.black,
+                                   ),
+                                   hintText: 'البحث عن منتج',
+                                   hintStyle: const TextStyle(
+                                     color: Color.fromARGB(255, 146, 155, 171),
+                                   )),
                              ),
-                           ),
+                           )),
+                     ],
+                   )
+                 ],
+               ),
+             ),
+             Expanded(
+                 flex: 1,
+                 child: Padding(
+                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                   child: ProductsAndPricesInventoryAddRequestScreen(),
+                 ))
+           ],
+         )
+             : Column(
+           children: [
+             MediaQuery.of(context).orientation == Orientation.portrait
+                 ? Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   children: [
+                     Row(
+                       children: [
+                         InkWell(
+                           onTap: () {
+                             Navigator.of(context).pop();
+                           },
+                           child: const Icon(Icons.arrow_back),
+                         ),
+                         SizedBox(
+                           width: MediaQuery.of(context).size.width * 0.019,
+                         ),
+                         const Text(
+                           'المنتجات المتاحة',
+                           style: TextStyle(
+                               fontSize: 23, fontWeight: FontWeight.w500),
                          ),
                        ],
-                     )),
-               ),
-               SizedBox(
-                 height: MediaQuery.of(context).size.height * 0.012,
-               ),
-               Container(
+                     ),
+                     Spacer(),
+                     widget.isInventory! ? Container()
+                         : ProductsAndPricesAvailableItemsScreen()
+                   ],
+                 ),
+                 SizedBox(
+                   height: MediaQuery.of(context).size.height * 0.019,
+                 ),
+                 Container(
                    width: double.infinity,
                    height: MediaQuery.of(context).size.height * 0.033,
                    decoration: BoxDecoration(
@@ -420,122 +359,122 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                        ),
                        borderRadius: BorderRadius.circular(8)),
                    child: Padding(
-                     padding: const EdgeInsets.symmetric(vertical: 1.5),
-                     child: TextField(
-                       controller: controller,
-                       cursorColor: Color.fromARGB(255, 66, 64, 64),
-                       decoration: InputDecoration(
-                           contentPadding: EdgeInsets.zero,
-                           border: InputBorder.none,
-                           prefixIcon: Image.asset(
-                             'assets/images/search.png',
-                             color: Colors.black,
-                           ),
-                           hintText: 'البحث عن منتج',
-                           hintStyle: const TextStyle(
-                             color: Color.fromARGB(255, 146, 155, 171),
-                           )),
-                     ),
-                   )),
-             ],
-           )
-               : Column(
-             mainAxisAlignment: MainAxisAlignment.start,
-             crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
-               Row(
-                 children: [
-                   Row(
-                     children: [
-                       InkWell(
-                         onTap: () {
-                           Navigator.of(context).pop();
-                         },
-                         child: const Icon(Icons.arrow_back),
-                       ),
-                       SizedBox(
-                         width: MediaQuery.of(context).size.width * 0.012,
-                       ),
-                       const Text(
-                         'المنتجات المتاحة',
-                         style: TextStyle(
-                             fontSize: 23, fontWeight: FontWeight.w500),
-                       ),
-                     ],
-                   ),
-                   Spacer(),
-                   ProductsAndPricesAvailableItemsScreen()
-                 ],
-               ),
-
-               SizedBox(
-                 height: MediaQuery.of(context).size.height * 0.019,
-               ),
-               Container(
-                 width: double.infinity,
-                 height: MediaQuery.of(context).size.height * 0.045,
-                 decoration: BoxDecoration(
-                     color: Colors.white,
-                     border: Border.all(
-                       color: Colors.grey,
-                       width: 0.5,
-                     ),
-                     borderRadius: BorderRadius.circular(8)),
-                 child: Padding(
-                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
-                         const Text(
-                           'مياه',
-                           style: TextStyle(
-                             color: Color(0xff25292E),
-                             fontSize: 16,
-                             fontWeight: FontWeight.w500,
-                           ),
-                         ),
-                         Container(
-                           decoration: BoxDecoration(
-                               color: Color.fromARGB(255, 247, 245, 245),
-                               border: Border.all(
-                                 color: Colors.grey,
-                                 width: 0.5,
-                               ),
-                               borderRadius: BorderRadius.circular(4)),
-                           child: Padding(
-                             padding:
-                             const EdgeInsets.symmetric(horizontal: 5),
-                             child: Row(
-                               children: [
-                                 Image.asset(
-                                   'assets/images/marketImage.png',
-                                   width: MediaQuery.of(context).size.width *
-                                       0.014,
-                                 ),
-                                 SizedBox(
-                                   width: MediaQuery.of(context).size.width *
-                                       0.002,
-                                 ),
-                                 const Text(
-                                   '50 منتج',
-                                   style: TextStyle(
-                                       color: Color(0xff0056C9),
-                                       fontSize: 14,
-                                       fontWeight: FontWeight.w300),
-                                 ),
-                               ],
+                       padding: const EdgeInsets.symmetric(horizontal: 8),
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           Text(
+                             widget.categoryData == null ? '' :     '${ widget.categoryData!.name}',
+                             style: TextStyle(
+                               color: Color(0xff25292E),
+                               fontSize: 16,
+                               fontWeight: FontWeight.w500,
                              ),
                            ),
+                           Container(
+                             decoration: BoxDecoration(
+                                 color: Color.fromARGB(255, 247, 245, 245),
+                                 border: Border.all(
+                                   color: Colors.grey,
+                                   width: 0.5,
+                                 ),
+                                 borderRadius: BorderRadius.circular(4)),
+                             child: Padding(
+                               padding:
+                               const EdgeInsets.symmetric(horizontal: 5),
+                               child: Row(
+                                 children: [
+                                   Image.asset(
+                                     'assets/images/marketImage.png',
+                                     width: MediaQuery.of(context).size.width *
+                                         0.024,
+                                   ),
+                                   SizedBox(
+                                     width: MediaQuery.of(context).size.width *
+                                         0.002,
+                                   ),
+                                   Text(
+                                     widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
+                                     style: TextStyle(
+                                         color: Color(0xff0056C9),
+                                         fontSize: 16,
+                                         fontWeight: FontWeight.w300),
+                                   ),
+                                 ],
+                               ),
+                             ),
+                           ),
+                         ],
+                       )),
+                 ),
+                 SizedBox(
+                   height: MediaQuery.of(context).size.height * 0.012,
+                 ),
+                 Container(
+                     width: double.infinity,
+                     height: MediaQuery.of(context).size.height * 0.033,
+                     decoration: BoxDecoration(
+                         color: Colors.white,
+                         border: Border.all(
+                           color: Colors.grey,
+                           width: 0.5,
+                         ),
+                         borderRadius: BorderRadius.circular(8)),
+                     child: Padding(
+                       padding: const EdgeInsets.symmetric(vertical: 1.5),
+                       child: TextField(
+                         controller: controller,
+                         cursorColor: Color.fromARGB(255, 66, 64, 64),
+                         decoration: InputDecoration(
+                             contentPadding: EdgeInsets.zero,
+                             border: InputBorder.none,
+                             prefixIcon: Image.asset(
+                               'assets/images/search.png',
+                               color: Colors.black,
+                             ),
+                             hintText: 'البحث عن منتج',
+                             hintStyle: const TextStyle(
+                               color: Color.fromARGB(255, 146, 155, 171),
+                             )),
+                       ),
+                     )),
+               ],
+             )
+                 : Column(
+               mainAxisAlignment: MainAxisAlignment.start,
+               crossAxisAlignment: CrossAxisAlignment.center,
+               children: [
+                 Row(
+                   children: [
+                     Row(
+                       children: [
+                         InkWell(
+                           onTap: () {
+                             Navigator.of(context).pop();
+                           },
+                           child: const Icon(Icons.arrow_back),
+                         ),
+                         SizedBox(
+                           width: MediaQuery.of(context).size.width * 0.012,
+                         ),
+                         const Text(
+                           'المنتجات المتاحة',
+                           style: TextStyle(
+                               fontSize: 23, fontWeight: FontWeight.w500),
                          ),
                        ],
-                     )),
-               ),
-               SizedBox(
-                 height: MediaQuery.of(context).size.height * 0.012,
-               ),
-               Container(
+                     ),
+                     Spacer(),
+                     ProductsAndPricesAvailableItemsScreen()
+                   ],
+                 ),
+      
+                 SizedBox(
+                   height: MediaQuery.of(context).size.height * 0.019,
+                 ),
+                 Container(
                    width: double.infinity,
-                   height: MediaQuery.of(context).size.height * 0.053,
+                   height: MediaQuery.of(context).size.height * 0.045,
                    decoration: BoxDecoration(
                        color: Colors.white,
                        border: Border.all(
@@ -544,47 +483,112 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                        ),
                        borderRadius: BorderRadius.circular(8)),
                    child: Padding(
-                     padding: const EdgeInsets.symmetric(vertical: 1.5),
-                     child: TextField(
-                       controller: controller,
-                       cursorColor: Color.fromARGB(255, 66, 64, 64),
-                       decoration: InputDecoration(
-                           contentPadding: EdgeInsets.zero,
-                           border: InputBorder.none,
-                           prefixIcon: Image.asset(
-                             'assets/images/search.png',
-                             color: Colors.black,
+                       padding: const EdgeInsets.symmetric(horizontal: 8),
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           const Text(
+                             'مياه',
+                             style: TextStyle(
+                               color: Color(0xff25292E),
+                               fontSize: 16,
+                               fontWeight: FontWeight.w500,
+                             ),
                            ),
-                           hintText: 'البحث عن منتج',
-                           hintStyle: const TextStyle(
-                             color: Color.fromARGB(255, 146, 155, 171),
-                           )),
-                     ),
-                   )),
-             ],
-           )
-         ],
-       ),
-
-
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.015,
-          ),
-          Container(
-            height: Shared.height ,
-            child: ListView.builder(
-                shrinkWrap: true,
-                //  physics: const NeverScrollableScrollPhysics(),
-                itemCount: filteredProducts.length,
-                itemBuilder: (context, index) {
-                  return  WaterItemAvailableProducts(
-                    product: filteredProducts[index],
-                   categoryData: widget.categoryData,
-                  );
-                }),
-          ),
-        ],
-      ),
+                           Container(
+                             decoration: BoxDecoration(
+                                 color: Color.fromARGB(255, 247, 245, 245),
+                                 border: Border.all(
+                                   color: Colors.grey,
+                                   width: 0.5,
+                                 ),
+                                 borderRadius: BorderRadius.circular(4)),
+                             child: Padding(
+                               padding:
+                               const EdgeInsets.symmetric(horizontal: 5),
+                               child: Row(
+                                 children: [
+                                   Image.asset(
+                                     'assets/images/marketImage.png',
+                                     width: MediaQuery.of(context).size.width *
+                                         0.014,
+                                   ),
+                                   SizedBox(
+                                     width: MediaQuery.of(context).size.width *
+                                         0.002,
+                                   ),
+                                   const Text(
+                                     '50 منتج',
+                                     style: TextStyle(
+                                         color: Color(0xff0056C9),
+                                         fontSize: 14,
+                                         fontWeight: FontWeight.w300),
+                                   ),
+                                 ],
+                               ),
+                             ),
+                           ),
+                         ],
+                       )),
+                 ),
+                 SizedBox(
+                   height: MediaQuery.of(context).size.height * 0.012,
+                 ),
+                 Container(
+                     width: double.infinity,
+                     height: MediaQuery.of(context).size.height * 0.053,
+                     decoration: BoxDecoration(
+                         color: Colors.white,
+                         border: Border.all(
+                           color: Colors.grey,
+                           width: 0.5,
+                         ),
+                         borderRadius: BorderRadius.circular(8)),
+                     child: Padding(
+                       padding: const EdgeInsets.symmetric(vertical: 1.5),
+                       child: TextField(
+                         controller: controller,
+                         cursorColor: Color.fromARGB(255, 66, 64, 64),
+                         decoration: InputDecoration(
+                             contentPadding: EdgeInsets.zero,
+                             border: InputBorder.none,
+                             prefixIcon: Image.asset(
+                               'assets/images/search.png',
+                               color: Colors.black,
+                             ),
+                             hintText: 'البحث عن منتج',
+                             hintStyle: const TextStyle(
+                               color: Color.fromARGB(255, 146, 155, 171),
+                             )),
+                       ),
+                     )),
+               ],
+             )
+           ],
+         ),
+      
+      
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
+            ),
+      
+            Container(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.6,
+              ),
+              child:  ListView.builder(
+                  shrinkWrap: true,
+                  //  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: filteredProducts.length,
+                  itemBuilder: (context, index) {
+                    return  WaterItemAvailableProducts(
+                      product: filteredProducts[index],
+                     categoryData: widget.categoryData,
+                    );
+                  }),
+            ),
+          ],
+        ),
     );
   }
 
