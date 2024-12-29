@@ -30,9 +30,9 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                          'متبقى ${invoice.amountTotal - invoice.amountDue} ر.س',
+                          'متبقى   ${invoice.amountDue}   ر.س   ',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w300),
+                              fontSize: 14, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -79,7 +79,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                     ),
                     SizedBox(width: Shared.width * 0.1,),
                     InkWell(
-                      onTap: invoice.amountTotal - invoice.amountDue == 0 ? ()=>false : (){
+                      onTap: invoice.amountDue == 0 ? ()=>false : (){
                         createCollectionBloc.add(CreateCollectionEvent());
                       },
                       child: Container(
@@ -89,7 +89,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                             ? MediaQuery.of(context).size.height * 0.04
                             : MediaQuery.of(context).size.height * 0.068,
                         decoration: BoxDecoration(
-                            color: invoice.amountTotal - invoice.amountDue == 0 ? kGreyColor : const Color(0xff1D7AFC),
+                            color:  invoice.amountDue == 0 ? kGreyColor : const Color(0xff1D7AFC),
                             borderRadius: BorderRadius.circular(6)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -14,7 +14,6 @@ import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/pill_payment.dart';
 import 'package:water/widgets/review_product_water_item.dart';
-import 'package:water/widgets/search_text_field.dart';
 
 class InventoryAddRequestConfirmScreenBody extends StatefulWidget {
   InventoryAddRequestConfirmScreenBody({super.key});
@@ -137,48 +136,42 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
               ),
               Shared.order_products_list.length != 0 ?
               const ImageNumberProductPriceContainer() :Container(),
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: filteredProducts.length,
-                  itemBuilder: (context, index) {
-                    return Slidable(
-                      key: ValueKey(filteredProducts[index]),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            onPressed: (context) {
-                              setState(() {
-                                filteredProducts.removeAt(index);
-                              });
-                            },
-                            label: 'حذف',
-                            icon: Icons.delete,
-                            backgroundColor: Colors.red,
-                          ),
-                        ],
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          appBloc.add(AppDrawrEvent(drawerType: 'editProduct'));
-                          //     scaffoldKey!.currentState?.openEndDrawer();
-                        },
-                        child:  ReviewProductWaterItem(
-                          addedProductEntity: filteredProducts[index],
+              Container(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.6,
+                ),
+                child:
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filteredProducts.length,
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        key: ValueKey(filteredProducts[index]),
+                        endActionPane: ActionPane(
+                          motion: ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {
+                                setState(() {
+                                  filteredProducts.removeAt(index);
+                                });
+                              },
+                              label: 'حذف',
+                              icon: Icons.delete,
+                              backgroundColor: Colors.red,
+                            ),
+                          ],
                         ),
-                      ),
-                    );
-                    return InkWell(
-                      onTap: () {
-                         appBloc.add(AppDrawrEvent(drawerType: 'editProduct'));
-                 //     scaffoldKey!.currentState?.openEndDrawer();
-                      },
-                      child:  ReviewProductWaterItem(
-                        addedProductEntity: filteredProducts[index],
-                      ),
-                    );
-                  }),
+                        child: InkWell(
+                          onTap: () {},
+                          child:  ReviewProductWaterItem(
+                            addedProductEntity: filteredProducts[index],
+                          ),
+                        ),
+                      );
+
+                    }),
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.006,
               ),

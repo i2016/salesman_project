@@ -31,7 +31,7 @@ class PillPayment extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                      dialogName == "transferRequest" ? 'متبقى  ${Shared.remainingLimit - Shared.calculateTotalForAllProducts()} ر.س'
+                      dialogName == "transferRequest" ? 'متبقى  ${(Shared.remainingLimit - Shared.calculateTotalForAllProducts()).toStringAsFixed(2)}    ر.س  '
                           :    'متبقى 25,000 ر.س',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),

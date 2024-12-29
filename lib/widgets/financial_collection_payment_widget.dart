@@ -60,7 +60,7 @@ class FinancialCollectionPaymentWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
              FirstContainerInFinancialCollection(
-              amount_due: invoice.amountDue.toString(),
+               total_amount: invoice.amountTotal.toString(),
             ),
             const PaymentMethodFinancialCollection(),
             const TakePhoto(),

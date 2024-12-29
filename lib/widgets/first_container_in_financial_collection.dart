@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FirstContainerInFinancialCollection extends StatelessWidget{
-  final String amount_due;
-  const FirstContainerInFinancialCollection({super.key,required this.amount_due});
+  final String total_amount;
+  const FirstContainerInFinancialCollection({super.key,required this.total_amount});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class FirstContainerInFinancialCollection extends StatelessWidget{
           ),
           child:  Center(
           child: Text(
-            ' مستحق  ${amount_due}  ر.س ',
+            ' قيمة الفاتورة  ${total_amount}  ر.س ',
             style: TextStyle(
               color: Color(0xffAF2A1A),
               fontSize: 18,
