@@ -529,8 +529,8 @@ class Dialogs {
             content: Container(
               width: MediaQuery.of(context).size.width * 0.6,
               height: MediaQuery.of(context).orientation == Orientation.portrait
-                  ? MediaQuery.of(context).size.height * 0.19
-                  : MediaQuery.of(context).size.height * 0.37,
+                  ? MediaQuery.of(context).size.height * 0.22
+                  : MediaQuery.of(context).size.height * 0.40,
                decoration: BoxDecoration(
                  borderRadius: BorderRadius.circular(20)
                ),

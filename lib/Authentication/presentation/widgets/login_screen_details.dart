@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/Authentication/domain/entities/login_entity.dart';
 import 'package:water/Authentication/presentation/bloc/login_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
+import 'package:water/Base/common/local_const.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Dashboard/presentation/pages/dashboard_screen.dart';
@@ -30,14 +32,9 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
         bloc: loginBloc,
         listener: (context, state) {
           if(state is Loading){
-         /*   QuickAlert.show(
-              context: context,
-              type: QuickAlertType.loading,
-            );*/
             Shared.showLoadingDialog(context: context);
           }
           else if(state is LoginDone){
-            print("Done");
             Shared.dismissDialog(context: context);
             if (state.model!.result!.data!.type == "b2c") {
               Shared.userType = "B2C";
@@ -52,9 +49,6 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
 
           }
           else if(state is LoginErrorLoading){
-            print("ErrorLoading");
-            print("state.message : ${state.message}");
-
             Shared.dismissDialog(context: context);
             QuickAlert.show(
               context: context,
@@ -80,11 +74,12 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'تسجيل دخول',
+                       Text(
+                        klogin.tr(),
                         style: TextStyle(
                           color: Color(0xff25292E),
                           fontSize: 23,
+
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -135,10 +130,10 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.006,
                               ),
-                              const Opacity(
+                               Opacity(
                                 opacity: 0.8,
                                 child: Text(
-                                  'تسجيل الدخول',
+                                 ksign_in.tr(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
@@ -177,8 +172,8 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'البريد الاكتروني',
+         Text(
+          kemail.tr(),
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -229,7 +224,7 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                     ),
 
                     border: InputBorder.none,
-                    hintText: 'ادخل البريد العمل الاكتروني',
+                    hintText: kenter_work_email.tr(),
                     hintStyle: const TextStyle(
                       color: Color(0xff758195),
                       fontSize: 16,
@@ -241,12 +236,12 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
 
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'البريد الإلكتروني مطلوب';
+                      return kemail_required.tr();
                     }
                     String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
                     RegExp regex = RegExp(pattern);
                     if (!regex.hasMatch(value)) {
-                      return 'الرجاء إدخال بريد إلكتروني صالح';
+                      return kinvalid_email.tr();
                     }
                     return null;
                   },
@@ -263,8 +258,8 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'كلمة المرور',
+         Text(
+          kpassword.tr(),
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -315,7 +310,7 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                       MediaQuery.of(context).size.width * 0.014,
                     ),
                     border: InputBorder.none,
-                    hintText: 'ادخل كلمة المرور',
+                    hintText: kenter_password.tr(),
                     hintStyle: const TextStyle(
                       color: Color(0xff758195),
                       fontSize: 16,
@@ -324,10 +319,10 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'كلمة المرور مطلوبة';
+                      return kpassword_required.tr();
                     }
                     if (value.length < 6) {
-                      return 'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل';
+                      return kpassword_min_length.tr();
                     }
                     return null;
                   },

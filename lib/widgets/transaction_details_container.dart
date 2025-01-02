@@ -23,7 +23,7 @@ final bool hasBorder;
     return Container(
       width: MediaQuery.of(context).size.width * 0.15,
       height: MediaQuery.of(context).orientation == Orientation.portrait
-              ? MediaQuery.of(context).size.height * 0.075
+              ? MediaQuery.of(context).size.height * 0.060
               : MediaQuery.of(context).size.height * 0.12,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -33,50 +33,50 @@ final bool hasBorder;
               ) : Border(),
               borderRadius: BorderRadius.circular(8),
       ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                image,
-                height: MediaQuery.of(context).orientation == Orientation.portrait
-              ? MediaQuery.of(context).size.height * 0.021
-              : MediaQuery.of(context).size.height * 0.03,
-                color: color,
-                ),
-                SizedBox(
-                  height:MediaQuery.of(context).orientation == Orientation.portrait
-              ? MediaQuery.of(context).size.height * 0.003
-              : MediaQuery.of(context).size.height * 0.008,
-                ),
-              Text(
-                name,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
+              Expanded(
+                flex: 1,
+                child: Image.asset(
+                  image,
                   color: color,
                 ),
               ),
-              SizedBox(
-                  height:MediaQuery.of(context).orientation == Orientation.portrait
-              ? MediaQuery.of(context).size.height * 0.003
-              : MediaQuery.of(context).size.height * 0.008,
-                ),
-              Text(
-                price,
-                style: TextStyle(
-                  fontSize: 14,
-                  
-                  fontWeight: FontWeight.w500,
-                  color: color,
 
+              Expanded(
+                flex: 1,
+                child: Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: color,
+                  ),
                 ),
-                maxLines: 2,
+              ),
+
+              Expanded(
+                flex: 1,
+                child: Text(
+                  price,
+                  style: TextStyle(
+                    fontSize: 14,
+
+                    fontWeight: FontWeight.w500,
+                    color: color,
+
+                  ),
+                  maxLines: 2,
+                ),
               ),
             ],
           ),
         ),
+      ),
     );
   }
 }

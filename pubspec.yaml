@@ -108,12 +108,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: GE Dinar One
+    - family: Tajawal
       fonts:
-        - asset: assets/google_fonts/alfont_com_GE-Dinar-One-Bold.otf
-        - asset: assets/google_fonts/alfont_com_AlFont_com_GE-Dinar-One-Medium-Italic.otf
-        - asset: assets/google_fonts/alfont_com_AlFont_com_GE-Dinar-One-Medium.otf
-        - asset: assets/google_fonts/alfont_com_GE-Dinar-One-Regular.otf
+        - asset: assets/google_fonts/Tajawal-Regular.ttf
+        - asset: assets/google_fonts/Tajawal-Bold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
