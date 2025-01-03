@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
@@ -53,8 +54,8 @@ clientsBloc.add(GetClientAddRequestsEvent());
                         customAnimatedPushNavigation(context, ClientsScreen());
                       },
                       icon: const Icon(Icons.arrow_back)),
-                  const Text(
-                    'تفاصيل التاجر',
+                   Text(
+                    "merchant_details".tr(),
                     style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.w500,
@@ -141,7 +142,7 @@ clientsBloc.add(GetClientAddRequestsEvent());
                         return Padding(
                           padding:  EdgeInsets.symmetric(vertical: Shared.width * 0.3),
                           child: Center(
-                            child: Text("لا يوجد عملاء حاليا"),
+                            child: Text("no_clients".tr()),
                           ),
                         );
                       }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/Clients/presentation/widgets/registered_customers_screen_container_item.dart';
 import 'package:water/widgets/custom_dropdown.dart';
@@ -42,8 +43,8 @@ class _PageState extends State<_Page> {
       SizedBox(
         width: MediaQuery.of(context).size.width * 0.012,
       ),
-              const Text(
-                'العملاء المسجلين',
+               Text(
+                "registered_clients".tr(),
                 style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w500,
@@ -78,7 +79,7 @@ class _PageState extends State<_Page> {
                             color: Colors.black,
                           ),
 
-                          hintText: 'البحث عن عميل',
+                          hintText: "search_for_client".tr(),
                           hintStyle: const TextStyle(
                             color: Color.fromARGB(255, 146, 155, 171),
                           )
@@ -91,8 +92,8 @@ class _PageState extends State<_Page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'تصفية حسب',
+                     Text(
+                      "filter_by".tr(),
                       style: TextStyle(
                         color: Color(0xff758195),
                         fontSize: 16,
@@ -100,7 +101,7 @@ class _PageState extends State<_Page> {
                       ),
                     ),
                     CustomDropdown(
-                      title: 'المنطقة',
+                      title: "region".tr(),
                       height: MediaQuery.of(context).orientation == Orientation.portrait
                           ? MediaQuery.of(context).size.height * 0.033
                           : MediaQuery.of(context).size.height * 0.054,
@@ -132,11 +133,11 @@ class _PageState extends State<_Page> {
                         : 5.9 / 2),
                 itemCount: 8,
                 itemBuilder: (context, index) {
-                  return const RegisteredCustomersScreenContainerItem(
-                    storeName: 'اسم المتجر',
-                    sales: '30,000 مبيعات شهرية',
-                    distance: 'يبعد 232 ك.م',
-                    money: '15,000 مديونية',
+                  return  RegisteredCustomersScreenContainerItem(
+                    storeName: "store_name".tr(),
+                    sales: '${"Monthly_sales".tr()}30,000 ' ,
+                    distance: "Far_away".tr() + "232" + "km".tr(),
+                    money: '15,000 ${"debt".tr()}',
                     type: "client",
                   );
                 },

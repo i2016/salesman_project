@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:water/Base/common/shared.dart';
-import 'package:water/Base/common/theme.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
 
@@ -48,7 +47,7 @@ class CategoriesWidget extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                          Text(
-                           categoryData == null ? 'مياة' :categoryData!.name!  ,
+                           categoryData == null ? "water".tr() :categoryData!.name!  ,
                           style: TextStyle(
                             color: Color(0xff25292E),
                             fontSize: 16,
@@ -77,8 +76,8 @@ class CategoriesWidget extends StatelessWidget{
                                       width: MediaQuery.of(context).size.width * 0.002,
                                     ),
                                      Text(
-                                       categoryData == null ? '50 منتج' :
-                                       '${categoryData!.productCount!} منتج ',
+                                       categoryData == null ? "number_of_products".tr() :
+                                       '${categoryData!.productCount!} ${"product".tr()} ',
                                       style: TextStyle(
                                         color: Color(0xff0056C9),
                                         fontSize: 14,
@@ -133,7 +132,7 @@ class CategoriesWidget extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        Text(
-                         categoryData == null ? 'مياة' :categoryData!.name!  ,
+                         categoryData == null ? "water".tr() :categoryData!.name!  ,
                         style: TextStyle(
                           color: Color(0xff25292E),
                           fontSize: 16,
@@ -161,8 +160,8 @@ class CategoriesWidget extends StatelessWidget{
                                     width: MediaQuery.of(context).size.width * 0.002,
                                   ),
                                    Text(
-                                     categoryData == null ? '50 منتج' :
-                                     '${categoryData!.productCount!} منتج ',
+                                     categoryData == null ? "number_of_products".tr() :
+                                     '${categoryData!.productCount!} ${"product".tr()} ',
                                      style: TextStyle(
                                       color: Color(0xff0056C9),
                                       fontSize: 14,

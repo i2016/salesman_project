@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/presentation/pages/Today/review_product_screen.dart';
 
 class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
@@ -27,27 +28,27 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'مرتجع منتجات',
+                   Text(
+                    "returned_products".tr(),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const Text(
-                    'لأسم التاجر',
+                   Text(
+                    "merchant_name".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          '4*مياه',
+                          '4*${'water'.tr()}',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
@@ -55,7 +56,7 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '42 ر.س',
+                        '42 ${'sar'.tr()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -63,13 +64,13 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          '2*مياه',
+                          '2*${'water'.tr()}',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
@@ -77,7 +78,7 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '42 ر.س',
+                        '42 ${'sar'.tr()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -85,13 +86,13 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          '25*مياه',
+                          '25*${'water'.tr()}',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
@@ -99,7 +100,7 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '42 ر.س',
+                        '42 ${'sar'.tr()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -107,13 +108,13 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          '2*مياه',
+                          '2*${'water'.tr()}',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
@@ -121,7 +122,7 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '42 ر.س',
+                        '42 ${'sar'.tr()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -133,13 +134,13 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                     color: Color.fromARGB(255, 186, 180, 180),
                     thickness: 0.9,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          'الاجمالي',
+                          '${'total'.tr()}',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -149,7 +150,7 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                       Opacity(
                         opacity: 0.9,
                         child: Text(
-                          '42 ر.س',
+                          '42 ${'sar'.tr()}',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -188,8 +189,8 @@ class ProductsAndPricesPreviousInvoicesScreen extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.006,
                             ),
-                            const Text(
-                              'مراجعة المنتجات',
+                             Text(
+                               "review_products".tr(),
                               style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.w300,

@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/Base/Helper/app_event.dart';
@@ -36,25 +37,16 @@ class ChangePasswordScreenBody extends StatelessWidget {
         );
       }
       else if(state is RestPasswordDone){
-        print("Done");
         Shared.dismissDialog(context: context);
-     /*   QuickAlert.show(
-          context: context,
-          type: QuickAlertType.success,
-          title: "تهانينا ...",
-          text: state.model!.result!.message,
-        );*/
+
         Dialogs.showDialogChangePassword(context);
       }
       else if(state is RestPasswordErrorLoading){
-        print("ErrorLoading");
-        print("state.message : ${state.message}");
-
         Shared.dismissDialog(context: context);
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
-          title: "خطا ...",
+          title: "error".tr(),
           text: state.message,
         );
       }
@@ -67,8 +59,8 @@ class ChangePasswordScreenBody extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).pop();
                           }, icon: const Icon(Icons.arrow_back)),
-                      const Text(
-                        'تغيير كلمة السر',
+                       Text(
+                        "change_password".tr(),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w500,
@@ -78,31 +70,19 @@ class ChangePasswordScreenBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.008,
                     ),
-               /*     const ChangePasswordTextField(
-                      nameTextField: 'كلمة السر الحالية',
-                      hintTextField: 'ادخل كلمة السر الحالية',
-                    ),
-                    const ChangePasswordTextField(
-                      nameTextField: 'كلمة السر الجديدة',
-                      hintTextField: 'ادخل كلمة السر الجديدة',
-                    ),
-                    const ChangePasswordTextField(
-                      nameTextField: 'تأكيد كلمة السر',
-                      hintTextField: 'ادخل كلمة السر الجديدة مرة اخرى',
-                    ),*/
                     ChangePasswordTextField(
-                      nameTextField: 'Current Password',
-                      hintTextField: 'Enter current password',
+                      nameTextField: "Current_Password".tr() ,
+                      hintTextField: "enter_Current_Password".tr(),
                       controller: _currentPasswordController,
                     ),
                     ChangePasswordTextField(
-                      nameTextField: 'New Password',
-                      hintTextField: 'Enter new password',
+                      nameTextField:   "new_password".tr(),
+                      hintTextField: "enter_new_password".tr(),
                       controller: _newPasswordController,
                     ),
                     ChangePasswordTextField(
-                      nameTextField: 'Confirm Password',
-                      hintTextField: 'Re-enter new password',
+                      nameTextField: "confirm_password".tr(),
+                      hintTextField:   "enter_confirm_password" .tr(),
                       controller: _confirmPasswordController,
                     ),
                     Row(
@@ -112,7 +92,7 @@ class ChangePasswordScreenBody extends StatelessWidget {
                        onTap: () async {
                          if (_newPasswordController.text != _confirmPasswordController.text) {
                            Flushbar(
-                             message:  "new password and confirm password should be same",
+                             message:  "new_password_and_confirm_password_should_be_same".tr(),
                              duration:  Duration(seconds: 3),
                            )..show(context);
                          } else {
@@ -146,10 +126,10 @@ class ChangePasswordScreenBody extends StatelessWidget {
                                         SizedBox(
                                         width: MediaQuery.of(context).size.width * 0.006,
                                       ),
-                                      const Opacity(
+                                       Opacity(
                                         opacity: 0.7,
                                         child: Text(
-                                          'حفظ التعديلات',
+                                          "save_changes".tr(),
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,

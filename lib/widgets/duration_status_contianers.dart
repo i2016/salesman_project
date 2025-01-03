@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/custom_dropdown.dart';
 
 class DurationStatusContainers extends StatelessWidget {
@@ -8,10 +9,10 @@ class DurationStatusContainers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+         Expanded(
             flex: 2,
             child: Text(
-              'تصفية حسب',
+              "filter_by".tr(),
               style: TextStyle(
                   color: Color(0xff758195),
                   fontSize: 16,
@@ -34,7 +35,7 @@ class DurationStatusContainers extends StatelessWidget {
             Expanded(
             flex: 3,
             child:    CustomDropdown(
-              title:    'الحالة',
+              title:    "status".tr(),
               width: MediaQuery.of(context).size.width * 0.07,
               height: MediaQuery.of(context).orientation == Orientation.portrait
                   ? MediaQuery.of(context).size.height * 0.04

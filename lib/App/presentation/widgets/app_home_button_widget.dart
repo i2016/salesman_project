@@ -30,7 +30,7 @@ class AppButtonWidget extends StatelessWidget{
           child: Row(
             children: [
               Image.asset(
-                asset, //  'assets/images/Icon-Wrapper(2).png'
+                asset,
                 color: color == kBlackColor ?  kWhiteColor : kBlackColor ,
                 scale: 1.3,
               ),

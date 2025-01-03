@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
@@ -46,79 +47,6 @@ class InventoryProductsListWidgetState extends State<InventoryProductsListWidget
                 ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              /*  Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Icon(Icons.arrow_back),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.019,
-                    ),
-                    const Text(
-                      'المنتجات المتاحة',
-                      style: TextStyle(
-                          fontSize: 23, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.019,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.033,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 247, 245, 245),
-                                border: Border.all(
-                                  color: Colors.grey,
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(4)),
-                            child: Padding(
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 5),
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/marketImage.png',
-                                    width: MediaQuery.of(context).size.width *
-                                        0.024,
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.002,
-                                  ),
-                                  Text(
-                                    widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
-                                    style: TextStyle(
-                                        color: Color(0xff0056C9),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      )),
-                ),*/
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.012,
                 ),
@@ -144,7 +72,7 @@ class InventoryProductsListWidgetState extends State<InventoryProductsListWidget
                               'assets/images/search.png',
                               color: Colors.black,
                             ),
-                            hintText: 'البحث عن منتج',
+                            hintText: "search_product".tr(),
                             hintStyle: const TextStyle(
                               color: Color.fromARGB(255, 146, 155, 171),
                             )),
@@ -155,86 +83,6 @@ class InventoryProductsListWidgetState extends State<InventoryProductsListWidget
                 : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-         /*       Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Icon(Icons.arrow_back),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.012,
-                    ),
-                    const Text(
-                      'المنتجات المتاحة',
-                      style: TextStyle(
-                          fontSize: 23, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.019,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.045,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'مياه',
-                            style: TextStyle(
-                              color: Color(0xff25292E),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 247, 245, 245),
-                                border: Border.all(
-                                  color: Colors.grey,
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(4)),
-                            child: Padding(
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 5),
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/marketImage.png',
-                                    width: MediaQuery.of(context).size.width *
-                                        0.014,
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.002,
-                                  ),
-                                  const Text(
-                                    '50 منتج',
-                                    style: TextStyle(
-                                        color: Color(0xff0056C9),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      )),
-                ),*/
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.012,
                 ),
@@ -260,7 +108,7 @@ class InventoryProductsListWidgetState extends State<InventoryProductsListWidget
                               'assets/images/search.png',
                               color: Colors.black,
                             ),
-                            hintText: 'البحث عن منتج',
+                            hintText: "search_product".tr(),
                             hintStyle: const TextStyle(
                               color: Color.fromARGB(255, 146, 155, 171),
                             )),

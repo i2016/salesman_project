@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 
@@ -8,9 +9,7 @@ class DeservedInvoicesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("invoice.amountDue : ${invoice.amountDue}");
-    print("invoice.amountTotal : ${invoice.amountTotal}");
-    print("ss : ${(invoice.amountDue / invoice.amountTotal)  * 100}");
+
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.014),
@@ -33,7 +32,7 @@ class DeservedInvoicesItem extends StatelessWidget {
              Expanded(
               flex: 2,
               child: Text(
-             invoice == null ?   'فاتورة 123414'
+             invoice == null ?   "invoice_default".tr()
                 : invoice.invoiceNumber,
                 style: TextStyle(
                     color: Color(0xff25292E),
@@ -41,48 +40,7 @@ class DeservedInvoicesItem extends StatelessWidget {
                     fontWeight: FontWeight.w500),
               ),
             ),
-            //  Expanded(
-            //   flex: 1,
-            //   child:Row(
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     children: [
-            // /*      Container(
-            //           width: 20,
-            //           height: 20,
-            //           child: CircularProgressIndicator(
-            //             value: 20,
-            //             backgroundColor: kGreenColor,
-            //             color: kGreenColor,
-            //           ) ),*/
-            //     Container(
-            //     width: 20,
-            //     height: 20,
-            //     child:  ShaderMask(
-            //         shaderCallback: (rect) {
-            //           return RadialGradient(
-            //             colors: [Colors.green, Colors.greenAccent],
-            //             radius: 0.5,
-            //             tileMode: TileMode.mirror,
-            //           ).createShader(rect);
-            //         },
-            //         child: CircularProgressIndicator(
-            //           strokeWidth:3.0,
-            //           value: 20,
-            //           valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent), // No need for color here
-            //           backgroundColor: Colors.grey,
-            //         ),
-            //     ) ),
-            //    Padding(padding: EdgeInsets.symmetric(horizontal: 10),
-            //    child:     Text(
-            //        invoice == null ? '% 30' :    ' % ${(invoice.amountDue / invoice.amountTotal)  * 100}',
-            //      style: TextStyle(
-            //          color: Color(0xffAC6521),
-            //          fontSize: 18,
-            //          fontWeight: FontWeight.w300),
-            //    ),),
-            //     ],
-            //   )
-            // ),
+
             Expanded(
               flex: 1,
               child: Row(
@@ -94,7 +52,8 @@ class DeservedInvoicesItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
                    Text(
-                     invoice == null ? '20 يوم':  '${ DateTime.now().difference(DateTime.parse(invoice.invoiceDate)).inDays}  يوم  ',
+                     invoice == null ? "days_default".tr():  '${ DateTime.now().difference(
+                         DateTime.parse(invoice.invoiceDate)).inDays}  ${"day_label".tr()}  ',
                 style: TextStyle(
                     color: Color(0xffAC6521),
                     fontSize: 14,
@@ -115,7 +74,7 @@ class DeservedInvoicesItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.004,
                     ),
                    Text(
-                     invoice == null ? '200 ر.س ':    '${invoice.amountTotal} ر.س ',
+                     invoice == null ? "currency_default".tr():    '${invoice.amountTotal} ${"sar".tr()} ',
                 style: TextStyle(
                     color: Color(0xffAC6521),
                     fontSize: 14,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
 
 
@@ -14,8 +15,8 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'اضافة معلومات التاجر',
+             Text(
+              "add_merchant_information".tr(),
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500,
@@ -33,19 +34,19 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(14)),
-              child: const Column(
+              child:  Column(
                 children: [
                   AddMerchantTextField(
-                      hintTextField: 'ادخل الاسم ثلاثي',
-                      nameTextField: 'اسم التاجر',
+                      hintTextField: "enter_full_name".tr(),
+                      nameTextField: "merchant_name".tr(),
                       input: TextInputType.name),
                   AddMerchantTextField(
-                      hintTextField: 'ادخل الرقم السعودي',
-                      nameTextField: 'رقم التليفون',
+                      hintTextField: "enter_saudi_number".tr(),
+                      nameTextField: "phone_number".tr(),
                       input: TextInputType.phone),
                   AddMerchantTextField(
-                      hintTextField: 'ادخل البريد الكتروني',
-                      nameTextField: 'البريد الالكتروني',
+                      hintTextField: "enter_email".tr(),
+                      nameTextField: "email".tr(),
                       input: TextInputType.emailAddress),
                 ],
               ),

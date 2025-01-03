@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ClientAddRequestsHeader extends StatelessWidget {
   const ClientAddRequestsHeader({super.key});
@@ -18,28 +19,28 @@ class ClientAddRequestsHeader extends StatelessWidget {
                 topLeft: Radius.circular(9),
                 topRight: Radius.circular(9),
               )),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.only(right: 8),
             child: Row(
               children: [
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'التاريخ',
+                    "date".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 5,
                   child: Text(
-                    'اسم المتجر',
+                    "storeName".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'الحالة',
+                    "status".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),

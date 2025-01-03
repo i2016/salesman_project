@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ProfileNoteContainer extends StatelessWidget {
   const ProfileNoteContainer({super.key});
@@ -31,19 +32,19 @@ class ProfileNoteContainer extends StatelessWidget {
           ),
            Expanded(
             flex: MediaQuery.of(context).orientation == Orientation.portrait ? 8 : 16,
-            child: const Column(
+            child:  Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'لا يمكنك تعديل المعلومات الخاصة بك،',
+                 "profile_note_title".tr(),
                   style: TextStyle(
                       color: Color(0xff25292E),
                       fontSize: 14,
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  'بإمكانك التواصل بمديرك المباشر لطلب تعديلها',
+               "profile_note_subtitle".tr(),
                   style: TextStyle(
                       color: Color(0xff25292E),
                       fontSize: 14,

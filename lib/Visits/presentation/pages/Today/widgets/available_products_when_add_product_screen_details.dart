@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_products_when_add_product_screen.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/widgets/button.dart';
@@ -50,9 +51,9 @@ class AvailableProductsWhenAddProductScreenDetails extends StatelessWidget{
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.01,
                 ),
-                const Opacity(
+                 Opacity(
                   opacity: 0.8,
-                  child: Text('اخفاء القائمة'),
+                  child: Text("hide_list".tr()),
                 ),
               ],
             ),
@@ -84,10 +85,10 @@ class AvailableProductsWhenAddProductScreenDetails extends StatelessWidget{
                           children: [
                           InkWell(
                               onTap: () => Dialogs.showDialogFinishVisit(context),
-                              child: const Button(
+                              child:  Button(
                                 color: Colors.black,
                                 iconImage: 'assets/images/ChCircle.png',
-                                buttonName: 'انهاء الزيارة',
+                                buttonName:  "end_visit".tr(),
                                 textColor: Colors.white,
                               ),
                             ),
@@ -115,14 +116,7 @@ class AvailableProductsWhenAddProductScreenDetails extends StatelessWidget{
                     color: Color.fromARGB(255, 186, 180, 180),
                     thickness: 0.9,
                   ),
-                  // ListView.builder(
-                  //   shrinkWrap: true,
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   itemCount: 4,
-                  //   itemBuilder: (context , index){
-                  //     return const WaterItemAvailableProductsWhenAddProduct();
-                  //   }
-                  //   ),
+
                 ],
               ),
                 ),

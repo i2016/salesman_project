@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ProfileDetails extends StatelessWidget {
   const ProfileDetails(
@@ -35,10 +36,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'الجنس',
+                        "gender".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -60,10 +61,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'الاسم',
+                        "name".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -92,10 +93,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'رقم الهوية',
+                        "id_number".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -117,10 +118,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'رقم الموظف',
+                        "employee_number".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -149,10 +150,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'البريد الإلكتروني',
+                        "email".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -174,10 +175,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'رقم الهاتف',
+                        "phone_number".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -206,10 +207,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'الوظيفة',
+                        "job".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -231,10 +232,10 @@ class ProfileDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Opacity(
+                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'موظف منذ',
+                        "employee_since".tr(),
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,

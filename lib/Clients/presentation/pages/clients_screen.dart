@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
@@ -24,14 +25,14 @@ class ClientsScreen extends StatelessWidget {
       screenButtons:[
         AppButtonWidget(
           asset: 'assets/images/add.png',
-          text: 'اضافة عميل',
+          text: "Add Client".tr(),
           onClick: () {
             customAnimatedPushNavigation(context, AddMerchantInformationScreen());
           },
         ),
         AppButtonWidget(
           asset: 'assets/images/addWithoutBorder.png',
-          text: 'طلبات اضافة',
+          text: "Add Requests".tr(),
           onClick: () {
             customAnimatedPushNavigation(context, ClientAddRequestsScreen());
 
@@ -65,8 +66,8 @@ clientsBloc.add(GetAllClientsEvent());
     body: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-      const Text(
-      'العملاء المسجلين',
+       Text(
+         "Registered Clients".tr() ,
       style: TextStyle(
         fontSize: 23,
         fontWeight: FontWeight.w500,
@@ -98,7 +99,7 @@ clientsBloc.add(GetAllClientsEvent());
                       return  RegisteredCustomersScreenContainerItem(
                         storeName: clientsModel.result!.clients![index].customerName ??'',
                         sales: clientsModel.result!.clients![index].totalAmount.toString().replaceAll('.', ',') ??'30,000 ',
-                        distance: 'يبعد 23 ك.م',
+                        distance: '${"Far_away".tr()}  23 ${"km".tr()}',
                         money: clientsModel.result!.clients![index].totalAmountDue.toString().replaceAll('.', ',') ??'15,000 ',
                         type: "client",
                       );
@@ -109,7 +110,7 @@ clientsBloc.add(GetAllClientsEvent());
                   return Padding(
                     padding:  EdgeInsets.symmetric(vertical: Shared.width * 0.3),
                     child: Center(
-                      child: Text("لا يوجد عملاء حاليا"),
+                      child: Text("No clients currently".tr()),
                     ),
                   );
                 }

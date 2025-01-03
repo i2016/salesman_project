@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/presentation/pages/Today/review_product_screen.dart';
 
@@ -10,9 +11,7 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return       visitCategory! ? Container() :  Container(
       width: MediaQuery.of(context).size.width * 0.245,
-      /*       height: MediaQuery.of(context).orientation == Orientation.portrait ?
-            MediaQuery.of(context).size.height * 0.18
-            : MediaQuery.of(context).size.height * 0.28,*/
+
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -25,141 +24,9 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /*   const Text(
-                    'امر بيع',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const Text(
-                    'أسم التاجر',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.008,
-                  ),
-                 const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Opacity(
-                        opacity: 0.78,
-                        child: Text(
-                          'المنتج',
-                          style: TextStyle(
-                            color: Color(0xff758195),
-                            fontWeight: FontWeight.w300,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'المبلغ',
-                        style: TextStyle(
-                          color: Color(0xff758195),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  ...showSelectedProducts(),
-
-
-                  const Divider(
-                    color: Color.fromARGB(255, 186, 180, 180),
-                    thickness: 0.9,
-                  ),
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Opacity(
-                        opacity: 0.7,
-                        child: Text(
-                          'الاجمالي',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.9,
-                        child: Text(
-                          '${Shared.calculateTotalForAllProducts()}  ر.س ',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.004,
-                  ),
-                  const Row(
-
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Opacity(
-                        opacity: 0.7,
-                        child: Text(
-                          'رصيد سابق',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.9,
-                        child: Text(
-                          '-42 ر.س',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.004,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Opacity(
-                        opacity: 0.7,
-                        child: Text(
-                          'الصافي',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.9,
-                        child: Text(
-                          '300  ر.س ',
-                          style: TextStyle(
-                              color: Color(0xff0056C9),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ],
-                  ),
-                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.009,
-                  ),*/
 
       InkWell(
               onTap: () {
-            //    if(Shared.order_products_list.length !=0)
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ReviewProductScreen()));
               },
@@ -188,8 +55,8 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.006,
                         ),
-                        const Text(
-                          'مراجعة المنتجات',
+                         Text(
+                          "review_products".tr(),
                           style: TextStyle(
                             color: Color(0xff1D7AFC),
                             fontWeight: FontWeight.w300,
@@ -207,43 +74,6 @@ class ProductsAndPricesAvailableItemsScreen extends StatelessWidget {
       ),
     );
     }
- /* List<Widget> showSelectedProducts() {
-    print("Shared.order_products_list : ${Shared.order_products_list}");
-
-    return Shared.order_products_list?.map((element) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 4,
-            child: Opacity(
-              opacity: 0.78,
-              child: Text(
-                ' ${element.selectedCount} * ${element.name} ',
-                maxLines: 4,
-                style: TextStyle(
-                  color: Color(0xff758195),
-                  fontWeight: FontWeight.w300,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ),
-
-        Expanded(
-          flex: 2,
-          child: Text(
-          '${element.total} ر.س',
-          style: TextStyle(
-            color: Color(0xff758195),
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-          ),
-        ),)
-        ],
-      );
-    }).toList() ?? [];
-  }*/
 
 
 }

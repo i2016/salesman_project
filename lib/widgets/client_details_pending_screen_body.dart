@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/button.dart';
 import 'package:water/widgets/google_map_container.dart';
 import 'package:water/widgets/market_information_container.dart';
@@ -49,10 +50,10 @@ class ClientDetailsPendingScreenBody extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'اخفاء القائمة',
+                                "hide_list".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -88,10 +89,10 @@ class ClientDetailsPendingScreenBody extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {},
-                              child: const Button(
+                              child:  Button(
                                 color: Colors.white,
                                 iconImage: 'assets/images/Route.png',
-                                buttonName: 'الاتجاهات',
+                                buttonName: "directions".tr(),
                                 textColor: Colors.black,
                               ),
                             ),
@@ -101,10 +102,10 @@ class ClientDetailsPendingScreenBody extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {},
-                              child: const Button(
+                              child:  Button(
                                 color: Colors.white,
                                 iconImage: 'assets/images/phonee.png',
-                                buttonName: 'الإتصال بالتاجر',
+                                buttonName: "call_merchant".tr(),
                                 textColor: Colors.black,
                               ),
                             ),
@@ -125,8 +126,8 @@ class ClientDetailsPendingScreenBody extends StatelessWidget {
                         IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.arrow_back)),
-                        const Text(
-                          'تفاصيل التاجر',
+                         Text(
+                          "merchant_details".tr(),
                           style: TextStyle(
                             fontSize: 23,
                             fontWeight: FontWeight.w500,
@@ -137,10 +138,10 @@ class ClientDetailsPendingScreenBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.008,
                     ),
-                    const TraderFileContainer(
+                     TraderFileContainer(
                       traderName: 'عبدالرحمن محمد علي',
                       phone: '+966 4644 4646',
-                      textSmallContainer: 'تحت المراجعة',
+                      textSmallContainer: "under_review".tr(),
                       iconSmallContainer:  'assets/images/VerifiedCheck.png',
                       color: Color(0xffAC6521),
                     ),

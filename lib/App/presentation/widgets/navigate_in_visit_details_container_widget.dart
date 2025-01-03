@@ -23,10 +23,10 @@ class _NavigateBasicContainerState extends State<NavigateInVisitDetailsContainer
   @override
   void initState() {
     MainMenu = [
-      ElementEntity(title: 'نظرة عامة', image: 'assets/images/overView.png', screenIndex:  0),
-      ElementEntity(title: 'المبيعات', image: 'assets/images/Shop.png', screenIndex:  1),
-      ElementEntity(title: 'المرتجعات', image: 'assets/images/RestartCircle.png', screenIndex:  2),
-      ElementEntity(title: 'تحصيل', image: 'assets/images/MoneyBag.png', screenIndex:  3),
+      ElementEntity(title: "overview".tr(), image: 'assets/images/overView.png', screenIndex:  0),
+      ElementEntity(title: "sales".tr(), image: 'assets/images/Shop.png', screenIndex:  1),
+      ElementEntity(title: "returns".tr(), image: 'assets/images/RestartCircle.png', screenIndex:  2),
+      ElementEntity(title:  "collection".tr(), image: 'assets/images/MoneyBag.png', screenIndex:  3),
     ];
     super.initState();
   }
@@ -63,8 +63,8 @@ class _NavigateBasicContainerState extends State<NavigateInVisitDetailsContainer
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const Text(
-                    ' تفاصيل الزيارة ',
+                  Text(
+                   "visit_details".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
@@ -81,7 +81,6 @@ class _NavigateBasicContainerState extends State<NavigateInVisitDetailsContainer
                           onTap: () {
                             setState(() {
                               index = i;
-                              print("index : ${index}");
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> _mainMenuBuildScreens[index]));
                             });
 

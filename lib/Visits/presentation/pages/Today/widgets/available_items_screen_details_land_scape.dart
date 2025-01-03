@@ -1,3 +1,4 @@
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
@@ -42,12 +43,12 @@ class _AvailableItemsScreenDetailsLandScapeState extends State<AvailableItemsScr
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SearchTextFieldAvailableItemsScreen(hintText: 'البحث عن صنف أو منتج',),
+                       SearchTextFieldAvailableItemsScreen(hintText: "search_for_item_or_product".tr()),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'الأصناف المتاحة',
+                           Text(
+                           "available_items".tr(),
                             style: TextStyle(
                                 fontSize: 23,
                                 fontWeight: FontWeight.w500
@@ -81,7 +82,7 @@ class _AvailableItemsScreenDetailsLandScapeState extends State<AvailableItemsScr
                                         color: Colors.black,
                                       ),
 
-                                      hintText: 'البحث عن صنف ',
+                                      hintText: "search_for_item".tr(),
                                       hintStyle: const TextStyle(
                                         color: Color.fromARGB(255, 146, 155, 171),
                                       )
@@ -112,7 +113,7 @@ class _AvailableItemsScreenDetailsLandScapeState extends State<AvailableItemsScr
                                         color: Colors.black,
                                       ),
 
-                                      hintText: 'البحث عن صنف أو منتج',
+                                      hintText: "search_for_item_or_product".tr(),
                                       hintStyle: const TextStyle(
                                         color: Color.fromARGB(255, 146, 155, 171),
                                       )
@@ -129,7 +130,6 @@ class _AvailableItemsScreenDetailsLandScapeState extends State<AvailableItemsScr
                         height: Shared.height,
                         child: ListView.builder(
                             shrinkWrap: true,
-                            // physics: const NeverScrollableScrollPhysics(),
                             itemCount: filteredCategories?.length,
                             itemBuilder: (context, index) {
                               return InkWell(

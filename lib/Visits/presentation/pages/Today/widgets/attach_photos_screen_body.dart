@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/widgets/take_photo_widget.dart';
 
@@ -13,15 +14,15 @@ class AttachPhotosScreenBody extends StatelessWidget {
           body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'ارفاق صور',
+                       Text(
+                       "attach_photos".tr(),
                         style: TextStyle(
                             fontSize: 23, fontWeight: FontWeight.w500),
                       ),
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(top: 18, bottom: 11),
                         child: Text(
-                          'يمكنك ارفاق صور للمتجر في حالة طلب مديرك',
+                          "attach_photos_description".tr(),
                           style: TextStyle(
                               color: Color(0xff25292E),
                               fontSize: 16,
@@ -45,8 +46,8 @@ class AttachPhotosScreenBody extends StatelessWidget {
                                   width:
                                       MediaQuery.of(context).size.width * 0.005,
                                 ),
-                                const Text(
-                                  'لم يتم رفع صور بعد',
+                                 Text(
+                                   "no_photos_uploaded".tr()   ,
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),
@@ -85,10 +86,10 @@ class AttachPhotosScreenBody extends StatelessWidget {
                                             MediaQuery.of(context).size.width *
                                                 0.006,
                                       ),
-                                      const Opacity(
+                                       Opacity(
                                         opacity: 0.7,
                                         child: Text(
-                                          'ارسال الصور للادارة',
+                                          "send_photos_to_admin".tr(),
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 14,

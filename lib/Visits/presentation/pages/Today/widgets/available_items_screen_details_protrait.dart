@@ -5,7 +5,7 @@ import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/presentation/pages/Today/available_products_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_items_screen.dart';
 import 'package:water/widgets/categories_widget.dart';
-import 'package:water/widgets/search_text_field_available_items_screen.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:flutter/material.dart';
 
 class AvailableItemsScreenDetailsProtrait extends StatefulWidget {
@@ -45,8 +45,8 @@ class _AvailableItemsScreenDetailsProtraitState extends State<AvailableItemsScre
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'الأصناف المتاحة',
+                           Text(
+                            "available_items".tr(),
                             style: TextStyle(
                                 fontSize: 23,
                                 fontWeight: FontWeight.w500
@@ -80,7 +80,7 @@ class _AvailableItemsScreenDetailsProtraitState extends State<AvailableItemsScre
                                         color: Colors.black,
                                       ),
 
-                                      hintText: 'البحث عن صنف ',
+                                      hintText: "search_for_item".tr(),
                                       hintStyle: const TextStyle(
                                         color: Color.fromARGB(255, 146, 155, 171),
                                       )
@@ -112,7 +112,7 @@ class _AvailableItemsScreenDetailsProtraitState extends State<AvailableItemsScre
                                         color: Colors.black,
                                       ),
 
-                                      hintText: 'البحث عن صنف',
+                                      hintText: "search_for_item".tr(),
                                       hintStyle: const TextStyle(
                                         color: Color.fromARGB(255, 146, 155, 171),
                                       )

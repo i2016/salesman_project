@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/custom_dropdown.dart';
 
 class BillContainer extends StatelessWidget{
@@ -13,8 +14,8 @@ final String containerName;
          Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'تصفية حسب',
+             Text(
+              "filter_by".tr(),
               style: TextStyle(
                 color: Color(0xff758195),
                 fontSize: 16,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
@@ -56,8 +57,8 @@ class _pageState extends State<_page> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.012,
               ),
-              const Text(
-                'تاريخ الزيارات',
+               Text(
+                 "visit_history".tr(),
                 style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w500,
@@ -116,7 +117,7 @@ class _pageState extends State<_page> {
                             date: state.visitsHistory![index].visitDate!,
                             collect: state.visitsHistory![index].totalAmountDue!.toStringAsFixed(2),
                             complete: '30,000',
-                            visit: 'في زيارات اليوم',
+                            visit: "in_todays_visits".tr(),
                             returned: '30,000',
                             store: state.visitsHistory![index].visitName!,
                             icon: 'assets/images/trueeStyle.png',
@@ -136,7 +137,7 @@ class _pageState extends State<_page> {
                     return Padding(
                       padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
                       child: Center(
-                        child: Text("لا توجد زيارات حاليا"),
+                        child: Text("no_visits".tr()),
                       ),
                     );
                   }

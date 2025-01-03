@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/presentation/pages/Today/review_product_screen.dart';
 
 class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
@@ -27,27 +28,27 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'مرتجع منتجات',
+                   Text(
+                   "returned_products".tr(),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const Text(
-                    'لأسم التاجر',
+                   Text(
+                     "merchant_name".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.78,
                         child: Text(
-                          'المنتج',
+                          "product".tr(),
                           style: TextStyle(
                             color: Color(0xff758195),
                             fontWeight: FontWeight.w300,
@@ -56,7 +57,7 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'المبلغ',
+                        "amount".tr(),
                         style: TextStyle(
                           color: Color(0xff758195),
                           fontWeight: FontWeight.w500,
@@ -69,13 +70,13 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                     color: Color.fromARGB(255, 186, 180, 180),
                     thickness: 0.9,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          'الاجمالي',
+                          "total".tr(),
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -85,7 +86,7 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                       Opacity(
                         opacity: 0.9,
                         child: Text(
-                          '42 ر.س',
+                          '42 ${"sar".tr()}',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -97,13 +98,13 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.004,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          'رصيد سابق',
+                          "previous_balance".tr(),
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -113,7 +114,7 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                       Opacity(
                         opacity: 0.9,
                         child: Text(
-                          '-42 ر.س',
+                          '42 ${"sar".tr()}',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -125,13 +126,13 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.004,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          'الصافي',
+                          "net".tr(),
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -141,7 +142,7 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                       Opacity(
                         opacity: 0.9,
                         child: Text(
-                          '42 ر.س',
+                          '42 ${"sar".tr()}',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -183,8 +184,8 @@ class ProductsAndPricesAvailableProductsScreen extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.006,
                               ),
-                              const Text(
-                                'مراجعة المنتجات',
+                               Text(
+                                "review_products".tr(),
                                 style: TextStyle(
                                   color: Color(0xff1D7AFC),
                                   fontWeight: FontWeight.w300,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Visits/presentation/bloc/categories_bloc.dart';
@@ -47,7 +48,7 @@ class AvailableItemsScreenDetails extends StatelessWidget {
                 }
                   else{
                     return Center(
-                      child: Text("لا توجد اصناف حاليا"),
+                      child: Text("no_items_available".tr()),
                     );
                   }
 

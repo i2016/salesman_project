@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Visits/data/models/category_model.dart';
@@ -71,8 +72,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                SizedBox(
                                  width: MediaQuery.of(context).size.width * 0.019,
                                ),
-                               const Text(
-                                 'المنتجات المتاحة',
+                                Text(
+                                 "available_products".tr(),
                                  style: TextStyle(
                                      fontSize: 23, fontWeight: FontWeight.w500),
                                ),
@@ -131,7 +132,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                                0.002,
                                          ),
                                          Text(
-                                           widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
+                                           widget.categoryData == null ? '' :
+                                           '${ widget.categoryData!.productCount} ${"product".tr()} ',
                                            style: TextStyle(
                                                color: Color(0xff0056C9),
                                                fontSize: 16,
@@ -169,7 +171,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                      'assets/images/search.png',
                                      color: Colors.black,
                                    ),
-                                   hintText: 'البحث عن منتج',
+                                   hintText: "search_for_a_product".tr(),
                                    hintStyle: const TextStyle(
                                      color: Color.fromARGB(255, 146, 155, 171),
                                    )),
@@ -194,8 +196,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                SizedBox(
                                  width: MediaQuery.of(context).size.width * 0.012,
                                ),
-                               const Text(
-                                 'المنتجات المتاحة',
+                                Text(
+                                 "available_products".tr(),
                                  style: TextStyle(
                                      fontSize: 23, fontWeight: FontWeight.w500),
                                ),
@@ -224,8 +226,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                children: [
-                                 const Text(
-                                   'مياه',
+                                  Text(
+                                   "water".tr(),
                                    style: TextStyle(
                                      color: Color(0xff25292E),
                                      fontSize: 16,
@@ -254,8 +256,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                            width: MediaQuery.of(context).size.width *
                                                0.002,
                                          ),
-                                         const Text(
-                                           '50 منتج',
+                                          Text(
+                                             "50_products".tr(),
                                            style: TextStyle(
                                                color: Color(0xff0056C9),
                                                fontSize: 14,
@@ -293,7 +295,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                      'assets/images/search.png',
                                      color: Colors.black,
                                    ),
-                                   hintText: 'البحث عن منتج',
+                                   hintText:   "search_for_a_product".tr(),
                                    hintStyle: const TextStyle(
                                      color: Color.fromARGB(255, 146, 155, 171),
                                    )),
@@ -333,8 +335,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                          SizedBox(
                            width: MediaQuery.of(context).size.width * 0.019,
                          ),
-                         const Text(
-                           'المنتجات المتاحة',
+                          Text(
+                           "available_products".tr(),
                            style: TextStyle(
                                fontSize: 23, fontWeight: FontWeight.w500),
                          ),
@@ -394,7 +396,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                          0.002,
                                    ),
                                    Text(
-                                     widget.categoryData == null ? '' :     '${ widget.categoryData!.productCount} منتج ',
+                                     widget.categoryData == null ? '' :
+                                     '${ widget.categoryData!.productCount} ${"product".tr()} ',
                                      style: TextStyle(
                                          color: Color(0xff0056C9),
                                          fontSize: 16,
@@ -432,7 +435,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                'assets/images/search.png',
                                color: Colors.black,
                              ),
-                             hintText: 'البحث عن منتج',
+                             hintText:  "search_for_a_product".tr(),
                              hintStyle: const TextStyle(
                                color: Color.fromARGB(255, 146, 155, 171),
                              )),
@@ -457,8 +460,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                          SizedBox(
                            width: MediaQuery.of(context).size.width * 0.012,
                          ),
-                         const Text(
-                           'المنتجات المتاحة',
+                          Text(
+                           "available_products".tr(),
                            style: TextStyle(
                                fontSize: 23, fontWeight: FontWeight.w500),
                          ),
@@ -487,8 +490,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                          children: [
-                           const Text(
-                             'مياه',
+                            Text(
+                             "water".tr(),
                              style: TextStyle(
                                color: Color(0xff25292E),
                                fontSize: 16,
@@ -517,8 +520,8 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                      width: MediaQuery.of(context).size.width *
                                          0.002,
                                    ),
-                                   const Text(
-                                     '50 منتج',
+                                    Text(
+                                     "50_products".tr(),
                                      style: TextStyle(
                                          color: Color(0xff0056C9),
                                          fontSize: 14,
@@ -556,7 +559,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                'assets/images/search.png',
                                color: Colors.black,
                              ),
-                             hintText: 'البحث عن منتج',
+                             hintText: "search_for_a_product".tr(),
                              hintStyle: const TextStyle(
                                color: Color.fromARGB(255, 146, 155, 171),
                              )),

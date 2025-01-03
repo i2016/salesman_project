@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
 import 'package:water/Base/common/navigtor.dart';
@@ -17,14 +18,14 @@ class InventoryScreen extends StatelessWidget{
         screenButtons:[
           AppButtonWidget(
             asset: 'assets/images/VectorAdddd.png',
-            text: 'طلب تحويل',
+            text: "transfer_request".tr(),
             onClick: () {
               customAnimatedPushNavigation(context, InventoryAddRequestScreen());
             },
           ),
           AppButtonWidget(
             asset: 'assets/images/fileImage.png',
-            text: 'الطلبات الحالية',
+            text: "current_requests".tr(),
             onClick: () {
               customAnimatedPushNavigation(context, const CurrentRequestsScreen());
             },

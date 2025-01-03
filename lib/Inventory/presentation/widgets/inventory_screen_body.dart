@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Inventory/presentation/bloc/main_inventory_bloc.dart';
 import 'package:water/Inventory/presentation/widgets/inventory_products_screen.dart';
-import 'package:water/Visits/presentation/bloc/products_bloc.dart';
-import 'package:water/widgets/image_number_product_price_container_Widget.dart';
-import 'package:water/widgets/review_product_water_item.dart';
-import 'package:water/widgets/search_text_field.dart';
+
 
 class InventoryScreenBody extends StatefulWidget {
   const InventoryScreenBody({super.key});
@@ -29,10 +27,10 @@ class _InventoryScreenBodyState extends State<InventoryScreenBody> {
           child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
+                       Row(
                         children: [
                           Text(
-                            'المنتجات المتاحة',
+                            "water_item_available".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,

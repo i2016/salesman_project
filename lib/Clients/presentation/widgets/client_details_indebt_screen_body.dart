@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Clients/presentation/bloc/invoice_history_bloc.dart';
@@ -45,8 +46,8 @@ class ClientDetailsIndebtScreenBody extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.012,
                           ),
-                          const Text(
-                            'ملف المديونية',
+                           Text(
+                            "debt_file".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,
@@ -61,16 +62,16 @@ class ClientDetailsIndebtScreenBody extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.008,
                       ),
-                  
+
                       Padding(
                           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                           child:  BarChartSample(
-                            title: 'تاريخ الفواتير',
+                            title: "invoice_history".tr(),
                             statistics: state.invoiceResult!.statistics,
                           )
                       ),
-                  
-                  
+
+
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.008,
                       ),
@@ -94,10 +95,10 @@ class ClientDetailsIndebtScreenBody extends StatelessWidget {
                                          : state.invoiceResult!.invoices![index].invoiceDate!.toString(),
                                 pillType: state.invoiceResult!.invoices![index].type!,
                                 productNumber: state.invoiceResult!.invoices![index].type! == "payment" ? ''
-                                             :' ${state.invoiceResult!.invoices![index].itemsCount}  منتج ',
+                                             :' ${state.invoiceResult!.invoices![index].itemsCount}  ${"product".tr()} ',
                                 productValue:  state.invoiceResult!.invoices![index].type! == "payment" ?
-                                                 '${state.invoiceResult!.invoices![index].paymentAmount}  ر.س '
-                                                :'${state.invoiceResult!.invoices![index].amountTotal}  ر.س ',
+                                                 '${state.invoiceResult!.invoices![index].paymentAmount}  ${"sar".tr()} '
+                                                :'${state.invoiceResult!.invoices![index].amountTotal}  ${"sar".tr()} ',
                               ),
                             );
                           }),
@@ -107,7 +108,7 @@ class ClientDetailsIndebtScreenBody extends StatelessWidget {
               }
               else{
                 return Center(
-                  child: Text("لا توجد فواتير حاليا"),
+                  child: Text("no_invoices".tr()),
                 );
               }
 

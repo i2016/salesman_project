@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
 import 'package:water/widgets/location_container_widget.dart';
 
@@ -13,8 +14,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'اضافة العنوان والموقع',
+             Text(
+               "add_address_location".tr(),
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500,
@@ -38,8 +39,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'المدينة',
+                     Text(
+                      "city".tr(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -72,8 +73,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'اختر المدينة',
+                             Text(
+                               "choose_city".tr(),
                               style: TextStyle(
                                 color: Color(0xff758195),
                                 fontSize: 16,
@@ -89,24 +90,24 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل اسم الحي',
-                        nameTextField: 'الحي',
+                     AddMerchantTextField(
+                        hintTextField:  "enter_neighborhood".tr(),
+                        nameTextField: "neighborhood".tr(),
                         input: TextInputType.name),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل الرقم البريدي للمنطقة',
-                        nameTextField: 'الرقم البريدي',
+                     AddMerchantTextField(
+                        hintTextField: "enter_postal_code".tr(),
+                        nameTextField:  "postal_code".tr(),
                         input: TextInputType.phone),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل اسم الشارع بالكامل',
-                        nameTextField: 'الشارع',
+                     AddMerchantTextField(
+                        hintTextField: "enter_street".tr(),
+                        nameTextField: "street".tr(),
                         input: TextInputType.emailAddress),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل رقم العقار',
-                        nameTextField: 'رقم العقار',
+                     AddMerchantTextField(
+                        hintTextField: "enter_property_number".tr(),
+                        nameTextField: "property_number".tr(),
                         input: TextInputType.emailAddress),
-                    const Text(
-                      'اختر الموقع',
+                     Text(
+                       "select_location".tr(),
                       style: TextStyle(
                           fontSize: 14, fontWeight: FontWeight.w500),
                     ),

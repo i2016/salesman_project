@@ -42,21 +42,24 @@ final bool hasBorder;
               Expanded(
                 flex: 1,
                 child: Image.asset(
-                  image,
-                  color: color,
+                    image,
+                    color: color,
+                  ),
                 ),
-              ),
+
 
               Expanded(
                 flex: 1,
-                child: Text(
+                child:  Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2.0),
+                  child:Text(
                   name,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
                     color: color,
                   ),
-                ),
+                  )  ),
               ),
 
               Expanded(

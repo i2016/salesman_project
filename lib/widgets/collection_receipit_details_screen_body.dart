@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/widgets/Drawer/good_returns_edit_product_drawer.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/widgets/button.dart';
@@ -54,9 +55,9 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
                                   width:
                                       MediaQuery.of(context).size.width * 0.01,
                                 ),
-                                const Opacity(
+                                 Opacity(
                                   opacity: 0.8,
-                                  child: Text('اخفاء القائمة'),
+                                  child: Text("hide_list".tr())
                                 ),
                               ],
                             ),
@@ -89,10 +90,10 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () => Dialogs.showDialogFinishVisit(context),
-                                  child: const Button(
+                                  child:  Button(
                                     color: Colors.black,
                                     iconImage: 'assets/images/ChCircle.png',
-                                    buttonName: 'انهاء الزيارة',
+                                    buttonName: "end_visit".tr(),
                                     textColor: Colors.white,
                                   ),
                                 ),
@@ -118,8 +119,8 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.019,
                           ),
-                          const Text(
-                            'الفاتورة رقم 123414',
+                           Text(
+                            "invoice_default".tr(),
                             style: TextStyle(
                                 fontSize: 23, fontWeight: FontWeight.w500),
                           ),
@@ -128,24 +129,24 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.011,
                       ),
-                      const WaterItemPreviousInvoices(
-                        saleName: 'مبيعات 500 ر.س',
-                        pill: 'فاتورة رقم 123414',
-                        date: 'اصدار بتاريخ 21 / 8 / 2024',
+                       WaterItemPreviousInvoices(
+                        saleName: '${"sales".tr()}  500  ${"sar".tr()}',
+                        pill: "default_invoice".tr(),
+                        date: '${"issued_on".tr()} 21 / 8 / 2024',
                         icon: 'assets/images/marketImage.png',
                         color: Color(0xff0056C9),
-                        textIcon: '50 منتج',
+                        textIcon: "number_of_products".tr(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.011,
                       ),
-                      const SearchTextField(
-                        hintTextField: 'البحث عن منتج',
+                       SearchTextField(
+                        hintTextField: "search_for_product".tr(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.011,
                       ),
-                      const BillContainer(containerName: 'الصنف'),
+                       BillContainer(containerName: "items".tr()),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.011,
                       ),

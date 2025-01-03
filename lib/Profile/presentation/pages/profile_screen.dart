@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
 import 'package:water/Base/Helper/app_event.dart';
@@ -32,14 +33,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
        screenButtons: [
          AppButtonWidget(
            asset: 'assets/images/passwordTextField.png',
-           text: 'كلمة السر',
+           text: "password".tr(),
            onClick: () {
              customAnimatedPushNavigation(context, ChangePasswordScreen());
            },
          ),
          AppButtonWidget(
            asset: 'assets/images/LogOut.png',
-           text: 'تسجيل خروج',
+           text: "logOut".tr(),
            onClick: () => Dialogs.showDialogProfileLogout(context),
            color: kWhiteColor,
          ),

@@ -9,9 +9,6 @@ import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Inventory/presentation/pages/current_requests/inventory_current_request_details_screen_body.dart';
 import 'package:water/Inventory/presentation/pages/inventory_screen.dart';
-import 'package:water/Inventory/presentation/widgets/drawer_edit_inventory_current_request.dart';
-import 'package:water/Inventory/presentation/widgets/drawer_inventory_current_request_transfer_request.dart';
-import 'package:water/Inventory/presentation/widgets/drawer_inventory_current_requests_add_product.dart';
 
 class InventoryCurrentRequestDetailsScreen extends StatefulWidget{
    const InventoryCurrentRequestDetailsScreen({super.key});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/duration_status_contianers.dart';
 import 'package:water/widgets/search_text_field.dart';
 import 'package:water/widgets/visits_history_screen_container_item.dart';
@@ -14,8 +15,8 @@ class ReturnOrdersScreenDetails extends StatelessWidget {
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   const Text(
-                        'اوامر المرتجعات',
+                    Text(
+                      "return_orders".tr(),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w500,
@@ -24,7 +25,7 @@ class ReturnOrdersScreenDetails extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.012,
                     ),
-                    const SearchTextField(hintTextField: 'البحث عن فاتورة'),
+                     SearchTextField(hintTextField:   "search_invoice".tr()),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.012,
                     ),
@@ -48,13 +49,13 @@ class ReturnOrdersScreenDetails extends StatelessWidget {
                       ),
                       itemCount: 8,
                       itemBuilder: (context, index) {
-                        return const VisitsHistoryScreenContainerItem(
-                          date: 'امر مرتجع 12313',
-                          collect: '50 منتج',
-                          complete: '30,000 ر.س',
-                          visit: 'تم الموافقة',
-                          returned: '3 ساعات',
-                          store: 'اسم المتجر',
+                        return  VisitsHistoryScreenContainerItem(
+                          date: '${"return_order".tr()} 12313',
+                          collect: "number_of_products".tr(),
+                          complete: '30,000 ${"sar".tr()}',
+                          visit: "approved".tr(),
+                          returned: "time".tr(),
+                          store: "store_name".tr(),
                           icon: 'assets/images/trueeStyle.png',
                           iconColor: Color(0xff1D6E4F),
                           iconProductType: 'assets/images/RestartCircle.png',

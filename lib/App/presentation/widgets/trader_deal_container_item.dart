@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/theme.dart';
 
 class TraderDealContainerItem extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
@@ -99,10 +100,11 @@ class _pageState extends State<_page> {
                         itemCount: state.visits?.length,
                         itemBuilder: (context, index) {
                           return  RegisteredCustomersScreenContainerItem(
-                            storeName: 'اسم المتجر',
-                            sales: '30,000',
-                            distance: 'يبعد 232 ك.م',
-                            money: '15,000 ',
+                            storeName: "store_name".tr(),
+                            sales: '${"Monthly_sales".tr()}30,000 ' ,
+                            distance: "Far_away".tr() + "232" + "km".tr(),
+                            money: '15,000 ${"debt".tr()}',
+
                             visit:  state.visits![index],
                           );
                         },

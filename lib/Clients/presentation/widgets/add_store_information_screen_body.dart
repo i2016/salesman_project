@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
 import 'package:water/widgets/take_photo_widget.dart';
 
@@ -12,8 +13,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'اضافة معلومات التاجر',
+             Text(
+             "add_merchant_information".tr(),
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500,
@@ -36,24 +37,25 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل الاسم ثلاثي',
-                        nameTextField: 'اسم المتجر',
+                     AddMerchantTextField(
+                        hintTextField: "enter_store_name".tr(),
+                        nameTextField: "store_name".tr(),
                         input: TextInputType.name),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل الرقم السعودي',
-                        nameTextField: 'الرقم الضريبي',
+                     AddMerchantTextField(
+                        hintTextField: "enter_tax_number".tr(),
+                        nameTextField: "tax_number".tr(),
                         input: TextInputType.phone),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل البريد الكتروني',
-                        nameTextField: 'رقم السجل',
+                     AddMerchantTextField(
+                        hintTextField: "enter_register_number".tr(),
+                        nameTextField: "register_number".tr(),
                         input: TextInputType.emailAddress),
-                    const AddMerchantTextField(
-                        hintTextField: 'ادخل البريد الكتروني',
-                        nameTextField: 'الموقع الرسمي(ان وجد)',
+                     AddMerchantTextField(
+                        hintTextField: "enter_official_website".tr(),
+                        nameTextField: "official_website".tr(),
                         input: TextInputType.emailAddress),
-                    const Text(
-                      'اضف المستندات',
+
+                     Text(
+                     "add_documents".tr(),
                       style: TextStyle(
                           fontSize: 14, fontWeight: FontWeight.w500),
                     ),
@@ -64,8 +66,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.005,
                     ),
-                    const Text(
-                      'تأكد من اضافة المستندات الآتية:',
+                     Text(
+                      "make_sure_to_add_documents".tr(),
                       style: TextStyle(
                           fontSize: 14, fontWeight: FontWeight.w300),
                     ),
@@ -79,8 +81,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.005,
                         ),
-                        const Text(
-                          'السجل الضريبي',
+                         Text(
+                         "tax_register".tr(),
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),
@@ -96,8 +98,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.005,
                         ),
-                        const Text(
-                          'توثيق الشركة',
+                         Text(
+                         "company_authentication".tr(),
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),

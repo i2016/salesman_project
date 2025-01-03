@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/shared.dart';
@@ -31,7 +32,6 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
     return  BlocBuilder<MainInventoryBloc, AppState>(
       bloc: mainInventoryBloc,
       builder: (context, state) {
-        print("ProductsUnderCategory ###state : ${state}");
         if (state is GetMainInventoryProductsUnderCategoryLoading) {
           return const LoadingPlaceHolder(
             shimmerType: ShimmerType.list,
@@ -40,7 +40,6 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
           );
         }
         else if (state is GetMainInventoryProductsUnderCategoryDone) {
-          print("ProductsUnderCategory state : ${state.products!.length}");
           if(state.products != null && state.products!.isNotEmpty){
             return ListCategoryProducts(
               categoryData: widget.categoryData,
@@ -51,7 +50,7 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
           }
           else{
             return Center(
-              child: Text("لا توجد منتجات حاليا",
+              child: Text("no_products".tr(),
                 style: TextStyle(color: kBlackColor),),
             );
           }
@@ -61,7 +60,6 @@ class InventoryTransferRequestProductsState extends State<InventoryTransferReque
             child: Text("${state.message}"),
           );
         } else {
-          print("sssssssssssssss");
           return Container();
         }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Clients/presentation/pages/client_details_screen.dart';
@@ -108,7 +109,7 @@ final Visit? visit ;
                           ),
                           Text(
                            "${ type == "visit" ?  visit!.monthOrders!.toString()
-                               : double.parse(sales.replaceFirst(',', '.')).toStringAsFixed(2) }      مبيعات شهرية      ",
+                               : double.parse(sales.replaceFirst(',', '.')).toStringAsFixed(2) }  ${"Monthly_sales".tr()}      ",
                             style: const TextStyle(
                               color: Color(0xff1D6E4F),
                               fontSize: 18,

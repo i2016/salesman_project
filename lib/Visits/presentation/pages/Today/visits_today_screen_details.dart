@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
@@ -31,14 +32,14 @@ class VisitsTodayDetailsScreen extends StatelessWidget{
         screenButtons: [
           AppButtonWidget(
             asset: 'assets/images/startVisit.png',
-            text: 'بدأ الزيارة',
+            text:  "startVisit".tr(),
             onClick: (){
               customAnimatedPushNavigation(context, AvailableItemsScreen());
             },
           ),
           AppButtonWidget(
             asset: 'assets/images/Route.png',
-            text: 'الاتجاهات',
+            text:  "directions".tr(),
             onClick: (){
               launchGoogleMaps(Shared.marketLatitude , Shared.marketLongtitude);
             },
@@ -46,7 +47,7 @@ class VisitsTodayDetailsScreen extends StatelessWidget{
           ),
           AppButtonWidget(
             asset: 'assets/images/phonee.png',
-            text: 'الإتصال بالتاجر',
+            text: "callMerchant".tr(),
             onClick: (){
               launchUrlString("tel://${Shared.marketPhone}");
             },
@@ -116,8 +117,8 @@ class _pageState extends State<_page> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
                           ),
-                          const Text(
-                            'تفاصيل التاجر',
+                           Text(
+                            "traderDetails".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,
@@ -131,7 +132,7 @@ class _pageState extends State<_page> {
                        TraderFileContainer(
                         traderName: state.visitDetails![0].customerName!,
                         phone: state.visitDetails![0].customerNumber!,
-                        textSmallContainer: 'في زيارات اليوم',
+                        textSmallContainer: "inTodaysVisits".tr(),
                         iconSmallContainer:  'assets/images/VerifiedCheck.png',
                         color: Color(0xff0056C9),
                       ),
@@ -143,25 +144,25 @@ class _pageState extends State<_page> {
                             TransactionDetailsContainer(
                               image: 'assets/images/BillList.png',
                               color: Color(0xff0056C9),
-                              name: 'مبيعات',
+                              name: "sales".tr(),
                               price: '${double.parse(state.visitDetails![0].totalSales!.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/Union.png',
                               color: Color(0xFFAC6521),
-                              name: 'مرتجعات',
+                              name: "returns".tr(),
                               price: '${double.parse(state.visitDetails![0].totalRefund!.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/moneyBaggg.png',
                               color: Color(0xff1D6E4F),
-                              name: 'تحصيل',
+                              name: "collection".tr() ,
                               price: '${double.parse(state.visitDetails![0].totalPayment!.toString()).toStringAsFixed(2)}  ر.س '
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/DangerTriangle.png',
                               color: Color(0xffAF2A1A),
-                              name: 'مديونية',
+                              name: "debt".tr(),
                               price:'${double.parse(state.visitDetails![0].totalAmountDue!.toString()).toStringAsFixed(2)}  ر.س '
                             ),
                           ],
@@ -202,10 +203,10 @@ class _pageState extends State<_page> {
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.003,
                                   ),
-                                  const Opacity(
+                                   Opacity(
                                     opacity: 0.9,
                                     child: Text(
-                                      'اظهار ملف المديونية',
+                                      "showIndebtednessFile".tr(),
                                       style: TextStyle(
                                           fontSize: 14, fontWeight: FontWeight.w300),
                                     ),
@@ -214,51 +215,6 @@ class _pageState extends State<_page> {
                               ),
                             ),
                           ),
-/*
-                          InkWell(
-                            onTap: () {
-                              customAnimatedPushNavigation(context, const ClientDetailsVisitsHistoryScreen());
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).orientation ==
-                                  Orientation.portrait
-                                  ? MediaQuery.of(context).size.height * 0.2
-                                  : MediaQuery.of(context).size.height * 0.52,
-                              height: MediaQuery.of(context).orientation ==
-                                  Orientation.portrait
-                                  ? MediaQuery.of(context).size.height * 0.042
-                                  : MediaQuery.of(context).size.height * 0.072,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                  color: Colors.grey,
-                                  width: 0.4,
-                                ),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/History3.png',
-                                    width: MediaQuery.of(context).size.width * 0.025,
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.003,
-                                  ),
-                                  const Opacity(
-                                    opacity: 0.9,
-                                    child: Text(
-                                      'اظهار تاريخ الزيارات',
-                                      style: TextStyle(
-                                          fontSize: 14, fontWeight: FontWeight.w300),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-*/
                         ],
                       ),
                       SizedBox(
@@ -278,7 +234,7 @@ class _pageState extends State<_page> {
                 }
                 else{
                   return Center(
-                    child: Text("لا توجد يانات حاليا"),
+                    child: Text("noDataAvailableNow".tr()),
                   );
                 }
 

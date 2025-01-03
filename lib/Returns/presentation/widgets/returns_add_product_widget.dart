@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Base/common/toast.dart';
@@ -53,8 +54,8 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.012,
                     ),
-                    const Text(
-                      'ارتجاع المنتج',
+                     Text(
+                      "return_product".tr(),
                       style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
                     ),
                   ],
@@ -123,7 +124,7 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                               height: MediaQuery.of(context).size.height * 0.017,
                             ),
                              Text(
-                              '${widget.item!.price ?? 0}  ر.س ',
+                              '${widget.item!.price ?? 0}  ${"sar".tr()} ',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700
@@ -143,8 +144,8 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
           padding: const EdgeInsets.symmetric(horizontal: 14,),
           child:   Row(
                   children: [
-                    const Text(
-                      'الكمية المباعة : ',
+                     Text(
+                      '${"sold_quantity".tr()} : ',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
 SizedBox(width: Shared.width * 0.1,),
@@ -162,8 +163,8 @@ SizedBox(width: Shared.width * 0.1,),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'الوحدة : ',
+                         Text(
+                          '${"unit".tr()} : ',
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                         ),
                         SizedBox(width: Shared.width * 0.1,),
@@ -221,7 +222,7 @@ SizedBox(width: Shared.width * 0.1,),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.zero,
                           border: InputBorder.none,
-                          hintText: 'ادخل الكمية',
+                          hintText: "enter_quantity".tr(),
                           hintStyle: TextStyle(
                             color: Color(0xff758195),
                           ),
@@ -265,7 +266,8 @@ SizedBox(width: Shared.width * 0.1,),
               width: MediaQuery.of(context).size.width * 0.005,
             ),
             Text(
-              'اجمالي  ${ double.parse((double.parse(controller.text.normalizeNumber()).toInt()  * widget.item!.price!).toString()).toStringAsFixed(2)}   ر.س',
+              '${"total".tr()}  ${ double.parse((double.parse(controller.text.normalizeNumber()).toInt()
+                  * widget.item!.price!).toString()).toStringAsFixed(2)}    ${"sar".tr()} ',
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500
@@ -297,7 +299,7 @@ SizedBox(width: Shared.width * 0.1,),
                                 name: widget.item?.uom_name
                               )
                             ));
-                            ToastWidget.showToast(message: "تم اضافة المنتج لفاتورة الأرتجاع بنجاح");
+                            ToastWidget.showToast(message: "product_added_successfully".tr());
                             Navigator.pop(context);
                             setState(() {
 
@@ -326,7 +328,7 @@ SizedBox(width: Shared.width * 0.1,),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.006,
                               ),
-                              const Text('اضافة لفاتورة الأرتجاع',
+                               Text("add_to_return_invoice".tr(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,

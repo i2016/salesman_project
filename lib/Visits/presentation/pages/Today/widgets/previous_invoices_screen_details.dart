@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
@@ -49,12 +50,12 @@ class PreviousInvoicesScreenDetails extends StatelessWidget {
                                 itemCount: returnInvoices.length,
                                 itemBuilder: (context, index) {
                                   return WaterItemPreviousInvoices(
-                                      saleName:   'مبيعات ${returnInvoices[index].amountTotal?? 500} ر.س',
-                                      pill: 'فاتورة رقم ${returnInvoices[index].invoiceId?? 500}',
-                                      date: 'اصدار بتاريخ ${returnInvoices[index].invoiceDate?? 500}',
+                                      saleName:   '${"sales".tr()} ${returnInvoices[index].amountTotal?? 500}  ${"sar".tr()}',
+                                      pill: ' ${"invoice_number".tr()} ${returnInvoices[index].invoiceId?? 500}',
+                                      date: ' ${ "issued_on".tr()} ${returnInvoices[index].invoiceDate?? 500}',
                                       icon: 'assets/images/marketImage.png',
                                       color: Color(0xff0056C9),
-                                      textIcon: '${returnInvoices[index].itemsCount?? 500} منتج',
+                                      textIcon: '${returnInvoices[index].itemsCount?? 500}  ${"product".tr()}',
                                     invoice: returnInvoices[index],
 
                                   );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/navigate_basic_container.dart';
 import 'package:water/widgets/store_name_container.dart';
 import 'package:water/widgets/visit_type_containers.dart';
@@ -25,8 +26,8 @@ class ClientDetailsVisitsHistoryScreenBody extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.012,
                       ),
-                      const Text(
-                        'تاريخ الزيارات',
+                       Text(
+                        "visit_history".tr(),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w500,
@@ -40,10 +41,10 @@ class ClientDetailsVisitsHistoryScreenBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.008,
                     ),
-                    const VisitTypeContainers(
-                      textFirstContainer: 'نوع الزيارة',
-                      textSecondContainer: 'من',
-                      textThirdContainer: 'الى',
+                     VisitTypeContainers(
+                      textFirstContainer: "visit_type".tr(),
+                      textSecondContainer:  "from".tr() ,
+                      textThirdContainer: "to".tr(),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.008,
@@ -64,13 +65,13 @@ class ClientDetailsVisitsHistoryScreenBody extends StatelessWidget {
                       ),
                       itemCount: 8,
                       itemBuilder: (context, index) {
-                        return const VisitsHistoryScreenContainerItem(
+                        return  VisitsHistoryScreenContainerItem(
                           date: '2024 / 5 / 15',
                           collect: '30,000',
                           complete: '30,000',
-                          visit: 'في زيارات اليوم',
+                          visit: "in_todays_visits".tr(),
                           returned: '30,000',
-                          store: 'للمتجر فلان',
+                          store: "store".tr(),
                           icon: 'assets/images/trueeStyle.png',
                           iconColor: Color(0xff0056C9),
                           iconProductType: 'assets/images/datee.png',

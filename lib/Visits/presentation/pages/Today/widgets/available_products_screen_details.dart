@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/shared.dart';
@@ -22,7 +23,6 @@ class AvailableProductsScreenDetails extends StatelessWidget {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          drawer: const DrawerAvailableProductsScreen(),
           body: BlocBuilder<ProductsBloc, AppState>(
             bloc: productsBloc,
             builder: (context, state) {
@@ -42,7 +42,7 @@ class AvailableProductsScreenDetails extends StatelessWidget {
                 }
                 else{
                   return Center(
-                    child: Text("لا توجد منتجات حاليا",
+                    child: Text("no_products".tr(),
                       style: TextStyle(color: kBlackColor),),
                   );
                 }

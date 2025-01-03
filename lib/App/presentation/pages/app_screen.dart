@@ -100,9 +100,9 @@ class _AppScreenState extends State<AppScreen> {
                                           MediaQuery.of(context).size.width *
                                               0.01,
                                         ),
-                                        const Opacity(
+                                         Opacity(
                                           opacity: 0.8,
-                                          child: Text('اخفاء القائمة'),
+                                          child: Text("hide_list".tr()),
                                         ),
                                       ],
                                     ),

@@ -9,9 +9,7 @@ class ClientDetailsVisitsHistoryScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return AppScreen(
         child: ClientDetailsVisitsHistoryScreenBody(),
-        screenButtons:[
-
-        ]
+        screenButtons:[]
     );
   }
 }

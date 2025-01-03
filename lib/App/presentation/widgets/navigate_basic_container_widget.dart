@@ -46,29 +46,29 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
       case 'mainMenu':
         MainMenu = [
           MenuElement(
-              title: 'الرئيسية',
+              title: "home".tr(),
               image: 'assets/images/VectorHome.png',
               screenIndex: 0),
           MenuElement(
-              title: 'الزيارات',
+              title: "visits".tr(),
               image: 'assets/images/VectorVisits.png',
               screenIndex: 1),
           MenuElement(
-              title: Shared.userType == 'B2C' ? 'مرتجعات' : 'اوامر الشغل',
+              title: Shared.userType == 'B2C' ?  "returns".tr() : "workOrders".tr(),
               image: Shared.userType == 'B2C'
                   ? 'assets/images/overView.png'
                   : 'assets/images/IconWrapperrrrr.png',
               screenIndex: 2),
           MenuElement(
-              title: 'العملاء',
+              title: "clients".tr(),
               image: 'assets/images/VectorClints.png',
               screenIndex: 3),
           MenuElement(
-              title: 'المخزن',
+              title: "inventory".tr(),
               image: 'assets/images/VectorBuild.png',
               screenIndex: 4),
           MenuElement(
-              title: 'الحساب',
+              title: "account".tr(),
               image: 'assets/images/Vvvectorss.png',
               screenIndex: 5),
         ];
@@ -84,23 +84,23 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
       case 'subMenu':
         subMenu = [
           MenuElement(
-              title: 'بيع',
+              title: "sell".tr(),
               image: 'assets/images/IconWrapperrrrr.png',
               screenIndex: 0),
           MenuElement(
-              title: 'مرتجع جيد',
+              title:  "goodReturn".tr(),
               image: 'assets/images/RestartCircle.png',
               screenIndex: 1),
           MenuElement(
-              title: 'مرتجع سيء',
+              title: "badReturn".tr(),
               image: 'assets/images/badReturned.png',
               screenIndex: 2),
           MenuElement(
-              title: 'تحصيل',
+              title:  "collection".tr(),
               image: 'assets/images/MoneyBag.png',
               screenIndex: 3),
           MenuElement(
-              title: 'صور',
+              title: "photos".tr(),
               image: 'assets/images/camera.png',
               screenIndex: 4),
         ];
@@ -115,21 +115,21 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
       case 'clientMenu':
         clientMenu = [
           ClientMenuElement(
-            title: "التاجر",
+            title: "merchant".tr(),
             image: 'assets/images/User.png',
             screenIndex: 0,
             primaryImage: 'assets/images/IconIndicator.png',
             secondary: 'assets/images/IconMerchant.png',
           ),
           ClientMenuElement(
-            title: "المتجر",
+            title: "store".tr(),
             image: 'assets/images/Shop.png',
             screenIndex: 1,
             primaryImage: 'assets/images/IconIndicator.png',
             secondary: 'assets/images/IconMerchant.png',
           ),
           ClientMenuElement(
-            title: "العنوان",
+            title: "address".tr(),
             image: 'assets/images/markk.png',
             screenIndex: 2,
             primaryImage: 'assets/images/IconIndicator.png',
@@ -204,7 +204,7 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
               }
               final userName = snapshot.data ?? '';
               return Text(
-                ' أهلا $userName ',
+                ' ${"hello"} $userName ',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
               maxLines: 4,
               );
@@ -245,12 +245,12 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
           children: [
             Column(
                 children: [
-                  const Text(
-                    'بدأ المعاملة مع ',
+                   Text(
+                    "startedTransactionWith".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
-                  const Text(
-                    ' اسم المتجر',
+                   Text(
+                    "storeName".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                 ]),
@@ -271,7 +271,6 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
                         subIndex = i;
                         _saveIndex(subIndex);
                       });
-                      print("subIndex : ${subIndex}");
                       switch(subIndex){
                         case 1: 
                           sharedPreferenceManager.writeData(CachingKey.RETURNS_TYPE, "good");
@@ -301,8 +300,8 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'اضافة عميل جديد ',
+                   Text(
+                    "addNewClient".tr(),
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -310,8 +309,8 @@ class _NavigateBasicContainerState extends State<NavigateBasicContainer> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: const Text(
-                      'ادخل معلومات العميل',
+                    child:  Text(
+                      "enterClientInformation".tr(),
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,

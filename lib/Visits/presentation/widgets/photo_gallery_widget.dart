@@ -74,7 +74,7 @@ class _PhotoGalleryWidgetState extends State<PhotoGalleryWidget> {
         ),
         androidOptions: AndroidOptions(
           actionBarColor: kGreenColor,
-          actionBarTitle: "Leen Alkhair",
+          actionBarTitle: "Yanabie",
           allViewTitle: "All Photos",
           useDetailsView: false,
           selectCircleStrokeColor: kGreyColor,

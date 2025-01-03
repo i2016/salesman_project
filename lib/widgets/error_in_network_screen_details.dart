@@ -1,3 +1,4 @@
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/index.dart';
 import 'package:water/widgets/error_interface_widget.dart';
 
@@ -49,10 +50,10 @@ class ErrorInNetworkScreenDetails extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              const Opacity(
+                               Opacity(
                                 opacity: 0.8,
                                 child: Text(
-                                  'اخفاء القائمة',
+                                  "hide_list".tr(),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),
@@ -74,14 +75,14 @@ class ErrorInNetworkScreenDetails extends StatelessWidget {
                   ],
                 ),
               ),
-               const Expanded(
+                Expanded(
                 flex: 5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ErrorInterface(errorImage:  'assets/images/errorInNetwork.png',
-                     errorTitle: 'خطأ في الشبكة',
-                      errorSubTitle: 'لا يمكن الاتصال بالشبكة. يرجى التحقق من الاتصال بالإنترنت',
+                     errorTitle: "network_error".tr(),
+                      errorSubTitle: "network_error_message".tr(),
                       imageSize: 0.55,),
                   ],
                 ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import 'package:water/App/presentation/bloc/app_bloc.dart';
-import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
@@ -49,7 +48,6 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
         Shared.showLoadingDialog(context: context);
       }
       else if(state is TransferRequestDone){
-        print("Done");
         InventoryTransferRequestResposneModel inventoryTransferRequestResposneModel =
         state.inventoryTransferRequestResposneModel as InventoryTransferRequestResposneModel;
         Shared.dismissDialog(context: context);
@@ -59,14 +57,11 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
 
       }
       else if(state is TransferRequestErrorLoading){
-        print("ErrorLoading");
-        print("state.message : ${state.message}");
-
         Shared.dismissDialog(context: context);
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
-          title: "خطا ...",
+          title: "error".tr(),
           text: state.message,
         );
 
@@ -85,8 +80,8 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
                         Navigator.pop(context);
                       },
                       icon: const Icon(Icons.arrow_back)),
-                  const Text(
-                    'تفاصيل الطلب',
+                   Text(
+                    "order_details".tr(),
                     style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.w500,
@@ -123,7 +118,7 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
                             color: Colors.black,
                           ),
 
-                          hintText: 'البحث عن منتج',
+                          hintText: "search_for_product".tr(),
                           hintStyle: TextStyle(
                             color: Color(0xff758195),
                           )
@@ -156,7 +151,7 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
                                   filteredProducts.removeAt(index);
                                 });
                               },
-                              label: 'حذف',
+                              label:  "delete".tr(),
                               icon: Icons.delete,
                               backgroundColor: Colors.red,
                             ),
@@ -193,7 +188,7 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
                       Expanded(
                         flex: 8,
                         child: Text(
-                          'الاجمالي',
+                          "total".tr(),
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,
@@ -217,7 +212,7 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.003,
               ),
-              const PillPayment(textButton: 'ارسال الطلب' , dialogName: 'transferRequest',)
+               PillPayment(textButton: "submit_request".tr() , dialogName: 'transferRequest',)
             ],
           ),
         ),
