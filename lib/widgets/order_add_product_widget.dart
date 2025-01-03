@@ -86,17 +86,9 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                     .size
                     .width * 0.6,
                 height:
-                MediaQuery
-                    .of(context)
-                    .orientation == Orientation.portrait
-                    ? MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.1
-                    : MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.15,
+                MediaQuery.of(context).orientation == Orientation.portrait
+                    ? MediaQuery.of(context).size.height * 0.12
+                    : MediaQuery.of(context).size.height * 0.17,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
@@ -395,7 +387,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                 height: MediaQuery
                     .of(context)
                     .size
-                    .height * 0.05,
+                    .height * 0.02,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

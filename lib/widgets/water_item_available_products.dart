@@ -31,8 +31,8 @@ class WaterItemAvailableProducts extends StatelessWidget {
         child: Container(
               width: double.infinity,
               height: MediaQuery.of(context).orientation == Orientation.portrait ?
-              MediaQuery.of(context).size.height * 0.1
-              : MediaQuery.of(context).size.height * 0.14,
+              MediaQuery.of(context).size.height * 0.12
+              : MediaQuery.of(context).size.height * 0.16,
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
@@ -109,7 +109,7 @@ class WaterItemAvailableProducts extends StatelessWidget {
                     flex: 6,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      child:   Column(
+                      child:  Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -139,7 +139,6 @@ class WaterItemAvailableProducts extends StatelessWidget {
                               ),
                             ],
                           ),
-
 
                     ),
                   ),
