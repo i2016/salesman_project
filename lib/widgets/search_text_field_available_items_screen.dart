@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class SearchTextFieldAvailableItemsScreen extends StatelessWidget{
   const SearchTextFieldAvailableItemsScreen({super.key, required this.hintText});
@@ -10,8 +11,8 @@ final String hintText;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'الأصناف المتاحة',
+         Text(
+          "available_items".tr(),
           style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.w500
@@ -75,7 +76,7 @@ final String hintText;
                   color: Colors.black,
                   ),
                   
-                hintText: 'البحث عن صنف أو منتج',
+                hintText: "search_for_item_or_product".tr(),
                 hintStyle: const TextStyle(
                   color: Color.fromARGB(255, 146, 155, 171),
                 )

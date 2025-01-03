@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
 
 class SearchTextFieldPreviousInvoicesScreen extends StatelessWidget{
@@ -9,8 +10,8 @@ class SearchTextFieldPreviousInvoicesScreen extends StatelessWidget{
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'الفواتير السابقة',
+         Text(
+         "previous_invoices".tr(),
           style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.w500
@@ -43,7 +44,7 @@ class SearchTextFieldPreviousInvoicesScreen extends StatelessWidget{
                   color: Colors.black,
                   ),
                   
-                hintText: 'البحث عن فاتورة',
+                hintText: "search_invoice".tr(),
                 hintStyle: const TextStyle(
                   color: Color.fromARGB(255, 146, 155, 171),
                 )
@@ -74,7 +75,7 @@ class SearchTextFieldPreviousInvoicesScreen extends StatelessWidget{
                   color: Colors.black,
                   ),
                   
-                hintText: 'البحث عن فاتورة',
+                hintText: "search_invoice".tr(),
                 hintStyle: const TextStyle(
                   color: Color.fromARGB(255, 146, 155, 171),
                 )

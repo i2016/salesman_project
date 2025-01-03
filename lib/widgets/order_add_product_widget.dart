@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Base/common/toast.dart';
@@ -67,8 +68,8 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                         .size
                         .width * 0.012,
                   ),
-                  const Text(
-                    'اضافة المنتج',
+                   Text(
+                     "add_product".tr(),
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
                   ),
                 ],
@@ -174,14 +175,14 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'الوحدات',
+                    "units".tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 14, vertical: 10),
                     child: CustomUnitsDropdown(
-                      title: 'الوحدة',
+                      title: "unit".tr(),
                       units: widget.product?.uomIds,
                       width: MediaQuery
                           .of(context)
@@ -200,7 +201,6 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           .size
                           .height * 0.065,
                       onUnitSelected: (unit) {
-                        print("selectedUnitId : ${unit.id}");
                         setState(() {
                           selectedUnit = unit;
                           if (selectedUnit!.id == widget.product!.mainUomId) {
@@ -226,8 +226,8 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                 children: [
                   Row(
                     children: [
-                      const Text(
-                        'العدد',
+                       Text(
+                         "number".tr(),
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
@@ -243,9 +243,9 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                         ),
                       ),
                       Text(
-                        'متاح  ${(selectedUnit!.id == widget.product!.mainUomId)
+                        '${"available".tr()}  ${(selectedUnit!.id == widget.product!.mainUomId)
                             ? widget.product!.count!
-                            : widget.product!.unit_count}  قطعة',
+                            : widget.product!.unit_count}   ${"piece".tr()}',
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),
@@ -317,7 +317,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.zero,
                                 border: InputBorder.none,
-                                hintText: 'ادخل الكمية',
+                                hintText: "enter_quantity".tr(),
                                 hintStyle: TextStyle(
                                   color: Color(0xff758195),
                                 ),
@@ -368,10 +368,6 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                   widget.product!.mainUomId)
                                   ? widget.product!.count!
                                   : widget.product!.unit_count!).toInt();
-                              print("productCount : ${productCount}");
-                              print(
-                                  "controller : ${int.parse(
-                                      controller.text.normalizeNumber())}");
 
                               if (int.parse(controller.text.normalizeNumber()) <
                                   productCount) {
@@ -417,10 +413,10 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                 .width * 0.005,
                           ),
                           Text(
-                            'اجمالي  ${(int.parse(
+                            ' ${"total_amount".tr()}  ${(int.parse(
                                 controller.text.normalizeNumber()) *
                                 selectedUnitPrice!).toStringAsFixed(
-                                2) /*widget.product!.price!*/}   ر.س',
+                                2) }    ${"sar".tr()}',
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -443,22 +439,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                 .width * 0.005,
                           ),
                           Text(
-                            'متبقى ${getAvailableQuantity()
-                            /*int.tryParse(
-                                (selectedUnit!.id == widget.product!.mainUomId)
-                                    ? widget.product!.count!
-                                    : widget.product!.unit_count!) != null
-                                ? int.parse(
-                                (selectedUnit!.id == widget.product!.mainUomId)
-                                    ? widget.product!.count!
-                                    : widget.product!.unit_count!) -
-                                int.parse(controller.text.normalizeNumber())
-                                : double.parse(
-                                (selectedUnit!.id == widget.product!.mainUomId)
-                                    ? widget.product!.count!
-                                    : widget.product!.unit_count!).toInt() -
-                                int.parse(
-                                    controller.text.normalizeNumber())*/}  قطعة',
+                            '${"remaining".tr()} ${getAvailableQuantity()}   ${"piece".tr()}',
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -525,27 +506,12 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                             unit: selectedUnit!,
                           ));
                           ToastWidget.showToast(
-                              message: "تم اضافة المنتج بنجاح");
+                              message: "product_added_Success".tr());
                         } else {
                           ToastWidget.showToast(
-                              message: "الكمية المطلوبة تتجاوز الكمية المتاحة");
+                              message: "Required_quantity_exceeds_available_quantity".tr());
                         }
                       }
-                      /*   if (int.parse(controller.text.normalizeNumber().normalizeNumber()) != 0 && selectedUnit != null) {
-
-                        Shared.order_products_list.add(AddedProductEntity(
-                            id: widget.product!.id,
-                            name: widget.product!.name,
-                            image: widget.product!.image,
-                            description: widget.product!.description,
-                            price: selectedUnitPrice,
-                            selectedCount: int.parse(controller.text.normalizeNumber()),
-                            total: int.parse(controller.text.normalizeNumber()) * selectedUnitPrice! ,
-                            unit: selectedUnit!));
-                        ToastWidget.showToast(message: "تم اضافة المنتج بنجاح");
-                        Navigator.pop(context);
-                        setState(() {});
-                      }*/
                     },
                     child: Container(
                       width: MediaQuery
@@ -582,7 +548,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                 .size
                                 .width * 0.006,
                           ),
-                          const Text('اضافة للطلب',
+                           Text("add_to_order".tr(),
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 14,

@@ -1,3 +1,4 @@
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_invoices_details_screen.dart';
 
@@ -28,7 +29,7 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
                 width: MediaQuery.of(context).size.width * 0.019,
               ),
                  Text(
-                  'الفاتورة رقم ${invoice?.invoiceNumber}',
+                  ' ${"invioce_number".tr()} ${invoice?.invoiceNumber}',
                   style: TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500
@@ -44,12 +45,12 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
             height: MediaQuery.of(context).size.height * 0.019,
           ),
            WaterItemPreviousInvoices(
-                        saleName: 'مبيعات ${invoice?.amountTotal} ر.س',
-                        pill: 'فاتورة رقم ${invoice?.invoiceNumber}',
-                        date: 'اصدار بتاريخ ${invoice?.invoiceDate}',
+                        saleName: '${"sales".tr()} ${invoice?.amountTotal} ر.س',
+                        pill: '${"invioce_number".tr()} ${invoice?.invoiceNumber}',
+                        date: ' ${"issued_on".tr()} ${invoice?.invoiceDate}',
                         icon: 'assets/images/marketImage.png',
                         color: Color(0xff0056C9),
-                        textIcon: '${invoice?.itemsCount} منتج',
+                        textIcon: '${invoice?.itemsCount}  ${"product".tr()}',
                       ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
@@ -79,7 +80,7 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
                   color: Colors.black,
                   ),
                   
-                hintText: 'البحث عن منتج',
+                hintText: "search_for_product".tr(),
                 hintStyle: const TextStyle(
                   color: Color.fromARGB(255, 146, 155, 171),
                 )
@@ -88,60 +89,6 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
           )
         ),
     SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-    /*    Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.02),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'تصفية حسب',
-                style: TextStyle(
-                  color: Color(0xff758195),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  ),
-              ),
-               Container(
-          width: MediaQuery.of(context).size.width * 0.22,
-          height: MediaQuery.of(context).orientation == Orientation.portrait ?
-           MediaQuery.of(context).size.height * 0.033
-           : MediaQuery.of(context).size.height * 0.054,
-          decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            color: Colors.grey,
-            width: 0.5,
-            ),
-            borderRadius: BorderRadius.circular(8)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 1.5 , horizontal: 11),
-            child: Row(
-              children: [
-                const Expanded(
-                  flex: 5,
-                  child: Text(
-                    'الصنف',
-                    style: TextStyle(
-                      color: Color(0xff758195),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: InkWell(
-                    onTap: (){},
-                    child: const Icon(Icons.keyboard_arrow_down))
-                ),
-              ],
-            ),
-            ),
-               ),
-            ],
-          ),
-        ),*/
       ],
     );
   }

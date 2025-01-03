@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ReturnedDetailsContainer extends StatelessWidget {
   const ReturnedDetailsContainer(
@@ -129,10 +130,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'اسم التاجر',
+                            "merchant_name".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -154,10 +155,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'الرقم الهاتف',
+                           "phone_number".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -186,10 +187,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'تاريخ الزيارة',
+                            "visit_date".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -211,10 +212,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'ميعاد الزيارة',
+                            "visit_time".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -243,10 +244,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'المبلغ',
+                            "amount".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -267,11 +268,10 @@ class ReturnedDetailsContainer extends StatelessWidget {
                     flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Opacity(
+                      children: [ Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'العدد',
+                            "number".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,

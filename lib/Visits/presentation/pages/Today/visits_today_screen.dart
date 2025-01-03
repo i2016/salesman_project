@@ -22,21 +22,18 @@ class VisitsTodayScreen extends StatelessWidget {
     return AppScreen(child: _page(), screenButtons: [
       AppButtonWidget(
         asset: 'assets/images/add.png',
-        text: ' اضافة زيارة',
+        text: "add_visit".tr(),
         onClick: () {
           customAnimatedPushNavigation(
               context, AddVisitRegisteredClientsScreen());
-          // Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen()));
         },
       ),
       AppButtonWidget(
         asset: 'assets/images/timeHistory.png',
-        text: ' تاريخ الزيارات',
+        text: "visit_history".tr(),
         onClick: () {
           customAnimatedPushNavigation(context, VisitsHistoryScreen());
-
-          //     Navigator.push(context, MaterialPageRoute(builder: (context)=> VisitsHistoryScreen()));
-        },
+          },
         color: kWhiteColor,
       ),
     ]);
@@ -64,8 +61,8 @@ class _pageState extends State<_page> {
         body:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'زيارات اليوم',
+               Text(
+                "today_visits".tr(),
                 style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w500,
@@ -114,7 +111,7 @@ class _pageState extends State<_page> {
                       return Padding(
                         padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
                         child: Center(
-                          child: Text("لا توجد زيارات حاليا"),
+                          child: Text("no_visits".tr()),
                         ),
                       );
                     }

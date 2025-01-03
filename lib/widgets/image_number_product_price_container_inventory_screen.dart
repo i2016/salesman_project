@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ImageNumberProductPriceContainerInventoryScreen extends StatelessWidget{
   const ImageNumberProductPriceContainerInventoryScreen({super.key});
@@ -17,14 +18,14 @@ class ImageNumberProductPriceContainerInventoryScreen extends StatelessWidget{
               topRight: Radius.circular(9),
             )
           ),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.only(right: 8),
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
                   child: Text(
-                    'الصورة',
+                    "image".tr(),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700
@@ -34,7 +35,7 @@ class ImageNumberProductPriceContainerInventoryScreen extends StatelessWidget{
                   Expanded(
                   flex: 1,
                   child: Text(
-                    'العدد',
+                    "number".tr(),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700
@@ -44,7 +45,7 @@ class ImageNumberProductPriceContainerInventoryScreen extends StatelessWidget{
                   Expanded(
                   flex: 6,
                   child: Text(
-                    'المنتج',
+                    "product".tr(),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700
@@ -54,7 +55,7 @@ class ImageNumberProductPriceContainerInventoryScreen extends StatelessWidget{
                   Expanded(
                   flex: 1,
                   child: Text(
-                    'السعر',
+                    "price".tr(),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700

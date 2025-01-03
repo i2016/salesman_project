@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Returns/presentation/bloc/create_returnsbloc.dart';
@@ -50,10 +51,10 @@ class PillPaymentReviewReturnedProducts extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.006,
                         ),
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'اصدار الفاتورة',
+                        "create_invoice".tr(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class LocationContainer extends StatelessWidget {
   const LocationContainer({super.key});
@@ -26,8 +27,8 @@ class LocationContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset('assets/images/DefaultMarkerComponent.png'),
-                const Text(
-                  'لم يتم تحديد الموقع بعد',
+                 Text(
+                   "location_not_set".tr(),
                   style: TextStyle(
                     color: Color(0xff758195),
                     fontSize: 14,
@@ -66,8 +67,8 @@ class LocationContainer extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.006,
                     ),
-                    const Text(
-                      'فتح الخريطة',
+                     Text(
+                       "open_map".tr(),
                       style:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                     ),
@@ -93,8 +94,8 @@ class LocationContainer extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.006,
                     ),
-                    const Text(
-                      'ازالة الموقع',
+                     Text(
+                       "remove_location".tr(),
                       style: TextStyle(
                           color: Color(0xffAF2A1A),
                           fontSize: 14,

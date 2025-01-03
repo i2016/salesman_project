@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class TraderFileContainer extends StatelessWidget {
   const TraderFileContainer(
@@ -39,8 +40,8 @@ class TraderFileContainer extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text(
-                      'ملف التاجر',
+                     Text(
+                      "merchant_file".tr(),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
@@ -50,10 +51,10 @@ class TraderFileContainer extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.008,
                     ),
                     Container(
-                      width: MediaQuery.of(context).orientation ==
+                     /* width: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? MediaQuery.of(context).size.width * 0.14
-                          : MediaQuery.of(context).size.width * 0.09,
+                          : MediaQuery.of(context).size.width * 0.09,*/
                       height: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? MediaQuery.of(context).size.height * 0.019
@@ -111,10 +112,10 @@ class TraderFileContainer extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Opacity(
+                           Opacity(
                             opacity: 0.7,
                             child: Text(
-                              'اسم التاجر',
+                          "merchant_name".tr(),
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -138,10 +139,10 @@ class TraderFileContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Opacity(
+                         Opacity(
                           opacity: 0.7,
                           child: Text(
-                            'الرقم الهاتف',
+                            "phone".tr(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,

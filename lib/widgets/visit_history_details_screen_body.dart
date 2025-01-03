@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
@@ -16,7 +17,6 @@ import 'package:water/widgets/public_information_container.dart';
 import 'package:water/widgets/transaction_details_container.dart';
 import 'package:water/widgets/value_pill_date_number_container.dart';
 import 'package:water/widgets/visit_details_list_view_item.dart';
-import 'package:water/widgets/visit_details_market_information_container.dart';
 
 class VisitHistoryDetailsScreenBody extends StatefulWidget {
   VisitHistory? visitHistory;
@@ -68,8 +68,8 @@ class _VisitHistoryDetailsScreenBodyState extends State<VisitHistoryDetailsScree
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
                           ),
-                          const Text(
-                            'تفاصيل الزيارة',
+                           Text(
+                          "visit_details".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,
@@ -94,25 +94,25 @@ class _VisitHistoryDetailsScreenBodyState extends State<VisitHistoryDetailsScree
                             TransactionDetailsContainer(
                               image: 'assets/images/BillList.png',
                               color: Color(0xff0056C9),
-                              name: 'مبيعات',
+                              name: "sales".tr(),
                               price: '${double.parse(state.visitDetails![0].totalSales.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/Union.png',
                               color: Color(0xFFAC6521),
-                              name: 'مرتجعات',
+                              name: "returns".tr(),
                               price: '${double.parse(state.visitDetails![0].totalRefund.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/moneyBaggg.png',
                               color: Color(0xff1D6E4F),
-                              name: 'تحصيل',
+                              name: "collection".tr(),
                               price: '${double.parse(state.visitDetails![0].totalPayment.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/DangerTriangle.png',
                               color: Color(0xffAF2A1A),
-                              name: 'مديونية',
+                              name: "debt".tr(),
                               price: '${double.parse(state.visitDetails![0].totalAmountDue.toString()).toStringAsFixed(2)}  ر.س ',
                             ),
                           ],
@@ -164,7 +164,7 @@ class _VisitHistoryDetailsScreenBodyState extends State<VisitHistoryDetailsScree
                             }
                             else{
                               return Center(
-                                child: Text("لا توجد فواتير حاليا"),
+                                child: Text("no_invoices".tr()),
                               );
                             }
 
@@ -197,7 +197,7 @@ class _VisitHistoryDetailsScreenBodyState extends State<VisitHistoryDetailsScree
               }
               else{
                 return Center(
-                  child: Text("لا توجد يانات حاليا"),
+                  child: Text("noDataAvailableNow".tr()),
                 );
               }
 

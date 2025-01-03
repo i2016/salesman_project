@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/domain/entities/order_payment_entity.dart';
 import 'package:water/widgets/popup_menu_of_payment.dart';
@@ -17,7 +18,7 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
   @override
   void initState() {
     super.initState();
-    selectedPaymentMethods.add('شيك أو تحويل');
+    selectedPaymentMethods.add("Check_or_transfer".tr());
 
 }
   @override
@@ -32,10 +33,10 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 6),
                     child: Text(
-                      'الكمية المحصلة',
+                     "amount_collected".tr(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -67,7 +68,7 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
                           ),
                           contentPadding: EdgeInsets.zero,
                           border: InputBorder.none,
-                          hintText: 'المبلغ بالريال',
+                          hintText:"amount_in_rial".tr(),
                           hintStyle: const TextStyle(
                             color: Color(0xff758195),
                             fontSize: 16,
@@ -82,10 +83,10 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 6),
                     child: Text(
-                      'طريقة الدفع',
+                      "payment_method".tr(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,

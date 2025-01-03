@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/navigate_basic_container_item.dart';
 
 // ignore: must_be_immutable
@@ -28,54 +29,54 @@ String userType ;
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'أهلاً محمود',
+                 Text(
+                   "welcome_message".tr(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.014,
                 ),
-                const NavigateBasicContainerItem(
-                  name: 'الرئيسية',
+                 NavigateBasicContainerItem(
+                  name: "home".tr(),
                   image: 'assets/images/VectorHome.png',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.011,
                 ),
-                const NavigateBasicContainerItem(
-                  name: 'الزيارات',
+                 NavigateBasicContainerItem(
+                  name: "visits".tr(),
                   image: 'assets/images/VectorVisits.png',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.011,
                 ),
-             userType == 'B2C' ?   const NavigateBasicContainerItem(
-                  name: 'مرتجعات',
+             userType == 'B2C' ?    NavigateBasicContainerItem(
+                  name: "returns".tr(),
                   image: 'assets/images/overView.png',
                 )
-                : const NavigateBasicContainerItem(
-                  name: 'اوامر الشغل',
+                :  NavigateBasicContainerItem(
+                  name: "work_orders".tr(),
                   image: 'assets/images/IconWrapperrrrr.png',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.011,
                 ),
-                const NavigateBasicContainerItem(
-                  name: 'العملاء',
+                 NavigateBasicContainerItem(
+                  name:   "clients".tr(),
                   image: 'assets/images/VectorClints.png',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.011,
                 ),
-                const NavigateBasicContainerItem(
-                  name: 'المخزن',
+                 NavigateBasicContainerItem(
+                  name:  "warehouse".tr(),
                   image: 'assets/images/VectorBuild.png',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.011,
                 ),
-                const NavigateBasicContainerItem(
-                  name: 'الحساب',
+                 NavigateBasicContainerItem(
+                  name: "account".tr(),
                   image: 'assets/images/Vvvectorss.png',
                 ),
               ],

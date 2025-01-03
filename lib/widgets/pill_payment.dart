@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
@@ -31,8 +32,9 @@ class PillPayment extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                      dialogName == "transferRequest" ? 'متبقى  ${(Shared.remainingLimit - Shared.calculateTotalForAllProducts()).toStringAsFixed(2)}    ر.س  '
-                          :    'متبقى 25,000 ر.س',
+                      dialogName == "transferRequest" ? '${"remaining".tr()}   ${(Shared.remainingLimit
+                          - Shared.calculateTotalForAllProducts()).toStringAsFixed(2)}    ${"sar".tr()}  '
+                          :    '${"remaining".tr()} 25,000 ${"sar".tr()}',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),
@@ -49,15 +51,14 @@ class PillPayment extends StatelessWidget {
                   }else if(dialogName == 'edit'){
                     Dialogs.showDialogSaveEdits(context);
                   }else if(dialogName == 'transferRequest'){
-                       print("Shared.remainingLimit : ${Shared.remainingLimit}");
-                       print("Shared.calculateTotalForAllProducts() : ${Shared.calculateTotalForAllProducts()}");
+
                       if( Shared.remainingLimit >= Shared.calculateTotalForAllProducts() ){
                         inventoryTransferRequestBloc.add(InventoryTransferRequestEvent());
                       }else{
                             ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                             content: Text(
-                            "الرصيد غير كافي",
+                           "insufficient_balance".tr(),
                             style: TextStyle(color: Colors.white),
                             ),
                             duration: Duration(seconds: 2),

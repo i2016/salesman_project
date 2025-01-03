@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
@@ -34,8 +35,8 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
           child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'تحصيل مالي',
+                       Text(
+                       "financial_collection".tr(),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w500,
@@ -51,8 +52,8 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                               color: Color(0xffDCDFE3),
                             ),
                           ),
-                          const Text(
-                            'الفواتير المستحقة',
+                           Text(
+                             "due_invoices".tr(),
                             style: TextStyle(
                               color: Color(0xff758195),
                               fontSize: 16,
@@ -126,7 +127,7 @@ class _FinancialCollectionScreenDetailsState extends State<FinancialCollectionSc
                             }
                             else{
                               return Center(
-                                child: Text("لا توجد فواتير حاليا"),
+                                child: Text("no_invoices".tr()),
                               );
                             }
           

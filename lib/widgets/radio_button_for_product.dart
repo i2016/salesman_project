@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class RadioButtonForProduct extends StatefulWidget {
   const RadioButtonForProduct({super.key});
@@ -15,8 +16,8 @@ class _RadioButtonForProductState extends State<RadioButtonForProduct> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'نوع المرتجع',
+         Text(
+           "return_type".tr(),
           style: TextStyle(
               color: Color(0xff25292E),
               fontSize: 16,
@@ -33,8 +34,8 @@ class _RadioButtonForProductState extends State<RadioButtonForProduct> {
                     _value = value!;
                   });
                 }),
-        const Text(
-         'مرتجع سىء',
+         Text(
+           "bad_return".tr(),
           style: TextStyle(
               color: Color(0xff758195),
               fontSize: 14,
@@ -52,8 +53,8 @@ class _RadioButtonForProductState extends State<RadioButtonForProduct> {
                     _value = value!;
                   });
                 }),
-        const Text(
-          'مرتجع جيد',
+         Text(
+          "good_return".tr(),
           style: TextStyle(
               color: Color(0xff758195),
               fontSize: 14,

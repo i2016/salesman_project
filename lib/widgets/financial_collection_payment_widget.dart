@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/Base/Helper/app_state.dart';
@@ -41,14 +42,12 @@ class FinancialCollectionPaymentWidget extends StatelessWidget {
 
       }
       else if(state is CreateCollectionErrorLoading){
-        print("ErrorLoading");
-        print("state.message : ${state.message}");
 
         Shared.dismissDialog(context: context);
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
-          title: "خطا ...",
+          title: "error".tr(),
           text: state.message,
         );
 

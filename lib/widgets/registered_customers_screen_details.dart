@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Clients/presentation/pages/client_add_requests_screen.dart';
 import 'package:water/widgets/button.dart';
@@ -50,10 +51,10 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'اخفاء القائمة',
+                                "hide_list".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -89,10 +90,10 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {},
-                              child: const Button(
+                              child:  Button(
                                 color: Colors.black,
                                 iconImage: 'assets/images/VectorAdddd.png',
-                                buttonName: 'اضافة عميل',
+                                buttonName: "Add Client".tr(),
                                 textColor: Colors.white,
                               ),
                             ),
@@ -104,10 +105,10 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                               onTap: () {
                                 customAnimatedPushNavigation(context, ClientAddRequestsScreen());
                               },
-                              child: const Button(
+                              child:  Button(
                                 color: Colors.white,
                                 iconImage: 'assets/images/addWithoutBorder.png',
-                                buttonName: 'طلبات اضافة',
+                                buttonName: "add_requests".tr(),
                                 textColor: Colors.black,
                               ),
                             ),
@@ -123,8 +124,8 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'العملاء المسجلين',
+                     Text(
+                      "Registered Clients".tr(),
                       style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.w500,
@@ -153,11 +154,12 @@ class RegisteredCustomersScreenDetails extends StatelessWidget {
                                   : 5.2 / 2),
                       itemCount: 8,
                       itemBuilder: (context, index) {
-                        return const RegisteredCustomersScreenContainerItem(
-                          storeName: 'اسم المتجر',
-                          sales: '30,000 مبيعات شهرية',
-                          distance: 'يبعد 232 ك.م',
-                          money: '15,000 مديونية',
+                        return  RegisteredCustomersScreenContainerItem(
+                          storeName: "store_name".tr(),
+                          sales: '${"Monthly_sales".tr()}30,000 ' ,
+                          distance: "Far_away".tr() + "232" + "km".tr(),
+                          money: '15,000 ${"debt".tr()}',
+
                         );
                       },
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Returns/data/models/invoices_details_model.dart';
 
 class WaterItemInvoicesDetails extends StatelessWidget{
@@ -76,7 +77,7 @@ final Item? item;
                   Expanded(
                     flex: 2,
                     child: Text(
-                      '${item!.price!.toString()}  ر.س ',
+                      '${item!.price!.toString()}  ${"sar".tr()} ',
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500

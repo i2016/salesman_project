@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ImageNumberProductPriceContainer extends StatelessWidget {
   const ImageNumberProductPriceContainer({super.key});
@@ -18,42 +19,42 @@ class ImageNumberProductPriceContainer extends StatelessWidget {
                 topLeft: Radius.circular(9),
                 topRight: Radius.circular(9),
               )),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.only(right: 8),
             child: Row(
               children: [
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'الصورة',
+                    "image".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'العدد',
+                    "number".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 9,
                   child: Text(
-                    'المنتج',
+                    "product".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'الوحدة',
+                    "unit".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'السعر',
+                    "price".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),

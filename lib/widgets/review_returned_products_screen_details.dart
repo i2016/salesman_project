@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import 'package:water/App/presentation/widgets/Drawer/good_returns_edit_product_drawer.dart';
-
 import 'package:flutter/material.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
@@ -29,7 +28,6 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
   @override
   void initState() {
     super.initState();
-    print("Shared.returns_products_list : ${Shared.returns_products_list}");
     controller.addListener(() {
       setState(() {
         filteredProducts = Shared.returns_products_list
@@ -48,7 +46,6 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
             Shared.showLoadingDialog(context: context);
           }
           else if(state is CreateReturnsDone){
-            print("Done");
             CreateReturnsModel createReturnsModel = state.createReturnsModel as CreateReturnsModel;
             Shared.dismissDialog(context: context);
             Shared.returns_products_list = [];
@@ -56,14 +53,12 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
             createReturnsModel: createReturnsModel);
           }
           else if(state is CreateReturnsErrorLoading){
-            print("ErrorLoading");
-            print("state.message : ${state.message}");
 
             Shared.dismissDialog(context: context);
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,
-              title: "خطا ...",
+              title: "error".tr(),
               text: state.message,
             );
 
@@ -72,7 +67,6 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
         child:Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        drawer: const GoodReturnsEditProductDrawer(),
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -86,8 +80,8 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                                 },
                                 icon: const Icon(Icons.arrow_back)
                             ),
-                            const Text(
-                              'مراجعة المنتجات المرتجعة',
+                             Text(
+                               "Returned_Products_Review".tr(),
                               style: TextStyle(
                                   fontSize: 23,
                                   fontWeight: FontWeight.w500
@@ -124,7 +118,7 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                                       color: Colors.black,
                                     ),
 
-                                    hintText: 'البحث عن منتج',
+                                    hintText: "search_product".tr(),
                                     hintStyle: const TextStyle(
                                       color: Color.fromARGB(255, 165, 171, 182),
                                     )
@@ -154,7 +148,7 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                                         filteredProducts.removeAt(index);
                                       });
                                     },
-                                    label: 'حذف',
+                                    label: "delete".tr(),
                                     icon: Icons.delete,
                                     backgroundColor: Colors.red,
                                   ),
@@ -188,7 +182,7 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                             Expanded(
                               flex: 8,
                               child: Text(
-                                'الاجمالي',
+                                "total".tr(),
                                 style: TextStyle(
                                     color: Color(0xff0056C9),
                                     fontSize: 16,
@@ -201,7 +195,7 @@ class _ReviewReturnedProductsScreenDetailsState extends State<ReviewReturnedProd
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  '${Shared.calculateReturnsTotalForAllProducts()}    ر.س   ',
+                                  '${Shared.calculateReturnsTotalForAllProducts()}    ${"sar".tr()}   ',
                                   style: TextStyle(
                                       color: Color(0xff0056C9),
                                       fontSize: 16,

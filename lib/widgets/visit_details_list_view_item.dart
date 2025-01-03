@@ -33,11 +33,15 @@ class VisitDetailsListViewItem extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 2,
-                  child: Text(
-                    number.toString(),
-                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Text(
+                      number.toString(),
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
+
                 Expanded(
                   flex: 2,
                   child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class StoreNameContainer extends StatelessWidget {
   const StoreNameContainer({super.key});
@@ -32,8 +33,8 @@ class StoreNameContainer extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.008,
                 ),
-                const Text(
-                  'اسم المتجر',
+                 Text(
+                  "storeName".tr(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -57,8 +58,8 @@ class StoreNameContainer extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.008,
                     ),
-                    const Text(
-                      'يبعد 232 ك.م',
+                     Text(
+                      '${"Far_away".tr()} 232 ${"km".tr()}',
                       style: TextStyle(
                           color: Color(0xff0056C9),
                           fontSize: 14,

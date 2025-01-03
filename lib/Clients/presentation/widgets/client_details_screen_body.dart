@@ -71,7 +71,7 @@ class ClientDetailsScreenBody extends StatelessWidget {
                       TransactionDetailsContainer(
                         image: 'assets/images/DangerTriangle.png',
                         color: Color(0xffAF2A1A),
-                        name: "debts".tr(),
+                        name: "debt".tr(),
                         price: '25,000 ${"sar".tr()}',
                       ),
                     ],

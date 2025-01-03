@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/data/models/today_visits_details_model.dart';
 import 'package:water/widgets/files_list_view_item.dart';
 
@@ -35,8 +36,8 @@ final bool container;
                     children: [
                       Row(
                         children: [
-                          const Text(
-                          'معلومات المتجر',
+                           Text(
+                             "store_info".tr(),
                           style: TextStyle(
                             color: Color(0xff25292E),
                             fontSize: 16,
@@ -48,10 +49,10 @@ final bool container;
                         ),
                         container == true ?
                         Container(
-                                    width: MediaQuery.of(context).orientation ==
+                             /*       width: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? MediaQuery.of(context).size.width * 0.163
-                          : MediaQuery.of(context).size.width * 0.106,
+                          : MediaQuery.of(context).size.width * 0.106,*/
                                     height: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? MediaQuery.of(context).size.height * 0.019
@@ -75,8 +76,8 @@ final bool container;
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width * 0.004,
                                 ),
-                                const Text(
-                                  'عميل منذ 3 سنين',
+                                 Text(
+                                   "customer_since".tr(),
                                   style: TextStyle(
                                       color: Color(0xff0056C9),
                                       fontSize: 14,
@@ -108,7 +109,7 @@ final bool container;
                    Opacity(
                     opacity: 0.7,
                     child: Text(
-                     'اسم المتجر',
+                      "store_name".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300
@@ -125,10 +126,10 @@ final bool container;
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  const Opacity(
+                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'الرقم الضريبي',
+                      "vat_number".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300
@@ -145,10 +146,10 @@ final bool container;
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                   const Opacity(
+                    Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'رقم السجل',
+                      "registration_number".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300
@@ -165,10 +166,10 @@ final bool container;
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                   const Opacity(
+                    Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'الموقع الرسمي',
+                      "official_website".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300
@@ -185,10 +186,10 @@ final bool container;
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  const Opacity(
+                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                     'المستندات',
+                      "documents".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300
@@ -203,7 +204,6 @@ final bool container;
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount:visitDetails == null ? 1 :  visitDetails!.images!.length ,
                   itemBuilder: (context, index) {
-                    print("visitDetails : ${visitDetails}");
                     return  Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: FilesListViewItem(

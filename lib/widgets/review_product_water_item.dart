@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
 
@@ -58,7 +59,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  addedProductEntity == null ?  'مياه'
+                                  addedProductEntity == null ?  "water".tr()
                                       : addedProductEntity!.name!,
                                  maxLines: 4,
                                   style: TextStyle(
@@ -68,7 +69,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                                   ),
                                 ),
                                 Text(
-                                  addedProductEntity == null ? 'مياه مدينة شرنك 15 حبة  600 مل'
+                                  addedProductEntity == null ? 'water'.tr()
                                       : addedProductEntity!.description!,
 
                                   style: TextStyle(
@@ -106,7 +107,7 @@ class ReviewProductWaterItem extends StatelessWidget{
                        Expanded(
                       flex: 2,
                       child: Text(
-                        addedProductEntity == null ?  '42 ر.س'
+                        addedProductEntity == null ?  '42 ${"sar".tr()}'
                             : " ${addedProductEntity!.price!.toStringAsFixed(2)} ر.س ",
                         style: TextStyle(
                           fontSize: 14,

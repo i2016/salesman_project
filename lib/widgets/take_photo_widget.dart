@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/presentation/widgets/photo_gallery_widget.dart';
 import 'package:image/image.dart' as img;
@@ -17,26 +18,6 @@ class _TakePhotoState extends State<TakePhoto> {
 
 File? _selectImage;
 String? _base64Image;
-/*
-_takePicture() async{
-  final imagePicker = ImagePicker();
-  final XFile? pickedImage = await imagePicker.pickImage(
-    source: ImageSource.gallery,
-    maxWidth: 600,
-    );
-    if(pickedImage == null){
-      return;
-    }
-  final bytes = await  File(pickedImage.path)!.readAsBytes();
-  _base64Image = base64Encode(bytes);
-  print("_base64Image : ${_base64Image}");
-   setState(() {
-      _selectImage = File(pickedImage.path);
-      Shared.images_list.add(_base64Image!);
-   });
-   
-}
-*/
 
   _takePicture() async {
     final imagePicker = ImagePicker();
@@ -99,8 +80,8 @@ _takePicture() async{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'اضف صورة',
+                     Text(
+                      "add_image".tr(),
                       style: TextStyle(
                         color: Color(0xff1D7AFC),
                         fontSize: 14,

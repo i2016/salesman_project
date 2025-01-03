@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class SearchTextFieldWidget extends StatelessWidget{
   const SearchTextFieldWidget({super.key});
@@ -8,8 +9,8 @@ class SearchTextFieldWidget extends StatelessWidget{
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         const Text(
-            'المنتجات المتاحة',
+          Text(
+            "available_products".tr(),
             style: TextStyle(
               fontSize: 23,
             fontWeight: FontWeight.w500
@@ -41,7 +42,7 @@ class SearchTextFieldWidget extends StatelessWidget{
                     color: Colors.black,
                     ),
                     
-                  hintText: 'البحث عن منتج',
+                  hintText: "search_product".tr(),
                   hintStyle: const TextStyle(
                     color: Color(0xff758195),
                   )

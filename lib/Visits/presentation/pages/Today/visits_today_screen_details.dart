@@ -196,9 +196,12 @@ class _pageState extends State<_page> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/fileIndebeness.png',
-                                    width: MediaQuery.of(context).size.width * 0.025,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Image.asset(
+                                      'assets/images/fileIndebeness.png',
+                                      width: MediaQuery.of(context).size.width * 0.025,
+                                    ),
                                   ),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.003,

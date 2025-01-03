@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ValuePillDateNumberContainer extends StatelessWidget {
   const ValuePillDateNumberContainer({super.key});
@@ -18,28 +19,28 @@ class ValuePillDateNumberContainer extends StatelessWidget {
                 topLeft: Radius.circular(9),
                 topRight: Radius.circular(9),
               )),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.only(right: 8),
             child: Row(
               children: [
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'الرقم',
+                    "number".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: Text(
-                   'التاريخ',
+                   "date".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
                 Expanded(
                   flex: 3,
                   child: Text(
-                    'نوع الفاتورة',
+                    "invoice_type".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -49,7 +50,7 @@ class ValuePillDateNumberContainer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                       'القيمة',
+                        "value".tr(),
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
                       ),
                     ],

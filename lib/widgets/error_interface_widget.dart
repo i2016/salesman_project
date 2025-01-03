@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class ErrorInterface extends StatelessWidget {
   const ErrorInterface(
@@ -71,10 +72,10 @@ class ErrorInterface extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.006,
                 ),
-                const Opacity(
+                 Opacity(
                   opacity: 0.8,
                   child: Text(
-                    'اعادة المحاولة',
+                    "retry".tr(),
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,

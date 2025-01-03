@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class FirstContainerInFinancialCollection extends StatelessWidget{
   final String total_amount;
@@ -26,7 +27,7 @@ class FirstContainerInFinancialCollection extends StatelessWidget{
           ),
           child:  Center(
           child: Text(
-            ' قيمة الفاتورة  ${total_amount}  ر.س ',
+            ' ${"invoice_value".tr()}  ${total_amount} ${"sar".tr()} ',
             style: TextStyle(
               color: Color(0xffAF2A1A),
               fontSize: 18,

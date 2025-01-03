@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Returns/domain/entities/returns_product_entity.dart';
 
 class ReviewReturnedProductsWaterItem extends StatelessWidget{
@@ -80,7 +81,7 @@ class ReviewReturnedProductsWaterItem extends StatelessWidget{
                      Expanded(
                     flex: 2,
                     child: Text(
-                      ' ${returnsProductEntity.price ?? 1}  ر.س',
+                      ' ${returnsProductEntity.price ?? 1}   ${"sar".tr()}',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500

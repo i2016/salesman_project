@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/custom_dropdown.dart';
 
 class VisitTypeContainers extends StatelessWidget {
@@ -16,10 +17,10 @@ class VisitTypeContainers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+         Expanded(
             flex: 3,
             child: Text(
-              'تصفية حسب',
+              "filter_by".tr(),
               style: TextStyle(
                   color: Color(0xff758195),
                   fontSize: 16,

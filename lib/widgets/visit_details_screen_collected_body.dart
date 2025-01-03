@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Visits/presentation/pages/History/visits_history_screen.dart';
 import 'package:water/widgets/collected_button.dart';
@@ -16,7 +17,6 @@ class VisitDetailsScreenCollectedBody extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        // drawer: const Drawer(),
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -28,8 +28,8 @@ class VisitDetailsScreenCollectedBody extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.01,
                         ),
-                        const Text(
-                          'تفاصيل الزيارة',
+                         Text(
+                       "visit_details".tr(),
                           style: TextStyle(
                             fontSize: 23,
                             fontWeight: FontWeight.w500,
@@ -71,8 +71,8 @@ class VisitDetailsScreenCollectedBody extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'فواتير التحصيل',
+                                 Text(
+                                 "collected_invoices".tr(),
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -146,19 +146,19 @@ class VisitDetailsScreenCollectedBody extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.014,
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CollectedButton(
                             color: Color(0xff1D6E4F),
-                            description: 'تم تحصيل  25,000 ر.س',
+                            description: '${"collected_amount".tr()}  25,000 ${"sar".tr()}',
                             borderColor: Color(0xff23A36D),
                           ),
                           CollectedButton(
                             color: Color(0xffAF2A1A),
-                            description: 'متبقي  25,000 ر.س',
+                            description: '${"remaining_amount".tr()}  25,000 ${"sar".tr()}',
                             borderColor: Color(0xffE34935),
                           ),
                         ],

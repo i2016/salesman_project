@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/shared.dart';
@@ -63,8 +64,8 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
                           'assets/images/asssa.png',
                           height: MediaQuery.of(context).size.height * 0.025,
                         ),
-                        const Text(
-                          'الرصيد المتبقى',
+                         Text(
+                         "remaining_balance".tr(),
                           style: TextStyle(
                             color: Color(0xff0056C9),
                             fontSize: 14,
@@ -85,95 +86,6 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.016,
                   ),
-                  /*     Container(
-                        width: MediaQuery.of(context).size.width * 0.245,
-                        height: MediaQuery.of(context).orientation == Orientation.portrait ?
-                        MediaQuery.of(context).size.height * 0.134
-                            : MediaQuery.of(context).size.height * 0.316,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 4),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'طلب تحويل',
-                                style: TextStyle(
-                                  color: Color(0xff25292E),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.008,
-                              ),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Opacity(
-                                    opacity: 0.78,
-                                    child: Text(
-                                      'المنتج',
-                                      style: TextStyle(
-                                        color: Color(0xff758195),
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'المبلغ',
-                                    style: TextStyle(
-                                      color: Color(0xff758195),
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Divider(
-                                color: Color.fromARGB(255, 186, 180, 180),
-                                thickness: 0.9,
-                              ),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Opacity(
-                                    opacity: 0.7,
-                                    child: Text(
-                                      'الاجمالي',
-                                      style: TextStyle(
-                                          color: Color(0xff0056C9),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                  ),
-                                  Opacity(
-                                    opacity: 0.9,
-                                    child: Text(
-                                      '0 ر.س',
-                                      style: TextStyle(
-                                          color: Color(0xff0056C9),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.012,
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),*/
                 ],
               );
             }
@@ -220,8 +132,8 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.006,
                   ),
-                  const Text(
-                    'مراجعة المنتجات',
+                   Text(
+                  "review_products".tr(),
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.w300,

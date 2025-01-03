@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/visit_details_container_item.dart';
 
 class VisitDetailsContainer extends StatelessWidget{
@@ -26,8 +27,8 @@ class VisitDetailsContainer extends StatelessWidget{
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'أهلاً محمود',
+               Text(
+                '${"welcome_message".tr()} ',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700
@@ -36,29 +37,29 @@ class VisitDetailsContainer extends StatelessWidget{
                 SizedBox(
           height: MediaQuery.of(context).size.height * 0.016,
         ),
-                const VisitDetailsContainerItem(
-                  name: 'نظرة عامة',
+                 VisitDetailsContainerItem(
+                  name: "overview".tr(),
                    image: 'assets/images/overView.png',
                    ),
                 SizedBox(
           height: MediaQuery.of(context).size.height * 0.011,
         ),
-               const VisitDetailsContainerItem(
-                name: 'المبيعات',
+                VisitDetailsContainerItem(
+                name: "sales".tr(),
                  image: 'assets/images/Shop.png',
                  ),
                 SizedBox(
           height: MediaQuery.of(context).size.height * 0.011,
         ),
-               const VisitDetailsContainerItem(
-                name: 'المرتجعات',
+                VisitDetailsContainerItem(
+                name: "returns".tr(),
                  image: 'assets/images/RestartCircle.png',
                  ),
                 SizedBox(
           height: MediaQuery.of(context).size.height * 0.011,
         ),
-               const VisitDetailsContainerItem(
-                name: 'تحصيل',
+                VisitDetailsContainerItem(
+                name: "collection".tr(),
                  image: 'assets/images/moneyBaggg.png',
                  ),
                 SizedBox(

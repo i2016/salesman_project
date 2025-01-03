@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import 'package:water/App/presentation/widgets/Drawer/inventory_edit_product_drawer.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
-import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/Visits/presentation/bloc/create_order/create_order_bloc.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/payment_method.dart';
 import 'package:water/widgets/pill_payment.dart';
 import 'package:water/widgets/review_product_water_item.dart';
-import 'package:water/widgets/search_text_field_review_product.dart';
 import 'package:water/widgets/take_photo_widget.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 class ReviewProductScreenDetails extends StatefulWidget {
@@ -48,7 +46,6 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
         Shared.showLoadingDialog(context: context);
       }
       else if(state is CreateOrderDone){
-        print("Done");
         CreateOrderResponseModel createOrderResponseModel = state.createOrderResponseModel as CreateOrderResponseModel;
         Shared.dismissDialog(context: context);
         Dialogs.showDialogcReateOrderResult(context,
@@ -57,14 +54,12 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
 
       }
       else if(state is CreateOrderErrorLoading){
-        print("ErrorLoading");
-        print("state.message : ${state.message}");
 
         Shared.dismissDialog(context: context);
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
-          title: "خطا ...",
+          title: "error".tr(),
           text: state.message,
         );
 
@@ -86,8 +81,8 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                                 },
                                 icon: const Icon(Icons.arrow_back)
                             ),
-                            const Text(
-                              'مراجعة المنتجات',
+                             Text(
+                              "review_products".tr(),
                               style: TextStyle(
                                   fontSize: 23,
                                   fontWeight: FontWeight.w500
@@ -125,7 +120,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                                       color: Colors.black,
                                     ),
 
-                                    hintText: 'البحث عن منتج',
+                                    hintText: "search_for_a_product".tr(),
                                     hintStyle: TextStyle(
                                       color: Color(0xff758195),
                                     )
@@ -156,7 +151,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                                         filteredProducts.removeAt(index);
                                       });
                                     },
-                                    label: 'حذف',
+                                    label: "delete".tr(),
                                     icon: Icons.delete,
                                     backgroundColor: Colors.red,
                                   ),
@@ -177,7 +172,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                         Expanded(
                           flex: 8,
                           child: Text(
-                            'الاجمالي',
+                            "total".tr(),
                             style: TextStyle(
                                 color: Color(0xff07326A),
                                 fontSize: 16,
@@ -189,7 +184,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              '${Shared.calculateTotalForAllProducts()}  ر.س ',
+                              '${Shared.calculateTotalForAllProducts()}  ${"sar".tr()} ',
                               style: TextStyle(
                                   color: Color(0xff07326A),
                                   fontSize: 16,
@@ -204,7 +199,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.006,
                     ),
-                    const PillPayment(textButton: 'اصدار الفاتورة',),
+                     PillPayment(textButton: "create_invoice".tr(),),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/navigate_basic_container.dart';
 import 'package:water/widgets/returned_details_container.dart';
@@ -49,10 +50,10 @@ class WorkOrdersOrderDetailsReturnScreenBody extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'اخفاء القائمة',
+                                "hide_list".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -81,8 +82,8 @@ class WorkOrdersOrderDetailsReturnScreenBody extends StatelessWidget {
                           IconButton(
                               onPressed: () {},
                               icon: const Icon(Icons.arrow_back)),
-                          const Text(
-                            'تفاصيل امر المرتجع',
+                           Text(
+                            "return_order_details".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,
@@ -93,23 +94,23 @@ class WorkOrdersOrderDetailsReturnScreenBody extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      const ReturnedDetailsContainer(
-                        iconReturned: 'assets/images/RestartCircle.png',
-                        nameReturned: 'امر مرتجع',
+                       ReturnedDetailsContainer(
+                        iconReturned: 'assets/images/trueInSquare.png',
+                        nameReturned: "return_order".tr(),
                         icon: 'assets/images/trueeStyle.png',
-                        traderName: 'عبدالرحمن محمد علي',
-                        date: '23 / 5 / 2024',
+                        traderName:  "trader_name".tr(),
+                        date: "date".tr(),
                         phone: '+966 4644 4646',
-                        cost: '30,000 ر.س',
-                        time: '5:30 مساءً',
-                        number: '50 منتج',
-                        textSmallContainer: 'تم الموافقة',
+                        cost: '30,000 ${"sar".tr()}',
+                        time: "time".tr(),
+                        number: "number_of_products".tr(),
+                        textSmallContainer: "approval_status".tr(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.012,
                       ),
-                      const SearchTextField(
-                        hintTextField: 'البحث عن منتج',
+                       SearchTextField(
+                        hintTextField: "search_for_product".tr(),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:pdf/pdf.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -23,7 +24,8 @@ import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
 import 'package:water/zebra/presentation/widgets/receipt.dart';
 class Dialogs {
 
-  static Future<void>? showDialogFinancialCollection(parentContext,{CreateCollectionResponseModel? createCollectionResponseModel}) {
+  static Future<void>? showDialogFinancialCollection(parentContext,{CreateCollectionResponseModel?
+  createCollectionResponseModel}) {
     return showDialog(
       context: parentContext,
       builder: (context) {
@@ -44,23 +46,17 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.013,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'تأكد من استلام المبلغ قبل اصدار الفاتورة',
+                    "ensure_receiving_amount".tr(),
                     style: TextStyle(
                         color: Color(0xFFAC6521),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-           /*     const Padding(
-                  padding: EdgeInsets.only(bottom: 16, top: 10),
-                  child: Text(
-                    'هل تم تحصيل اجمالي 50,000 ر.س؟',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                  ),
-                ),*/
+
                  Padding(
                     padding: EdgeInsets.only(bottom: 16, top: 10),
                     child:Row(
@@ -88,8 +84,8 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'الرجوع للزيارة',
+                             Text(
+                              "return_to_visit".tr(),
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w300),
                             ),
@@ -118,10 +114,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'تم استلام المبلغ',
+                                "amount_received".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -168,10 +164,10 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.008,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'تم اصدار فاتورة التحصيل',
+                    "invoice_issued".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
@@ -181,7 +177,7 @@ class Dialogs {
                  Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                    'تم اصدار فاتورة تحصيل رقم ${createCollectionResponseModel?.result?.data?.paymentId}',
+                    ' ${"invoice_number".tr()} ${createCollectionResponseModel?.result?.data?.paymentId}',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -210,8 +206,8 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'الرجوع للزيارة',
+                             Text(
+                              "return_to_visit".tr(),
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w300),
                             ),
@@ -243,10 +239,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'طباعة الفاتورة',
+                                  "print_invoice".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -294,10 +290,10 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.013,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'تم اصدار فاتورة المرتجع',
+                    "return_invoice_issued".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
@@ -307,7 +303,7 @@ class Dialogs {
                  Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                    'تم اصدار فاتورة مرتجع رقم  ${createReturnsModel?.result?.data?.invoiceReturnId ?? ''}  ',
+                    ' ${"return_invoice_number".tr()} ${createReturnsModel?.result?.data?.invoiceReturnId ?? ''}  ',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -334,8 +330,8 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'الرجوع للزيارة',
+                             Text(
+                              "return_to_visit".tr(),
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w300),
                             ),
@@ -369,10 +365,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'طباعة الفاتورة',
+                               "print_invoice".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -422,8 +418,8 @@ class Dialogs {
                   child: Text(
                     createOrderResponseModel!.result == null  ? createOrderResponseModel!.message! :
                     createOrderResponseModel!.result!.errorResult != null ?
-                    ' تم اصدار فاتورة البيع و يمكنك متابعة مع المخزن'
-                        :'تم اصدار فاتورة البيع',
+                   "follow_up_warehouse".tr()
+                        : "sales_invoice_issued".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
@@ -457,8 +453,8 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'الرجوع للزيارة',
+                             Text(
+                             "return_to_visit".tr(),
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w300),
                             ),
@@ -492,10 +488,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'طباعة الفاتورة',
+                                "print_invoice".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -519,6 +515,8 @@ class Dialogs {
       },
     );
   }
+
+
 
   static Future<void>? showDialogProfileLogout(parentContext) {
     return showDialog(
@@ -544,25 +542,25 @@ class Dialogs {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.013,
                   ),
-                  const Text(
-                    'تسجيل خروج',
+                   Text(
+                    "logout_title".tr(),
                     style: TextStyle(
                         color: Color(0xffAC6521),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: 11),
                     child: Text(
-                      'هل انت متأكد من تسجيل الخروج من التطبيق؟',
+                      "logout_confirmation".tr(),
                       style: TextStyle(
                           color: Color(0xFFAC6521),
                           fontSize: 14,
                           fontWeight: FontWeight.w300),
                     ),
                   ),
-                  const Text(
-                    'تحتاج الى ادخال البريد الالكتروني وكلمة السر للدخول مجدداً',
+                   Text(
+                    "logout_warning".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                   Padding(
@@ -590,10 +588,10 @@ class Dialogs {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Opacity(
+                                 Opacity(
                                   opacity: 0.8,
                                   child: Text(
-                                    'تسجيل خروج من التطبيق',
+                                   "logout_button".tr(),
                                     style: TextStyle(
                                         color: Color(0xffAF2A1A),
                                         fontSize: 14,
@@ -634,8 +632,8 @@ class Dialogs {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  'الرجوع للتطبيق',
+                                 Text(
+                                 "return_button".tr(),
                                   style: TextStyle(
                                       fontSize: 14, fontWeight: FontWeight.w300),
                                 ),
@@ -678,10 +676,10 @@ class Dialogs {
                   'assets/images/imagee-truee.png',
                   width: MediaQuery.of(context).size.width * 0.12,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 18),
                   child: Text(
-                    'تم تغيير كلمة السر بنجاح',
+                    "password_changed_success".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
@@ -708,8 +706,8 @@ class Dialogs {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          'الرجوع للتطبيق',
+                         Text(
+                          "return_button".tr(),
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),
@@ -749,25 +747,25 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.013,
                 ),
-                const Text(
-                  'الغاء اضافة العميل',
+                 Text(
+                  "client_cancel".tr(),
                   style: TextStyle(
                       color: Color(0xffAC6521),
                       fontSize: 18,
                       fontWeight: FontWeight.w500),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'هل انت متأكد من اضافة العميل؟',
+                   "client_cancel_confirmation".tr(),
                     style: TextStyle(
                         color: Color(0xFFAC6521),
                         fontSize: 14,
                         fontWeight: FontWeight.w300),
                   ),
                 ),
-                const Text(
-                  'تحتاج الى ملئ البيانات من البداية في حالة الاضافة مجدداً.',
+                 Text(
+                 "client_add_warning".tr(),
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                 ),
                 Padding(
@@ -796,10 +794,10 @@ class Dialogs {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Opacity(
+                               Opacity(
                                 opacity: 0.8,
                                 child: Text(
-                                  'الغاء العميل',
+                                  "client_cancel_button".tr(),
                                   style: TextStyle(
                                       color: Color(0xffAF2A1A),
                                       fontSize: 14,
@@ -840,8 +838,8 @@ class Dialogs {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'استمرار الاضافة',
+                               Text(
+                                "client_continue_button".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -886,20 +884,20 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.004,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'تم اضافة العميل',
+                 "client_added".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                    'ملف العميل حالياً تحت المراجعة.',
+                    "client_under_review".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -921,10 +919,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'اظهار صفحة العميل',
+                               "show_client_button".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -953,6 +951,9 @@ class Dialogs {
     );
   }
 
+
+
+
   static Future<void>? showDialogFinishVisit(parentContext) {
     showDialog(
       context: parentContext,
@@ -973,20 +974,20 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.008,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'هل انت متأكد من انهاء الزيارة؟',
+                    "finish_visit_confirmation".tr(),
                     style: TextStyle(
                         color: Color(0xff0056C9),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                          'يمكنك بدء الزيارة مجدداً لاصدار فواتير جديدة',
+                         "start_new_visit_warning".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -1013,8 +1014,8 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'الرجوع للزيارة',
+                             Text(
+                              "return_to_visit".tr(),
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w300),
                             ),
@@ -1045,10 +1046,10 @@ class Dialogs {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'انهاء الزيارة',
+                                "finish_visit".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -1098,20 +1099,20 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.004,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                   'تم ارسال الصور للادارة',
+                   "photos_sent_to_admin".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                   'تم ارسال 4 صور للإدارة',
+                  "photos_sent_count".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -1138,8 +1139,8 @@ class Dialogs {
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
-                           const Text(
-                             'الرجوع للزيارة',
+                            Text(
+                             "return_to_visit".tr(),
                              style: TextStyle(
                                  fontSize: 14, fontWeight: FontWeight.w300),
                            ),
@@ -1182,20 +1183,20 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.004,
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                   'تم حفظ التعديلات للطلب',
+                   "save_changes_confirmation".tr(),
                     style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(bottom: 16, top: 10),
                   child: Text(
-                   'سيتم الآن مراجعة الطلب',
+                   "review_request".tr(),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -1226,8 +1227,8 @@ class Dialogs {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.006,
                               ),
-                              const Text(
-                                'الرجوع للمخزن',
+                               Text(
+                               "return_to_inventory".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -1266,10 +1267,10 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.005,
                 ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: 11),
                     child: Text(
-                      'تم اضافة المنتج الى المخزن',
+                      "product_added".tr(),
                       style: TextStyle(
                         color: Color(0xff1D6E4F),
                         fontSize: 18,
@@ -1277,10 +1278,10 @@ class Dialogs {
                       ),
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(bottom: 16 , top: 10),
                     child: Text(
-                      'تم اضافة عدد 2 مياه',
+                      "product_count".tr(),
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w300
@@ -1311,8 +1312,8 @@ class Dialogs {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  'الرجوع للمخزن',
+                                 Text(
+                                  "back_to_inventory".tr(),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300
@@ -1337,7 +1338,6 @@ class Dialogs {
       }
 
 
-
   static Future<void>? showDialogCancelRequest(parentContext) {
     return showDialog(
       context: parentContext,
@@ -1359,25 +1359,25 @@ class Dialogs {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.013,
                 ),
-                const Text(
-                  'الغاء الطلب',
+                 Text(
+                  "cancel_request".tr(),
                   style: TextStyle(
                       color: Color(0xffAC6521),
                       fontSize: 18,
                       fontWeight: FontWeight.w500),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(top: 11),
                   child: Text(
-                    'هل انت متأكد من إلغاء الطلب؟',
+                    "cancel_request_confirmation".tr(),
                     style: TextStyle(
                         color: Color(0xFFAC6521),
                         fontSize: 14,
                         fontWeight: FontWeight.w300),
                   ),
                 ),
-                const Text(
-                  'تحتاج الى ملئ البيانات من البداية في حالة الطلب مجدداً.',
+                 Text(
+                  "request_info".tr(),
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                 ),
                 Padding(
@@ -1405,8 +1405,8 @@ class Dialogs {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'استمرار الطلب',
+                               Text(
+                             "continue_request".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -1439,10 +1439,10 @@ class Dialogs {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Opacity(
+                               Opacity(
                                 opacity: 0.8,
                                 child: Text(
-                                  'الغاء الطلب',
+                               "cancel_request_btn".tr(),
                                   style: TextStyle(
                                       color: Color(0xffAF2A1A),
                                       fontSize: 14,
@@ -1509,14 +1509,15 @@ class Dialogs {
       QuickAlert.show(
         context: context,
         type: QuickAlertType.error,
-        title: "خطا ...",
-        text: "حدث خطا اثناء طباعة الفاتورة",
+        title: "error".tr(),
+        text: "print_error".tr(),
       );
     }
   }
 
 
-  static Future<void>? showDialogSendRequest(parentContext,{InventoryTransferRequestResposneModel? inventoryTransferRequestResposneModel}) {
+  static Future<void>? showDialogSendRequest(parentContext,{InventoryTransferRequestResposneModel?
+  inventoryTransferRequestResposneModel}) {
     return showDialog(
       context: parentContext,
       builder: (BuildContext context) {
@@ -1537,10 +1538,10 @@ class Dialogs {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.004,
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: 11),
                     child: Text(
-                      'تم ارسال الطلب',
+                     "request_sent".tr(),
                       style: TextStyle(
                           color: Color(0xff1D6E4F),
                           fontSize: 18,
@@ -1552,11 +1553,11 @@ class Dialogs {
                     child: Column(
                       children: [
                         Text(
-                          'تم ارسال طلب رقم ${inventoryTransferRequestResposneModel!.result!.data!.transferId}',
+                          ' ${"request_sent_id".tr()}  ${inventoryTransferRequestResposneModel!.result!.data!.transferId}',
                           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                         ),
                         Text(
-                          'سيتم الآن مراجعة الطلب',
+                          "review_request".tr(),
                           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                         ),
                       ],
@@ -1585,8 +1586,8 @@ class Dialogs {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'الرجوع للمخزن',
+                               Text(
+                                "back_to_inventory".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),

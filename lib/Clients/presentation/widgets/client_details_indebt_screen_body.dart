@@ -63,7 +63,7 @@ class ClientDetailsIndebtScreenBody extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * 0.008,
                       ),
 
-                      Padding(
+                     Padding(
                           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                           child:  BarChartSample(
                             title: "invoice_history".tr(),

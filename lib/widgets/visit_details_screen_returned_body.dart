@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/public_information_container.dart';
 import 'package:water/widgets/review_product_water_item.dart';
@@ -13,7 +14,6 @@ class VisitDetailsScreenReturnedBody extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        // endDrawer: const Drawer(),
         body: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,8 +26,8 @@ class VisitDetailsScreenReturnedBody extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
                           ),
-                          const Text(
-                            'تفاصيل الزيارة',
+                           Text(
+                            "visit_details".tr(),
                             style: TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w500,
@@ -70,8 +70,8 @@ class VisitDetailsScreenReturnedBody extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text(
-                                    'فواتير المرتجعات',
+                                   Text(
+                                    "Return_Invoices".tr(),
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
@@ -127,7 +127,7 @@ class VisitDetailsScreenReturnedBody extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,
                       ),
-                      const SearchTextField(hintTextField: 'البحث عن منتج',),
+                       SearchTextField(hintTextField: "search_product".tr(),),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.018,
                       ),

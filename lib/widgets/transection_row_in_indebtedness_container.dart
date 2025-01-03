@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class TransectionRowInIndebtednessContainer extends StatelessWidget {
   const TransectionRowInIndebtednessContainer(
@@ -42,12 +43,12 @@ class TransectionRowInIndebtednessContainer extends StatelessWidget {
             ],
           ),
         ),
-        const Expanded(
+         Expanded(
           flex: 3,
           child: Opacity(
             opacity: 0.6,
             child: Text(
-              '50,000 ر.س',
+              '50,000 ${"sar".tr()}',
               style: TextStyle(
                   color: Color(0xff111111),
                   fontSize: 14,

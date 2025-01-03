@@ -3,15 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
-import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/presentation/bloc/products_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/list_category_products.dart';
-import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_available_items_screen.dart';
-import 'package:water/widgets/drawer_available_products_screen.dart';
-import 'package:water/widgets/search_text_field_available_products_screen.dart';
-import 'package:water/widgets/water_item_available_products.dart';
+
 
 class AvailableProductsScreenDetails extends StatelessWidget {
   CategoryData? categoryData;

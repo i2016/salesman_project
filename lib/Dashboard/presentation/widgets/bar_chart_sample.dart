@@ -45,7 +45,7 @@ class BarChartSample extends StatelessWidget {
                         ),
                         Text(
                           statistics == null
-                              ? 'اكتوبر 2023 - مارس 2024'
+                              ? '${"october".tr()} 2023 - ${"november".tr()} 2024'
                               : ' ${statistics!.last.month} 2024   -  ${statistics!.first.month} 2024 ',
                           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                         ),
@@ -65,30 +65,40 @@ class BarChartSample extends StatelessWidget {
                           ? BarChartData(
                         alignment: BarChartAlignment.spaceAround,
                         barGroups: statistics!.map((e) {
+                          double collection = e.collection != 0    ? double.tryParse(e.collection.toString()) ?? 0.0 : 1.0;
+                          double sales = e.sales != null ? double.tryParse(e.sales.toString()) ?? 0.0 : 1.0;
+                          double returns = e.returns != null ? double.tryParse(e.returns.toString()) ?? 0.0 :1.0;
+
                           return BarChartGroupData(
                             x: statistics!.indexOf(e),
                             barRods: [
                               BarChartRodData(
-                                  y: double.parse(e.collection.toString()),
-                                  colors: [Colors.green],
-                                  width: MediaQuery.of(context).size.width * 0.02,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(5),
-                                      topRight: Radius.circular(5))),
+                                y: collection,
+                                colors: e.collection != 0 ? [Colors.green] : [Colors.white],
+                                width: MediaQuery.of(context).size.width * 0.02,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5),
+                                ),
+                              ),
                               BarChartRodData(
-                                  y: double.parse(e.sales.toString()),
-                                  colors: [Colors.blue],
-                                  width: MediaQuery.of(context).size.width * 0.02,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(5),
-                                      topRight: Radius.circular(5))),
+                                y: sales,
+                                colors: e.sales != 0 ? [Colors.blueAccent] : [Colors.white],
+                                width: MediaQuery.of(context).size.width * 0.02,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5),
+                                ),
+                              ),
                               BarChartRodData(
-                                  y: double.parse(e.returns.toString()),
-                                  colors: [Colors.orange],
-                                  width: MediaQuery.of(context).size.width * 0.02,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(5),
-                                      topRight: Radius.circular(5))),
+                                y: returns,
+                                colors: e.returns != 0 ? [Colors.orange] : [Colors.white],
+                                width: MediaQuery.of(context).size.width * 0.02,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5),
+                                ),
+                              ),
                             ],
                           );
                         }).toList(),
@@ -168,17 +178,29 @@ class BarChartSample extends StatelessWidget {
                             getTitles: (double value) {
                               switch (value.toInt()) {
                                 case 0:
-                                  return "October".tr();
+                                  return "January".tr();
                                 case 1:
-                                  return 'November'.tr();
+                                  return "February".tr();
                                 case 2:
-                                  return 'December'.tr();
+                                  return "March".tr();
                                 case 3:
-                                  return 'January'.tr();
+                                  return "april".tr();
                                 case 4:
-                                  return 'February'.tr();
+                                  return "may".tr();
                                 case 5:
-                                  return 'March'.tr();
+                                  return "june".tr();
+                                case 6:
+                                  return "july".tr();
+                                case 7:
+                                  return "august".tr();
+                                case 8:
+                                  return "september".tr();
+                                case 9:
+                                  return "october".tr();
+                                case 10:
+                                  return "november".tr();
+                                case 1:
+                                  return "december".tr();
                                 default:
                                   return '';
                               }

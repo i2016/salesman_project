@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
-import 'package:water/App/presentation/widgets/Drawer/good_returns_edit_product_drawer.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/widgets/button.dart';
 import 'package:water/widgets/image_number_product_price_container_invoices_details.dart';
@@ -18,7 +17,6 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          endDrawer: const GoodReturnsEditProductDrawer(),
           body: Padding(
             padding: const EdgeInsets.only(right: 18, left: 18, top: 48),
             child: Row(

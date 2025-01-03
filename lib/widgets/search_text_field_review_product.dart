@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class SearchTextFieldReviewProduct extends StatelessWidget{
   const SearchTextFieldReviewProduct({super.key});
@@ -15,8 +16,8 @@ class SearchTextFieldReviewProduct extends StatelessWidget{
           },
             icon: const Icon(Icons.arrow_back)
             ),
-        const Text(
-          'مراجعة المنتجات',
+         Text(
+          "review_products".tr(),
           style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.w500
@@ -52,7 +53,7 @@ class SearchTextFieldReviewProduct extends StatelessWidget{
                   color: Colors.black,
                   ),
                   
-                hintText: 'البحث عن منتج',
+                hintText: "search_for_product".tr(),
                 hintStyle: TextStyle(
                   color: Color(0xff758195),
                 )

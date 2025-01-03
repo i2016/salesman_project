@@ -3,13 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
-import 'package:water/Base/common/navigtor.dart';
-import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
 import 'package:water/Returns/presentation/bloc/returns_invoice_bloc.dart';
 import 'package:water/Visits/presentation/pages/Today/widgets/products_and_prices_previous_invoices_screen.dart';
-import 'package:water/index.dart';
-import 'package:water/widgets/drawer_previous_invoices_screen.dart';
 import 'package:water/widgets/search_text_field_previous_invoices_screen.dart';
 import 'package:water/widgets/water_item_previous_invoices.dart';
 
@@ -20,7 +16,6 @@ class PreviousInvoicesScreenDetails extends StatelessWidget {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          endDrawer: const DrawerPreviousInvoicesScreen(),
           body: BlocBuilder<ReturnsInvoiceBloc , AppState>(
             bloc: returnsInvoiceBloc,
             builder: (context , state){

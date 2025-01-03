@@ -2,7 +2,7 @@ import 'package:water/widgets/error_interface_widget.dart';
 
 import 'navigate_basic_container.dart';
 import 'package:flutter/material.dart';
-
+import 'package:localize_and_translate/localize_and_translate.dart';
 class ErrorInServiceScreenDetails extends StatelessWidget {
   const ErrorInServiceScreenDetails({super.key});
 
@@ -46,10 +46,10 @@ class ErrorInServiceScreenDetails extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.01,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.8,
                               child: Text(
-                                'اخفاء القائمة',
+                                "hide_list".tr(),
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),
                               ),
@@ -74,14 +74,14 @@ class ErrorInServiceScreenDetails extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: MediaQuery.of(context).size.height * 0.03,
                   ),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ErrorInterface(
                           errorImage: 'assets/images/errorInService.png',
-                          errorTitle: 'خطأ في الخادم',
+                          errorTitle:  "server_error".tr(),
                           errorSubTitle:
-                              'لا يمكن الاتصال بالشبكة. يرجى التحقق من الاتصال بالإنترنت',
+                          "server_error_message".tr(),
                               imageSize: 0.4,),
                     ],
                   ),

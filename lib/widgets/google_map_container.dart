@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class GoogleMapContainer extends StatefulWidget{
   final String? address;
@@ -70,8 +71,8 @@ BitmapDescriptor? customMarker;
                             children: [
                               Row(
                                 children: [
-                                  const Text(
-                                    'العنوان',
+                                   Text(
+                                    "address".tr(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -81,10 +82,10 @@ BitmapDescriptor? customMarker;
                                   width: MediaQuery.of(context).size.width * 0.006,
                                 ),
                                Container(
-                                    width:  MediaQuery.of(context).orientation ==
+                                  /*  width:  MediaQuery.of(context).orientation ==
                                   Orientation.portrait
                               ? MediaQuery.of(context).size.width * 0.135
-                              : MediaQuery.of(context).size.width * 0.14,
+                              : MediaQuery.of(context).size.width * 0.14,*/
                                     height:  MediaQuery.of(context).orientation ==
                                   Orientation.portrait
                               ? MediaQuery.of(context).size.height * 0.019
@@ -108,8 +109,8 @@ BitmapDescriptor? customMarker;
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width * 0.004,
                                 ),
-                                const Text(
-                                  'يبعد 232 ك.م',
+                                 Text(
+                                  '${"Far_away".tr()} 23  ${"km".tr()}',
                                   style: TextStyle(
                                       color: Color(0xff1D6E4F),
                                       fontSize: 14,

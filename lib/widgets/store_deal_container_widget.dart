@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/widgets/container_in_store_deal_container.dart';
 
 class StoreDealContainer extends StatelessWidget {
@@ -24,17 +25,17 @@ class StoreDealContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'بدا المعاملة مع',
+                   Text(
+               "transaction_started_with".tr(),
                     style: TextStyle(
                         color: Color(0xff25292E),
                         fontSize: 17,
                         fontWeight: FontWeight.w700),
                   ),
-                  const Opacity(
+                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'اسم التاجر',
+                      "merchant_name".tr(),
                       style: TextStyle(
                           color: Color(0xff25292E),
                           fontSize: 17,
@@ -44,32 +45,32 @@ class StoreDealContainer extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'بيع', image: 'assets/images/IconWrapperrrrr.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "sell".tr(), image: 'assets/images/IconWrapperrrrr.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'مرتجع جيد', image: 'assets/images/RestartCircle.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name:"good_return".tr(), image: 'assets/images/RestartCircle.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'مرتجع سيء', image: 'assets/images/badReturned.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "bad_return".tr(), image: 'assets/images/badReturned.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'تحصيل', image: 'assets/images/MoneyBag.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "collection".tr(), image: 'assets/images/MoneyBag.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'صور', image: 'assets/images/camera.png', color:Colors.white ,
+                   ContainerInStoreDealContainer(
+                    name: "photos".tr(), image: 'assets/images/camera.png', color:Colors.white ,
                     ),
                 ],
               ),
@@ -90,17 +91,17 @@ class StoreDealContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'بدا المعاملة مع',
+                   Text(
+                    "transaction_started_with".tr(),
                     style: TextStyle(
                         color: Color(0xff25292E),
                         fontSize: 17,
                         fontWeight: FontWeight.w700),
                   ),
-                  const Opacity(
+                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'اسم التاجر',
+                     "merchant_name".tr(),
                       style: TextStyle(
                           color: Color(0xff25292E),
                           fontSize: 17,
@@ -110,32 +111,32 @@ class StoreDealContainer extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'بيع', image: 'assets/images/IconWrapperrrrr.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "sell".tr(), image: 'assets/images/IconWrapperrrrr.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'مرتجع جيد', image: 'assets/images/RestartCircle.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "good_return".tr(), image: 'assets/images/RestartCircle.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'مرتجع سيء', image: 'assets/images/badReturned.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "bad_return".tr(), image: 'assets/images/badReturned.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'تحصيل', image: 'assets/images/MoneyBag.png', color: Colors.white,
+                   ContainerInStoreDealContainer(
+                    name: "collection".tr(), image: 'assets/images/MoneyBag.png', color: Colors.white,
                     ),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.011,
                   ),
-                  const ContainerInStoreDealContainer(
-                    name: 'صور', image: 'assets/images/camera.png', color:Colors.white ,
+                   ContainerInStoreDealContainer(
+                    name: "photos".tr(), image: 'assets/images/camera.png', color:Colors.white ,
                     ),
                 ],
               ),

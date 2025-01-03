@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Clients/presentation/pages/client_details_indebt_screen.dart';
 import 'package:water/Clients/presentation/pages/client_details_visits_history_screen.dart';
@@ -31,8 +32,8 @@ class IndebtednessContainer extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text(
-                      'ملف المديونية',
+                     Text(
+                       "indebtednessFile".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -69,8 +70,8 @@ class IndebtednessContainer extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.004,
                             ),
-                            const Text(
-                              'مديونية مرتفعة',
+                             Text(
+                               "highDebt".tr(),
                               style: TextStyle(
                                   color: Color(0xFFAC6521),
                                   fontSize: 14,
@@ -111,8 +112,8 @@ class IndebtednessContainer extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.006,
                       ),
-                      const Text(
-                        'نوع الفاتورة',
+                       Text(
+                         "invoiceType".tr(),
                         style: TextStyle(
                             color: Color(0xff111111),
                             fontSize: 14,
@@ -134,8 +135,8 @@ class IndebtednessContainer extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.006,
                       ),
-                      const Text(
-                        'المبلغ',
+                       Text(
+                         "amount".tr(),
                         style: TextStyle(
                             color: Color(0xff111111),
                             fontSize: 14,
@@ -157,8 +158,8 @@ class IndebtednessContainer extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.006,
                       ),
-                      const Text(
-                        'التاريخ',
+                       Text(
+                         "date".tr(),
                         style: TextStyle(
                             color: Color(0xff111111),
                             fontSize: 14,
@@ -172,17 +173,17 @@ class IndebtednessContainer extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.008,
             ),
-            const TransectionRowInIndebtednessContainer(
+             TransectionRowInIndebtednessContainer(
               image: 'assets/images/BillList.png',
-              name: 'أمر بيع',
+              name: "Sales Order".tr(),
               color: Color(0xff0056C9),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.008,
             ),
-            const TransectionRowInIndebtednessContainer(
+             TransectionRowInIndebtednessContainer(
               image: 'assets/images/RestartCircle.png',
-              name: 'مرتجع',
+              name: "Return".tr(),
               color: Color(0xFFAC6521),
             ),
             SizedBox(
@@ -196,9 +197,9 @@ class IndebtednessContainer extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.008,
             ),
-            const TransectionRowInIndebtednessContainer(
+             TransectionRowInIndebtednessContainer(
               image: 'assets/images/MoneyBag.png',
-              name: 'تحصيل',
+              name:  "collection".tr(),
               color: Color(0xff1D6E4F),
             ),
             SizedBox(
@@ -238,10 +239,10 @@ class IndebtednessContainer extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.003,
                         ),
-                        const Opacity(
+                         Opacity(
                           opacity: 0.9,
                           child: Text(
-                            'اظهار ملف المديونية',
+                            "showIndebtednessFile".tr(),
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w300),
                           ),
@@ -281,10 +282,10 @@ class IndebtednessContainer extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.003,
                         ),
-                        const Opacity(
+                         Opacity(
                           opacity: 0.9,
                           child: Text(
-                            'اظهار تاريخ الزيارات',
+                            "showVisitHistory".tr(),
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w300),
                           ),

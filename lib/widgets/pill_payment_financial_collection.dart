@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/shared.dart';
@@ -30,7 +31,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                          'متبقى   ${invoice.amountDue}   ر.س   ',
+                          '${"remaining".tr()}   ${invoice.amountDue}   ${"sar".tr()}   ',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w500),
                         ),
@@ -63,10 +64,10 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.006,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.7,
                               child: Text(
-                                'طباعة الفاتورة',
+                                "print_invoice".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -99,10 +100,10 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.006,
                             ),
-                            const Opacity(
+                             Opacity(
                               opacity: 0.7,
                               child: Text(
-                                'اصدار الفاتورة',
+                               "create_invoice".tr(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,

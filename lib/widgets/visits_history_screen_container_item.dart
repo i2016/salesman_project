@@ -38,12 +38,14 @@ class VisitsHistoryScreenContainerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
            Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).orientation == Orientation.portrait
+    /*  width: MediaQuery.of(context).size.width * 0.5,
+             height: MediaQuery.of(context).orientation == Orientation.portrait
                   ? MediaQuery.of(context).size.height * 0.08
-                  : MediaQuery.of(context).size.height * 0.128,
+                  : MediaQuery.of(context).size.height * 0.128,*/
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
