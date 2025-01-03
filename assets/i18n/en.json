@@ -447,7 +447,7 @@
   "logout_title": "Logout",
   "logout_confirmation": "Are you sure you want to log out of the app?",
   "logout_warning": "You will need to enter your email and password to log in again.",
-  "logout_button": "Log Out of the App",
+  "logout_button": "Log Out of App",
   "return_button": "Return to App",
   "password_changed_success": "Password changed successfully",
   "return_to_app": "Return to App",

@@ -14,9 +14,9 @@ class ReviewProductWaterItem extends StatelessWidget{
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           width: double.infinity,
-                height: MediaQuery.of(context).orientation == Orientation.portrait ?
+             /*   height: MediaQuery.of(context).orientation == Orientation.portrait ?
             MediaQuery.of(context).size.height * 0.065
-            : MediaQuery.of(context).size.height * 0.085,
+            : MediaQuery.of(context).size.height * 0.085,*/
                 decoration: BoxDecoration(
                 color: Colors.white,
                   borderRadius: BorderRadius.circular(8)

@@ -72,8 +72,9 @@ class _ProductsAndPricesInventoryAddRequestScreenState extends State<ProductsAnd
                             fontWeight: FontWeight.w300,
                           ),
                         ),
+                        SizedBox(height: 10,),
                         Text(
-                          '${state.salesRemainingLimitModel!.result!.data!.remainingLimit!.toStringAsFixed(2)}  ر.س  ',
+                          '${state.salesRemainingLimitModel!.result!.data!.remainingLimit!.toStringAsFixed(2)}  ${"sar".tr()}  ',
                           style: TextStyle(
                             color: Color(0xff0056C9),
                             fontSize: 14,

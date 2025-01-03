@@ -43,6 +43,7 @@ class WaterItemAvailableProducts extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
+
                     flex: 3,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -107,47 +108,42 @@ class WaterItemAvailableProducts extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                           Text(
-                        product != null ?  product!.name! :   'مياه',
-                            style:
-                                TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                           maxLines: 4,
-                          ),
-                           Text(
-                             product != null ?  product!.description! :  'مياه مدينة شرنك 15 حبة  600 مل',
-                            style:
-                                TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                           maxLines: 4,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.017,
-                          ),
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               Text(
-                                product != null ?  "${product!.price}  ر.س " :  '42 ر.س',
-                                style:
-                                    TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                               maxLines: 4,
-                                                         ),
-
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      child:   Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Text(
-                                product != null ? product!.mainUomName ?? '' : "كرتونة",
-                                 style:
-                                 TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                               maxLines: 4,
-                               ),
-                             ],
-                           ),
-                        ],
-                      ),
+                                product != null ? product!.name! : 'مياه',
+                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                                maxLines: 4,
+                              ),
+                              Text(
+                                product != null ? product!.description! : 'مياه مدينة شرنك 15 حبة 600 مل',
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+                                maxLines: 4,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    product != null ? "${product!.price} ر.س " : '42 ر.س',
+                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                                    maxLines: 4,
+                                  ),
+                                  Text(
+                                    product != null ? product!.mainUomName ?? '' : "كرتونة",
+                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                                    maxLines: 4,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+
+
                     ),
                   ),
+                  
                 ],
               ),
             )
