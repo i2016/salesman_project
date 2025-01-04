@@ -1,5 +1,6 @@
 import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Base/network/network-mappers.dart';
+import 'package:water/Clients/data/models/clients_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
 import 'package:water/Inventory/data/models/inventory_trnsfer_requests_model.dart';
@@ -169,8 +170,8 @@ class GetHistoryInvoiceErrorLoading extends AppState{
 
 //CLIENTS
 class GetAllClientsDone extends AppState{
-  final  Mappable? model;
-  GetAllClientsDone({this.model});
+  List<Client>? clients;
+  GetAllClientsDone({this.clients});
 }
 
 class GetAllClientsErrorLoading extends AppState{

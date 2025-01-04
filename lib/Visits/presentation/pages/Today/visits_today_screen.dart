@@ -8,6 +8,7 @@ import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/presentation/widgets/registered_customers_screen_container_item.dart';
+import 'package:water/Visits/data/models/visits_model.dart';
 import 'package:water/Visits/presentation/bloc/visits/visits_bloc.dart';
 import 'package:water/Visits/presentation/pages/History/visits_history_screen.dart';
 import 'package:water/Visits/presentation/pages/Today/add_visit_registered_clients_screen.dart';
@@ -46,7 +47,7 @@ class _page extends StatefulWidget {
   @override
   State<_page> createState() => _pageState();
 }
-
+/*
 class _pageState extends State<_page> {
   @override
   void initState() {
@@ -87,16 +88,8 @@ class _pageState extends State<_page> {
                   else if (state is GeTodayVisitsDone) {
                     if(state.visits != null && state.visits!.isNotEmpty){
                       return ListView.builder(
-                     //   physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        /*   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).orientation ==
-                              Orientation.portrait ? 2 : 3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: MediaQuery.of(context).orientation ==
-                              Orientation.portrait ? 5.1 / 2 : 4.5 / 2,
-                        ),*/
+
                         itemCount: state.visits?.length,
                         itemBuilder: (context, index) {
                           return  RegisteredCustomersScreenContainerItem(
@@ -135,4 +128,144 @@ class _pageState extends State<_page> {
       ),
     );
   }
+}*/
+
+class _pageState extends State<_page> {
+  TextEditingController _searchController = TextEditingController();
+  List<Visit> _filteredVisits = [];
+  List<Visit> _allVisits = [];
+
+  @override
+  void initState() {
+    visitsBloc.add(GetTodayVisitsEvent());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterVisitsFunc(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredVisits = _allVisits;
+      } else {
+        _filteredVisits = _allVisits
+            .where((visit) =>
+        visit.visitName.toLowerCase().contains(query) ||
+            visit.customerName.toLowerCase().contains(query))
+            .toList();
+      }
+    });
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+          ? TextDirection.rtl
+          : TextDirection.ltr,
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "today_visits".tr(),
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.008,
+            ),
+            Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.033,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 0.5,
+                    ),
+                    borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1.5),
+                  child: TextField(
+                    controller: _searchController,
+                    onChanged: _filterVisitsFunc,
+                    cursorColor: Color.fromARGB(255, 66, 64, 64),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.zero,
+                        border: InputBorder.none,
+                        prefixIcon: Image.asset(
+                          'assets/images/search.png',
+                          color: Colors.black,
+                        ),
+                        hintText: "search_for_visit".tr(),
+                        hintStyle: const TextStyle(
+                          color: Color.fromARGB(255, 146, 155, 171),
+                        )),
+                  ),
+                )),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Expanded(
+              child: BlocBuilder<VisitsBloc, AppState>(
+                bloc: visitsBloc,
+                builder: (context, state) {
+                  if (state is Loading) {
+                    return const LoadingPlaceHolder(
+                      shimmerType: ShimmerType.list,
+                      cellShimmerHeight: 50,
+                      shimmerCount: 10,
+                    );
+                  } else if (state is GeTodayVisitsDone) {
+                    _allVisits = state.visits ?? [];
+                    final displayVisits = _searchController.text.isNotEmpty
+                        ? _filteredVisits
+                        : _allVisits ;
+                    if (displayVisits.isNotEmpty) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: displayVisits.length,
+                        itemBuilder: (context, index) {
+                          return RegisteredCustomersScreenContainerItem(
+                            storeName: displayVisits[index].visitName, // Replace with actual property
+                            sales: '${"Monthly_sales".tr()}30,000 ',
+                            distance: "Far_away".tr() + "232" + "km".tr(),
+                            money: '15,000 ${"debt".tr()}',
+                            visit: displayVisits[index],
+                          );
+                        },
+                      );
+                    } else {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Shared.width * 0.3),
+                        child: Center(
+                          child: Text("no_visits".tr()),
+                        ),
+                      );
+                    }
+                  } else if (state is GetTodayVisitsErrorLoading) {
+                    return Center(
+                      child: Text("${state.message}"),
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
+

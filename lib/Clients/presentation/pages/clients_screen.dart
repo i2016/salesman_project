@@ -44,6 +44,7 @@ class ClientsScreen extends StatelessWidget {
   }
 }
 
+
 class _Page extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -52,87 +53,151 @@ class _Page extends StatefulWidget {
 }
 
 class _PageState extends State<_Page> {
+  TextEditingController _searchController = TextEditingController();
+  List<Client> _filteredClients = [];
+  List<Client> _allClients = [];
 
   @override
   void initState() {
     super.initState();
-clientsBloc.add(GetAllClientsEvent());
+    clientsBloc.add(GetAllClientsEvent());
   }
+
+  void _filterClients(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredClients = _allClients;
+      } else {
+        _filteredClients = _allClients
+            .where((client) =>
+        client.customerName?.toLowerCase().contains(query.toLowerCase()) ?? false)
+            .toList();
+        print("_filteredClients : ${_filteredClients}");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return   Directionality(
-        textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
-            ? TextDirection.rtl
-            : TextDirection.ltr,
-        child: Scaffold(
-    body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-       Text(
-         "Registered Clients".tr() ,
-      style: TextStyle(
-        fontSize: 23,
-        fontWeight: FontWeight.w500,
-      ),
-    ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.008,
-          ),
-        Expanded(
-          child: BlocBuilder<ClientsBloc, AppState>(
-            bloc: clientsBloc,
-            builder: (context, state) {
-              if (state is Loading) {
-                return const LoadingPlaceHolder(
-                  shimmerType: ShimmerType.list,
-                  cellShimmerHeight: 50,
-                  shimmerCount: 10,
-                );
-              }
-              else if (state is GetAllClientsDone) {
-                ClientsModel clientsModel =  state.model as ClientsModel;
-                if(clientsModel.result != null && clientsModel.result?.clients != null
-                    && clientsModel.result!.clients!.isNotEmpty) {
-                  return  ListView.builder(
-                   // physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: clientsModel.result!.clients!.length,
-                    itemBuilder: (context, index) {
-                      return  RegisteredCustomersScreenContainerItem(
-                        storeName: clientsModel.result!.clients![index].customerName ??'',
-                        sales: clientsModel.result!.clients![index].totalAmount.toString().replaceAll('.', ',') ??'30,000 ',
-                        distance: '${"Far_away".tr()}  23 ${"km".tr()}',
-                        money: clientsModel.result!.clients![index].totalAmountDue.toString().replaceAll('.', ',') ??'15,000 ',
-                        type: "client",
-                      );
-                    },
-                  ) ;
-                }
-                else{
-                  return Padding(
-                    padding:  EdgeInsets.symmetric(vertical: Shared.width * 0.3),
-                    child: Center(
-                      child: Text("No clients currently".tr()),
+    return Directionality(
+      textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+          ? TextDirection.rtl
+          : TextDirection.ltr,
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                "Registered Clients".tr(),
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.008,
+            ),
+            Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.033,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 0.5,
                     ),
-                  );
-                }
-          
-              }
-              else if (state is GetAllClientsErrorLoading) {
-                return Center(
-                  child: Text("${state.message}"),
-                );
-              } else {
-                return Container();
-              }
-          
-            },
-          ),
-        )
-
+                    borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1.5),
+                  child: TextField(
+                    controller: _searchController,
+                    onChanged: _filterClients,
+                    cursorColor: Color.fromARGB(255, 66, 64, 64),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.zero,
+                        border: InputBorder.none,
+                        prefixIcon: Image.asset(
+                          'assets/images/search.png',
+                          color: Colors.black,
+                        ),
+                        hintText: "search_for_client".tr(),
+                        hintStyle: const TextStyle(
+                          color: Color.fromARGB(255, 146, 155, 171),
+                        )),
+                  ),
+                )),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Expanded(
+              child: BlocBuilder<ClientsBloc, AppState>(
+                bloc: clientsBloc,
+                builder: (context, state) {
+                  if (state is Loading) {
+                    return const LoadingPlaceHolder(
+                      shimmerType: ShimmerType.list,
+                      cellShimmerHeight: 50,
+                      shimmerCount: 10,
+                    );
+                  } else if (state is GetAllClientsDone) {
+    /*  ClientsModel clientsModel = state.model as ClientsModel;
+                    _allClients = clientsModel.result?.clients ?? [];
+                    _filteredClients = _filteredClients.isNotEmpty
+                        ? _filteredClients
+                        : [];*/
+                    print("state.clients  : ${state.clients }");
+                    _allClients = state.clients ?? [];
+                    final displayClients = _searchController.text.isNotEmpty
+                        ? _filteredClients
+                        : _allClients ;
+                    if (displayClients.isNotEmpty) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: displayClients.length,
+                        itemBuilder: (context, index) {
+                          return RegisteredCustomersScreenContainerItem(
+                            storeName: displayClients[index].customerName ?? '',
+                            sales: displayClients[index]
+                                .totalAmount
+                                .toString()
+                                .replaceAll('.', ',') ??
+                                '30,000',
+                            distance: '${"Far_away".tr()}  23 ${"km".tr()}',
+                            money: displayClients[index]
+                                .totalAmountDue
+                                .toString()
+                                .replaceAll('.', ',') ??
+                                '15,000',
+                            type: "client",
+                          );
+                        },
+                      );
+                    } else {
+                      return Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: Shared.width * 0.3),
+                          child: Text("No clients currently".tr()),
+                        ),
+                      );
+                    }
+                  } else if (state is GetAllClientsErrorLoading) {
+                    return Center(
+                      child: Text("${state.message}"),
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
+            ),
           ],
-        )
-      ));
-
+        ),
+      ),
+    );
   }
 }
+

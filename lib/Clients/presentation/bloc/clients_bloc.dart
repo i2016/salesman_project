@@ -20,7 +20,7 @@ class ClientsBloc extends Bloc<AppEvent,AppState> with Validator {
     var response = await clientsRepository.getAllClients();
     try{
       if (response!.result!.statusCode! == 200 ) {
-        emit(GetAllClientsDone(model: response));
+        emit(GetAllClientsDone(clients: response.result?.clients));
       } else {
         emit(GetAllClientsErrorLoading(message: response.result?.message));
       }

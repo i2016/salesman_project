@@ -44,13 +44,7 @@ class _PageState extends State<_Page> {
               children: [
                 Padding(
                     padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                    child: InkWell(
-                        onTap: () {
-                          customAnimatedPushNavigation(context, XPrinterScreen(
-                            pdfUrl: "https://www.orimi.com/pdf-test.pdf",
-                          ));
-                        },
-                        child:LinearProgressIndicatorWidget())
+                    child: LinearProgressIndicatorWidget()
                 ),
 
                 Padding(
@@ -117,18 +111,10 @@ class _PageState extends State<_Page> {
                     )
                 ),
 
-
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: InkWell(
-                    onTap: () {
-                      customAnimatedPushNavigation(context, XPrinterScreen(
-                        pdfUrl: "https://yanabie-demo-17396688.dev.odoo.com/api/salesman/print_invoice_id/13872482",
-                      ));
-                    },
-                    child:BarChartSample(
+                  child: BarChartSample(
                     title: 'monthly_statistics_title'.tr(), // Localized Key
-                  ),
                   )),
               ],
             ),
