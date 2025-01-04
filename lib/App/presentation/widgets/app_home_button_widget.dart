@@ -17,7 +17,7 @@ class AppButtonWidget extends StatelessWidget{
         ? TextDirection.rtl
         : TextDirection.ltr,
     child:  Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(5),
       child: Container(
         decoration: BoxDecoration(
             color: color == kBlackColor ? kBlackColor : kWhiteColor,
@@ -40,6 +40,7 @@ class AppButtonWidget extends StatelessWidget{
               ),
               Text(
                 text,
+
                 style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
