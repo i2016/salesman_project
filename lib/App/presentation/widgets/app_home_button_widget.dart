@@ -4,15 +4,16 @@ import 'package:water/Base/common/theme.dart';
 
 class AppButtonWidget extends StatelessWidget{
   final String asset;
+  final Widget? icon;
   final String text;
   Function() onClick;
   final Color color;
-  AppButtonWidget({required this.text , required this.asset, required this.onClick,this.color = kBlackColor});
+  AppButtonWidget({required this.text , required this.asset, required this.onClick,this.color = kBlackColor,this.icon});
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: LocalizeAndTranslate.getLanguageCode() == 'en'
+        textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
         ? TextDirection.rtl
         : TextDirection.ltr,
     child:  Padding(
@@ -29,7 +30,7 @@ class AppButtonWidget extends StatelessWidget{
           onPressed: onClick,
           child: Row(
             children: [
-              Image.asset(
+            icon != null ? icon! :   Image.asset(
                 asset,
                 color: color == kBlackColor ?  kWhiteColor : kBlackColor ,
                 scale: 1.3,

@@ -370,7 +370,7 @@
   "amount_in_rial": "المبلغ بالريال",
   "add_payment": "اضافة دفعة",
   "remove_payment": "ازالة الدفعة",
-  "Check_or_transfer": "شيك او تحويل",
+  "Check_or_transfer": "نقدى او تحويل",
   "remaining_balance": "متبقى {amount} ر.س",
   "insufficient_balance": "الرصيد غير كافي",
   "save_edits": "حفظ التعديلات",
@@ -464,5 +464,7 @@
   "request_sent": "تم ارسال الطلب",
   "request_sent_id": "تم ارسال طلب رقم ",
   "review_request": "سيتم الآن مراجعة الطلب",
-  "continue_to_inventory": "الرجوع للمخزن"
+  "continue_to_inventory": "الرجوع للمخزن",
+  "change_language" : "تغيير اللغة",
+  "cach_visa" : "نقدي / فيزا"
 }

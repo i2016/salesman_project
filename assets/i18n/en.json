@@ -377,7 +377,7 @@
   "amount_in_rial": "Amount in Riyal",
   "add_payment": "Add Payment",
   "remove_payment": "Remove Payment",
-  "Check_or_transfer": "Check or transfer",
+  "Check_or_transfer": "Cash or transfer",
   "remaining_balance": "Remaining balance: {amount} SAR",
   "insufficient_balance": "Insufficient balance",
   "save_edits": "Save Edits",
@@ -485,5 +485,7 @@
   "request_sent": "Request sent",
   "request_sent_id": "Request has been sent Number ",
   "review_request": "The request will now be reviewed",
-  "continue_to_inventory": "Back to inventory"
+  "continue_to_inventory": "Back to inventory",
+  "change_language" : "Change Language",
+  "cach_visa" : "Cash / Visa"
 }

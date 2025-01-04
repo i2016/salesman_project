@@ -225,6 +225,8 @@ class _pageState extends State<_page> {
                       ),
                        GoogleMapContainer(
                          address: state.visitDetails![0].customerAddress!,
+                         latitude: state.visitDetails![0].lat == "" ? 0.0 : double.parse(state.visitDetails![0].lat),
+                         longtitude: state.visitDetails![0].long == "" ? 0.0 : double.parse(state.visitDetails![0].long),
                        ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.014,

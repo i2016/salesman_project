@@ -25,7 +25,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   void initState() {
     super.initState();
     // Add the initial row with default payment method and corresponding controller
-    selectedPaymentMethods.add('كاش او فيزا'); // Default payment method
+    selectedPaymentMethods.add("cach_visa".tr()); // Default payment method
     paymentAmountControllers.add(TextEditingController());
   }
 
@@ -172,7 +172,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       onTap: () {
                         setState(() {
                           // Add new row with default payment method and new controller
-                          selectedPaymentMethods.add('كاش او فيزا'); // Default payment method for new row
+                          selectedPaymentMethods.add("cach_visa".tr()); // Default payment method for new row
                           paymentAmountControllers.add(TextEditingController()); // Add new controller
                         });
                       },

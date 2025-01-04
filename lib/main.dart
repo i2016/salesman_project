@@ -1,4 +1,5 @@
 
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,14 +49,27 @@ void main() async{
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 */
 
+  sharedPreferenceManager.readString(CachingKey.APP_LANGUAGE).then((value)async{
+    // check if value is null so its length will be more than two letter
+    if(value.length > 3){
+      await LocalizeAndTranslate.setLanguageCode(WidgetsBinding.instance.window.locale.languageCode);
 
+    }else{
+      await LocalizeAndTranslate.setLanguageCode(value);
+
+    }
+  });
 
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(MyApp());
+    runApp(MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LocalizedApp(
+        child:MyApp()
+        )));
   });
 }
 var navigatorKey = GlobalKey<NavigatorState>();
@@ -71,25 +85,27 @@ class MyApp extends StatefulWidget {
     state?.setState(() => state.local = newLocale);
   }
 
-  static void restartApp(BuildContext context) {
+/*  static void restartApp(BuildContext context) {
     context.findAncestorStateOfType<_MyAppState>()?.restartApp();
-  }
+  }*/
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver{
   Locale? local;
+  String? _currentLanguageCode;
+  Key? key = UniqueKey();
+ /* Locale? local;
   Key? key = UniqueKey();
   void restartApp() {
     setState(() {
       get_Static_data();
       key = UniqueKey();
     });
-  }
+  }*/
 
-  void get_Static_data() async {
+/*  void get_Static_data() async {
     await sharedPreferenceManager.readString(CachingKey.APP_LANGUAGE).then((value) {
       if (value == '') {
         MyApp.app_langauge = LocalizeAndTranslate.getLanguageCode();
@@ -97,8 +113,8 @@ class _MyAppState extends State<MyApp> {
         MyApp.app_langauge = value;
       }
     });
-    /*   String? device_token = await FirebaseMessaging.instance.getToken();
-    sharedPreferenceManager.writeData(CachingKey.DEVICE_TOKEN, device_token);*/
+    *//*   String? device_token = await FirebaseMessaging.instance.getToken();
+    sharedPreferenceManager.writeData(CachingKey.DEVICE_TOKEN, device_token);*//*
   }
 
   @override
@@ -107,21 +123,48 @@ class _MyAppState extends State<MyApp> {
     get_Static_data();
     // _fcmConfigure(context);
 
+  }*/
+  @override
+  void initState() {
+    super.initState();
+    _currentLanguageCode = WidgetsBinding.instance.window.locale.languageCode;
+    WidgetsBinding.instance.addObserver(this);
+    //      get_Static_data();
+//    _fcmConfigure(context);
   }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    final newLanguageCode = WidgetsBinding.instance.window.locale.languageCode;
+    if (newLanguageCode != _currentLanguageCode) {
+      setState(() {
+        _currentLanguageCode = newLanguageCode;
+        MyApp.app_langauge = newLanguageCode;
+      });
+      LocalizeAndTranslate.setLanguageCode(newLanguageCode,);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        locale: local,
+        locale: LocalizeAndTranslate.getLocale(),
         supportedLocales: LocalizeAndTranslate.getLocals(),
-
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
           DefaultCupertinoLocalizations.delegate,
+          CountryLocalizations.delegate,
         ],
     //    key: navigatorKey,
         theme: ThemeData(

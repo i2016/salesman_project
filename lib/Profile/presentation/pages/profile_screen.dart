@@ -4,11 +4,13 @@ import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/shared_preference_manger.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Profile/presentation/bloc/profile_bloc.dart';
 import 'package:water/Profile/presentation/widgets/profile_screen_body.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Profile/presentation/pages/change_password_screen.dart';
+import 'package:water/main.dart';
 
 class ProfileScreen extends StatefulWidget{
   const ProfileScreen({super.key});
@@ -39,6 +41,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
            },
          ),
          AppButtonWidget(
+           icon: Icon(Icons.language),
+           asset: '',
+           text: "change_language".tr(),
+           onClick: (){
+  if(LocalizeAndTranslate.getLanguageCode() == 'ar'){
+               LocalizeAndTranslate.setLanguageCode('en');
+               sharedPreferenceManager.writeData(CachingKey.APP_LANGUAGE, 'en');
+             }
+
+             else{
+               LocalizeAndTranslate.setLanguageCode('ar');
+               sharedPreferenceManager.writeData(CachingKey.APP_LANGUAGE, 'ar');
+
+             }
+
+             customAnimatedPushNavigation(context, ProfileScreen());
+           },
+           color: kWhiteColor,
+         ),
+         AppButtonWidget(
            asset: 'assets/images/LogOut.png',
            text: "logOut".tr(),
            onClick: () => Dialogs.showDialogProfileLogout(context),
@@ -47,4 +69,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
        ],
      );
   }
+
+
 }

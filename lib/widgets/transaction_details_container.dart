@@ -35,8 +35,7 @@ final bool hasBorder;
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Expanded(
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
@@ -78,7 +77,7 @@ final bool hasBorder;
               ),
             ],
           ),
-        ),
+
       ),
     );
   }
