@@ -54,7 +54,10 @@ class FinancialCollectionPaymentWidget extends StatelessWidget {
       }
     },
     child:Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

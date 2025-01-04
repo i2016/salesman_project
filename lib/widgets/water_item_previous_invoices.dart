@@ -111,10 +111,13 @@ class WaterItemPreviousInvoices extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.008,
                             ),
-                            Text(
-                              pill,
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                            Expanded(
+                              child: Text(
+                                pill,
+                                maxLines: 4,
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w300),
+                              ),
                             ),
                           ],
                         ),

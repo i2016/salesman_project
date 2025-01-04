@@ -66,7 +66,10 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
       }
     },
     child:Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

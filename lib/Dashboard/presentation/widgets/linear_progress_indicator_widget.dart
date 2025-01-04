@@ -6,7 +6,10 @@ class LinearProgressIndicatorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Container(
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
@@ -102,7 +105,10 @@ class LinearProgressIndicatorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Container(
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(

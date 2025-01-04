@@ -36,7 +36,10 @@ class _VisitHistoryDetailsScreenBodyState extends State<VisitHistoryDetailsScree
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         // endDrawer: const Drawer(),
         body:  BlocBuilder<VisitsBloc, AppState>(

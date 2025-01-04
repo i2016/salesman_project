@@ -12,7 +12,10 @@ class WorkOrdersOrderDetailsReturnScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         // drawer: const Drawer(),
         body: Padding(

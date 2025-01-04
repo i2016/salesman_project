@@ -20,7 +20,9 @@ class BarChartSample extends StatelessWidget {
             side: BorderSide(color: kInactiveColor)),
         color: const Color(0xffffffff),
         child: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+              ? TextDirection.rtl
+              : TextDirection.ltr,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

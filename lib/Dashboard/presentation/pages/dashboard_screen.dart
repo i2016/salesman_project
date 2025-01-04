@@ -32,7 +32,10 @@ class _PageState extends State<_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Directionality(
-        textDirection: TextDirection.rtl,
+         textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           child: Container(

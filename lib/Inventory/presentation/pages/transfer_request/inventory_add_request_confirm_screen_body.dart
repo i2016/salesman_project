@@ -39,7 +39,10 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: BlocListener(
         bloc: inventoryTransferRequestBloc,
         listener: (context, state) {

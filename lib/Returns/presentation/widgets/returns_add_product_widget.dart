@@ -35,7 +35,10 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
       height: MediaQuery.of(context).size.width * 0.7,
 
       child: Directionality(
-        textDirection: TextDirection.rtl,
+         textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
             child: Column(

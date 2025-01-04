@@ -21,7 +21,10 @@ class _InventoryScreenBodyState extends State<InventoryScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Returns/data/models/returns_invoice_model.dart';
@@ -18,7 +19,10 @@ class InvoicesDetailsScreenBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
        child: Scaffold(
         body: BlocBuilder<InvoicesDetailsBloc , AppState>(
           bloc: invoicesDetailsBloc,

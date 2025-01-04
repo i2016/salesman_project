@@ -1,3 +1,4 @@
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/Base/Helper/app_event.dart';
@@ -16,7 +17,10 @@ class InventorySecondAddRequestScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         body: InventoryTransferRequestProducts(
           categoryData: categoryData,

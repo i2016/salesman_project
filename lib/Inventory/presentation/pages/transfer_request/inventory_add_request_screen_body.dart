@@ -18,7 +18,10 @@ class _InventoryAddRequestScreenBodyState extends State<InventoryAddRequestScree
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
           body:BlocBuilder<CategoriesBloc, AppState>(
       bloc: categoriesBloc,

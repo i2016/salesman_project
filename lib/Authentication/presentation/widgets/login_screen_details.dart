@@ -60,7 +60,9 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
           }
         },
         child:Directionality(
-      textDirection: TextDirection.rtl,
+          textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+              ? TextDirection.rtl
+              : TextDirection.ltr,
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.only(top: 33, right: 11, left: 11, bottom: 14),

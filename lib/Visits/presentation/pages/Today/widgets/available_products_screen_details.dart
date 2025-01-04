@@ -17,7 +17,10 @@ class AvailableProductsScreenDetails extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Directionality(
-        textDirection: TextDirection.rtl,
+         textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
         child: Scaffold(
           body: BlocBuilder<ProductsBloc, AppState>(
             bloc: productsBloc,

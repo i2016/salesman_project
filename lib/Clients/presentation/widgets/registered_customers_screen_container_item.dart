@@ -89,7 +89,7 @@ final Visit? visit ;
                           ),
                           Text(
                             "${type == "visit" ?  double.parse(visit!.totalAmountDue!.toString()).toStringAsFixed(2)
-                                : double.parse(money.replaceFirst(',', '.')).toStringAsFixed(2) }      مديونية       ",
+                                : double.parse(money.replaceFirst(',', '.')).toStringAsFixed(2) }      ${"debt".tr()}       ",
                             style: const TextStyle(
                               color: Color(0xFFAC6521),
                               fontSize: 18,

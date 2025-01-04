@@ -9,7 +9,10 @@ class ErrorInServiceScreenDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 48),

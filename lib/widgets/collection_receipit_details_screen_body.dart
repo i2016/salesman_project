@@ -15,7 +15,10 @@ class CollectionReceipitDetailsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: TextDirection.rtl,
+         textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+        ? TextDirection.rtl
+        : TextDirection.ltr,
+
         child: Scaffold(
           body: Padding(
             padding: const EdgeInsets.only(right: 18, left: 18, top: 48),
