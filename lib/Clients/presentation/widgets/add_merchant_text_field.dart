@@ -5,12 +5,13 @@ class AddMerchantTextField extends StatelessWidget {
       {super.key,
       required this.hintTextField,
       required this.nameTextField,
+        required  this.onChange,
       required this.input});
 
   final String hintTextField;
   final String nameTextField;
   final TextInputType input;
-
+  final String? Function(String?)? onChange;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,6 +58,9 @@ class AddMerchantTextField extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                         ),
                       ),
+                    onChanged: (value){
+                      onChange!.call(value);
+                    },
                     ),
             ),
           ],

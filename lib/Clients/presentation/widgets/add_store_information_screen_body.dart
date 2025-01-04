@@ -28,34 +28,42 @@ class AddStoreInformationScreenBody extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).orientation ==
-                  Orientation.portrait
-                  ? MediaQuery.of(context).size.height * 0.43
-                  : MediaQuery.of(context).size.height * 0.705,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(14)),
-              child:  Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 11),
+              child: Padding(
+                padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                      AddMerchantTextField(
                         hintTextField: "enter_store_name".tr(),
                         nameTextField: "store_name".tr(),
-                        input: TextInputType.name),
+                        input: TextInputType.name,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_tax_number".tr(),
                         nameTextField: "tax_number".tr(),
-                        input: TextInputType.phone),
+                        input: TextInputType.phone,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_register_number".tr(),
                         nameTextField: "register_number".tr(),
-                        input: TextInputType.emailAddress),
+                        input: TextInputType.emailAddress,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_official_website".tr(),
                         nameTextField: "official_website".tr(),
-                        input: TextInputType.emailAddress),
+                        input: TextInputType.emailAddress,
+                       onChange: (value) {
+                         print(value);
+                       },),
 
                      Text(
                      "add_documents".tr(),

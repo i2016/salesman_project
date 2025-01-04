@@ -128,4 +128,24 @@ class Shared {
 
   static List<ReturnsProductEntity> returns_products_list = [];
 
+  //Add Merchant
+  static String addMerchantName= '';
+  static String addMerchantPhone= '';
+  static String addMerchantEmail= '';
+
+  //Add Store
+  static String addStoreName= '';
+  static String addStoreVatNumber= '';
+  static String addStoreRegisterationNumber= '';
+  static String addStoreWebsite= '';
+  static List<String> addStoreDocuments= [];
+
+//Add Location
+  static String addStoreLocationCity= '';
+  static String addStoreLocationRegion= '';
+  static String addStoreLocationPostCode= '';
+  static String addStoreLocationStreet= '';
+  static String addStoreLocationBuildingNo= '';
+  static String addStoreLocationLatitude= '';
+  static String addStoreLocationLongtitude= '';
 }

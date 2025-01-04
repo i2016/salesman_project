@@ -28,16 +28,15 @@ class AddClientLocationScreenBody extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).orientation ==
+          /*    height: MediaQuery.of(context).orientation ==
                   Orientation.portrait
                   ? MediaQuery.of(context).size.height * 0.466
-                  : MediaQuery.of(context).size.height * 0.816,
+                  : MediaQuery.of(context).size.height * 0.816,*/
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(14)),
               child: Padding(
-                padding:
-                const EdgeInsets.only(left: 11, right: 11, top: 11),
+                padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -95,19 +94,31 @@ class AddClientLocationScreenBody extends StatelessWidget {
                      AddMerchantTextField(
                         hintTextField:  "enter_neighborhood".tr(),
                         nameTextField: "neighborhood".tr(),
-                        input: TextInputType.name),
+                        input: TextInputType.name,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_postal_code".tr(),
                         nameTextField:  "postal_code".tr(),
-                        input: TextInputType.phone),
+                        input: TextInputType.phone,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_street".tr(),
                         nameTextField: "street".tr(),
-                        input: TextInputType.emailAddress),
+                        input: TextInputType.emailAddress,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      AddMerchantTextField(
                         hintTextField: "enter_property_number".tr(),
                         nameTextField: "property_number".tr(),
-                        input: TextInputType.emailAddress),
+                        input: TextInputType.emailAddress,
+                       onChange: (value) {
+                         print(value);
+                       },),
                      Text(
                        "select_location".tr(),
                       style: TextStyle(

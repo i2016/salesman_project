@@ -288,7 +288,6 @@
   "name": "يوسف علي محمد سالم",
   "card_number": "6677889900",
   "employer_number": "1122334455",
-  "email": "yousuf.ali@yanabie.com",
   "phone": "+966501234567",
   "employment": "مندوب مبيعات",
   "employer_date": "2015 / 03 / 15",
@@ -388,7 +387,7 @@
   "invioce_number": "رقم الفاتورة",
   "previous_invoices": "الفواتير السابقة",
   "transaction_started_with": "بدا المعاملة مع",
-  "add_images": "اضافة صور",
+  "add_image": "اضافة صور",
 
   "invoice_type": "نوع الفاتورة",
   "value": "القيمة",
