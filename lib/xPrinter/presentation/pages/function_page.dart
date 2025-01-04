@@ -13,7 +13,7 @@ class FunctionPage extends StatefulWidget {
   final BluetoothDevice device;
   final String pdfUrl;
 
-  const FunctionPage({required this.device,required this.pdfUrl,super.key});
+  const FunctionPage({required this.device, required this.pdfUrl, super.key});
 
   @override
   State<FunctionPage> createState() => _FunctionPageState();
@@ -21,13 +21,14 @@ class FunctionPage extends StatefulWidget {
 
 class _FunctionPageState extends State<FunctionPage> {
   CmdType cmdType = CmdType.Tsc;
-   String? pdfUrl ;
+  String? pdfUrl;
 
   @override
   void initState() {
     super.initState();
     pdfUrl = widget.pdfUrl;
   }
+
   @override
   void deactivate() {
     super.deactivate();
@@ -38,7 +39,7 @@ class _FunctionPageState extends State<FunctionPage> {
     await BluetoothPrintPlus.disconnect();
   }
 
-  // Apply thresholding to the image
+// Apply thresholding to the image
   void applyThreshold(img.Image image, int threshold) {
     for (int y = 0; y < image.height; y++) {
       for (int x = 0; x < image.width; x++) {
@@ -53,9 +54,11 @@ class _FunctionPageState extends State<FunctionPage> {
     }
   }
 
-//Function To Print PDF From URL
-  Future<Uint8List?> _convertPdfToImage({required String pdfUrl}) async {
-    // URL of the PDF file
+// Function to convert PDF to a list of images (one image per page)
+  Future<List<Uint8List>> _convertPdfToImages({required String pdfUrl}) async {
+    // setState(() {
+    //   _isLoading = true;
+    // });
 
     // Download the PDF file
     final response = await http.get(Uri.parse(pdfUrl));
@@ -67,42 +70,55 @@ class _FunctionPageState extends State<FunctionPage> {
     final pdfData = response.bodyBytes;
     final pdfDoc = await PdfDocument.openData(pdfData);
 
-    // Render the first page of the PDF as an image
-    final page = await pdfDoc.getPage(1); // Render the first page
-    final pageImage = await page.render(width: 500, height: 800);
+    // List to hold the images of each page
+    List<Uint8List> pageImages = [];
 
-    // Create an image from the rendered PDF page
-    final image = img.Image.fromBytes(
-      width: pageImage.width,
-      height: pageImage.height,
-      bytes: pageImage.pixels.buffer, // Use the pixel buffer
-      order: img.ChannelOrder.bgra, // Specify the pixel format (ARGB)
-    );
+    // Iterate through all pages of the PDF
+    for (int i = 1; i <= pdfDoc.pageCount; i++) {
+      // Render the current page of the PDF as an image
+      final page = await pdfDoc.getPage(i);
+      final pageImage = await page.render(width: 500, height: 800);
 
-    // Resize the image to match the printer's printable width
-    const int printerWidth = 576; // Example: 76mm printer (576 pixels)
-    final double aspectRatio = image.height / image.width;
-    final int newHeight = (printerWidth * aspectRatio).round();
-    final resizedImage = img.copyResize(
-      image,
-      width: printerWidth,
-      height: newHeight,
-    );
+      // Create an image from the rendered PDF page
+      final image = img.Image.fromBytes(
+        width: pageImage.width,
+        height: pageImage.height,
+        bytes: pageImage.pixels.buffer, // Use the pixel buffer
+        order: img.ChannelOrder.bgra, // Specify the pixel format (ARGB)
+      );
 
-    // Convert the image to grayscale
-    final grayscaleImage = img.grayscale(resizedImage);
+      // Resize the image to match the printer's printable width
+      const int printerWidth = 576; // Example: 76mm printer (576 pixels)
+      final double aspectRatio = image.height / image.width;
+      final int newHeight = (printerWidth * aspectRatio).round();
+      final resizedImage = img.copyResize(
+        image,
+        width: printerWidth,
+        height: newHeight,
+      );
 
-    // Increase contrast (optional, adjust the factor as needed)
-    img.adjustColor(grayscaleImage, contrast: 1.5); // Increase contrast
+      // Convert the image to grayscale
+      final grayscaleImage = img.grayscale(resizedImage);
 
-    // Apply thresholding to the image
-    const int threshold = 128; // Adjust this value as needed
-    applyThreshold(grayscaleImage, threshold);
+      // Increase contrast (optional, adjust the factor as needed)
+      img.adjustColor(grayscaleImage, contrast: 1.5); // Increase contrast
 
-    // Convert the thresholded image to Uint8List (PNG format)
-    final pngBytes = img.encodePng(grayscaleImage); // Use 'img.encodePng'
-    return Uint8List.fromList(pngBytes);
+      // Apply thresholding to the image
+      const int threshold = 128; // Adjust this value as needed
+      applyThreshold(grayscaleImage, threshold);
+
+      // Convert the thresholded image to Uint8List (PNG format)
+      final pngBytes = img.encodePng(grayscaleImage); // Use 'img.encodePng'
+      pageImages.add(Uint8List.fromList(pngBytes));
+    }
+
+    // setState(() {
+    //   _isLoading = false;
+    // });
+
+    return pageImages;
   }
+//Function To Print PDF From Assets
 
   @override
   Widget build(BuildContext context) {
@@ -118,17 +134,27 @@ class _FunctionPageState extends State<FunctionPage> {
               children: [
                 OutlinedButton(
                   onPressed: () async {
-                    // Convert PDF to image
-                    final Uint8List? image =
-                        await _convertPdfToImage(pdfUrl: pdfUrl ?? '');
-                    if (image != null) {
-                      // Generate TSC command for the image
-                      final cmd = await CommandTool.tscImageCmd(image);
-                      // Send the command to the printer
-                      await BluetoothPrintPlus.write(cmd);
+                    // Convert PDF to a list of images (one image per page)
+                    final List<Uint8List> images =
+                        await _convertPdfToImages(pdfUrl: pdfUrl ?? "");
+
+                    if (images.isNotEmpty) {
+                      for (final image in images) {
+                        // Generate TSC command for the current image
+                        final cmd = await CommandTool.tscImageCmd(image);
+
+                        // Send the command to the printer
+                        await BluetoothPrintPlus.write(cmd);
+
+                        // Optional: Add a delay between pages to avoid overwhelming the printer
+                        await Future.delayed(
+                            const Duration(seconds: 1)); // Adjust delay as needed
+                      }
+                    } else {
+                      debugPrint("No images were generated from the PDF.");
                     }
                   },
-                  child: Text("Print PDF URL"),
+                  child: const Text("Print PDF"),
                 ),
               ],
             ),

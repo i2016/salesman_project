@@ -63,7 +63,7 @@ dependencies:
   cached_network_image:
   printing: ^5.11.0
   flutter_pdfview: ^1.0.4
-  pdf: ^3.10.1
+  pdf: ^3.11.1
   image: ^4.0.15
   flutter_slidable:
   blue_thermal_printer: ^1.2.0
