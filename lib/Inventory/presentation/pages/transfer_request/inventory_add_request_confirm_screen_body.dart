@@ -198,7 +198,7 @@ class _InventoryAddRequestConfirmScreenBodyState extends State<InventoryAddReque
                       Expanded(
                         flex: 1,
                         child: Text(
-                          '${Shared.calculateTotalForAllProducts()}  ر.س ',
+                          '${Shared.calculateTotalForAllProducts()}  ${"sar".tr()} ',
                           style: TextStyle(
                               color: Color(0xff0056C9),
                               fontSize: 16,

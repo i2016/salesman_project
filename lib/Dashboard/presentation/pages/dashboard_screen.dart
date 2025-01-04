@@ -2,11 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
+import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Dashboard/presentation/widgets/bar_chart_sample.dart';
 import 'package:water/Dashboard/presentation/widgets/linear_progress_indicator_widget.dart';
 import 'package:water/widgets/transaction_details_container.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
@@ -39,7 +41,13 @@ class _PageState extends State<_Page> {
               children: [
                 Padding(
                     padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                    child: LinearProgressIndicatorWidget()
+                    child: InkWell(
+                        onTap: () {
+                          customAnimatedPushNavigation(context, XPrinterScreen(
+                            pdfUrl: "https://www.orimi.com/pdf-test.pdf",
+                          ));
+                        },
+                        child:LinearProgressIndicatorWidget())
                 ),
 
                 Padding(
@@ -109,10 +117,16 @@ class _PageState extends State<_Page> {
 
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: BarChartSample(
+                  child: InkWell(
+                    onTap: () {
+                      customAnimatedPushNavigation(context, XPrinterScreen(
+                        pdfUrl: "https://yanabie-demo-17396688.dev.odoo.com/api/salesman/print_invoice_id/13872482",
+                      ));
+                    },
+                    child:BarChartSample(
                     title: 'monthly_statistics_title'.tr(), // Localized Key
                   ),
-                ),
+                  )),
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
@@ -68,7 +69,7 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                         color: Colors.black,
                       ),
       
-                      hintText: 'البحث عن منتج',
+                      hintText: "search_for_product".tr(),
                       hintStyle: const TextStyle(
                         color: Color.fromARGB(255, 165, 171, 182),
                       )
@@ -100,7 +101,7 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                               filteredProducts.removeAt(index);
                             });
                           } ,
-                          label: 'حذف',
+                          label: "delete".tr(),
                           icon: Icons.delete,
                           backgroundColor: Colors.red,
                         ),
@@ -125,25 +126,6 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                     ),
                   );
             
-                  return InkWell(
-                    onTap: () {},
-                    child:  ReviewProductWaterItem(
-                      addedProductEntity: AddedProductEntity(
-                        id:  filteredProducts[index].productId,
-                        name:   filteredProducts[index].productName,
-                        selectedCount: int.parse(filteredProducts[index].quantity.toString().split('.')[0]),
-                        price: filteredProducts[index].productPrice,
-                        description: filteredProducts[index].productDescription,
-                        image: "",
-                        total: double.parse(filteredProducts[index].productPrice.toString())
-                            * int.parse(filteredProducts[index].quantity.toString().split('.')[0]),
-                        unit: UomIds(
-                          id: filteredProducts[index].uom_id,
-                          name: filteredProducts[index].uom_name
-                        )
-                      ),
-                    ),
-                  );
                 }),
           ),
           SizedBox(
@@ -166,7 +148,7 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                   Expanded(
                     flex: 8,
                     child: Text(
-                      'الاجمالي',
+                      "total".tr(),
                       style: TextStyle(
                           color: Color(0xff0056C9),
                           fontSize: 16,
@@ -177,7 +159,7 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                     flex: 1,
                     child: Text(
                       ' ${filteredProducts.fold<double>(0.0, (sum, transfer) =>
-                      sum + (transfer.productPrice ?? 0.0)).toInt()}  ر.س  ',
+                      sum + (transfer.productPrice ?? 0.0)).toInt()} ${"sar".tr()}  ',
                       style: TextStyle(
                         color: Color(0xff0056C9),
                         fontSize: 16,

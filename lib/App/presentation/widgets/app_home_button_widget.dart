@@ -33,7 +33,7 @@ class AppButtonWidget extends StatelessWidget{
             icon != null ? icon! :   Image.asset(
                 asset,
                 color: color == kBlackColor ?  kWhiteColor : kBlackColor ,
-                scale: 1.3,
+                scale: 2,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.008,

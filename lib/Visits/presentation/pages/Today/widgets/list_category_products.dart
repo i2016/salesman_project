@@ -171,7 +171,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                      'assets/images/search.png',
                                      color: Colors.black,
                                    ),
-                                   hintText: "search_for_a_product".tr(),
+                                   hintText: "search_for_product".tr(),
                                    hintStyle: const TextStyle(
                                      color: Color.fromARGB(255, 146, 155, 171),
                                    )),
@@ -295,7 +295,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                      'assets/images/search.png',
                                      color: Colors.black,
                                    ),
-                                   hintText:   "search_for_a_product".tr(),
+                                   hintText:   "search_for_product".tr(),
                                    hintStyle: const TextStyle(
                                      color: Color.fromARGB(255, 146, 155, 171),
                                    )),
@@ -435,7 +435,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                'assets/images/search.png',
                                color: Colors.black,
                              ),
-                             hintText:  "search_for_a_product".tr(),
+                             hintText:  "search_for_product".tr(),
                              hintStyle: const TextStyle(
                                color: Color.fromARGB(255, 146, 155, 171),
                              )),
@@ -559,7 +559,7 @@ class ListCategoryProductsState extends State<ListCategoryProducts>{
                                'assets/images/search.png',
                                color: Colors.black,
                              ),
-                             hintText: "search_for_a_product".tr(),
+                             hintText: "search_for_product".tr(),
                              hintStyle: const TextStyle(
                                color: Color.fromARGB(255, 146, 155, 171),
                              )),

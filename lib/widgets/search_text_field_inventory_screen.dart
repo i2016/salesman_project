@@ -42,7 +42,7 @@ class SearchTextFieldInventoryScreen extends StatelessWidget{
                     color: Colors.black,
                     ),
                     
-                  hintText: "search_for_a_product".tr(),
+                  hintText: "search_for_product".tr(),
                   hintStyle: const TextStyle(
                     color: Color.fromARGB(255, 150, 157, 170),
                   )

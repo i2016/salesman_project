@@ -120,7 +120,7 @@ class _ReviewProductScreenDetailsState extends State<ReviewProductScreenDetails>
                                       color: Colors.black,
                                     ),
 
-                                    hintText: "search_for_a_product".tr(),
+                                    hintText: "search_for_product".tr(),
                                     hintStyle: TextStyle(
                                       color: Color(0xff758195),
                                     )

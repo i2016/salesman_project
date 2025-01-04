@@ -97,6 +97,7 @@ class Invoice {
   var paymentDate;
   var paymentAmount;
   InvoiceData? print;
+  var refund_printout;
   Invoice(
       {this.type,
         this.invoiceId,
@@ -109,6 +110,7 @@ class Invoice {
         this.paymentDate,
         this.paymentAmount,
         this.amountDue,
+        this.refund_printout,
       this.print});
 
   Invoice.fromJson(Map<String, dynamic> json) {
@@ -122,7 +124,8 @@ class Invoice {
     paymentNumber = json['payment_number'];
     paymentId = json['payment_id'];
     paymentDate = json['payment_date'];
-    paymentAmount = json['payment_amount'];
+    paymentDate = json['payment_date'];
+    refund_printout = json['refund_printout'];
     print = json['print'] != null ? new InvoiceData.fromJson(json['print']) : null;
 
   }
@@ -138,6 +141,7 @@ class Invoice {
     data['items'] = this.itemsCount;
     data['payment_number'] = this.paymentNumber;
     data['payment_id'] = this.paymentId;
+    data['refund_printout'] = this.refund_printout;
     data['payment_date'] = this.paymentDate;
     data['payment_amount'] = this.paymentAmount;
     if (this.print != null) {

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Visits/data/models/category_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/widgets/image_placholder_widget.dart';
@@ -126,7 +127,7 @@ class WaterItemAvailableProducts extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    product != null ? "${product!.price} ر.س " : '42 ر.س',
+                                    product != null ? "${product!.price} ${"sar".tr()} " : '42 ${"sar".tr()}',
                                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                                     maxLines: 4,
                                   ),

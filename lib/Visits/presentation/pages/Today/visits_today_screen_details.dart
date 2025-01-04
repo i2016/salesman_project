@@ -145,25 +145,25 @@ class _pageState extends State<_page> {
                               image: 'assets/images/BillList.png',
                               color: Color(0xff0056C9),
                               name: "sales".tr(),
-                              price: '${double.parse(state.visitDetails![0].totalSales!.toString()).toStringAsFixed(2)}  ر.س ',
+                              price: '${double.parse(state.visitDetails![0].totalSales!.toString()).toStringAsFixed(2)}  ${"sar".tr()} ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/Union.png',
                               color: Color(0xFFAC6521),
                               name: "returns".tr(),
-                              price: '${double.parse(state.visitDetails![0].totalRefund!.toString()).toStringAsFixed(2)}  ر.س ',
+                              price: '${double.parse(state.visitDetails![0].totalRefund!.toString()).toStringAsFixed(2)}  ${"sar".tr()} ',
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/moneyBaggg.png',
                               color: Color(0xff1D6E4F),
                               name: "collection".tr() ,
-                              price: '${double.parse(state.visitDetails![0].totalPayment!.toString()).toStringAsFixed(2)}  ر.س '
+                              price: '${double.parse(state.visitDetails![0].totalPayment!.toString()).toStringAsFixed(2)}  ${"sar".tr()} '
                             ),
                             TransactionDetailsContainer(
                               image: 'assets/images/DangerTriangle.png',
                               color: Color(0xffAF2A1A),
                               name: "debt".tr(),
-                              price:'${double.parse(state.visitDetails![0].totalAmountDue!.toString()).toStringAsFixed(2)}  ر.س '
+                              price:'${double.parse(state.visitDetails![0].totalAmountDue!.toString()).toStringAsFixed(2)}  ${"sar".tr()} '
                             ),
                           ],
                         ),

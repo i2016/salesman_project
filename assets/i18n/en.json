@@ -52,7 +52,6 @@
   "payment_amount": "Payment Amount",
   "view_details": "View Details",
   "view_history": "View History",
-  "currency_format": "{amount} SAR",
   "payment_status": "Payment Status",
   "paid": "Paid",
   "pending": "Pending",
@@ -487,5 +486,15 @@
   "review_request": "The request will now be reviewed",
   "continue_to_inventory": "Back to inventory",
   "change_language" : "Change Language",
-  "cach_visa" : "Cash / Visa"
+  "cach_visa" : "Cash / Visa",
+  "transfer_requests": "Transfer Requests",
+  "total": "Total",
+  "sar": "SAR",
+  "request_number": "Request Number",
+  "request_date": "Request Date",
+  "no_invoices": "No invoices currently",
+  "products": "Products",
+  "status": "Status",
+  "from": "From",
+  "to": "To"
 }

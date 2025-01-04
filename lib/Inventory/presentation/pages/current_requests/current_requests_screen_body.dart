@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/Shimmer/loading_shimmer.dart';
 import 'package:water/Base/common/navigtor.dart';
@@ -11,6 +12,7 @@ import 'package:water/widgets/button.dart';
 import 'package:water/widgets/current_request_grid_view_item.dart';
 import 'package:water/widgets/navigate_basic_container.dart';
 import 'package:water/widgets/visit_type_containers.dart';
+import 'package:intl/intl.dart' as intl;
 
 class CurrentRequestsScreenBody extends StatelessWidget {
   CurrentRequestsScreenBody({super.key});
@@ -34,8 +36,8 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.012,
                       ),
-                      const Text(
-                        'طلبات التحويل',
+                       Text(
+                        "transfer_requests".tr(),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w500,
@@ -74,9 +76,11 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return  CurrentRequestGridViewItem(
                                         transferId: state.transferRequests![index].transferId!,
-                                        saleName: 'اجمالي    ${state.transferRequests![index].itemsPrice!.toStringAsFixed(2).toString()}  ر.س',
-                                        pill: '  طلب رقم    ${state.transferRequests![index].transferName}',
-                                        date: '  طلب بتاريخ      ${state.transferRequests![index].transferDate}',
+                                        saleName: '${"total".tr()}    ${state.transferRequests![index].itemsPrice!.toStringAsFixed(2).toString()} ${"sar".tr()}',
+                                        pill: ' ${"request_number".tr()}    ${state.transferRequests![index].transferName}',
+                                        date: '  ${"request_date".tr()}     ${ intl.DateFormat("dd/MM/yy").format(
+                                          DateTime.parse(state.transferRequests![index].transferDate!),
+                                        )}',
                                         icon: 'assets/images/period.png',
                                         color: Color(0xff0056C9),
                                         textIcon: '${state.transferRequests![index].transferStatus}',
@@ -88,7 +92,7 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                           }
                           else{
                             return Center(
-                              child: Text("لا توجد فواتير حاليا"),
+                              child: Text( "no_invoices".tr()),
                             );
                           }
 

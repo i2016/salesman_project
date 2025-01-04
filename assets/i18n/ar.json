@@ -53,7 +53,6 @@
   "payment_amount": "قيمة الدفعة",
   "view_details": "عرض التفاصيل",
   "view_history": "عرض السجل",
-  "currency_format": "{amount} ر.س",
   "payment_status": "حالة الدفع",
   "paid": "مدفوع",
   "pending": "معلق",
@@ -182,7 +181,6 @@
   "days_default": "20 يوم",
   "day_label": "يوم",
   "currency_default": "200 ر.س",
-  "search_for_a_product": "البحث عن منتج",
   "water": "مياه",
   "50_products": "50 منتج",
   "product_list": "قائمة المنتجات",
@@ -466,5 +464,15 @@
   "review_request": "سيتم الآن مراجعة الطلب",
   "continue_to_inventory": "الرجوع للمخزن",
   "change_language" : "تغيير اللغة",
-  "cach_visa" : "نقدي / فيزا"
+  "cach_visa" : "نقدي / فيزا",
+  "transfer_requests": "طلبات التحويل",
+  "total": "اجمالي",
+  "sar": "ر.س",
+  "request_number": "طلب رقم",
+  "request_date": "طلب بتاريخ",
+  "no_invoices": "لا توجد فواتير حاليا",
+  "products": "منتجات",
+  "status": "الحالة",
+  "from": "من",
+  "to": "الى"
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
+import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Visits/presentation/bloc/create_collection/create_collection_bloc.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 import 'package:water/zebra/presentation/widgets/receipt.dart';
 
 class PillPaymentFinancialCollection extends StatelessWidget {
@@ -46,6 +48,11 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                       onTap: (){
                         Receipt receipt = Receipt();
                         receipt.sample(invoiceData: invoice.print);
+
+                        customAnimatedPushNavigation(context, XPrinterScreen(
+                          pdfUrl: invoice.refund_printout ?? '',
+                        ));
+
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.2,

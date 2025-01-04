@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
@@ -43,7 +44,7 @@ class _InventoryCurrentRequestDetailsScreenState extends State<InventoryCurrentR
                   ),*/
                   AppButtonWidget(
                     asset: 'assets/images/cancell.png',
-                    text: 'إلغاء الطلب',
+                    text: "cancel_request".tr(),
                     onClick: () {
                       customAnimatedPushNavigation(context, InventoryScreen());
                     },

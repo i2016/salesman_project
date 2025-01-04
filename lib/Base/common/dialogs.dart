@@ -20,6 +20,7 @@ import 'package:water/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:printing/printing.dart';
 import 'package:flutter/services.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
 import 'package:water/zebra/presentation/widgets/receipt.dart';
 class Dialogs {
@@ -223,9 +224,11 @@ class Dialogs {
                       onTap: createCollectionResponseModel!.result == null ? null
                           :createCollectionResponseModel.result!.isError! ? null :(){
 
-                        _printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
-                            context: context);
-                     //   customAnimatedPushNavigation(context, ZebraPrintScreen() );
+                        customAnimatedPushNavigation(context, XPrinterScreen(
+                          pdfUrl: createCollectionResponseModel.result!.data!.paymentPdf!,
+                        ));
+                    /*    _printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
+                            context: context);*/
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -348,10 +351,12 @@ class Dialogs {
                     createReturnsModel.result?.data?.returnsInvoicePdf == null
                         ? Container() :    InkWell(
                       onTap: (){
+                        customAnimatedPushNavigation(context, XPrinterScreen(
+                          pdfUrl: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
+                        ));
 
-                       _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
-                            context: context);
-                      //  customAnimatedPushNavigation(context, ZebraPrintScreen() );
+                     /*  _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
+                            context: context);*/
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -470,8 +475,12 @@ class Dialogs {
                       onTap: createOrderResponseModel.result == null ? null
                           :createOrderResponseModel.result!.errorResult != null ? null :(){
 
-                        _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
-                        context: context);
+                        customAnimatedPushNavigation(context, XPrinterScreen(
+                          pdfUrl: createOrderResponseModel!.result!.invoicePdf!,
+                        ));
+
+                       /* _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
+                        context: context);*/
 
                     /*    Receipt receipt = Receipt();
                         receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);*/

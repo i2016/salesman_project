@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/Helper/app_state.dart';
@@ -46,8 +47,8 @@ class _InventoryCurrentRequestDetailsScreenBodyState
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.008,
                 ),
-                const Text(
-                  'تفاصيل الطلب',
+                 Text(
+                 "request_details".tr(),
                   style: TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,
@@ -77,7 +78,7 @@ class _InventoryCurrentRequestDetailsScreenBodyState
                   }
                   else{
                     return Center(
-                      child: Text("لا توجد تفاصيل حاليا"),
+                      child: Text("no_details".tr()),
                     );
                   }
 

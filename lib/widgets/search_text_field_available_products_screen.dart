@@ -81,7 +81,7 @@ class SearchTextFieldAvailableProductsScreen extends StatelessWidget {
                                           0.002,
                                     ),
                                      Text(
-                                      categoryData == null ? '' :     '${categoryData!.productCount} منتج ',
+                                      categoryData == null ? '' :     '${categoryData!.productCount}  ${"product".tr()} ',
                                       style: TextStyle(
                                           color: Color(0xff0056C9),
                                           fontSize: 16,
@@ -118,7 +118,7 @@ class SearchTextFieldAvailableProductsScreen extends StatelessWidget {
                                 'assets/images/search.png',
                                 color: Colors.black,
                               ),
-                              hintText: "search_for_a_product".tr(),
+                              hintText: "search_for_product".tr(),
                               hintStyle: const TextStyle(
                                 color: Color.fromARGB(255, 146, 155, 171),
                               )),
@@ -140,8 +140,8 @@ class SearchTextFieldAvailableProductsScreen extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.012,
                       ),
-                      const Text(
-                        'المنتجات المتاحة',
+                       Text(
+                        "available_products".tr(),
                         style: TextStyle(
                             fontSize: 23, fontWeight: FontWeight.w500),
                       ),
@@ -233,7 +233,7 @@ class SearchTextFieldAvailableProductsScreen extends StatelessWidget {
                                 'assets/images/search.png',
                                 color: Colors.black,
                               ),
-                              hintText: "search_for_a_product".tr(),
+                              hintText: "search_for_product".tr(),
                               hintStyle: const TextStyle(
                                 color: Color.fromARGB(255, 146, 155, 171),
                               )),
