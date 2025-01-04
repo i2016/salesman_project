@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:ui' as ui;
 
 import 'package:blue_thermal_printer/blue_thermal_printer.dart';
-import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
+// import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:image/src/image/image.dart';

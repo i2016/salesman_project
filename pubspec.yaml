@@ -68,10 +68,9 @@ dependencies:
   flutter_slidable:
   blue_thermal_printer: ^1.2.0
   intl: ^0.18.1
-  bluetooth_print: 4.3.0
+  # bluetooth_print: 4.3.0
   permission_handler: ^10.4.1
-  esc_pos_utils_plus: ^2.0.4
-  flutter_bluetooth_basic: ^0.1.7
+  # esc_pos_utils_plus: ^2.0.4
   # xprinter
   bluetooth_print_plus: ^2.4.5
   pdf_render: ^1.4.12

@@ -68,12 +68,12 @@ class PrinterCode extends StatelessWidget {
                 Expanded(
                   child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => PrintPage(data),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (_) => PrintPage(data),
+                      //   ),
+                      // );
                     },
                     icon: Icon(Icons.print),
                     label: Text('Print'),

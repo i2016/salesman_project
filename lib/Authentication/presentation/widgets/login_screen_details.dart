@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +10,7 @@ import 'package:water/Base/Helper/app_state.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Dashboard/presentation/pages/dashboard_screen.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 
 class LoginScreenDetails extends StatefulWidget {
   LoginScreenDetails({super.key});
@@ -20,7 +20,8 @@ class LoginScreenDetails extends StatefulWidget {
 }
 
 class _LoginScreenDetailsState extends State<LoginScreenDetails> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>(debugLabel: '_LoginScreenkey');
+  GlobalKey<FormState> _formKey =
+      GlobalKey<FormState>(debugLabel: '_LoginScreenkey');
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -29,19 +30,17 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
     return BlocListener(
         bloc: loginBloc,
         listener: (context, state) {
-          if(state is Loading){
-         /*   QuickAlert.show(
+          if (state is Loading) {
+            /*   QuickAlert.show(
               context: context,
               type: QuickAlertType.loading,
             );*/
             Shared.showLoadingDialog(context: context);
-          }
-          else if(state is LoginDone){
+          } else if (state is LoginDone) {
             print("Done");
             Shared.dismissDialog(context: context);
             if (state.model!.result!.data!.type == "b2c") {
               Shared.userType = "B2C";
-
             } else {
               Shared.userType = "B2B";
             }
@@ -49,9 +48,7 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
               context,
               DashboardScreen(),
             );
-
-          }
-          else if(state is LoginErrorLoading){
+          } else if (state is LoginErrorLoading) {
             print("ErrorLoading");
             print("state.message : ${state.message}");
 
@@ -62,115 +59,128 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
               title: "خطا ...",
               text: state.message,
             );
-
           }
         },
-        child:Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(top: 33, right: 11, left: 11, bottom: 14),
-          child: Form(
-            key: _formKey,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'تسجيل دخول',
-                        style: TextStyle(
-                          color: Color(0xff25292E),
-                          fontSize: 23,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.026,
-                      ),
-                      Image.asset(
-                        'assets/images/GroupLogo.png',
-                        height: MediaQuery.of(context).orientation == Orientation.portrait
-                            ? MediaQuery.of(context).size.height * 0.035
-                            : MediaQuery.of(context).size.height * 0.062,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      usernameTextField(context),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.017,
-                      ),
-                      passwordTextField(context),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            loginBloc.add(loginClickEvent(
-                                loginEntity:LoginEntity(
-                                    userName:  emailController.text,
-                                    password:  passwordController.text
-                                )
-                            ));
-                          }
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.32,
-                          height: MediaQuery.of(context).orientation == Orientation.portrait
-                              ? MediaQuery.of(context).size.height * 0.04
-                              : MediaQuery.of(context).size.height * 0.068,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff1D7AFC),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset('assets/images/CheckCircle.png',
-                                  color: Color(0xffF9F9F9)),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.006,
-                              ),
-                              const Opacity(
-                                opacity: 0.8,
-                                child: Text(
-                                  'تسجيل الدخول',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                              ),
-                            ],
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            body: Padding(
+              padding:
+                  EdgeInsets.only(top: 33, right: 11, left: 11, bottom: 14),
+              child: Form(
+                key: _formKey,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'تسجيل دخول',
+                            style: TextStyle(
+                              color: Color(0xff25292E),
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.026,
+                          ),
+                          Image.asset(
+                            'assets/images/GroupLogo.png',
+                            height: MediaQuery.of(context).orientation ==
+                                    Orientation.portrait
+                                ? MediaQuery.of(context).size.height * 0.035
+                                : MediaQuery.of(context).size.height * 0.062,
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          usernameTextField(context),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.017,
+                          ),
+                          passwordTextField(context),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.015,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                loginBloc.add(loginClickEvent(
+                                    loginEntity: LoginEntity(
+                                        userName: emailController.text,
+                                        password: passwordController.text)));
+                              }
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.32,
+                              height: MediaQuery.of(context).orientation ==
+                                      Orientation.portrait
+                                  ? MediaQuery.of(context).size.height * 0.04
+                                  : MediaQuery.of(context).size.height * 0.068,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff1D7AFC),
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/CheckCircle.png',
+                                      color: Color(0xffF9F9F9)),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.006,
+                                  ),
+                                  const Opacity(
+                                    opacity: 0.8,
+                                    child: Text(
+                                      'تسجيل الدخول',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => XPrinterScreen(
+                                              pdfUrl:
+                                                  "https://www.orimi.com/pdf-test.pdf",
+                                            )));
+                              },
+                              child: Text("XPrinter"))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.024,
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16.0), // Set the radius as needed
+                        child: Image.asset(
+                          'assets/images/loginImage.png',
+                          fit: BoxFit.fill,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.024,
-                ),
-                Expanded(
-                  flex: 2,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16.0), // Set the radius as needed
-                    child: Image.asset(
-                      'assets/images/loginImage.png',
-                      fit: BoxFit.fill,
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 
   Widget usernameTextField(BuildContext context) {
@@ -208,9 +218,10 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                 flex: 2,
                 child: Image.asset(
                   'assets/images/emailTextField.png',
-                  height: MediaQuery.of(context).orientation == Orientation.portrait
-                      ? MediaQuery.of(context).size.height * 0.021
-                      : MediaQuery.of(context).size.height * 0.05,
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? MediaQuery.of(context).size.height * 0.021
+                          : MediaQuery.of(context).size.height * 0.05,
                 ),
               ),
               Expanded(
@@ -218,7 +229,8 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                 child: TextFormField(
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
-                      RegExp(r'[\u0600-\u06FFa-zA-Z0-9@._-]'), // Arabic and English characters
+                      RegExp(
+                          r'[\u0600-\u06FFa-zA-Z0-9@._-]'), // Arabic and English characters
                     ),
                   ],
                   controller: emailController,
@@ -227,7 +239,6 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                     contentPadding: EdgeInsets.all(
                       MediaQuery.of(context).size.width * 0.014,
                     ),
-
                     border: InputBorder.none,
                     hintText: 'ادخل البريد العمل الاكتروني',
                     hintStyle: const TextStyle(
@@ -235,15 +246,13 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                       fontSize: 16,
                       fontWeight: FontWeight.w300,
                     ),
-
                   ),
-
-
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'البريد الإلكتروني مطلوب';
                     }
-                    String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
+                    String pattern =
+                        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
                     RegExp regex = RegExp(pattern);
                     if (!regex.hasMatch(value)) {
                       return 'الرجاء إدخال بريد إلكتروني صالح';
@@ -294,9 +303,10 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                 flex: 2,
                 child: Image.asset(
                   'assets/images/passwordTextField.png',
-                  height: MediaQuery.of(context).orientation == Orientation.portrait
-                      ? MediaQuery.of(context).size.height * 0.021
-                      : MediaQuery.of(context).size.height * 0.05,
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? MediaQuery.of(context).size.height * 0.021
+                          : MediaQuery.of(context).size.height * 0.05,
                 ),
               ),
               Expanded(
@@ -304,12 +314,14 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                 child: TextFormField(
                   controller: passwordController,
                   obscureText: true,
-    keyboardType: TextInputType.text, // Allow both Arabic and English
-    inputFormatters: [
-    FilteringTextInputFormatter.allow(
-      RegExp(r'[\u0600-\u06FFa-zA-Z0-9@._-]'), // Arabic and English characters
-    )
-    ],
+                  keyboardType:
+                      TextInputType.text, // Allow both Arabic and English
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                      RegExp(
+                          r'[\u0600-\u06FFa-zA-Z0-9@._-]'), // Arabic and English characters
+                    )
+                  ],
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(
                       MediaQuery.of(context).size.width * 0.014,
