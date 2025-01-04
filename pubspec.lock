@@ -89,6 +89,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.3.0"
+  bluetooth_print_plus:
+    dependency: "direct main"
+    description:
+      name: bluetooth_print_plus
+      sha256: "60d6ea4c6d062af6414d814e0ad5877e831642b17c83c24fe6712469d6a73f61"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.4.5"
   boolean_selector:
     dependency: transitive
     description:
@@ -917,6 +925,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.11.1"
+  pdf_render:
+    dependency: "direct main"
+    description:
+      name: pdf_render
+      sha256: bacd2ad8f4f4c9821827003065f5c2f9ca474dd418ff29c68272aab4c0e1e88b
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.4.12"
   pdf_widget_wrapper:
     dependency: transitive
     description:

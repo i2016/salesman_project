@@ -9,6 +9,7 @@ import 'package:water/Dashboard/presentation/widgets/bar_chart_sample.dart';
 import 'package:water/Dashboard/presentation/widgets/linear_progress_indicator_widget.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/widgets/transaction_details_container.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 import 'package:water/zebra/presentation/pages/home_page.dart';
 import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
 import 'package:water/zebra/presentation/widgets/receipt.dart';
@@ -46,7 +47,16 @@ class _PageState extends State<_Page> {
                 child: Column(
                   children: [
                    Padding(padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.015),
-                   child:   LinearProgressIndicatorWidget()
+                   child:   InkWell(
+                       onTap: () {
+                         customAnimatedPushNavigation(context, XPrinterScreen(
+                           pdfUrl: "https://www.orimi.com/pdf-test.pdf",
+                         ));
+                       },
+                       child: LinearProgressIndicatorWidget())
+
+
+
                   /*  InkWell(
                        onTap: (){
                          String jsonResponse = '''{
@@ -131,7 +141,9 @@ class _PageState extends State<_Page> {
                          Receipt receiptData = Receipt();
                          receiptData.sample(invoiceData: createOrderResponseModel.result!.invoiceData);
 
-                         *//*ReceiptPrinter receipt = ReceiptPrinter();
+                         */
+
+                     /*ReceiptPrinter receipt = ReceiptPrinter();
                         receipt.generateReceiptData(invoiceData: createOrderResponseModel.result!.invoiceData);*//*
                        },
                        child: LinearProgressIndicatorWidget())*/
