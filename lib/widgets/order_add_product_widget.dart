@@ -434,7 +434,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                                 .width * 0.005,
                           ),
                           Text(
-                            '${"remaining".tr()} ${getAvailableQuantity()}   ${"piece".tr()}',
+                            '${"remaining_amount".tr()} ${getAvailableQuantity()}   ${"piece".tr()}',
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),

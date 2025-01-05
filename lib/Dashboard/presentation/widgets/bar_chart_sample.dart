@@ -48,8 +48,8 @@ class BarChartSample extends StatelessWidget {
                         ),
                         Text(
                           statistics == null
-                              ? '${"october".tr()} 2023 - ${"november".tr()} 2024'
-                              : ' ${statistics!.last.month} 2024   -  ${statistics!.first.month} 2024 ',
+                              ? '${"october".tr()} ${DateTime.now().year} - ${"november".tr()} ${DateTime.now().year}'
+                              : ' ${statistics!.last.month} ${DateTime.now().year}   -  ${statistics!.first.month} ${DateTime.now().year} ',
                           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                         ),
                         IconButton(

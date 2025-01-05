@@ -32,9 +32,9 @@ class PillPayment extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                      dialogName == "transferRequest" ? '${"remaining".tr()}   ${(Shared.remainingLimit
+                      dialogName == "transferRequest" ? '${"remaining_amount".tr()}   ${(Shared.remainingLimit
                           - Shared.calculateTotalForAllProducts()).toStringAsFixed(2)}    ${"sar".tr()}  '
-                          :    '${"remaining".tr()} 25,000 ${"sar".tr()}',
+                          :    '${"remaining_amount".tr()} 25,000 ${"sar".tr()}',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w300),
                         ),

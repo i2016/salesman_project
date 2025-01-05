@@ -110,3 +110,7 @@ class GetMainInventoryProductsUnderCategoryEvent extends AppEvent{
 class GetZebraReceiptEvent extends AppEvent{
   GetZebraReceiptEvent();
 }
+//DASHBOARD
+class GetDashboardEvent extends AppEvent{
+  GetDashboardEvent();
+}

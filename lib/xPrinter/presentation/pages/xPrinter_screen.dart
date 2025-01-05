@@ -49,7 +49,7 @@ class _XPrinterScreenState extends State<XPrinterScreen> {
   void initState() {
     super.initState();
     initBluetoothPrintPlusListen();
-
+print("%%%%pdfUrl : ${widget.pdfUrl}");
     _requestPermissions();
   }
 

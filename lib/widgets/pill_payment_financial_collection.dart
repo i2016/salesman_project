@@ -33,7 +33,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.007,
                         ),
                          Text(
-                          '${"remaining".tr()}   ${invoice.amountDue}   ${"sar".tr()}   ',
+                          '${"remaining_amount".tr()}   ${invoice.amountDue}   ${"sar".tr()}   ',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w500),
                         ),
@@ -46,9 +46,8 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: (){
-                        Receipt receipt = Receipt();
-                        receipt.sample(invoiceData: invoice.print);
 
+                        print("invoice.refund_printout : ${invoice.refund_printout}");
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
                         ));

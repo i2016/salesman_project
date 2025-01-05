@@ -330,6 +330,20 @@ class GetMainInventoryProductsUnderCategoryErrorLoading extends AppState{
   GetMainInventoryProductsUnderCategoryErrorLoading({this.message});
 }
 
+class DashboardLoading extends AppState{
+  DashboardLoading();
+}
+class GetDashboardDone extends AppState{
+  final  Mappable? model;
+  GetDashboardDone({this.model});
+}
+
+class GetDashboardErrorLoading extends AppState{
+  final String? message;
+  GetDashboardErrorLoading({this.message});
+}
+
+
 /*
 //ZEBRA RECEIPT
 class GetZebraReceiptDone extends AppState{
