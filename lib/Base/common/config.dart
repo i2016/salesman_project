@@ -1,7 +1,7 @@
 
 // this app base url
-const String baseUrl = /*'https://yanabie.odoo.com/api/';*/
-  'https://yanabie-demo-17396688.dev.odoo.com/api/';
+const String baseUrl = 'https://yanabie.odoo.com/api/';
+/*'https://yanabie-demo-17396688.dev.odoo.com/api/';*/
 
     const String apiKey = "NXI1ZP8ITTFY5D5TM37FASC58P4LR14S";
 
