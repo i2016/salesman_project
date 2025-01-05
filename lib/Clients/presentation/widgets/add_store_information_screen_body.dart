@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:water/Base/common/shared.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
 import 'package:water/widgets/take_photo_widget.dart';
 
@@ -40,14 +41,17 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         hintTextField: "enter_store_name".tr(),
                         nameTextField: "store_name".tr(),
                         input: TextInputType.name,
+                       isRequired: true,
                        onChange: (value) {
                          print(value);
+                         Shared.addStoreName = value ?? '';
                        },),
                      AddMerchantTextField(
                         hintTextField: "enter_tax_number".tr(),
                         nameTextField: "tax_number".tr(),
                         input: TextInputType.phone,
                        onChange: (value) {
+                         Shared.addStoreVatNumber = value ?? '';
                          print(value);
                        },),
                      AddMerchantTextField(
@@ -55,6 +59,7 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         nameTextField: "register_number".tr(),
                         input: TextInputType.emailAddress,
                        onChange: (value) {
+                         Shared.addStoreRegisterationNumber = value ?? '';
                          print(value);
                        },),
                      AddMerchantTextField(
@@ -62,6 +67,7 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         nameTextField: "official_website".tr(),
                         input: TextInputType.emailAddress,
                        onChange: (value) {
+                         Shared.addStoreWebsite = value ?? '';
                          print(value);
                        },),
 

@@ -294,7 +294,6 @@
   "return_order_details": "تفاصيل امر المرتجع",
   "return_order": "امر مرتجع",
   "name_returned": "عبدالرحمن محمد علي",
-  "phone": "+966 4644 4646",
   "cost": "30,000 ر.س",
   "time": "5:30 مساءً",
   "number_of_products": "50 منتج",
@@ -474,5 +473,7 @@
   "products": "منتجات",
   "status": "الحالة",
   "from": "من",
-  "to": "الى"
+  "to": "الى",
+  "add_client_successfully": "تم اضافة العميل بنجاح",
+  "search_city":"البحث عن مدينة"
 }

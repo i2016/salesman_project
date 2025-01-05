@@ -27,4 +27,6 @@ const String changeVisitStageUrl = "salesman/change_visit_stage";
 const String getAllClientsUrl = "salesman/get_customers_applied";
 const String getClientAddRequestUrl = "salesman/get_customers_status";
 const String getAllProductMainInventory = "salesman/all_product_main_location";
+const String addClientUrl = "salesman/create_customer";
+const String getCitiesUrl = "salesman/get_cities";
 

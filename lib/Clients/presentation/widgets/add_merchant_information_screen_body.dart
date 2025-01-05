@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:water/Base/common/shared.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
 
 class AddMerchantInformationScreenBody extends StatelessWidget {
@@ -40,24 +41,30 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
                     hintTextField: "enter_full_name".tr(),
                     nameTextField: "merchant_name".tr(),
                     input: TextInputType.name,
+                    isRequired: true,
                     onChange: (value) {
                       print(value);
+                      Shared.addMerchantName = value ?? '';
                     },
                   ),
                   AddMerchantTextField(
                     hintTextField: "enter_saudi_number".tr(),
                     nameTextField: "phone_number".tr(),
                     input: TextInputType.phone,
+                    isRequired: true,
                     onChange: (value) {
                       print(value);
+                      Shared.addMerchantPhone = value ?? '';
                     },
                   ),
                   AddMerchantTextField(
                     hintTextField: "enter_email".tr(),
                     nameTextField: "email".tr(),
+                    isRequired: true,
                     input: TextInputType.emailAddress,
                     onChange: (value) {
                       print(value);
+                      Shared.addMerchantEmail = value ?? '';
                     },
                   ),
                 ],

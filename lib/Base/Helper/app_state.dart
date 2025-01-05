@@ -1,5 +1,6 @@
 import 'package:water/Authentication/data/models/login_model.dart';
 import 'package:water/Base/network/network-mappers.dart';
+import 'package:water/Clients/data/models/add_client_response_model.dart';
 import 'package:water/Clients/data/models/clients_model.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
 import 'package:water/Inventory/data/models/inventory_transfer_request_response_model.dart';
@@ -213,7 +214,16 @@ class GetInvoicesDetailsErrorLoading extends AppState{
 }
 
 
+// ADD CLIENTS
+class AddClientDone extends AppState{
+  final  AddClientResponseModel? addClientResponseModel;
+  AddClientDone({this.addClientResponseModel});
+}
 
+class AddClientErrorLoading extends AppState{
+  final String? message;
+  AddClientErrorLoading({this.message});
+}
 
 // CREATE ORDERS
 class CreateOrderDone extends AppState{

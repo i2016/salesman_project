@@ -493,5 +493,7 @@
   "products": "Products",
   "status": "Status",
   "from": "From",
-  "to": "To"
+  "to": "To",
+  "add_client_successfully": "Client added successfully",
+  "search_city": "Search for a city"
 }

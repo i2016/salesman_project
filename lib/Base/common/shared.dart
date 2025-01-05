@@ -138,10 +138,9 @@ class Shared {
   static String addStoreVatNumber= '';
   static String addStoreRegisterationNumber= '';
   static String addStoreWebsite= '';
-  static List<String> addStoreDocuments= [];
 
 //Add Location
-  static String addStoreLocationCity= '';
+  static int addStoreLocationCity = 0;
   static String addStoreLocationRegion= '';
   static String addStoreLocationPostCode= '';
   static String addStoreLocationStreet= '';

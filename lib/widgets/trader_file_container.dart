@@ -21,8 +21,8 @@ class TraderFileContainer extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).orientation == Orientation.portrait
-          ? MediaQuery.of(context).size.height * 0.08
-          : MediaQuery.of(context).size.height * 0.114,
+          ? MediaQuery.of(context).size.height * 0.1
+          : MediaQuery.of(context).size.height * 0.17,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(

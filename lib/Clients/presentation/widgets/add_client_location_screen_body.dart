@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:water/Base/common/shared.dart';
 import 'package:water/Clients/presentation/widgets/add_merchant_text_field.dart';
+import 'package:water/Clients/presentation/widgets/city_dropdown_widget.dart';
 import 'package:water/widgets/location_container_widget.dart';
 
 class AddClientLocationScreenBody extends StatelessWidget {
@@ -40,63 +42,15 @@ class AddClientLocationScreenBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text(
-                      "city".tr(),
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    SizedBox(
-                      height:
-                      MediaQuery.of(context).size.height * 0.003,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.01,
-                        right: MediaQuery.of(context).size.width * 0.01,
-                      ),
-                      width: double.infinity,
-                      height: MediaQuery.of(context).orientation ==
-                          Orientation.portrait
-                          ? MediaQuery.of(context).size.height * 0.044
-                          : MediaQuery.of(context).size.height * 0.08,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: Color.fromARGB(255, 215, 212, 212),
-                        ),
-                      ),
-                      child: Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 9),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          children: [
-                             Text(
-                               "choose_city".tr(),
-                              style: TextStyle(
-                                color: Color(0xff758195),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            InkWell(
-                                onTap: () {},
-                                child: const Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                ))
-                          ],
-                        ),
-                      ),
-                    ),
+                    CityDropdown(),
+
                      AddMerchantTextField(
                         hintTextField:  "enter_neighborhood".tr(),
                         nameTextField: "neighborhood".tr(),
                         input: TextInputType.name,
                        onChange: (value) {
                          print(value);
+                         Shared.addStoreLocationRegion = value ?? '';
                        },),
                      AddMerchantTextField(
                         hintTextField: "enter_postal_code".tr(),
@@ -104,6 +58,7 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         input: TextInputType.phone,
                        onChange: (value) {
                          print(value);
+                         Shared.addStoreLocationPostCode = value ?? '';
                        },),
                      AddMerchantTextField(
                         hintTextField: "enter_street".tr(),
@@ -118,6 +73,7 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         input: TextInputType.emailAddress,
                        onChange: (value) {
                          print(value);
+                         Shared.addStoreLocationBuildingNo = value ?? '';
                        },),
                      Text(
                        "select_location".tr(),

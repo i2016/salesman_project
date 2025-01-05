@@ -60,7 +60,9 @@ class GetClientAddRequestsEvent extends AppEvent{
 class CreateOrderEvent extends AppEvent{
   CreateOrderEvent();
 }
-
+class AddClientEvent extends AppEvent{
+  AddClientEvent();
+}
 // Create Returns
 class CreateReturnsEvent extends AppEvent{
   CreateReturnsEvent();
