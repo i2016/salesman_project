@@ -67,6 +67,7 @@ class TransferRequestsDetails {
   String? transferName;
   String? transferDate;
   String? transferStatus;
+  String? transfer_printout;
   List<Items>? items;
 
   TransferRequestsDetails(
@@ -74,12 +75,15 @@ class TransferRequestsDetails {
         this.transferName,
         this.transferDate,
         this.transferStatus,
+        this.transfer_printout,
         this.items});
 
   TransferRequestsDetails.fromJson(Map<String, dynamic> json) {
+    print("json['transfer_printout'] : ${json['transfer_printout']}");
     transferId = json['transfer_id'];
     transferName = json['transfer_name'];
     transferDate = json['transfer_date'];
+    transfer_printout = json['transfer_printout'];
     transferStatus = json['transfer_status'];
     if (json['items'] != null) {
       items = <Items>[];
@@ -95,6 +99,8 @@ class TransferRequestsDetails {
     data['transfer_name'] = this.transferName;
     data['transfer_date'] = this.transferDate;
     data['transfer_status'] = this.transferStatus;
+    data['transfer_printout'] = this.transfer_printout;
+
     if (this.items != null) {
       data['items'] = this.items!.map((v) => v.toJson()).toList();
     }

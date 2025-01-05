@@ -28,14 +28,6 @@ class _ClientDetailsIndebtScreenState extends State<ClientDetailsIndebtScreen> {
         child: ClientDetailsIndebtScreenBody(),
         screenButtons:[
           AppButtonWidget(
-            asset: 'assets/images/startVisit.png',
-            text: "start_transaction".tr(),
-            onClick: () {
-              customAnimatedPushNavigation(context, AvailableItemsScreen());
-
-            },
-          ),
-          AppButtonWidget(
             asset: 'assets/images/Route.png',
             text: "directions".tr(),
             onClick: () {},

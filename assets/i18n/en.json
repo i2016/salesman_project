@@ -498,5 +498,6 @@
   "search_city": "Search for a city",
   "add_required_data": "Please add required data such as\nstore name\nmerchant name,phone number,email\ncity,street",
   "Confirm_Location": "Confirm Location",
-  "Select_Store_Location": "Select Store Location"
+  "Select_Store_Location": "Select Store Location",
+  "print_request" : "Print Request"
 }

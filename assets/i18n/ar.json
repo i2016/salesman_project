@@ -476,5 +476,6 @@
   "search_city":"البحث عن مدينة",
   "add_required_data": "يرجى إضافة البيانات المطلوبة مثل اسم المتجر\n اسم التاجر ورقم الهاتف والبريد الإلكتروني \nالمدينة و الشارع",
   "Confirm_Location": "تأكيد الموقع",
-  "Select_Store_Location": "اختر موقع المتجر"
+  "Select_Store_Location": "اختر موقع المتجر",
+  "print_request" : "طباعة الطلب"
 }

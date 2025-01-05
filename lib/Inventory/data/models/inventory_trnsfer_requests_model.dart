@@ -73,14 +73,14 @@ class TransferRequest {
   String? transferStatus;
   int? items;
   double? itemsPrice;
-
+  String? transfer_printout;
   TransferRequest(
       {this.transferId,
         this.transferName,
         this.transferDate,
         this.transferStatus,
         this.items,
-        this.itemsPrice});
+        this.itemsPrice,this.transfer_printout});
 
   TransferRequest.fromJson(Map<String, dynamic> json) {
     transferId = json['transfer_id'];
@@ -89,6 +89,7 @@ class TransferRequest {
     transferStatus = json['transfer_status'];
     items = json['items'];
     itemsPrice = json['items_price'];
+    transfer_printout = json['transfer_printout'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,6 +100,8 @@ class TransferRequest {
     data['transfer_status'] = this.transferStatus;
     data['items'] = this.items;
     data['items_price'] = this.itemsPrice;
+    data['transfer_printout'] = this.transfer_printout;
+
     return data;
   }
 }

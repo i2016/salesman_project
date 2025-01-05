@@ -19,7 +19,6 @@ class InventoryAddRequestConfirmScreen extends StatefulWidget{
 class _InventoryAddRequestConfirmScreenState extends State<InventoryAddRequestConfirmScreen> {
   @override
   void initState() {
-    appBloc.add(AppDrawrEvent(drawerType: 'editProduct'));
     super.initState();
   }
 

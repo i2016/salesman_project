@@ -34,7 +34,9 @@ final Visit? visit ;
               customAnimatedPushNavigation(context,
                   type == "visit" ?  VisitsTodayDetailsScreen(
                   )
-              : const ClientDetailsScreen() );
+              :  ClientDetailsScreen(
+                    customerName: storeName,
+                  ) );
             },
             child: Container(
               decoration: BoxDecoration(

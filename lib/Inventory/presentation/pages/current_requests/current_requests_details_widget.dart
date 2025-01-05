@@ -4,12 +4,15 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/theme.dart';
 import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
 import 'package:water/Visits/data/models/product_model.dart';
 import 'package:water/Visits/domain/entities/added_product_entity.dart';
 import 'package:water/widgets/image_number_product_price_container_Widget.dart';
 import 'package:water/widgets/review_product_water_item.dart';
 import 'package:water/widgets/search_text_field.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 
 class CurrentRequestsDetailsWidget extends StatefulWidget{
   TransferRequestsDetails? transferRequestsDetails;
@@ -133,39 +136,81 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
           ),
           Container(
             width: double.infinity,
-            height: MediaQuery.of(context).orientation == Orientation.portrait
+    /*        height: MediaQuery.of(context).orientation == Orientation.portrait
                 ? MediaQuery.of(context).size.height * 0.03
-                : MediaQuery.of(context).size.height * 0.05,
-            decoration: const BoxDecoration(
+                : MediaQuery.of(context).size.height * 0.05,*/
+     /*       decoration: const BoxDecoration(
                 color: Color(0xffEBF7FC),
                 borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(11),
-                    bottomLeft: Radius.circular(11))),
+                    bottomLeft: Radius.circular(11))),*/
             child:  Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: Row(
                 children: [
-                  Expanded(
-                    flex: 8,
-                    child: Text(
-                      "total".tr(),
-                      style: TextStyle(
-                          color: Color(0xff0056C9),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      ' ${filteredProducts.fold<double>(0.0, (sum, transfer) =>
-                      sum + (transfer.productPrice ?? 0.0)).toInt()} ${"sar".tr()}  ',
-                      style: TextStyle(
-                        color: Color(0xff0056C9),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap:widget.transferRequestsDetails == null ? null
+                        : widget.transferRequestsDetails!.transfer_printout == null
+                      ? null :(){
+
+                      customAnimatedPushNavigation(context, XPrinterScreen(
+                        pdfUrl:  widget.transferRequestsDetails!.transfer_printout!,
+                      ));
+
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.27,
+                      height: MediaQuery.of(context).orientation ==
+                          Orientation.portrait
+                          ? MediaQuery.of(context).size.height * 0.038
+                          : MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                          color: widget.transferRequestsDetails!.transfer_printout == null ? kGreyColor : Color(0xff1D7AFC),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Opacity(
+                            opacity: 0.8,
+                            child: Text(
+                              "print_invoice".tr(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.006,
+                          ),
+                          Image.asset(
+                              'assets/images/PrinterMinimalistic.png'),
+                        ],
                       ),
                     ),
+                  ),
+                  Spacer(),
+                  Column(
+                    children: [
+                     Text(
+                          "total".tr(),
+                          style: TextStyle(
+                              color: Color(0xff0056C9),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+
+                    Text(
+                          ' ${filteredProducts.fold<double>(0.0, (sum, transfer) =>
+                          sum + (transfer.productPrice ?? 0.0)).toInt()} ${"sar".tr()}  ',
+                          style: TextStyle(
+                            color: Color(0xff0056C9),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+
+                      ),
+                    ],
                   ),
                 ],
               ),

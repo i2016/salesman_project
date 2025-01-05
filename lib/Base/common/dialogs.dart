@@ -1608,6 +1608,46 @@ class Dialogs {
                           ),
                         ),
                       ),
+                      InkWell(
+                        onTap: inventoryTransferRequestResposneModel.result == null ? null
+                            :inventoryTransferRequestResposneModel.result!.data == null ? null :(){
+
+                          customAnimatedPushNavigation(context, XPrinterScreen(
+                            pdfUrl: inventoryTransferRequestResposneModel.result!.data!.transferPrintout!,
+                          ));
+
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.27,
+                          height: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                              ? MediaQuery.of(context).size.height * 0.038
+                              : MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                              color: Color(0xff1D7AFC),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Opacity(
+                                opacity: 0.8,
+                                child: Text(
+                                  "print_request".tr(),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.006,
+                              ),
+                              Image.asset(
+                                  'assets/images/PrinterMinimalistic.png'),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ]

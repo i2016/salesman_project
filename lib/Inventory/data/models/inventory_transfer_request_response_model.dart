@@ -64,16 +64,19 @@ class Result {
 
 class Data {
   int? transferId;
+  String? transferPrintout;
 
-  Data({this.transferId});
+  Data({this.transferId, this.transferPrintout});
 
   Data.fromJson(Map<String, dynamic> json) {
     transferId = json['transfer_id'];
+    transferPrintout = json['transfer_printout'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['transfer_id'] = this.transferId;
+    data['transfer_printout'] = this.transferPrintout;
     return data;
   }
 }

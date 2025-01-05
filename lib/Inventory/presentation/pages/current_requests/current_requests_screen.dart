@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/pages/app_screen.dart';
 import 'package:water/App/presentation/widgets/app_home_button_widget.dart';
 import 'package:water/Base/Helper/app_event.dart';
@@ -28,7 +29,7 @@ class _CurrentRequestsScreenState extends State<CurrentRequestsScreen> {
         screenButtons:[
           AppButtonWidget(
             asset: 'assets/images/VectorAdddd.png',
-            text: 'طلب تحويل',
+            text: "transfer_request".tr(),
             onClick: () {
               customAnimatedPushNavigation(context, InventoryAddRequestScreen());
 

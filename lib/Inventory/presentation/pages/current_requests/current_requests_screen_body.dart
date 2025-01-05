@@ -87,7 +87,7 @@ class CurrentRequestsScreenBody extends StatelessWidget {
                                         icon: 'assets/images/period.png',
                                         color: Color(0xff0056C9),
                                         textIcon: '${state.transferRequests![index].transferStatus}',
-                                        productNumber: '${state.transferRequests![index].items.toString().split('.')[0]}    منتجات   ',
+                                        productNumber: '${state.transferRequests![index].items.toString().split('.')[0]}    ${"products".tr()}   ',
                                       );
 
                                     })

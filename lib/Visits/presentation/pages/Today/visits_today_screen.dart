@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
@@ -15,130 +16,57 @@ import 'package:water/Visits/presentation/pages/Today/add_visit_registered_clien
 import '../../../../App/presentation/pages/app_screen.dart';
 import '../../../../App/presentation/widgets/app_home_button_widget.dart';
 
+
 class VisitsTodayScreen extends StatelessWidget {
-  const VisitsTodayScreen({super.key});
+  final String customerName;
+
+  VisitsTodayScreen({Key? key, this.customerName = ""}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppScreen(child: _page(), screenButtons: [
-      AppButtonWidget(
-        asset: 'assets/images/add.png',
-        text: "add_visit".tr(),
-        onClick: () {
-          customAnimatedPushNavigation(
-              context, AddVisitRegisteredClientsScreen());
-        },
-      ),
-      AppButtonWidget(
-        asset: 'assets/images/timeHistory.png',
-        text: "visit_history".tr(),
-        onClick: () {
-          customAnimatedPushNavigation(context, VisitsHistoryScreen());
+    return AppScreen(
+      child: _Page(customerName: customerName),
+      screenButtons: [
+        AppButtonWidget(
+          asset: 'assets/images/add.png',
+          text: "add_visit".tr(),
+          onClick: () {
+            customAnimatedPushNavigation(
+                context, AddVisitRegisteredClientsScreen());
           },
-        color: kWhiteColor,
-      ),
-    ]);
-  }
-}
-
-class _page extends StatefulWidget {
-  _page({super.key});
-
-  @override
-  State<_page> createState() => _pageState();
-}
-/*
-class _pageState extends State<_page> {
-  @override
-  void initState() {
-    visitsBloc.add(GetTodayVisitsEvent());
-    super.initState();
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Directionality(
-       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
-        ? TextDirection.rtl
-        : TextDirection.ltr,
-
-      child: Scaffold(
-        body:  Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-               Text(
-                "today_visits".tr(),
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.008,
-              ),
-              Expanded(child: BlocBuilder<VisitsBloc, AppState>(
-                bloc: visitsBloc,
-                builder: (context, state) {
-                  if (state is Loading) {
-                    return const LoadingPlaceHolder(
-                      shimmerType: ShimmerType.list,
-                      cellShimmerHeight: 50,
-                      shimmerCount: 10,
-                    );
-                  }
-                  else if (state is GeTodayVisitsDone) {
-                    if(state.visits != null && state.visits!.isNotEmpty){
-                      return ListView.builder(
-                        shrinkWrap: true,
-
-                        itemCount: state.visits?.length,
-                        itemBuilder: (context, index) {
-                          return  RegisteredCustomersScreenContainerItem(
-                            storeName: "store_name".tr(),
-                            sales: '${"Monthly_sales".tr()}30,000 ' ,
-                            distance: "Far_away".tr() + "232" + "km".tr(),
-                            money: '15,000 ${"debt".tr()}',
-
-                            visit:  state.visits![index],
-                          );
-                        },
-                      );
-                    }
-                    else{
-                      return Padding(
-                        padding:  EdgeInsets.symmetric(vertical:Shared.width * 0.3),
-                        child: Center(
-                          child: Text("no_visits".tr()),
-                        ),
-                      );
-                    }
-
-                  } else if (state is GetTodayVisitsErrorLoading) {
-                    return Center(
-                      child: Text("${state.message}"),
-                    );
-                  } else {
-                    return Container();
-                  }
-
-                },
-              ))
-            ],
-
         ),
-      ),
+        AppButtonWidget(
+          asset: 'assets/images/timeHistory.png',
+          text: "visit_history".tr(),
+          onClick: () {
+            customAnimatedPushNavigation(context, VisitsHistoryScreen());
+          },
+          color: kWhiteColor,
+        ),
+      ],
     );
   }
-}*/
+}
 
-class _pageState extends State<_page> {
-  TextEditingController _searchController = TextEditingController();
+class _Page extends StatefulWidget {
+  final String customerName;
+
+  _Page({Key? key, this.customerName = ""}) : super(key: key);
+
+  @override
+  State<_Page> createState() => _PageState();
+}
+
+class _PageState extends State<_Page> {
+  final TextEditingController _searchController = TextEditingController();
   List<Visit> _filteredVisits = [];
   List<Visit> _allVisits = [];
+  bool _isFilteringDone = false;
 
   @override
   void initState() {
-    visitsBloc.add(GetTodayVisitsEvent());
     super.initState();
+    visitsBloc.add(GetTodayVisitsEvent());
   }
 
   @override
@@ -148,18 +76,75 @@ class _pageState extends State<_page> {
   }
 
   void _filterVisitsFunc(String query) {
-    setState(() {
-      if (query.isEmpty) {
-        _filteredVisits = _allVisits;
-      } else {
-        _filteredVisits = _allVisits
-            .where((visit) =>
-        visit.visitName.toLowerCase().contains(query) ||
-            visit.customerName.toLowerCase().contains(query))
-            .toList();
-      }
-    });
+    print("query : $query");
+    Future.microtask(() {
+      setState(() {
+        if (query.isEmpty) {
+          print("No query, displaying all visits.");
+          _filteredVisits = _allVisits; // Reset to show all visits when search is cleared
+        } else {
+          print("Filtering visits with query: $query");
+          print("_allVisits: $_allVisits");
+          _filteredVisits = _allVisits
+              .where((visit) =>
+          visit.visitName.toLowerCase().contains(query.toLowerCase()) ||
+              visit.customerName.toLowerCase().contains(query.toLowerCase()))
+              .toList();
 
+        }
+        print("&&_filteredVisits : $_filteredVisits");
+        _isFilteringDone = true; // Mark filtering as complete
+      });
+    });
+  }
+
+  Widget _buildVisitsList(AppState state) {
+    if (state is Loading) {
+      return const LoadingPlaceHolder(
+        shimmerType: ShimmerType.list,
+        cellShimmerHeight: 50,
+        shimmerCount: 10,
+      );
+    } else if (state is GeTodayVisitsDone) {
+      _allVisits = state.visits ?? [];
+
+      // Initial filtering based on customerName
+      if (!_isFilteringDone && widget.customerName.isNotEmpty) {
+        _filterVisitsFunc(widget.customerName);
+      }
+
+      final displayVisits =
+      _isFilteringDone  ? _filteredVisits : _allVisits;
+
+      if (displayVisits.isNotEmpty) {
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: displayVisits.length,
+          itemBuilder: (context, index) {
+            return RegisteredCustomersScreenContainerItem(
+              storeName: displayVisits[index].visitName,
+              sales: '${"Monthly_sales".tr()}30,000 ',
+              distance: "Far_away".tr() + "232" + "km".tr(),
+              money: '15,000 ${"debt".tr()}',
+              visit: displayVisits[index],
+            );
+          },
+        );
+      } else {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: Shared.width * 0.3),
+          child: Center(
+            child: Text("no_visits".tr()),
+          ),
+        );
+      }
+    } else if (state is GetTodayVisitsErrorLoading) {
+      return Center(
+        child: Text("${state.message}"),
+      );
+    } else {
+      return Container();
+    }
   }
 
   @override
@@ -183,83 +168,44 @@ class _pageState extends State<_page> {
               height: MediaQuery.of(context).size.height * 0.008,
             ),
             Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.033,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 0.5,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.033,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 0.5,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 1.5),
+                child: TextField(
+                  controller: _searchController,
+                  onChanged: _filterVisitsFunc,
+                  cursorColor: const Color.fromARGB(255, 66, 64, 64),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    border: InputBorder.none,
+                    prefixIcon: Image.asset(
+                      'assets/images/search.png',
+                      color: Colors.black,
                     ),
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 1.5),
-                  child: TextField(
-                    controller: _searchController,
-                    onChanged: _filterVisitsFunc,
-                    cursorColor: Color.fromARGB(255, 66, 64, 64),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.zero,
-                        border: InputBorder.none,
-                        prefixIcon: Image.asset(
-                          'assets/images/search.png',
-                          color: Colors.black,
-                        ),
-                        hintText: "search_for_visit".tr(),
-                        hintStyle: const TextStyle(
-                          color: Color.fromARGB(255, 146, 155, 171),
-                        )),
+                    hintText: "search_for_visit".tr(),
+                    hintStyle: const TextStyle(
+                      color: Color.fromARGB(255, 146, 155, 171),
+                    ),
                   ),
-                )),
+                ),
+              ),
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
               child: BlocBuilder<VisitsBloc, AppState>(
                 bloc: visitsBloc,
-                builder: (context, state) {
-                  if (state is Loading) {
-                    return const LoadingPlaceHolder(
-                      shimmerType: ShimmerType.list,
-                      cellShimmerHeight: 50,
-                      shimmerCount: 10,
-                    );
-                  } else if (state is GeTodayVisitsDone) {
-                    _allVisits = state.visits ?? [];
-                    final displayVisits = _searchController.text.isNotEmpty
-                        ? _filteredVisits
-                        : _allVisits ;
-                    if (displayVisits.isNotEmpty) {
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: displayVisits.length,
-                        itemBuilder: (context, index) {
-                          return RegisteredCustomersScreenContainerItem(
-                            storeName: displayVisits[index].visitName, // Replace with actual property
-                            sales: '${"Monthly_sales".tr()}30,000 ',
-                            distance: "Far_away".tr() + "232" + "km".tr(),
-                            money: '15,000 ${"debt".tr()}',
-                            visit: displayVisits[index],
-                          );
-                        },
-                      );
-                    } else {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Shared.width * 0.3),
-                        child: Center(
-                          child: Text("no_visits".tr()),
-                        ),
-                      );
-                    }
-                  } else if (state is GetTodayVisitsErrorLoading) {
-                    return Center(
-                      child: Text("${state.message}"),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
+                builder: (context, state) => _buildVisitsList(state),
               ),
             ),
           ],
@@ -268,4 +214,3 @@ class _pageState extends State<_page> {
     );
   }
 }
-
