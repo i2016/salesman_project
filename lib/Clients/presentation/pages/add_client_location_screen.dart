@@ -45,7 +45,7 @@ class _AddClientLocationScreenState extends State<AddClientLocationScreen> {
                   ) );
 
               Shared.images_list = [];
-
+customAnimatedPushNavigation(context, ClientsScreen());
             }
             else if(state is AddClientErrorLoading){
 
@@ -53,7 +53,7 @@ class _AddClientLocationScreenState extends State<AddClientLocationScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      "error".tr(),
+                 state.message ??     "error".tr(),
                       style: TextStyle(color: Colors.white),
                     ),
                     duration: Duration(seconds: 2),
@@ -75,11 +75,12 @@ class _AddClientLocationScreenState extends State<AddClientLocationScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      "error".tr(),
+                      "add_required_data".tr(),
                       style: TextStyle(color: Colors.white),
                     ),
-                    duration: Duration(seconds: 2),
+                    duration: Duration(seconds: 4),
                   ) );
+
 
             }
 

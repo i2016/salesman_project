@@ -30,10 +30,6 @@ class AddClientLocationScreenBody extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-          /*    height: MediaQuery.of(context).orientation ==
-                  Orientation.portrait
-                  ? MediaQuery.of(context).size.height * 0.466
-                  : MediaQuery.of(context).size.height * 0.816,*/
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(14)),
@@ -48,6 +44,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         hintTextField:  "enter_neighborhood".tr(),
                         nameTextField: "neighborhood".tr(),
                         input: TextInputType.name,
+                       initialValue: Shared.addStoreLocationRegion,
+
                        onChange: (value) {
                          print(value);
                          Shared.addStoreLocationRegion = value ?? '';
@@ -56,6 +54,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         hintTextField: "enter_postal_code".tr(),
                         nameTextField:  "postal_code".tr(),
                         input: TextInputType.phone,
+                       initialValue: Shared.addStoreLocationPostCode,
+
                        onChange: (value) {
                          print(value);
                          Shared.addStoreLocationPostCode = value ?? '';
@@ -64,6 +64,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         hintTextField: "enter_street".tr(),
                         nameTextField: "street".tr(),
                         input: TextInputType.emailAddress,
+                       initialValue: Shared.addStoreLocationStreet,
+                       isRequired: true,
                        onChange: (value) {
                          print(value);
                        },),
@@ -71,6 +73,8 @@ class AddClientLocationScreenBody extends StatelessWidget {
                         hintTextField: "enter_property_number".tr(),
                         nameTextField: "property_number".tr(),
                         input: TextInputType.emailAddress,
+                       initialValue: Shared.addStoreLocationBuildingNo,
+
                        onChange: (value) {
                          print(value);
                          Shared.addStoreLocationBuildingNo = value ?? '';

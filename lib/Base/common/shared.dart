@@ -122,6 +122,9 @@ class Shared {
   static  String device_token = '';
   static double remainingLimit = 0.0;
   static List<AddedProductEntity> order_products_list = [];
+  static String collection_amount= '';
+  static String collection_paymentMethod= '';
+
 
   static List<OrderPaymentEntity> orderPaymentList = [];
   static List<OrderPaymentEntity> collectionPayment = [];

@@ -33,8 +33,6 @@
   "sales_chart": "مخطط المبيعات",
   "returns_chart": "مخطط المرتجعات",
   "collection_chart": "مخطط التحصيل",
-  "january": "يناير",
-  "february": "فبراير",
   "march": "مارس",
   "april": "ابريل",
   "may": "مايو",
@@ -475,5 +473,8 @@
   "from": "من",
   "to": "الى",
   "add_client_successfully": "تم اضافة العميل بنجاح",
-  "search_city":"البحث عن مدينة"
+  "search_city":"البحث عن مدينة",
+  "add_required_data": "يرجى إضافة البيانات المطلوبة مثل اسم المتجر\n اسم التاجر ورقم الهاتف والبريد الإلكتروني \nالمدينة و الشارع",
+  "Confirm_Location": "تأكيد الموقع",
+  "Select_Store_Location": "اختر موقع المتجر"
 }

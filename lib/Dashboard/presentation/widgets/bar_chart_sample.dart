@@ -11,6 +11,7 @@ class BarChartSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("statistics : ${statistics}");
     return AspectRatio(
       aspectRatio: 1.5,
       child: Card(
@@ -201,7 +202,7 @@ class BarChartSample extends StatelessWidget {
                                   return "october".tr();
                                 case 10:
                                   return "november".tr();
-                                case 1:
+                                case 11:
                                   return "december".tr();
                                 default:
                                   return '';

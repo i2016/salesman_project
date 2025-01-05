@@ -75,6 +75,9 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
                             fontWeight: FontWeight.w300,
                           ),
                         ),
+                        onChanged: (value){
+                          Shared.collection_amount = value;
+                        },
                       ),
                     ),
                   ),
@@ -135,7 +138,7 @@ class _PaymentMethodFinancialCollectionState extends State<PaymentMethodFinancia
                               onSelected: (String newMethod) {
                                 setState(() {
                                   selectedPaymentMethods[0] = newMethod; // Update the selected method
-
+                                  Shared.collection_paymentMethod = newMethod;
                                       Shared.collectionPayment.add(OrderPaymentEntity(
                                         amount: _amountController.text, // Get amount from corresponding controller
                                         method: newMethod,

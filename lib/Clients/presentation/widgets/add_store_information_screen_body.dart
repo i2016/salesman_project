@@ -41,6 +41,7 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         hintTextField: "enter_store_name".tr(),
                         nameTextField: "store_name".tr(),
                         input: TextInputType.name,
+                       initialValue: Shared.addStoreName,
                        isRequired: true,
                        onChange: (value) {
                          print(value);
@@ -50,6 +51,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         hintTextField: "enter_tax_number".tr(),
                         nameTextField: "tax_number".tr(),
                         input: TextInputType.phone,
+                       initialValue: Shared.addStoreVatNumber,
+
                        onChange: (value) {
                          Shared.addStoreVatNumber = value ?? '';
                          print(value);
@@ -58,6 +61,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         hintTextField: "enter_register_number".tr(),
                         nameTextField: "register_number".tr(),
                         input: TextInputType.emailAddress,
+                       initialValue: Shared.addStoreRegisterationNumber,
+
                        onChange: (value) {
                          Shared.addStoreRegisterationNumber = value ?? '';
                          print(value);
@@ -66,6 +71,8 @@ class AddStoreInformationScreenBody extends StatelessWidget {
                         hintTextField: "enter_official_website".tr(),
                         nameTextField: "official_website".tr(),
                         input: TextInputType.emailAddress,
+                       initialValue: Shared.addStoreWebsite,
+
                        onChange: (value) {
                          Shared.addStoreWebsite = value ?? '';
                          print(value);

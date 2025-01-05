@@ -77,7 +77,7 @@ class _PageState extends State<_Page> {
                                 image: 'assets/images/BillList.png',
                                 color: Color(0xff0056C9),
                                 name: 'sales'.tr(), // Localized Key
-                                price: '25,000 ر.س',
+                                price: '25,000 ${"sar".tr()}',
                                 hasBorder: false,
                               ),
                               Container(height: 25, width: 1.5, color: kInactiveColor,),
@@ -85,7 +85,7 @@ class _PageState extends State<_Page> {
                                 image: 'assets/images/Union.png',
                                 color: Color(0xFFAC6521),
                                 name: 'returns'.tr(), // Localized Key
-                                price: '25,000 ر.س',
+                                price: '25,000 ${"sar".tr()}',
                                 hasBorder: false,
                               ),
                               Container(height: 25, width: 1.5, color: kInactiveColor,),
@@ -93,7 +93,7 @@ class _PageState extends State<_Page> {
                                 image: 'assets/images/moneyBaggg.png',
                                 color: Color(0xff1D6E4F),
                                 name: 'collections'.tr(), // Localized Key
-                                price: '25,000 ر.س',
+                                price: '25,000 ${"sar".tr()}',
                                 hasBorder: false,
                               ),
                               Container(height: 25, width: 1.5, color: kInactiveColor,),
@@ -101,7 +101,7 @@ class _PageState extends State<_Page> {
                                 image: 'assets/images/DangerTriangle.png',
                                 color: Color(0xffAF2A1A),
                                 name: 'debt'.tr(), // Localized Key
-                                price: '25,000 ر.س',
+                                price: '25,000 ${"sar".tr()}',
                                 hasBorder: false,
                               ),
                             ],

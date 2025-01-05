@@ -42,6 +42,7 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
                     nameTextField: "merchant_name".tr(),
                     input: TextInputType.name,
                     isRequired: true,
+                    initialValue: Shared.addMerchantName,
                     onChange: (value) {
                       print(value);
                       Shared.addMerchantName = value ?? '';
@@ -51,6 +52,7 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
                     hintTextField: "enter_saudi_number".tr(),
                     nameTextField: "phone_number".tr(),
                     input: TextInputType.phone,
+                    initialValue: Shared.addMerchantPhone,
                     isRequired: true,
                     onChange: (value) {
                       print(value);
@@ -61,6 +63,7 @@ class AddMerchantInformationScreenBody extends StatelessWidget {
                     hintTextField: "enter_email".tr(),
                     nameTextField: "email".tr(),
                     isRequired: true,
+                    initialValue: Shared.addMerchantEmail,
                     input: TextInputType.emailAddress,
                     onChange: (value) {
                       print(value);

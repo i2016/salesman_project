@@ -150,7 +150,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                               ),
                               Text(
                                 '${selectedUnitPrice!.toStringAsFixed(
-                                    2) /*widget.product!.price!*/}  ر.س ',
+                                    2) /*widget.product!.price!*/} ${"sar".tr()} ',
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w700),
                               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Store Location'),
+        title: Text("Select_Store_Location".tr()),
       ),
       body: _isLocationLoaded
           ? Stack(
@@ -104,7 +105,7 @@ class _MapScreenState extends State<MapScreen> {
                     Navigator.pop(context, _selectedLocation);
                   }
                 },
-                child: Text('Confirm Location'),
+                child: Text("Confirm_Location".tr()),
               ),
             ),
         ],

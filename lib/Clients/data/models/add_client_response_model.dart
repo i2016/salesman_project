@@ -38,7 +38,7 @@ class Result {
   int? statusCode;
   bool? isError;
   String? message;
-  int? result;
+  var result;
 
   Result({this.statusCode, this.isError, this.message, this.result});
 

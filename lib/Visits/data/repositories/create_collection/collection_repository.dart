@@ -10,16 +10,15 @@ import 'package:water/Visits/data/models/create_collection/create_collection_res
 class CollectionRepository{
 
   Future<CreateCollectionResponseModel?> createCollection() async {
+
     // Print order payment details
     Shared.collectionPayment.forEach((element) {
       print("element : ${element.method} , ${element.amount}");
     });
 
-    // Print image details
-    Shared.images_list.forEach((element) {
-      print("image : ${element}");
-    });
 
+print("Shared.collection_amount : ${Shared.collection_amount}");
+    print("Shared.collection_paymentMethod : ${Shared.collection_paymentMethod}");
     // Define request headers
     Map<String, String> headers = {
       'lang': LocalizeAndTranslate.getLanguageCode(),
@@ -29,17 +28,16 @@ class CollectionRepository{
     };
 
     List<String> validImages = Shared.images_list.where((image) => image != null && image.isNotEmpty).toList();    // Create payment list for the request body
-
     // Create request body
     var body = jsonEncode({
       "params": {
         "visit_id": await sharedPreferenceManager.readString(CachingKey.VISIT_ID),
         "salesman_id": await sharedPreferenceManager.readInt(CachingKey.USER_ID),
         "invoice_id": await sharedPreferenceManager.readString(CachingKey.INVOICE_ID),
-        if(Shared.collectionPayment.isNotEmpty)
-        "method": Shared.collectionPayment[0].method,
-        if(Shared.collectionPayment.isNotEmpty)
-        "amount" : Shared.collectionPayment[0].amount,
+        if(Shared.collection_paymentMethod.isNotEmpty)
+        "method": Shared.collection_paymentMethod,
+        if(Shared.collection_amount.isNotEmpty)
+        "amount" : Shared.collection_amount,
         "documents": validImages
       }
     });

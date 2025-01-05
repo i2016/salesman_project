@@ -6,6 +6,7 @@ import 'package:water/Base/common/theme.dart';
 import 'package:water/Visits/domain/entities/order_payment_entity.dart';
 import 'package:water/widgets/popup_menu_of_payment.dart';
 
+
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
 
@@ -141,18 +142,31 @@ class _PaymentMethodState extends State<PaymentMethod> {
                               fontWeight: FontWeight.w300,
                             ),
                           ),
+
                           PopupMenuOfPayment(
                             onSelected: (String newMethod) {
                               setState(() {
                                 // Update the selected payment method for the current row
                                 selectedPaymentMethods[rowIndex] = newMethod;
-                                Shared.orderPaymentList.add(OrderPaymentEntity(
-                                  amount: paymentAmountControllers[rowIndex].text, // Get amount from corresponding controller
-                                  method: newMethod,
-                                ));
+
+                                // Validate the amount before adding to the list
+                                String amount = paymentAmountControllers[rowIndex].text;
+                                if (amount.isNotEmpty) {
+                                  Shared.orderPaymentList.add(OrderPaymentEntity(
+                                    amount: amount,
+                                    method: newMethod,
+                                  ));
+                                } else {
+                                  // Optionally show a message to the user if the amount is empty
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Please enter an amount before selecting a payment method.')),
+                                  );
+                                }
                               });
                             },
-                          ),
+                          )
+
+
                         ],
                       ),
                     ),
@@ -278,3 +292,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
     );
   }
 }
+
+
+
+
+
