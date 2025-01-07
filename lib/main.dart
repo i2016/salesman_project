@@ -156,7 +156,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver{
     return MaterialApp(
       navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title:  "yanabie".tr(),
         locale: LocalizeAndTranslate.getLocale(),
         supportedLocales: LocalizeAndTranslate.getLocals(),
         localizationsDelegates: [

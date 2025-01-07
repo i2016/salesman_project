@@ -412,7 +412,6 @@
   "return_to_visit": "الرجوع للزيارة",
   "amount_received": "تم استلام المبلغ",
   "invoice_issued": "تم اصدار فاتورة التحصيل",
-  "invoice_number": "تم اصدار فاتورة تحصيل رقم ",
   "print_invoice": "طباعة الفاتورة",
   "return_invoice_issued": "تم اصدار فاتورة المرتجع",
   "return_invoice_number": "تم اصدار فاتورة مرتجع رقم ",
@@ -477,5 +476,6 @@
   "add_required_data": "يرجى إضافة البيانات المطلوبة مثل اسم المتجر\n اسم التاجر ورقم الهاتف والبريد الإلكتروني \nالمدينة و الشارع",
   "Confirm_Location": "تأكيد الموقع",
   "Select_Store_Location": "اختر موقع المتجر",
-  "print_request" : "طباعة الطلب"
+  "print_request" : "طباعة الطلب",
+  "yanabie" : "شركة ينابيع"
 }

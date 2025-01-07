@@ -39,7 +39,7 @@ class Result {
   var sales;
   var returns;
   var amountDue;
-  int? collection;
+  var collection;
   List<Statistics>? statistics;
 
   Result(

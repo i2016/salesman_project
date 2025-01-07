@@ -4,8 +4,8 @@ import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:intl/intl.dart' as intl;
 
 class LinearProgressIndicatorWidget extends StatelessWidget {
-  final double target;
-  final double sales;
+   var target;
+   var sales;
 
   LinearProgressIndicatorWidget({required this.target, required this.sales});
 

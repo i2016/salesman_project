@@ -80,11 +80,8 @@ class _PageState extends State<_Page> {
     Future.microtask(() {
       setState(() {
         if (query.isEmpty) {
-          print("No query, displaying all visits.");
           _filteredVisits = _allVisits; // Reset to show all visits when search is cleared
         } else {
-          print("Filtering visits with query: $query");
-          print("_allVisits: $_allVisits");
           _filteredVisits = _allVisits
               .where((visit) =>
           visit.visitName.toLowerCase().contains(query.toLowerCase()) ||
@@ -92,7 +89,6 @@ class _PageState extends State<_Page> {
               .toList();
 
         }
-        print("&&_filteredVisits : $_filteredVisits");
         _isFilteringDone = true; // Mark filtering as complete
       });
     });

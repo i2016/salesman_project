@@ -28,13 +28,24 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
                 SizedBox(
                 width: MediaQuery.of(context).size.width * 0.019,
               ),
-                 Text(
-                  ' ${"invioce_number".tr()} ${invoice?.invoiceNumber}',
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w500
-                  ),
-                ),
+                 Column(
+                   children: [
+                     Text(
+                       ' ${"invioce_number".tr()}',
+                       style: TextStyle(
+                           fontSize: 23,
+                           fontWeight: FontWeight.w500
+                       ),
+                     ),
+                     Text(
+                       ' ${invoice?.invoiceNumber}',
+                       style: TextStyle(
+                           fontSize: 23,
+                           fontWeight: FontWeight.w500
+                       ),
+                     ),
+                   ],
+                 )
               ],
             ),
             Spacer(),
@@ -55,7 +66,7 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
           ),
-        Container(
+/*        Container(
           width: double.infinity,
           height: MediaQuery.of(context).orientation == Orientation.portrait ?
            MediaQuery.of(context).size.height * 0.033
@@ -88,7 +99,7 @@ class SearchTextFieldInvoicesDetailsScreen extends StatelessWidget{
             ),
           )
         ),
-    SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+    SizedBox(height: MediaQuery.of(context).size.height * 0.02,),*/
       ],
     );
   }
