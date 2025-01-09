@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:pdf_render/pdf_render.dart'; // For rendering PDF
 import 'package:image/image.dart' as img; // For image processing
 import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:water/xPrinter/presentation/pages/command_tool.dart'; // For downloading PDF
 
 enum CmdType { Tsc, Cpcl, Esc }
@@ -22,6 +23,7 @@ class FunctionPage extends StatefulWidget {
 class _FunctionPageState extends State<FunctionPage> {
   CmdType cmdType = CmdType.Tsc;
   String? pdfUrl;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -56,9 +58,9 @@ class _FunctionPageState extends State<FunctionPage> {
 
 // Function to convert PDF to a list of images (one image per page)
   Future<List<Uint8List>> _convertPdfToImages({required String pdfUrl}) async {
-    // setState(() {
-    //   _isLoading = true;
-    // });
+    setState(() {
+      _isLoading = true;
+    });
 
     // Download the PDF file
     final response = await http.get(Uri.parse(pdfUrl));
@@ -112,9 +114,9 @@ class _FunctionPageState extends State<FunctionPage> {
       pageImages.add(Uint8List.fromList(pngBytes));
     }
 
-    // setState(() {
-    //   _isLoading = false;
-    // });
+    setState(() {
+      _isLoading = false;
+    });
 
     return pageImages;
   }
@@ -127,39 +129,74 @@ class _FunctionPageState extends State<FunctionPage> {
         title: Text(widget.device.name),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                OutlinedButton(
-                  onPressed: () async {
-                    // Convert PDF to a list of images (one image per page)
-                    final List<Uint8List> images =
-                        await _convertPdfToImages(pdfUrl: pdfUrl ?? "");
+        child: pdfUrl?.isEmpty == true
+            ? Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(
+                      child: Text(
+                        "No PDF Available",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 400,
+                    child: SfPdfViewer.network(
+                      pdfUrl ?? "",
+                      canShowPaginationDialog: true,
+                      onDocumentLoadFailed: (details) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content:
+                                  Text("Failed to load PDF: ${details.error}")),
+                        );
+                      },
+                    ),
+                  ),
+                  _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () async {
+                                // Convert PDF to a list of images (one image per page)
+                                final List<Uint8List> images =
+                                    await _convertPdfToImages(
+                                        pdfUrl: pdfUrl ?? "");
 
-                    if (images.isNotEmpty) {
-                      for (final image in images) {
-                        // Generate TSC command for the current image
-                        final cmd = await CommandTool.tscImageCmd(image);
+                                if (images.isNotEmpty) {
+                                  for (final image in images) {
+                                    // Generate TSC command for the current image
+                                    final cmd =
+                                        await CommandTool.tscImageCmd(image);
 
-                        // Send the command to the printer
-                        await BluetoothPrintPlus.write(cmd);
+                                    // Send the command to the printer
+                                    await BluetoothPrintPlus.write(cmd);
 
-                        // Optional: Add a delay between pages to avoid overwhelming the printer
-                        await Future.delayed(
-                            const Duration(seconds: 1)); // Adjust delay as needed
-                      }
-                    } else {
-                      debugPrint("No images were generated from the PDF.");
-                    }
-                  },
-                  child: const Text("Print PDF"),
-                ),
-              ],
-            ),
-          ],
-        ),
+                                    // Optional: Add a delay between pages to avoid overwhelming the printer
+                                    await Future.delayed(const Duration(
+                                        seconds: 1)); // Adjust delay as needed
+                                  }
+                                } else {
+                                  debugPrint(
+                                      "No images were generated from the PDF.");
+                                }
+                              },
+                              child: const Text("Print PDF"),
+                            ),
+                          ],
+                        ),
+                ],
+              ),
       ),
     );
   }
