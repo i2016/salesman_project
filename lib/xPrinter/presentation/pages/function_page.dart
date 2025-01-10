@@ -41,86 +41,119 @@ class _FunctionPageState extends State<FunctionPage> {
     await BluetoothPrintPlus.disconnect();
   }
 
-// Apply thresholding to the image
-  void applyThreshold(img.Image image, int threshold) {
-    for (int y = 0; y < image.height; y++) {
-      for (int x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-        final luminance =
-            img.getLuminance(pixel); // Get luminance (grayscale value)
-        final newLuminance =
-            luminance < threshold ? 0 : 255; // Convert to black or white
-        image.setPixel(
-            x, y, img.ColorRgb8(newLuminance, newLuminance, newLuminance));
-      }
-    }
-  }
+// // Apply thresholding to the image
+//   void applyThreshold(img.Image image, int threshold) {
+//     for (int y = 0; y < image.height; y++) {
+//       for (int x = 0; x < image.width; x++) {
+//         final pixel = image.getPixel(x, y);
+//         final luminance =
+//             img.getLuminance(pixel); // Get luminance (grayscale value)
+//         final newLuminance =
+//             luminance < threshold ? 0 : 255; // Convert to black or white
+//         image.setPixel(
+//             x, y, img.ColorRgb8(newLuminance, newLuminance, newLuminance));
+//       }
+//     }
+//   }
 
-// Function to convert PDF to a list of images (one image per page)
-  Future<List<Uint8List>> _convertPdfToImages({required String pdfUrl}) async {
+  Future<List<Uint8List>> _convertPdfToImages({
+    required String pdfUrl,
+    int renderWidth = 550,
+    int renderHeight = 800,
+    double contrast = 1.0,
+    double brightness = 1.0,
+    double saturation = 1.0,
+    bool convertToGrayscale = true,
+    bool sharpenImage = true,
+  }) async {
     setState(() {
       _isLoading = true;
     });
 
-    // Download the PDF file
-    final response = await http.get(Uri.parse(pdfUrl));
-    if (response.statusCode != 200) {
-      throw Exception("Failed to download PDF: ${response.statusCode}");
+    try {
+      // Download the PDF file
+      final response = await http.get(Uri.parse(pdfUrl));
+      if (response.statusCode != 200) {
+        throw Exception("Failed to download PDF: ${response.statusCode}");
+      }
+
+      // Load the PDF from the downloaded data
+      final pdfData = response.bodyBytes;
+      final pdfDoc = await PdfDocument.openData(pdfData);
+
+      // List to hold the images of each page
+      List<Uint8List> pageImages = [];
+
+      // Iterate through all pages of the PDF
+      for (int i = 1; i <= pdfDoc.pageCount; i++) {
+        // Render the current page of the PDF as an image
+        final page = await pdfDoc.getPage(i);
+        final pageImage = await page.render(
+          width: renderWidth,
+          height: renderHeight,
+        );
+
+        // Create an image from the rendered PDF page
+        var image = img.Image.fromBytes(
+          width: pageImage.width,
+          height: pageImage.height,
+          bytes: pageImage.pixels.buffer,
+          order: img.ChannelOrder.argb, // Use ARGB format
+        );
+
+        // Optional: Convert the image to grayscale
+        if (convertToGrayscale) {
+          img.grayscale(image);
+        }
+
+        // Optional: Adjust contrast, brightness, and saturation
+        if (contrast != 1.0 || brightness != 1.0 || saturation != 1.0) {
+          img.adjustColor(
+            image,
+            contrast: contrast,
+            brightness: brightness,
+            saturation: saturation,
+          );
+        }
+
+        // Optional: Sharpen the image
+        if (sharpenImage) {
+          image = img.convolution(
+            image,
+            filter: [
+              0,
+              -1,
+              0,
+              -1,
+              5,
+              -1,
+              0,
+              -1,
+              0,
+            ],
+            div: 1,
+            offset: 0,
+          );
+        }
+
+        // Convert the image to Uint8List (PNG format)
+        final pngBytes = img.encodePng(image);
+        pageImages.add(Uint8List.fromList(pngBytes));
+
+        // Clean up page resources
+        // await page.document.dispose();
+      }
+
+      return pageImages;
+    } catch (e) {
+      // Handle any errors that occur during the process
+      throw Exception("Failed to convert PDF to images: $e");
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
-
-    // Load the PDF from the downloaded data
-    final pdfData = response.bodyBytes;
-    final pdfDoc = await PdfDocument.openData(pdfData);
-
-    // List to hold the images of each page
-    List<Uint8List> pageImages = [];
-
-    // Iterate through all pages of the PDF
-    for (int i = 1; i <= pdfDoc.pageCount; i++) {
-      // Render the current page of the PDF as an image
-      final page = await pdfDoc.getPage(i);
-      final pageImage = await page.render(width: 500, height: 800);
-
-      // Create an image from the rendered PDF page
-      final image = img.Image.fromBytes(
-        width: pageImage.width,
-        height: pageImage.height,
-        bytes: pageImage.pixels.buffer, // Use the pixel buffer
-        order: img.ChannelOrder.bgra, // Specify the pixel format (ARGB)
-      );
-
-      // Resize the image to match the printer's printable width
-      const int printerWidth = 576; // Example: 76mm printer (576 pixels)
-      final double aspectRatio = image.height / image.width;
-      final int newHeight = (printerWidth * aspectRatio).round();
-      final resizedImage = img.copyResize(
-        image,
-        width: printerWidth,
-        height: newHeight,
-      );
-
-      // Convert the image to grayscale
-      final grayscaleImage = img.grayscale(resizedImage);
-
-      // Increase contrast (optional, adjust the factor as needed)
-      img.adjustColor(grayscaleImage, contrast: 1.5); // Increase contrast
-
-      // Apply thresholding to the image
-      const int threshold = 128; // Adjust this value as needed
-      applyThreshold(grayscaleImage, threshold);
-
-      // Convert the thresholded image to Uint8List (PNG format)
-      final pngBytes = img.encodePng(grayscaleImage); // Use 'img.encodePng'
-      pageImages.add(Uint8List.fromList(pngBytes));
-    }
-
-    setState(() {
-      _isLoading = false;
-    });
-
-    return pageImages;
   }
-//Function To Print PDF From Assets
 
   @override
   Widget build(BuildContext context) {
@@ -130,10 +163,10 @@ class _FunctionPageState extends State<FunctionPage> {
       ),
       body: SingleChildScrollView(
         child: pdfUrl?.isEmpty == true
-            ? Column(
+            ? const Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Center(
                       child: Text(
                         "No PDF Available",
