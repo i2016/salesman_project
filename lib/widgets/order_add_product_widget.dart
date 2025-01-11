@@ -44,7 +44,7 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
       height: MediaQuery
           .of(context)
           .size
-          .width * 0.7,
+          .width * 0.8,
       child: Directionality(
          textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
         ? TextDirection.rtl
@@ -129,14 +129,17 @@ class _OrderAddProductWidgetState extends State<OrderAddProductWidget> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.product!.name!,
-                                maxLines: 4,
+                          Flexible(
+                          child:Text(
+                              widget.product!.name!,
+                             maxLines: 8,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w500),
-                              ),
+                          )   ),
                               Text(
-                                widget.product!.description!,
+                             widget.product!.description!,
+
                                 maxLines: 4,
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w300),

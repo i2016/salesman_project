@@ -16,7 +16,7 @@ class Receipt {
   BlueThermalPrinter printer = BlueThermalPrinter.instance;
 
   sample({InvoiceData? invoiceData}) async {
-    print("2");
+    print("@@@@@@@@@@@@@@@@@@@@2");
 
     printer.isConnected.then((isConnected) async {
       print("3");

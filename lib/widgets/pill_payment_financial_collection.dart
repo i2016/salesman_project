@@ -41,20 +41,24 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                     ),
                   )),
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: Row(
                   children: [
                     InkWell(
                       onTap: (){
 
-                        print("invoice.refund_printout : ${invoice.refund_printout}");
+              /*          print("invoice.refund_printout : ${invoice.refund_printout}");
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
-                        ));
+                        ));*/
+                  /*      Dialogs.printPdf(url: invoice.refund_printout ?? '',
+                            context: context);*/
 
+                        Receipt receipt = Receipt();
+                        receipt.sample(invoiceData:  invoice.print,);
                       },
                       child: Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
+                        width: MediaQuery.of(context).size.width * 0.16,
                         height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
                             ? MediaQuery.of(context).size.height * 0.04
@@ -90,7 +94,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         createCollectionBloc.add(CreateCollectionEvent());
                       },
                       child: Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
+                        width: MediaQuery.of(context).size.width * 0.16,
                         height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
                             ? MediaQuery.of(context).size.height * 0.04
