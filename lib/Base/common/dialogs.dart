@@ -224,11 +224,11 @@ class Dialogs {
                       onTap: createCollectionResponseModel!.result == null ? null
                           :createCollectionResponseModel.result!.isError! ? null :(){
 
-                        customAnimatedPushNavigation(context, XPrinterScreen(
+                 /*       customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createCollectionResponseModel.result!.data!.paymentPdf!,
-                        ));
-                    /*    _printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
-                            context: context);*/
+                        ));*/
+                        Dialogs.printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
+                            context: context);
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -351,12 +351,13 @@ class Dialogs {
                     createReturnsModel.result?.data?.returnsInvoicePdf == null
                         ? Container() :    InkWell(
                       onTap: (){
-                        customAnimatedPushNavigation(context, XPrinterScreen(
+             /*           customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
                         ));
+*/
 
-                     /*  _printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
-                            context: context);*/
+                        Dialogs.printPdf(url: createReturnsModel.result?.data?.returnsInvoicePdf ?? '',
+                            context: context);
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -475,12 +476,12 @@ class Dialogs {
                       onTap: createOrderResponseModel.result == null ? null
                           :createOrderResponseModel.result!.errorResult != null ? null :(){
 
-                        customAnimatedPushNavigation(context, XPrinterScreen(
+                 /*       customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createOrderResponseModel!.result!.invoicePdf!,
                         ));
-
-                       /* _printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
-                        context: context);*/
+*/
+                       printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
+                        context: context);
 
                     /*    Receipt receipt = Receipt();
                         receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);*/
@@ -1492,7 +1493,7 @@ class Dialogs {
     }
   }
 
-  static Future<void> _printPdf({String? url,BuildContext? context}) async {
+  static Future<void> printPdf({String? url,BuildContext? context}) async {
     try {
       // Fetch the PDF from the URL
       Shared.showLoadingDialog(context: context!);
@@ -1612,10 +1613,11 @@ class Dialogs {
                         onTap: inventoryTransferRequestResposneModel.result == null ? null
                             :inventoryTransferRequestResposneModel.result!.data == null ? null :(){
 
-                          customAnimatedPushNavigation(context, XPrinterScreen(
+                    /*      customAnimatedPushNavigation(context, XPrinterScreen(
                             pdfUrl: inventoryTransferRequestResposneModel.result!.data!.transferPrintout!,
-                          ));
-
+                          ));*/
+                          Dialogs.printPdf(url: inventoryTransferRequestResposneModel.result!.data!.transferPrintout!,
+                              context: context);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.27,

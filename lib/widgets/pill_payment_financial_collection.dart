@@ -46,11 +46,13 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: (){
-
+/*
                         print("invoice.refund_printout : ${invoice.refund_printout}");
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
-                        ));
+                        ));*/
+                        Dialogs.printPdf(url:   invoice.refund_printout ?? '',
+                            context: context);
 
                       },
                       child: Container(

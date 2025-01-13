@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/App/presentation/bloc/app_bloc.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Inventory/data/models/transfer_requests_details_model.dart';
@@ -153,9 +154,12 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                         : widget.transferRequestsDetails!.transfer_printout == null
                       ? null :(){
 
-                      customAnimatedPushNavigation(context, XPrinterScreen(
+                  /*    customAnimatedPushNavigation(context, XPrinterScreen(
                         pdfUrl:  widget.transferRequestsDetails!.transfer_printout!,
-                      ));
+                      ));*/
+
+                      Dialogs.printPdf(url:   widget.transferRequestsDetails!.transfer_printout!,
+                          context: context);
 
                     },
                     child: Container(
