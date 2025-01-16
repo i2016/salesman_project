@@ -4,11 +4,13 @@ import 'dart:typed_data';
 import 'package:bluetooth_print_plus/bluetooth_print_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/xPrinter/presentation/pages/function_page.dart';
 
 class XPrinterScreen extends StatefulWidget {
   final String pdfUrl;
-   XPrinterScreen({super.key,required this.pdfUrl});
+  final InvoiceData? invoiceData;
+  XPrinterScreen({super.key, required this.pdfUrl, required this.invoiceData});
 
   @override
   State<XPrinterScreen> createState() => _XPrinterScreenState();
@@ -49,7 +51,7 @@ class _XPrinterScreenState extends State<XPrinterScreen> {
   void initState() {
     super.initState();
     initBluetoothPrintPlusListen();
-print("%%%%pdfUrl : ${widget.pdfUrl}");
+    print("%%%%pdfUrl : ${widget.pdfUrl}");
     _requestPermissions();
   }
 
@@ -101,9 +103,10 @@ print("%%%%pdfUrl : ${widget.pdfUrl}");
                 context,
                 MaterialPageRoute(
                     builder: (context) => FunctionPage(
-                       device:_device!,
-                      pdfUrl: widget.pdfUrl,
-                    )));
+                          device: _device!,
+                          pdfUrl: widget.pdfUrl,
+                          invoiceData: widget.invoiceData,
+                        )));
           });
           break;
         case ConnectState.disconnected:

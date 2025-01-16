@@ -1,16 +1,14 @@
-import 'dart:convert';
-import 'dart:ui' as ui;
+// import 'dart:convert';
+// import 'dart:ui' as ui;
 
 import 'package:blue_thermal_printer/blue_thermal_printer.dart';
 // import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
-import 'package:flutter/painting.dart';
+// import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-import 'package:image/src/image/image.dart';
+// import 'package:image/src/image/image.dart';
 import 'package:intl/intl.dart';
 import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/zebra/presentation/widgets/image_helper.dart';
-
-
 
 class Receipt {
   BlueThermalPrinter printer = BlueThermalPrinter.instance;
@@ -24,8 +22,6 @@ class Receipt {
 
       String receiptData = await ReceiptGenerator.generateReceiptWithImages(
           invoiceData: invoiceData);
-
-
 
       print("5");
       // Send data to the printer
@@ -46,16 +42,13 @@ class BluetoothPrintService {
       print("Failed to send print data: $e");
     }
   }
-
 }
 
-
-
 class ReceiptGenerator {
-
   static Future<String> generateReceiptWithImages(
       {InvoiceData? invoiceData}) async {
-    int receiptWidth = 70; // Adjust this based on your printer's character width
+    int receiptWidth =
+        70; // Adjust this based on your printer's character width
 
     // Convert images to base64
     String logoBase64 =
@@ -67,7 +60,7 @@ class ReceiptGenerator {
     StringBuffer receipt = StringBuffer();
 
     // Add logo
-   // receipt.writeln("[IMAGE:$logoBase64]");
+    // receipt.writeln("[IMAGE:$logoBase64]");
 
     // Add company name
     if (invoiceData?.company?.name != null) {
@@ -98,17 +91,16 @@ class ReceiptGenerator {
 
     receipt.writeln(alignLeftRight("${'Salesman:'.padRight(20)}",
         "${invoiceData?.company?.salesman ?? "N/A"}", receiptWidth));
-    receipt.writeln(centerAlign('-' * 30,receiptWidth));
+    receipt.writeln(centerAlign('-' * 30, receiptWidth));
     // Product Table Header
     receipt.writeln("${"Prd Code".padRight(20)}${"Description"}");
     receipt.writeln(
         "${"".padRight(20)}${"Qty".padRight(10)}${"Price".padRight(10)}${"Disc".padRight(10)}"
         "${"VAT".padRight(10)}${"TOTAL".padRight(10)}");
-    receipt.writeln(centerAlign('-' * 40,receiptWidth));
+    receipt.writeln(centerAlign('-' * 40, receiptWidth));
 
     // Add Products
-    if (invoiceData?.items != null) {
-
+    if (invoiceData.items != null) {
       for (var item in invoiceData!.items!) {
         // Adjust column widths as needed
         String total = (item.priceSubtotal?.toStringAsFixed(2) ?? "0");
@@ -128,7 +120,7 @@ class ReceiptGenerator {
     } else {
       receipt.writeln("No items available");
     }
-    receipt.writeln(centerAlign('-' * 40,receiptWidth));
+    receipt.writeln(centerAlign('-' * 40, receiptWidth));
 
     // Add Totals
     if (invoiceData?.totals != null) {
@@ -141,9 +133,9 @@ class ReceiptGenerator {
       receipt.writeln("VAT: SAR 0.00");
       receipt.writeln("GRAND TOTAL: SAR 0.00");
     }
-    receipt.writeln(centerAlign('-' * 40,receiptWidth));
+    receipt.writeln(centerAlign('-' * 40, receiptWidth));
     // Add QR code
-  //   receipt.writeln("[IMAGE:$qrBase64]");
+    //   receipt.writeln("[IMAGE:$qrBase64]");
 
     // Footer
     receipt.writeln(centerAlign("Amounts are in SAR (ريال)", receiptWidth));
@@ -171,6 +163,3 @@ class ReceiptGenerator {
     return left + ' ' * padding + right;
   }
 }
-
-
-

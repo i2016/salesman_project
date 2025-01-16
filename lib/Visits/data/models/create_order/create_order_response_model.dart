@@ -1,6 +1,5 @@
 import 'package:water/Base/network/network-mappers.dart';
 
-
 class CreateOrderResponseModel extends BaseMappable {
   String? jsonrpc;
   int? id;
@@ -9,15 +8,21 @@ class CreateOrderResponseModel extends BaseMappable {
   String? message;
   ResultData? result;
 
-  CreateOrderResponseModel({this.jsonrpc, this.id, this.result,this.statusCode,this.isError,this.message});
+  CreateOrderResponseModel(
+      {this.jsonrpc,
+      this.id,
+      this.result,
+      this.statusCode,
+      this.isError,
+      this.message});
 
   CreateOrderResponseModel.fromJson(Map<String, dynamic> json) {
     jsonrpc = json['jsonrpc'];
     id = json['id'];
-    statusCode= json['result']['status_code'];
-    isError= json['result']['is_error'];
-    message= json['result']['message'];
-    result= json['result']['is_error'] == false
+    statusCode = json['result']['status_code'];
+    isError = json['result']['is_error'];
+    message = json['result']['message'];
+    result = json['result']['is_error'] == false
         ? ResultData.fromJson(json['result']['result'])
         : null;
   }
@@ -33,20 +38,25 @@ class CreateOrderResponseModel extends BaseMappable {
         'result': isError == false ? result?.toJson() : result?.errorResult
       }
     };
-
-}
+  }
 
   @override
   Mappable fromJson(Map<String, dynamic> json) {
     jsonrpc = json['jsonrpc'];
     id = json['id'];
-    statusCode= json['result']['status_code'];
-    isError= json['result']['is_error'];
-    message= json['result']['message'];
-    result= json['result']['is_error'] == false
+    statusCode = json['result']['status_code'];
+    isError = json['result']['is_error'];
+    message = json['result']['message'];
+    result = json['result']['is_error'] == false
         ? ResultData.fromJson(json['result']['result'])
         : null;
-    return CreateOrderResponseModel(id: id,result: result,jsonrpc: jsonrpc,message: message,isError: isError,statusCode: statusCode);
+    return CreateOrderResponseModel(
+        id: id,
+        result: result,
+        jsonrpc: jsonrpc,
+        message: message,
+        isError: isError,
+        statusCode: statusCode);
   }
 }
 
@@ -56,20 +66,25 @@ class ResultData {
   final String? invoicePdf;
   final int? errorResult; // to store error result if necessary
   InvoiceData? invoiceData;
-  ResultData({this.orderId, this.invoiceId, this.invoicePdf, this.errorResult,this.invoiceData});
+  ResultData(
+      {this.orderId,
+      this.invoiceId,
+      this.invoicePdf,
+      this.errorResult,
+      this.invoiceData});
 
   factory ResultData.fromJson(dynamic json) {
     if (json is int) {
-      return ResultData(errorResult: json); // Error case where 'result' is an int
+      return ResultData(
+          errorResult: json); // Error case where 'result' is an int
     } else {
       return ResultData(
-        orderId: json['order_id'],
-        invoiceId: json['invoice_id'],
-        invoicePdf: json['invoice_pdf'],
-          invoiceData : json['invoice_data'] != null
+          orderId: json['order_id'],
+          invoiceId: json['invoice_id'],
+          invoicePdf: json['invoice_pdf'],
+          invoiceData: json['invoice_data'] != null
               ? new InvoiceData.fromJson(json['invoice_data'])
-              : null
-      );
+              : null);
     }
   }
   Object toJson() {
@@ -81,12 +96,12 @@ class ResultData {
         'order_id': orderId,
         'invoice_id': invoiceId,
         'invoice_pdf': invoicePdf,
-      'invoice_data' :this.invoiceData!.toJson()
-
+        'invoice_data': this.invoiceData!.toJson()
       };
     }
   }
 }
+
 class InvoiceData {
   Company? company;
   List<Items>? items;
@@ -96,7 +111,7 @@ class InvoiceData {
 
   InvoiceData.fromJson(Map<String, dynamic> json) {
     company =
-    json['company'] != null ? new Company.fromJson(json['company']) : null;
+        json['company'] != null ? new Company.fromJson(json['company']) : null;
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
@@ -104,7 +119,7 @@ class InvoiceData {
       });
     }
     totals =
-    json['totals'] != null ? new Totals.fromJson(json['totals']) : null;
+        json['totals'] != null ? new Totals.fromJson(json['totals']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -131,14 +146,18 @@ class Company {
   String? customerVat;
   String? customerRegistrationNumber;
   String? salesman;
+  String? qr;
 
-  Company({this.name, this.vat,
-    this.invoiceNumber,
-    this.invoiceDate,
-    this.customerName,
-    this.customerVat,
-    this.customerRegistrationNumber,
-    this.salesman});
+  Company(
+      {this.name,
+      this.vat,
+      this.invoiceNumber,
+      this.invoiceDate,
+      this.customerName,
+      this.customerVat,
+      this.customerRegistrationNumber,
+      this.salesman,
+      this.qr});
 
   Company.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -149,6 +168,7 @@ class Company {
     customerVat = json['customer_vat'];
     customerRegistrationNumber = json['customer_registration_number'];
     salesman = json['salesman'];
+    qr = json['qr'];
   }
 
   Map<String, dynamic> toJson() {
@@ -161,6 +181,7 @@ class Company {
     data['customer_vat'] = this.customerVat;
     data['customer_registration_number'] = this.customerRegistrationNumber;
     data['salesman'] = this.salesman;
+    data['qr'] = this.qr;
     return data;
   }
 }
@@ -182,18 +203,18 @@ class Items {
 
   Items(
       {this.productId,
-        this.productName,
-        this.productCode,
-        this.quantity,
-        this.productUomId,
-        this.productUomName,
-        this.priceUnit,
-        this.tax,
-        this.discount,
-        this.discountAmount,
-        this.priceSubtotal,
-        this.invoiceLineId,
-        this.description});
+      this.productName,
+      this.productCode,
+      this.quantity,
+      this.productUomId,
+      this.productUomName,
+      this.priceUnit,
+      this.tax,
+      this.discount,
+      this.discountAmount,
+      this.priceSubtotal,
+      this.invoiceLineId,
+      this.description});
 
   Items.fromJson(Map<String, dynamic> json) {
     productId = json['product_id'];

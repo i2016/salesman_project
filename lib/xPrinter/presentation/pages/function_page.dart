@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bluetooth_print_plus/bluetooth_print_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,15 +8,22 @@ import 'package:pdf_render/pdf_render.dart'; // For rendering PDF
 import 'package:image/image.dart' as img; // For image processing
 import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:water/xPrinter/presentation/pages/command_tool.dart'; // For downloading PDF
+import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
+import 'package:water/xPrinter/presentation/pages/command_tool.dart';
+import 'package:water/xPrinter/widgets/receipt_widget.dart'; // For downloading PDF
 
 enum CmdType { Tsc, Cpcl, Esc }
 
 class FunctionPage extends StatefulWidget {
   final BluetoothDevice device;
+  final InvoiceData? invoiceData;
   final String pdfUrl;
 
-  const FunctionPage({required this.device, required this.pdfUrl, super.key});
+  const FunctionPage(
+      {required this.device,
+      required this.pdfUrl,
+      super.key,
+      required this.invoiceData});
 
   @override
   State<FunctionPage> createState() => _FunctionPageState();
@@ -178,56 +187,207 @@ class _FunctionPageState extends State<FunctionPage> {
                 ],
               )
             : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 400,
-                    child: SfPdfViewer.network(
-                      pdfUrl ?? "",
-                      canShowPaginationDialog: true,
-                      onDocumentLoadFailed: (details) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content:
-                                  Text("Failed to load PDF: ${details.error}")),
+                  QRCodeImage(
+                    base64QRCode: widget.invoiceData?.company?.qr ?? "",
+                    width: 300,
+                    height: 100,
+                  ),
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 400,
+                  //   child: SfPdfViewer.network(
+                  //     pdfUrl ?? "",
+                  //     canShowPaginationDialog: true,
+                  //     onDocumentLoadFailed: (details) {
+                  //       ScaffoldMessenger.of(context).showSnackBar(
+                  //         SnackBar(
+                  //             content:
+                  //                 Text("Failed to load PDF: ${details.error}")),
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
+                  // _isLoading
+                  //     ? const Center(child: CircularProgressIndicator())
+                  //     : Row(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //         children: [
+                  //           OutlinedButton(
+                  //             onPressed: () async {
+                  //               // Convert PDF to a list of images (one image per page)
+                  //               final List<Uint8List> images =
+                  //                   await _convertPdfToImages(
+                  //                       pdfUrl: pdfUrl ?? "");
+
+                  //               if (images.isNotEmpty) {
+                  //                 for (final image in images) {
+                  //                   // Generate TSC command for the current image
+                  //                   final cmd =
+                  //                       await CommandTool.tscImageCmd(image);
+
+                  //                   // Send the command to the printer
+                  //                   await BluetoothPrintPlus.write(cmd);
+
+                  //                   // Optional: Add a delay between pages to avoid overwhelming the printer
+                  //                   await Future.delayed(const Duration(
+                  //                       seconds: 1)); // Adjust delay as needed
+                  //                 }
+                  //               } else {
+                  //                 debugPrint(
+                  //                     "No images were generated from the PDF.");
+                  //               }
+                  //             },
+                  //             child: const Text("Print PDF"),
+                  //           ),
+                  //         ],
+                  //       ),
+                  // OutlinedButton(
+                  //   onPressed: () async {
+                  //     Uint8List? companyNameAs8List =
+                  //         await createImageFromWidget(
+                  //             Container(
+                  //                 color: Colors.white,
+                  //                 child: compnayNameAndBasicData(
+                  //                   invoiceData: widget.invoiceData,
+                  //                 )),
+                  //             logicalSize: Size(500, 500),
+                  //             imageSize: Size(600, 600),
+                  //             cxt: context);
+
+                  //     Uint8List? itemsDataAs8List = await createImageFromWidget(
+                  //         Container(
+                  //             color: Colors.white,
+                  //             child: itemsData(
+                  //               invoiceData: widget.invoiceData,
+                  //             )),
+                  //         logicalSize: Size(500, 500),
+                  //         imageSize: Size(600, 600),
+                  //         cxt: context);
+
+                  //     Uint8List? totalDataAs8List = await createImageFromWidget(
+                  //         Container(
+                  //             color: Colors.white,
+                  //             child: totalData(
+                  //               invoiceData: widget.invoiceData,
+                  //             )),
+                  //         logicalSize: Size(500, 500),
+                  //         imageSize: Size(600, 600),
+                  //         cxt: context);
+
+                  //     if (companyNameAs8List != null &&
+                  //             itemsDataAs8List != null &&
+                  //             totalDataAs8List != null
+                  //         // &&
+
+                  //         ) {
+                  //       // Generate TSC command for the image
+                  //       final cmd =
+                  //           await CommandTool.tscImageCmd(companyNameAs8List);
+                  //       final cmd1 =
+                  //           await CommandTool.tscImageCmd(itemsDataAs8List);
+                  //       final cmd2 =
+                  //           await CommandTool.tscImageCmd(totalDataAs8List);
+
+                  //       // final cmd3 =
+                  //       //     await CommandTool.tscImageCmd(qrDataWidgetAs8List);
+
+                  //       // Send the command to the printer
+                  //       await BluetoothPrintPlus.write(cmd);
+                  //       await BluetoothPrintPlus.write(cmd1);
+                  //       await BluetoothPrintPlus.write(cmd2);
+                  //       // await BluetoothPrintPlus.write(cmd3);
+                  //     }
+                  //   },
+                  //   child: Text("Print tastota"),
+                  // ),
+
+                  Center(
+                    child: OutlinedButton(
+                      onPressed: () async {
+                        Uint8List? companyNameAs8List =
+                            await createImageFromWidget(
+                          Container(
+                            color: Colors.white,
+                            child: compnayNameAndBasicData(
+                              invoiceData: widget.invoiceData,
+                            ),
+                          ),
+                          logicalSize: Size(500, 500),
+                          imageSize: Size(600, 600),
+                          cxt: context,
                         );
+
+                        // Split items into chunks of 10
+                        final items = widget.invoiceData?.items ?? [];
+                        final chunkedItems = <List<Items>>[];
+                        for (var i = 0; i < items.length; i += 6) {
+                          chunkedItems.add(items.sublist(
+                            i,
+                            i + 6 > items.length ? items.length : i + 6,
+                          ));
+                        }
+
+                        // Generate images for each chunk of items
+                        List<Uint8List?> itemsDataAs8Lists = [];
+                        for (var chunk in chunkedItems) {
+                          Uint8List? chunkImage = await createImageFromWidget(
+                            Container(
+                              color: Colors.white,
+                              child: itemsData(
+                                invoiceData: InvoiceData(
+                                    items: chunk), // Create a new InvoiceData
+                              ),
+                            ),
+                            logicalSize: Size(500, 500),
+                            imageSize: Size(600, 600),
+                            cxt: context,
+                          );
+                          itemsDataAs8Lists.add(chunkImage);
+                        }
+
+                        Uint8List? totalDataAs8List =
+                            await createImageFromWidget(
+                          Container(
+                            color: Colors.white,
+                            child: totalData(
+                              invoiceData: widget.invoiceData,
+                            ),
+                          ),
+                          logicalSize: Size(500, 500),
+                          imageSize: Size(600, 600),
+                          cxt: context,
+                        );
+
+                        // Print images sequentially
+                        if (companyNameAs8List != null &&
+                            totalDataAs8List != null &&
+                            itemsDataAs8Lists.isNotEmpty) {
+                          // Print company name section
+                          final companyCmd =
+                              await CommandTool.tscImageCmd(companyNameAs8List);
+                          await BluetoothPrintPlus.write(companyCmd);
+
+                          // Print each chunk of items
+                          for (var itemsDataAs8List in itemsDataAs8Lists) {
+                            if (itemsDataAs8List != null) {
+                              final itemCmd = await CommandTool.tscImageCmd(
+                                  itemsDataAs8List);
+                              await BluetoothPrintPlus.write(itemCmd);
+                            }
+                          }
+
+                          // Print total section
+                          final totalCmd =
+                              await CommandTool.tscImageCmd(totalDataAs8List);
+                          await BluetoothPrintPlus.write(totalCmd);
+                        }
                       },
+                      child: Text("Print Invoice"),
                     ),
                   ),
-                  _isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            OutlinedButton(
-                              onPressed: () async {
-                                // Convert PDF to a list of images (one image per page)
-                                final List<Uint8List> images =
-                                    await _convertPdfToImages(
-                                        pdfUrl: pdfUrl ?? "");
-
-                                if (images.isNotEmpty) {
-                                  for (final image in images) {
-                                    // Generate TSC command for the current image
-                                    final cmd =
-                                        await CommandTool.tscImageCmd(image);
-
-                                    // Send the command to the printer
-                                    await BluetoothPrintPlus.write(cmd);
-
-                                    // Optional: Add a delay between pages to avoid overwhelming the printer
-                                    await Future.delayed(const Duration(
-                                        seconds: 1)); // Adjust delay as needed
-                                  }
-                                } else {
-                                  debugPrint(
-                                      "No images were generated from the PDF.");
-                                }
-                              },
-                              child: const Text("Print PDF"),
-                            ),
-                          ],
-                        ),
                 ],
               ),
       ),
