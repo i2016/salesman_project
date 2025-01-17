@@ -499,5 +499,6 @@
   "Confirm_Location": "Confirm Location",
   "Select_Store_Location": "Select Store Location",
   "print_request" : "Print Request",
-  "yanabie" : "Yanabie Company"
+  "yanabie" : "Yanabie Company",
+  "enter_payment_method_or_amount" : "Please enter payment method or amount"
 }

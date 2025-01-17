@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/Base/Helper/app_event.dart';
 import 'package:water/Base/common/dialogs.dart';
 import 'package:water/Base/common/navigtor.dart';
@@ -47,15 +49,15 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                     InkWell(
                       onTap: (){
 
-              /*          print("invoice.refund_printout : ${invoice.refund_printout}");
+                     print("invoice.refund_printout : ${invoice.refund_printout}");
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
-                        ));*/
+                        ));
                   /*      Dialogs.printPdf(url: invoice.refund_printout ?? '',
                             context: context);*/
 
-                        Receipt receipt = Receipt();
-                        receipt.sample(invoiceData:  invoice.print,);
+                     /*   Receipt receipt = Receipt();
+                        receipt.sample(invoiceData:  invoice.print,);*/
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.16,
@@ -91,7 +93,17 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                     SizedBox(width: Shared.width * 0.1,),
                     InkWell(
                       onTap: invoice.amountDue == 0 ? ()=>false : (){
-                        createCollectionBloc.add(CreateCollectionEvent());
+                        if(Shared.collection_amount.isEmpty || Shared.collection_paymentMethod.isEmpty) {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.error,
+                            title: "error".tr(),
+                            text: "enter_payment_method_or_amount".tr(),
+                          );
+                        }else{
+                          createCollectionBloc.add(CreateCollectionEvent());
+
+                        }
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.16,
