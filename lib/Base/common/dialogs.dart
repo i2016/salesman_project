@@ -224,11 +224,11 @@ class Dialogs {
                       onTap: createCollectionResponseModel!.result == null ? null
                           :createCollectionResponseModel.result!.isError! ? null :(){
 
-                      customAnimatedPushNavigation(context, XPrinterScreen(
+                        customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createCollectionResponseModel.result!.data!.paymentPdf!,
                         ));
-                   /*    printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
-                            context: context);*/
+                      //  printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
+                      //       context: context);
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,
@@ -475,15 +475,15 @@ class Dialogs {
                       onTap: createOrderResponseModel.result == null ? null
                           :createOrderResponseModel.result!.errorResult != null ? null :(){
 
-                       customAnimatedPushNavigation(context, XPrinterScreen(
-                          pdfUrl: createOrderResponseModel!.result!.invoicePdf!,
+                      customAnimatedPushNavigation(context, XPrinterScreen(
+                          pdfUrl: createOrderResponseModel.result?.invoicePdf??"",
                         ));
 
                    /*     printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
                         context: context);*/
 
-                     /*   Receipt receipt = Receipt();
-                        receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);*/
+                        // Receipt receipt = Receipt();
+                        // receipt.sample(invoiceData: createOrderResponseModel.result!.invoiceData);
 
                       },
                       child: Container(
@@ -972,8 +972,8 @@ class Dialogs {
           content: Container(
             width: MediaQuery.of(context).size.width * 0.6,
             height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? MediaQuery.of(context).size.height * 0.22
-                : MediaQuery.of(context).size.height * 0.4,
+                ? MediaQuery.of(context).size.height * 0.19
+                : MediaQuery.of(context).size.height * 0.375,
             child: Column(
               children: [
                 Image.asset(
