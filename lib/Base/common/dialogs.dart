@@ -224,11 +224,11 @@ class Dialogs {
                       onTap: createCollectionResponseModel!.result == null ? null
                           :createCollectionResponseModel.result!.isError! ? null :(){
 
-                   /*     customAnimatedPushNavigation(context, XPrinterScreen(
+                      customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createCollectionResponseModel.result!.data!.paymentPdf!,
-                        ));*/
-                       printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
-                            context: context);
+                        ));
+                   /*    printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
+                            context: context);*/
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.27,

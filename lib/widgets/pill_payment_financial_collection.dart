@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:water/Base/Helper/app_event.dart';
-import 'package:water/Base/common/dialogs.dart';
-// import 'package:water/Base/common/dialogs.dart';
-// import 'package:water/Base/common/navigtor.dart';
+import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
 import 'package:water/Base/common/theme.dart';
 import 'package:water/Clients/data/models/invoice_history_model.dart';
-import 'package:water/Visits/data/models/create_order/create_order_response_model.dart';
 import 'package:water/Visits/presentation/bloc/create_collection/create_collection_bloc.dart';
 import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
-// import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
-import 'package:water/zebra/presentation/widgets/receipt.dart';
 
 class PillPaymentFinancialCollection extends StatelessWidget {
   final Invoice invoice;
@@ -48,13 +45,14 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                 child: Row(
                   children: [
                     InkWell(
-                      onTap: () async {
-                        /*          print("invoice.refund_printout : ${invoice.refund_printout}");
+                      onTap: (){
+
+                       print("invoice.refund_printout : ${invoice.refund_printout}");
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
-                        ));*/
-                        //   Dialogs.printPdf(url: invoice.refund_printout ?? '',
-                        // context: context);
+                        ));
+                  /*      Dialogs.printPdf(url: invoice.refund_printout ?? '',
+                            context: context);*/
 
                         // Receipt receipt = Receipt();
                         // receipt.sample(invoiceData:  invoice.print,);
@@ -62,13 +60,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         // String receiptData =
                         //     await ReceiptGenerator.generateReceiptWithImages(
                         //         invoiceData: invoice.print);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => XPrinterScreen(
-                                      pdfUrl: '',
-                                      invoiceData: invoice.print,
-                                    )));
+
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.16,
@@ -101,27 +93,29 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: Shared.width * 0.1,
-                    ),
+                    SizedBox(width: Shared.width * 0.1,),
                     InkWell(
-                      onTap: invoice.amountDue == 0
-                          ? () => false
-                          : () {
-                              createCollectionBloc.add(CreateCollectionEvent());
+                      onTap: invoice.amountDue == 0 ? ()=>false : (){
+                        if(Shared.collection_amount.isEmpty || Shared.collection_paymentMethod.isEmpty) {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.error,
+                            title: "error".tr(),
+                            text: "enter_payment_method_or_amount".tr(),
+                          );
+                        }else{
+                          createCollectionBloc.add(CreateCollectionEvent());
 
-                            
-                            },
+                        }
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.16,
                         height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
+                            Orientation.portrait
                             ? MediaQuery.of(context).size.height * 0.04
                             : MediaQuery.of(context).size.height * 0.068,
                         decoration: BoxDecoration(
-                            color: invoice.amountDue == 0
-                                ? kGreyColor
-                                : const Color(0xff1D7AFC),
+                            color:  invoice.amountDue == 0 ? kGreyColor : const Color(0xff1D7AFC),
                             borderRadius: BorderRadius.circular(6)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -145,6 +139,7 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),
@@ -155,3 +150,4 @@ class PillPaymentFinancialCollection extends StatelessWidget {
     );
   }
 }
+

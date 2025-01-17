@@ -477,5 +477,6 @@
   "Confirm_Location": "تأكيد الموقع",
   "Select_Store_Location": "اختر موقع المتجر",
   "print_request" : "طباعة الطلب",
-  "yanabie" : "شركة ينابيع"
+  "yanabie" : "شركة ينابيع",
+  "enter_payment_method_or_amount" : "الرجاء ادخال طريقة الدفع او المبلغ"
 }

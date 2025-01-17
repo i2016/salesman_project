@@ -33,18 +33,9 @@ class FinancialCollectionPaymentWidget extends StatelessWidget {
             Shared.dismissDialog(context: context);
             CreateCollectionResponseModel createCollectionResponseModel = state
                 .createCollectionResponseModel as CreateCollectionResponseModel;
-            // Dialogs.showDialogFinancialCollection(context,
-            // createCollectionResponseModel: createCollectionResponseModel);
+             Dialogs.showDialogFinancialCollection(context,
+             createCollectionResponseModel: createCollectionResponseModel);
 
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => XPrinterScreen(
-                          pdfUrl: createCollectionResponseModel
-                                  .result?.data?.paymentPdf ??
-                              "",
-                          invoiceData: invoice.print,
-                        )));
             Shared.images_list = [];
             Shared.collectionPayment = [];
           } else if (state is CreateCollectionErrorLoading) {

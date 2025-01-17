@@ -19,7 +19,7 @@ class CreateCollectionBloc extends Bloc<AppEvent,AppState> with Validator {
     var response = await collectionRepository.createCollection();
 
       if (response!.result!.statusCode! == 200 ) {
-        emit(CreateCollectionDone(createCollectionResponseModel: response!));
+        emit(CreateCollectionDone(createCollectionResponseModel: response));
       } else {
         emit(CreateCollectionErrorLoading(message: response.result!.message));
       }

@@ -32,7 +32,7 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
-      height: MediaQuery.of(context).size.width * 0.7,
+      height: MediaQuery.of(context).size.width * 0.8,
 
       child: Directionality(
          textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
@@ -68,9 +68,9 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).orientation == Orientation.portrait ?
-                  MediaQuery.of(context).size.height * 0.1
-                      : MediaQuery.of(context).size.height * 0.15,
+            /*      height: MediaQuery.of(context).orientation == Orientation.portrait ?
+                  MediaQuery.of(context).size.height * 0.12
+                      : MediaQuery.of(context).size.height * 0.17,*/
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(
@@ -116,7 +116,6 @@ class _ReturnsAddProductWidgetState extends State<ReturnsAddProductWidget> {
                             ),
                              Text(
                              widget.item!.description ?? '',
-
                                style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,

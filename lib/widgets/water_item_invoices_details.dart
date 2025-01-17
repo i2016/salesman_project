@@ -12,9 +12,9 @@ final Item? item;
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Container(
         width: double.infinity,
-              height: MediaQuery.of(context).orientation == Orientation.portrait ?
+    /*          height: MediaQuery.of(context).orientation == Orientation.portrait ?
            MediaQuery.of(context).size.height * 0.060
-           : MediaQuery.of(context).size.height * 0.075,
+           : MediaQuery.of(context).size.height * 0.075,*/
               decoration: BoxDecoration(
               color: Colors.white,
                 borderRadius: BorderRadius.circular(8)
@@ -55,10 +55,11 @@ final Item? item;
                         ),
                          Text(
                           item!.productName!,
-                        maxLines: 4,
+                        maxLines: 6,
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w300
+                            fontWeight: FontWeight.w300,
+                            overflow: TextOverflow.ellipsis
                           ),
                         ),
                       ],
