@@ -155,12 +155,12 @@ class CurrentRequestsDetailsWidgetState extends State<CurrentRequestsDetailsWidg
                         : widget.transferRequestsDetails!.transfer_printout == null
                       ? null :(){
 
-                  /*    customAnimatedPushNavigation(context, XPrinterScreen(
+                      customAnimatedPushNavigation(context, XPrinterScreen(
                         pdfUrl:  widget.transferRequestsDetails!.transfer_printout!,
-                      ));*/
+                      ));
 
-                      Dialogs.printPdf(url:  widget.transferRequestsDetails!.transfer_printout!,
-                          context: context);
+                      // Dialogs.printPdf(url:  widget.transferRequestsDetails!.transfer_printout!,
+                      //     context: context);
 
                     },
                     child: Container(
