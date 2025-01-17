@@ -575,20 +575,22 @@ Widget totalData({InvoiceData? invoiceData}) {
             ],
           ),
           // Centered Image
-          Positioned(child: Image.asset("assets/images/qr.png",
-          
-          )
-              //     Container(
-              //   // color: Colors.black, // Background for the image
-              //   // width: 200,
-              //   // height: 400,
-              //   child: QRCodeImage(
-              //     base64QRCode: invoiceData?.company?.qr ?? "",
-              //     width: 150,
-              //     height: 150,
-              //   ),
-              // ),
-              ),
+          // invoiceData?.company?.qr?.isEmpty == true
+          //     ?
+          Positioned(
+              child: Image.asset(
+            "assets/images/qr.png",
+            width: 150,
+            height: 150,
+          )),
+          // :
+          Positioned(
+            child: QRCodeImage(
+              base64QRCode: invoiceData?.company?.qr ?? "",
+              width: 150,
+              height: 150,
+            ),
+          ),
         ],
       ),
       const Row(
@@ -715,12 +717,12 @@ class QRCodeImage extends StatelessWidget {
           ? base64QRCode.split(',')[1]
           : base64QRCode;
 
-      print('Base64 Data: $base64Data'); // Debug print
+      debugPrint('Base64 Data: $base64Data'); // Debug print
 
       // Decode the Base64 string into bytes
       Uint8List qrBytes = base64Decode(base64Data);
 
-      print('QR Bytes: $qrBytes'); // Debug print
+      debugPrint('QR Bytes: $qrBytes'); // Debug print
 
       // Display the QR Code as an image
       return Image.memory(
