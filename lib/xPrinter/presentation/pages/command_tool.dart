@@ -28,8 +28,7 @@ class CommandTool {
     return cmd;
   }
 
-
-   static Future<Uint8List?> tscImageCmd(Uint8List image) async {
+  static Future<Uint8List?> tscImageCmd(Uint8List image) async {
     await tscCommand.cleanCommand();
     await tscCommand.size(width: 70, height: 85);
     await tscCommand.cls(); // most after size
@@ -39,7 +38,6 @@ class CommandTool {
     final cmd = await tscCommand.getCommand();
     return cmd;
   }
-
 
   static Future<Uint8List?> tscQrCmd(String qrCode) async {
     await tscCommand.cleanCommand();
@@ -154,7 +152,7 @@ Future<Uint8List?> createImageFromWidget(Widget widget,
     container: repaintBoundary,
     child: Directionality(
       textDirection: TextDirection.ltr,
-      child: FittedBox(fit: BoxFit.contain, child: widget),
+      child: widget,
     ),
   ).attachToRenderTree(buildOwner);
 

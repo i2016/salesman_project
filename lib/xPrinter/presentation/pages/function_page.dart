@@ -171,7 +171,8 @@ class _FunctionPageState extends State<FunctionPage> {
         title: Text(widget.device.name),
       ),
       body: SingleChildScrollView(
-        child: pdfUrl?.isEmpty == true
+        child: (pdfUrl?.isEmpty == true &&
+                widget.invoiceData?.company?.invoiceNumber?.isEmpty == true)
             ? const Column(
                 children: [
                   Padding(

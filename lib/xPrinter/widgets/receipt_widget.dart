@@ -27,7 +27,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
             height: 80,
           )),
 
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
       // Padding(
       //   padding: const EdgeInsets.symmetric(
       //     horizontal: 8.0,
@@ -349,7 +349,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
         ...invoiceData!.items!.map((item) {
           return Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 6.0,
+              vertical: 0.0,
             ),
             child: Column(
               children: [
@@ -465,6 +465,88 @@ Widget totalData({InvoiceData? invoiceData}) {
                   ),
                 )),
       ),
+      SizedBox(
+        // padding: EdgeInsets.symmetric(vertical: 6),
+        // width: 420,
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Flexible(flex: 1, child: Container()),
+            const Flexible(
+                flex: 2,
+                child: Text('Total',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
+
+            Flexible(
+                flex: 2,
+                child: Text("${invoiceData?.totals?.quantity}",
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
+
+            Flexible(
+              flex: 2,
+              // fit: FlexFit.tight,
+              child: Text("${invoiceData?.totals?.price}",
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Flexible(flex: 1, child: Container()),
+
+            Flexible(
+                flex: 2,
+                child: Text("${invoiceData?.totals?.discount}",
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
+
+            Flexible(
+                flex: 2,
+                child: Text("${invoiceData?.totals?.vat}",
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
+          ],
+        ),
+      ),
+      SizedBox(
+        // padding: EdgeInsets.symmetric(vertical: 6),
+        // width: 420,
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Flexible(flex: 1, child: Container()),
+            const Flexible(
+                flex: 2,
+                child: Text('اجمالي',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
+            Flexible(flex: 4, child: Container()),
+
+            Flexible(
+                flex: 2,
+                child: Text('${invoiceData?.totals?.grandTotal}',
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
+          ],
+        ),
+      ),
       Stack(
         alignment: Alignment.center,
         children: [
@@ -493,16 +575,16 @@ Widget totalData({InvoiceData? invoiceData}) {
             ],
           ),
           // Centered Image
-          Positioned(child: Image.asset("assets/images/qr.png")
-              //  Container(
-              //   color: Colors.black, // Background for the image
+          Positioned(child: Image.asset("assets/images/qr.png",
+          
+          )
+              //     Container(
+              //   // color: Colors.black, // Background for the image
               //   // width: 200,
               //   // height: 400,
-              //   child:
-
-              //    QRCodeImage(
+              //   child: QRCodeImage(
               //     base64QRCode: invoiceData?.company?.qr ?? "",
-              //     width: 300,
+              //     width: 150,
               //     height: 150,
               //   ),
               // ),
@@ -510,7 +592,7 @@ Widget totalData({InvoiceData? invoiceData}) {
         ],
       ),
       const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             children: [
@@ -519,7 +601,7 @@ Widget totalData({InvoiceData? invoiceData}) {
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              Text("توقيع البائع",
+              Text("(توقيع البائع)",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -527,7 +609,7 @@ Widget totalData({InvoiceData? invoiceData}) {
             ],
           ),
           SizedBox(
-            height: 10,
+            width: 80,
           ),
           Column(
             children: [
@@ -536,7 +618,7 @@ Widget totalData({InvoiceData? invoiceData}) {
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              Text("توقيع العميل",
+              Text("(توقيع العميل)",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -633,8 +715,12 @@ class QRCodeImage extends StatelessWidget {
           ? base64QRCode.split(',')[1]
           : base64QRCode;
 
+      print('Base64 Data: $base64Data'); // Debug print
+
       // Decode the Base64 string into bytes
       Uint8List qrBytes = base64Decode(base64Data);
+
+      print('QR Bytes: $qrBytes'); // Debug print
 
       // Display the QR Code as an image
       return Image.memory(
