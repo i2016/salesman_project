@@ -26,6 +26,8 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
             width: 320,
             height: 80,
           )),
+
+      SizedBox(height: 10),
       // Padding(
       //   padding: const EdgeInsets.symmetric(
       //     horizontal: 8.0,
@@ -154,20 +156,23 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                   ),
                 )),
       ),
-      const SizedBox(
+
+      SizedBox(
         // padding: EdgeInsets.symmetric(vertical: 6),
-        width: 420,
+        // width: 420,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(
+            // Flexible(flex: 1, child: Container()),
+            const Flexible(
                 flex: 2,
                 child: Text('Prd Code',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold))),
-            Flexible(
+            Flexible(flex: 1, child: Container()),
+            const Flexible(
               flex: 6,
               fit: FlexFit.tight,
               child: Text('Product Description',
@@ -178,23 +183,26 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                       fontSize: 22,
                       fontWeight: FontWeight.bold)),
             ),
+            Flexible(flex: 1, child: Container()),
           ],
         ),
       ),
-      const SizedBox(
+
+      SizedBox(
         // padding: EdgeInsets.symmetric(vertical: 6),
-        width: 420,
+        // width: 420,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(
+            const Flexible(
                 flex: 2,
                 child: Text('(كود المنتج)',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
-            Flexible(
+            Flexible(flex: 1, child: Container()),
+            const Flexible(
               flex: 6,
               fit: FlexFit.tight,
               child: Text('(وصف المنتج)',
@@ -205,16 +213,17 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
             ),
+            Flexible(flex: 1, child: Container()),
           ],
         ),
       ),
       SizedBox(
         // padding: EdgeInsets.symmetric(vertical: 6),
-        width: 420,
+        // width: 420,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(flex: 2, child: Container()),
+            Flexible(flex: 3, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('Qty',
@@ -222,6 +231,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
               flex: 2,
               // fit: FlexFit.tight,
@@ -231,6 +241,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
             ),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('Disc',
@@ -238,6 +249,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('VAT',
@@ -245,6 +257,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('TOTAL',
@@ -252,16 +265,17 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
           ],
         ),
       ),
       SizedBox(
         // padding: EdgeInsets.symmetric(vertical: 6),
-        width: 420,
+        // width: 420,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(flex: 1, child: Container()),
+            Flexible(flex: 3, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('(كمية)',
@@ -269,6 +283,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
               flex: 2,
               // fit: FlexFit.tight,
@@ -278,6 +293,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
             ),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('(خصم)',
@@ -285,6 +301,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('(ضريبة)',
@@ -292,6 +309,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
             const Flexible(
                 flex: 2,
                 child: Text('(مجموع)',
@@ -299,6 +317,7 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold))),
+            Flexible(flex: 1, child: Container()),
           ],
         ),
       ),
@@ -323,18 +342,21 @@ Widget compnayNameAndBasicData({InvoiceData? invoiceData}) {
 
 Widget itemsData({InvoiceData? invoiceData}) {
   return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
       // Items Data
       if (invoiceData?.items != null)
         ...invoiceData!.items!.map((item) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 6.0,
+            ),
             child: Column(
               children: [
                 SizedBox(
                   // width: 420,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
                         flex: 2,
@@ -344,6 +366,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                       Flexible(
                         flex: 6,
                         fit: FlexFit.tight,
@@ -355,16 +378,17 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                     ],
                   ),
                 ),
                 SizedBox(
                   // padding: EdgeInsets.symmetric(vertical: 6),
-                  width: 420,
+                  // width: 420,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(flex: 1, child: Container()),
+                      Flexible(flex: 3, child: Container()),
                       Flexible(
                         flex: 2,
                         child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
@@ -373,6 +397,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                       Flexible(
                         flex: 2,
                         child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
@@ -381,6 +406,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                       Flexible(
                         flex: 2,
                         child: Text(item.discount?.toStringAsFixed(2) ?? "0",
@@ -389,6 +415,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                       Flexible(
                         flex: 2,
                         child: Text(item.tax ?? "0",
@@ -397,6 +424,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                       Flexible(
                         flex: 2,
                         child: Text(
@@ -406,6 +434,7 @@ Widget itemsData({InvoiceData? invoiceData}) {
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal)),
                       ),
+                      Flexible(flex: 1, child: Container()),
                     ],
                   ),
                 ),
@@ -413,447 +442,6 @@ Widget itemsData({InvoiceData? invoiceData}) {
             ),
           );
         }).toList(),
-      // if (invoiceData?.items != null)
-      //   ...invoiceData!.items!.map((item) {
-      //     return Padding(
-      //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //       child: Column(
-      //         children: [
-      //           SizedBox(
-      //             // width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.productCode ?? "N/A",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 6,
-      //                   fit: FlexFit.tight,
-      //                   child: Text(item.productName ?? "N/A",
-      //                       maxLines: 10,
-      //                       textAlign: TextAlign.justify,
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           SizedBox(
-      //             // padding: EdgeInsets.symmetric(vertical: 6),
-      //             width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(flex: 1, child: Container()),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.discount?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.tax ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(
-      //                       item.priceSubtotal?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     );
-      //   }).toList(),
-      // if (invoiceData?.items != null)
-      //   ...invoiceData!.items!.map((item) {
-      //     return Padding(
-      //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //       child: Column(
-      //         children: [
-      //           SizedBox(
-      //             // width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.productCode ?? "N/A",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 6,
-      //                   fit: FlexFit.tight,
-      //                   child: Text(item.productName ?? "N/A",
-      //                       maxLines: 10,
-      //                       textAlign: TextAlign.justify,
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           SizedBox(
-      //             // padding: EdgeInsets.symmetric(vertical: 6),
-      //             width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(flex: 1, child: Container()),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.discount?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.tax ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(
-      //                       item.priceSubtotal?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     );
-      //   }).toList(),
-      // if (invoiceData?.items != null)
-      //   ...invoiceData!.items!.map((item) {
-      //     return Padding(
-      //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //       child: Column(
-      //         children: [
-      //           SizedBox(
-      //             // width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.productCode ?? "N/A",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 6,
-      //                   fit: FlexFit.tight,
-      //                   child: Text(item.productName ?? "N/A",
-      //                       maxLines: 10,
-      //                       textAlign: TextAlign.justify,
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           SizedBox(
-      //             // padding: EdgeInsets.symmetric(vertical: 6),
-      //             width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(flex: 1, child: Container()),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.discount?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.tax ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(
-      //                       item.priceSubtotal?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     );
-      //   }).toList(),
-
-      // if (invoiceData?.items != null)
-      //   ...invoiceData!.items!.map((item) {
-      //     return Padding(
-      //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //       child: Column(
-      //         children: [
-      //           SizedBox(
-      //             // width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.productCode ?? "N/A",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 6,
-      //                   fit: FlexFit.tight,
-      //                   child: Text(item.productName ?? "N/A",
-      //                       maxLines: 10,
-      //                       textAlign: TextAlign.justify,
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           SizedBox(
-      //             // padding: EdgeInsets.symmetric(vertical: 6),
-      //             width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(flex: 1, child: Container()),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.discount?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.tax ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(
-      //                       item.priceSubtotal?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     );
-      //   }).toList(),
-      // if (invoiceData?.items != null)
-      //   ...invoiceData!.items!.map((item) {
-      //     return Padding(
-      //       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //       child: Column(
-      //         children: [
-      //           SizedBox(
-      //             // width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.productCode ?? "N/A",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 6,
-      //                   fit: FlexFit.tight,
-      //                   child: Text(item.productName ?? "N/A",
-      //                       maxLines: 10,
-      //                       textAlign: TextAlign.justify,
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           SizedBox(
-      //             // padding: EdgeInsets.symmetric(vertical: 6),
-      //             width: 420,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 Flexible(flex: 1, child: Container()),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.quantity?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.priceUnit?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.discount?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(item.tax ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //                 Flexible(
-      //                   flex: 2,
-      //                   child: Text(
-      //                       item.priceSubtotal?.toStringAsFixed(2) ?? "0",
-      //                       style: const TextStyle(
-      //                           color: Colors.black,
-      //                           fontSize: 16,
-      //                           fontWeight: FontWeight.normal)),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     );
-      //   }).toList(),
     ],
   );
 }
@@ -921,17 +509,17 @@ Widget totalData({InvoiceData? invoiceData}) {
               ),
         ],
       ),
-      Row(
+      const Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             children: [
-              const Text("Salesman Signature",
+              Text("Salesman Signature",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              const Text("توقيع البائع",
+              Text("توقيع البائع",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -943,12 +531,12 @@ Widget totalData({InvoiceData? invoiceData}) {
           ),
           Column(
             children: [
-              const Text("Customer Signature",
+              Text("Customer Signature",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              const Text("توقيع العميل",
+              Text("توقيع العميل",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -1060,7 +648,7 @@ class QRCodeImage extends StatelessWidget {
       return Center(
         child: Text(
           'Invalid QR Code: ${e.toString()}',
-          style: TextStyle(color: Colors.red, fontSize: 16),
+          style: const TextStyle(color: Colors.red, fontSize: 16),
           textAlign: TextAlign.center,
         ),
       );
