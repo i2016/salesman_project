@@ -16,69 +16,70 @@ import 'package:water/widgets/first_container_in_financial_collection.dart';
 import 'package:water/widgets/payment_method_financial_collection.dart';
 import 'package:water/widgets/pill_payment_financial_collection.dart';
 import 'package:water/widgets/take_photo_widget.dart';
+import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
 
 class FinancialCollectionPaymentWidget extends StatelessWidget {
   final Invoice invoice;
-  FinancialCollectionPaymentWidget({super.key,required this.invoice});
-
+  FinancialCollectionPaymentWidget({super.key, required this.invoice});
 
   @override
   Widget build(BuildContext context) {
     return BlocListener(
         bloc: createCollectionBloc,
         listener: (context, state) {
-      if(state is CreateCollectionLoading){
+          if (state is CreateCollectionLoading) {
+            Shared.showLoadingDialog(context: context);
+          } else if (state is CreateCollectionDone) {
+            Shared.dismissDialog(context: context);
+            CreateCollectionResponseModel createCollectionResponseModel = state
+                .createCollectionResponseModel as CreateCollectionResponseModel;
+            // Dialogs.showDialogFinancialCollection(context,
+            // createCollectionResponseModel: createCollectionResponseModel);
 
-        Shared.showLoadingDialog(context: context);
-      }
-      else if(state is CreateCollectionDone){
-        Shared.dismissDialog(context: context);
-        CreateCollectionResponseModel createCollectionResponseModel
-          = state.createCollectionResponseModel as CreateCollectionResponseModel;
-        Dialogs.showDialogFinancialCollection(context,
-        createCollectionResponseModel: createCollectionResponseModel);
-        Shared.images_list = [];
-        Shared.collectionPayment = [];
-
-      }
-      else if(state is CreateCollectionErrorLoading){
-
-        Shared.dismissDialog(context: context);
-        QuickAlert.show(
-          context: context,
-          type: QuickAlertType.error,
-          title: "error".tr(),
-          text: state.message,
-        );
-
-      }
-    },
-    child:Directionality(
-       textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
-        ? TextDirection.rtl
-        : TextDirection.ltr,
-
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-             FirstContainerInFinancialCollection(
-               total_amount: invoice.amountTotal.toString(),
-            ),
-            const PaymentMethodFinancialCollection(),
-            const TakePhoto(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.011,
-            ),
-             PillPaymentFinancialCollection(
-              invoice: invoice,
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.011,
-            ),
-
-          ],
-        ),
-
-    )   );
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => XPrinterScreen(
+                          pdfUrl: createCollectionResponseModel
+                                  .result?.data?.paymentPdf ??
+                              "",
+                          invoiceData: invoice.print,
+                        )));
+            Shared.images_list = [];
+            Shared.collectionPayment = [];
+          } else if (state is CreateCollectionErrorLoading) {
+            Shared.dismissDialog(context: context);
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+              title: "error".tr(),
+              text: state.message,
+            );
+          }
+        },
+        child: Directionality(
+          textDirection: LocalizeAndTranslate.getLanguageCode() == 'ar'
+              ? TextDirection.rtl
+              : TextDirection.ltr,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FirstContainerInFinancialCollection(
+                total_amount: invoice.amountTotal.toString(),
+              ),
+              const PaymentMethodFinancialCollection(),
+              const TakePhoto(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.011,
+              ),
+              PillPaymentFinancialCollection(
+                invoice: invoice,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.011,
+              ),
+            ],
+          ),
+        ));
   }
 }

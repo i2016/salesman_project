@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:water/Base/Helper/app_event.dart';
+import 'package:water/Base/common/dialogs.dart';
 // import 'package:water/Base/common/dialogs.dart';
 // import 'package:water/Base/common/navigtor.dart';
 import 'package:water/Base/common/shared.dart';
@@ -52,20 +53,20 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: invoice.refund_printout ?? '',
                         ));*/
-                        /*      Dialogs.printPdf(url: invoice.refund_printout ?? '',
-                            context: context);*/
+                        //   Dialogs.printPdf(url: invoice.refund_printout ?? '',
+                        // context: context);
 
                         // Receipt receipt = Receipt();
                         // receipt.sample(invoiceData:  invoice.print,);
 
-                        String receiptData =
-                            await ReceiptGenerator.generateReceiptWithImages(
-                                invoiceData: invoice.print);
+                        // String receiptData =
+                        //     await ReceiptGenerator.generateReceiptWithImages(
+                        //         invoiceData: invoice.print);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => XPrinterScreen(
-                                      pdfUrl: receiptData,
+                                      pdfUrl: '',
                                       invoiceData: invoice.print,
                                     )));
                       },
@@ -108,6 +109,8 @@ class PillPaymentFinancialCollection extends StatelessWidget {
                           ? () => false
                           : () {
                               createCollectionBloc.add(CreateCollectionEvent());
+
+                            
                             },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.16,

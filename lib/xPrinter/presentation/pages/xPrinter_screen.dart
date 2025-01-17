@@ -10,7 +10,7 @@ import 'package:water/xPrinter/presentation/pages/function_page.dart';
 class XPrinterScreen extends StatefulWidget {
   final String pdfUrl;
   final InvoiceData? invoiceData;
-  XPrinterScreen({super.key, required this.pdfUrl, required this.invoiceData});
+  XPrinterScreen({super.key, required this.pdfUrl,  this.invoiceData});
 
   @override
   State<XPrinterScreen> createState() => _XPrinterScreenState();
