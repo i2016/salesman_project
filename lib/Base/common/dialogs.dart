@@ -227,6 +227,7 @@ class Dialogs {
                         customAnimatedPushNavigation(context, XPrinterScreen(
                           pdfUrl: createCollectionResponseModel.result!.data!.paymentPdf!,
                         ));
+
                       //  printPdf(url: createCollectionResponseModel.result!.data!.paymentPdf!,
                       //       context: context);
                       },
@@ -281,8 +282,8 @@ class Dialogs {
           content: Container(
             width: MediaQuery.of(context).size.width * 0.6,
             height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? MediaQuery.of(context).size.height * 0.195
-                : MediaQuery.of(context).size.height * 0.377,
+                ? MediaQuery.of(context).size.height * 0.22
+                : MediaQuery.of(context).size.height * 0.4,
             child: Column(
               children: [
                 Image.asset(
@@ -476,7 +477,8 @@ class Dialogs {
                           :createOrderResponseModel.result!.errorResult != null ? null :(){
 
                       customAnimatedPushNavigation(context, XPrinterScreen(
-                          pdfUrl: createOrderResponseModel.result?.invoicePdf??"",
+                          pdfUrl: '',
+                        invoiceData: createOrderResponseModel.result!.invoiceData,
                         ));
 
                    /*     printPdf(url: createOrderResponseModel!.result!.invoicePdf!,
@@ -972,8 +974,8 @@ class Dialogs {
           content: Container(
             width: MediaQuery.of(context).size.width * 0.6,
             height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? MediaQuery.of(context).size.height * 0.19
-                : MediaQuery.of(context).size.height * 0.375,
+                ? MediaQuery.of(context).size.height * 0.22
+                : MediaQuery.of(context).size.height * 0.400,
             child: Column(
               children: [
                 Image.asset(
