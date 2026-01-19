@@ -21,8 +21,6 @@ import 'package:http/http.dart' as http;
 import 'package:printing/printing.dart';
 import 'package:flutter/services.dart';
 import 'package:water/xPrinter/presentation/pages/xPrinter_screen.dart';
-import 'package:water/zebra/presentation/pages/zebra_printer_screen.dart';
-import 'package:water/zebra/presentation/widgets/receipt.dart';
 class Dialogs {
 
   static Future<void>? showDialogFinancialCollection(parentContext,{CreateCollectionResponseModel?
