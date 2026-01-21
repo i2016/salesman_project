@@ -323,9 +323,9 @@ class _LoginScreenDetailsState extends State<LoginScreenDetails> {
                     if (value == null || value.isEmpty) {
                       return kpassword_required.tr();
                     }
-                    if (value.length < 6) {
-                      return kpassword_min_length.tr();
-                    }
+                    // if (value.length < 6) {
+                    //   return kpassword_min_length.tr();
+                    // }
                     return null;
                   },
                 ),
