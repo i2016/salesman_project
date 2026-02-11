@@ -1,6 +1,6 @@
 
 // this app base url
-const String baseUrl ='https://kareemmostafaa-sales-man-stg-26946124.dev.odoo.com/api/';
+const String baseUrl ='https://kareemmostafaa-sales-man-stg-28413146.dev.odoo.com/api/';
 /*'https://yanabie-demo-17642914.dev.odoo.com/api/';*/
 
 const String apiKey = "NXI1ZP8ITTFY5D5TM37FASC58P4LR14S";
