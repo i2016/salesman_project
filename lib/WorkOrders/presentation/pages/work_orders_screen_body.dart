@@ -16,79 +16,81 @@ class WorkOrdersScreenBody extends StatelessWidget {
         : TextDirection.ltr,
 
       child: Scaffold(
-        body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Icon(Icons.arrow_back),
+        body: SingleChildScrollView(
+          child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.012,
+                        ),
+                         Text(
+                         "work_orders".tr(),
+                          style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ]),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.008,
+                      ),
+                       SearchTextField(hintTextField: "search_invoice".tr()),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.008,
+                      ),
+                       VisitTypeContainers(
+                        textFirstContainer: "period".tr(),
+                        textSecondContainer: "status".tr(),
+                        textThirdContainer: "order_type".tr(),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.012,
+                        height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                       Text(
-                       "work_orders".tr(),
-                        style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ]),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.008,
-                    ),
-                     SearchTextField(hintTextField: "search_invoice".tr()),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.008,
-                    ),
-                     VisitTypeContainers(
-                      textFirstContainer: "period".tr(),
-                      textSecondContainer: "status".tr(),
-                      textThirdContainer: "order_type".tr(),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 8,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                index % 2 == 0 ?    const OrderDetailsSaleScreen()
-                            : const OrderDetailsReturnScreen()));
-                          },
-                          child:  Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: VisitsHistoryScreenContainerItem(
-                              date: index % 2 == 0 ?  'امر بيع 2313' : 'امر مرتجع 2313',
-                              collect: '50 منتج',
-                              complete: '30,000 ${"sar".tr()}',
-                              visit: "approval_status".tr(),
-                              returned: '10,000 ${"sar".tr()}',
-                              store: 'اسم المتجر',
-                              icon: 'assets/images/trueeStyle.png',
-                              iconColor: Color(0xff1D6E4F),
-                              iconProductType: 'assets/images/trueInSquare.png',
-                              iconStoreName: 'assets/images/smallShop.png',
-                              iconCompleted: 'assets/images/Banknote2.png',
-                              iconReturned: 'assets/images/timeHistory.png',
-                              iconCollected: 'assets/images/marketImage.png',
-                              collectedColor: Colors.black,
+                      ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 8,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                  index % 2 == 0 ?    const OrderDetailsSaleScreen()
+                              : const OrderDetailsReturnScreen()));
+                            },
+                            child:  Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: VisitsHistoryScreenContainerItem(
+                                date: index % 2 == 0 ?  'امر بيع 2313' : 'امر مرتجع 2313',
+                                collect: '50 منتج',
+                                complete: '30,000 ${"sar".tr()}',
+                                visit: "approval_status".tr(),
+                                returned: '10,000 ${"sar".tr()}',
+                                store: 'اسم المتجر',
+                                icon: 'assets/images/trueeStyle.png',
+                                iconColor: Color(0xff1D6E4F),
+                                iconProductType: 'assets/images/trueInSquare.png',
+                                iconStoreName: 'assets/images/smallShop.png',
+                                iconCompleted: 'assets/images/Banknote2.png',
+                                iconReturned: 'assets/images/timeHistory.png',
+                                iconCollected: 'assets/images/marketImage.png',
+                                collectedColor: Colors.black,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+        ),
               ),
     );
   }

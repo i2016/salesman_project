@@ -17,65 +17,67 @@ class OrderDetailsSaleScreenBody extends StatelessWidget{
 
       child: Scaffold(
         // endDrawer: const Drawer(),
-        body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                              InkWell(
-                                  onTap: (){
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Icon(Icons.arrow_back)),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                           Text(
-                          "order_details".tr(),
-                            style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w500,
+        body: SingleChildScrollView(
+          child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                                InkWell(
+                                    onTap: (){
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Icon(Icons.arrow_back)),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.01,
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                       ReturnedDetailsContainer(
-                        iconReturned: 'assets/images/trueInSquare.png',
-                        nameReturned: "return_order".tr(),
-                        icon: 'assets/images/trueeStyle.png',
-                        traderName:  "trader_name".tr(),
-                        date: "date".tr(),
-                        phone: '+966 4644 4646',
-                        cost: '30,000 ${"sar".tr()}',
-                        time: "time".tr(),
-                        number: "number_of_products".tr(),
-                        textSmallContainer: "approval_status".tr(),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.012,
-                      ),
-                       SearchTextField(
-                        hintTextField: "search_product".tr(),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.018,
-                      ),
-                      const ImageNumberProductPriceContainer(),
-                      ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {},
-                              child:  ReviewProductWaterItem(),
-                            );
-                          }),
-                    ],
-                  ),
+                             Text(
+                            "order_details".tr(),
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                         ReturnedDetailsContainer(
+                          iconReturned: 'assets/images/trueInSquare.png',
+                          nameReturned: "return_order".tr(),
+                          icon: 'assets/images/trueeStyle.png',
+                          traderName:  "trader_name".tr(),
+                          date: "date".tr(),
+                          phone: '+966 4644 4646',
+                          cost: '30,000 ${"sar".tr()}',
+                          time: "time".tr(),
+                          number: "number_of_products".tr(),
+                          textSmallContainer: "approval_status".tr(),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.012,
+                        ),
+                         SearchTextField(
+                          hintTextField: "search_product".tr(),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.018,
+                        ),
+                        const ImageNumberProductPriceContainer(),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                onTap: () {},
+                                child:  ReviewProductWaterItem(),
+                              );
+                            }),
+                      ],
+                    ),
+        ),
                 ),
     );
   }

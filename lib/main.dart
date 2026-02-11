@@ -153,30 +153,35 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: navigatorKey,
-        debugShowCheckedModeBanner: false,
-        title:  "yanabie".tr(),
-        locale: LocalizeAndTranslate.getLocale(),
-        supportedLocales: LocalizeAndTranslate.getLocals(),
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate,
-          CountryLocalizations.delegate,
-        ],
-    //    key: navigatorKey,
-        theme: ThemeData(
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          title: "yanabie".tr(),
+          locale: LocalizeAndTranslate.getLocale(),
+          supportedLocales: LocalizeAndTranslate.getLocals(),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
+            CountryLocalizations.delegate,
+          ],
+          theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: false,
-            fontFamily:'GE Dinar One',
-
-        ),
-
-        home: LocalizedApp(
-          child: SplashScreen(),
-        ));
+            fontFamily: 'GE Dinar One',
+          ),
+          home: LocalizedApp(
+            child: SplashScreen(),
+          ),
+        );
+      },
+    );
   }
 
 /*

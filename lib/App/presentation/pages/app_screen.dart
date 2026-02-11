@@ -58,82 +58,85 @@ class _AppScreenState extends State<AppScreen> {
                         children: [
                           Expanded(
                             flex: 3,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 0.5,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.grey,
+                                        width: 0.5,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 11, vertical: 8),
-                                    child: Row(
-                                      /*     textDirection:
-                                      LocalizeAndTranslate.getLanguageCode() ==
-                                          'en'
-                                          ? TextDirection.rtl
-                                          : TextDirection.ltr,*/
-                                      children: [
-                                        InkWell(
-                                          onTap: (){},
-                                          child: const ImageIcon(
-                                            AssetImage(
-                                                'assets/images/Icon-Wrappppper.png'),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 11, vertical: 8),
+                                      child: Row(
+                                        /*     textDirection:
+                                        LocalizeAndTranslate.getLanguageCode() ==
+                                            'en'
+                                            ? TextDirection.rtl
+                                            : TextDirection.ltr,*/
+                                        children: [
+                                          InkWell(
+                                            onTap: (){},
+                                            child: const ImageIcon(
+                                              AssetImage(
+                                                  'assets/images/Icon-Wrappppper.png'),
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                          MediaQuery.of(context).size.width *
-                                              0.01,
-                                        ),
-                                        Opacity(
-                                          opacity: 0.8,
-                                          child: Text("hide_list".tr()),
-                                        ),
-                                      ],
+                                          SizedBox(
+                                            width:
+                                            MediaQuery.of(context).size.width *
+                                                0.01,
+                                          ),
+                                          Opacity(
+                                            opacity: 0.8,
+                                            child: Text("hide_list".tr()),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.025,
-                                ),
-                                Container(
-                                  height: MediaQuery.of(context).size.width * 0.5,
-                                  child: NavigateBasicContainer(
-                                    menuType: widget.menuType,
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.025,
                                   ),
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.025,
-                                ),
-                                widget.visitDetails == false ?
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color:  widget.screenButtons!.length ==0 ? kTransparentColor : kWhiteColor,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: widget.screenButtons!.length ==0 ? kTransparentColor : kInactiveColor)
+                                  Container(
+                                    height: MediaQuery.of(context).size.width * 0.5,
+                                    child: NavigateBasicContainer(
+                                      menuType: widget.menuType,
+                                    ),
                                   ),
-                                  padding: EdgeInsets.all(5),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: widget.screenButtons!.length,
-                                    itemBuilder: (context, index) {
-                                      return  widget.screenButtons![index];
-                                    },
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.025,
                                   ),
-                                )
-                                    : NavigateInVisitDetailsContainer(
-                                )
+                                  widget.visitDetails == false ?
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color:  widget.screenButtons!.length ==0 ? kTransparentColor : kWhiteColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(color: widget.screenButtons!.length ==0 ? kTransparentColor : kInactiveColor)
+                                    ),
+                                    padding: EdgeInsets.all(5),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: widget.screenButtons!.length,
+                                      itemBuilder: (context, index) {
+                                        return  widget.screenButtons![index];
+                                      },
+                                    ),
+                                  )
+                                      : NavigateInVisitDetailsContainer(
+                                  )
 
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           Expanded(
@@ -154,82 +157,85 @@ class _AppScreenState extends State<AppScreen> {
                         children: [
                           Expanded(
                             flex: 3,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 0.5,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.grey,
+                                        width: 0.5,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 11, vertical: 8),
-                                    child: Row(/*
-                                      textDirection:
-                                      LocalizeAndTranslate.getLanguageCode() ==
-                                          'en'
-                                          ? TextDirection.rtl
-                                          : TextDirection.ltr,*/
-                                      children: [
-                                        InkWell(
-                                          onTap: (){},
-                                          child: const ImageIcon(
-                                            AssetImage(
-                                                'assets/images/Icon-Wrappppper.png'),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 11, vertical: 8),
+                                      child: Row(/*
+                                        textDirection:
+                                        LocalizeAndTranslate.getLanguageCode() ==
+                                            'en'
+                                            ? TextDirection.rtl
+                                            : TextDirection.ltr,*/
+                                        children: [
+                                          InkWell(
+                                            onTap: (){},
+                                            child: const ImageIcon(
+                                              AssetImage(
+                                                  'assets/images/Icon-Wrappppper.png'),
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                          MediaQuery.of(context).size.width *
-                                              0.01,
-                                        ),
-                                        Opacity(
-                                          opacity: 0.8,
-                                          child: Text("hide_list".tr()),
-                                        ),
-                                      ],
+                                          SizedBox(
+                                            width:
+                                            MediaQuery.of(context).size.width *
+                                                0.01,
+                                          ),
+                                          Opacity(
+                                            opacity: 0.8,
+                                            child: Text("hide_list".tr()),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.025,
-                                ),
-                                Container(
-                                  height: MediaQuery.of(context).size.width * 0.5,
-                                  child: NavigateBasicContainer(
-                                    menuType: widget.menuType,
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.025,
                                   ),
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.025,
-                                ),
-                                widget.visitDetails == false ?
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color:  widget.screenButtons!.length ==0 ? kTransparentColor : kWhiteColor,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: widget.screenButtons!.length ==0 ? kTransparentColor : kInactiveColor)
+                                  Container(
+                                    height: MediaQuery.of(context).size.width * 0.5,
+                                    child: NavigateBasicContainer(
+                                      menuType: widget.menuType,
+                                    ),
                                   ),
-                                  padding: EdgeInsets.all(5),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: widget.screenButtons!.length,
-                                    itemBuilder: (context, index) {
-                                      return  widget.screenButtons![index];
-                                    },
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.025,
                                   ),
-                                )
-                                    : NavigateInVisitDetailsContainer(
-                                )
+                                  widget.visitDetails == false ?
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color:  widget.screenButtons!.length ==0 ? kTransparentColor : kWhiteColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(color: widget.screenButtons!.length ==0 ? kTransparentColor : kInactiveColor)
+                                    ),
+                                    padding: EdgeInsets.all(5),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: widget.screenButtons!.length,
+                                      itemBuilder: (context, index) {
+                                        return  widget.screenButtons![index];
+                                      },
+                                    ),
+                                  )
+                                      : NavigateInVisitDetailsContainer(
+                                  )
 
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           Expanded(
